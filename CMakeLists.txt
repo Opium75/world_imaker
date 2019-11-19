@@ -90,10 +90,8 @@ add_executable(world_imaker main.cpp
         src/wim/include/Colour.hpp
         src/wim/src/Colour.cpp
         src/wim/include/Displayable.hpp
-        src/wim/include/Point3D.hpp
-        src/wim/src/Point3D.cpp
         src/wim/src/Cube.cpp
         src/wim/include/CubeStack.hpp
-        src/wim/src/CubeStack.cpp)
+        src/wim/src/CubeStack.cpp src/wim/include/Vec3D.hpp src/wim/src/Vec3D.cpp src/wim/include/CubeWorld.hpp src/wim/src/CubeWorld.cpp)
 
 

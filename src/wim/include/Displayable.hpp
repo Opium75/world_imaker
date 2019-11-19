@@ -7,7 +7,7 @@
 
 #pragma once
 
-#include "Point3D.hpp"
+#include "Vec3D.hpp"
 
 namespace wim
 {

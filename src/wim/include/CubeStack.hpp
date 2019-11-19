@@ -17,7 +17,8 @@ namespace wim
     class CubeStack : protected Displayable
     {
     private:
-        std::deque<Cube> _stack;
+        typedef std::deque<Cube> Stack;
+        Stack _stack;
     public:
         CubeStack() = default;
         CubeStack(const CubeStack& cubeStack);
@@ -25,6 +26,9 @@ namespace wim
 
         Cube& topCube();
         const Cube& topCube() const;
+
+        //again, CubeStack will be Displayed through CubeWorld
+        void display() const {};
     };
 }
 

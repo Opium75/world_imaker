@@ -25,6 +25,7 @@ namespace wim
         Cube(const Cube& cube);
         ~Cube() = default;
 
+    protected:
         //inherited from Displayable
         void display() const {};
 
