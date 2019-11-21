@@ -29,6 +29,12 @@ namespace wim
         CubeFloor() = default;
         CubeFloor(const Cube& c, const IndexFloor floor=-1);
         ~CubeFloor() = default;
+
+        inline Cube& cube() {return _cube;};
+        inline const Cube& cube() const {return _cube;};
+        inline IndexFloor& floor() {return _floor;};
+        inline IndexFloor floor() const {return _floor;};
+
         ///Return 1 if this Cube is on a higher floor than one given as argument, 0 if equal and -1 if lower
         inline int compareFloors(const CubeFloor& cFloor) const
         {
