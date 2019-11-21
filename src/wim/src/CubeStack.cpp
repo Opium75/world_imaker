@@ -6,6 +6,11 @@
 
 using namespace wim;
 
+CubeFloor::CubeFloor(const Cube& c, const CubeFloor::IndexFloor floor) :  _cube(c), _floor(floor)
+{
+    
+}
+
 CubeStack::CubeStack(const CubeStack& cubeStack) : _stack(cubeStack._stack)
 {
 
