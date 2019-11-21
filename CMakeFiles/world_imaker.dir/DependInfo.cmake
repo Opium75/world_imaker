@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o"
   "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o"
   "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o"
-  "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Point3D.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/CMakeFiles/world_imaker.dir/src/wim/src/Point3D.cpp.o"
+  "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o"
+  "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
