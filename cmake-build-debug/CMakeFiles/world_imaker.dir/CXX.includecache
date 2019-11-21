@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-.././lib/glimac/include/glimac/glm.hpp
+../lib/glimac/include/glimac/glm.hpp
 glm/glm.hpp
 -
 glm/gtc/matrix_transform.hpp
@@ -20,201 +20,201 @@ glm/gtx/io.hpp
 glm/gtc/random.hpp
 -
 
-.././third-party/glm/include/glm/common.hpp
+../third-party/glm/include/glm/common.hpp
 detail/func_common.hpp
-.././third-party/glm/include/glm/detail/func_common.hpp
+../third-party/glm/include/glm/detail/func_common.hpp
 
-.././third-party/glm/include/glm/detail/_fixes.hpp
+../third-party/glm/include/glm/detail/_fixes.hpp
 cmath
 -
 
-.././third-party/glm/include/glm/detail/_swizzle.hpp
+../third-party/glm/include/glm/detail/_swizzle.hpp
 
-.././third-party/glm/include/glm/detail/_swizzle_func.hpp
+../third-party/glm/include/glm/detail/_swizzle_func.hpp
 
-.././third-party/glm/include/glm/detail/_vectorize.hpp
+../third-party/glm/include/glm/detail/_vectorize.hpp
 type_vec1.hpp
-.././third-party/glm/include/glm/detail/type_vec1.hpp
+../third-party/glm/include/glm/detail/type_vec1.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 
-.././third-party/glm/include/glm/detail/func_common.hpp
+../third-party/glm/include/glm/detail/func_common.hpp
 setup.hpp
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 precision.hpp
-.././third-party/glm/include/glm/detail/precision.hpp
+../third-party/glm/include/glm/detail/precision.hpp
 type_int.hpp
-.././third-party/glm/include/glm/detail/type_int.hpp
+../third-party/glm/include/glm/detail/type_int.hpp
 _fixes.hpp
-.././third-party/glm/include/glm/detail/_fixes.hpp
+../third-party/glm/include/glm/detail/_fixes.hpp
 func_common.inl
-.././third-party/glm/include/glm/detail/func_common.inl
+../third-party/glm/include/glm/detail/func_common.inl
 
-.././third-party/glm/include/glm/detail/func_common.inl
+../third-party/glm/include/glm/detail/func_common.inl
 func_vector_relational.hpp
-.././third-party/glm/include/glm/detail/func_vector_relational.hpp
+../third-party/glm/include/glm/detail/func_vector_relational.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 _vectorize.hpp
-.././third-party/glm/include/glm/detail/_vectorize.hpp
+../third-party/glm/include/glm/detail/_vectorize.hpp
 limits
 -
 
-.././third-party/glm/include/glm/detail/func_exponential.hpp
+../third-party/glm/include/glm/detail/func_exponential.hpp
 type_vec1.hpp
-.././third-party/glm/include/glm/detail/type_vec1.hpp
+../third-party/glm/include/glm/detail/type_vec1.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 cmath
 -
 func_exponential.inl
-.././third-party/glm/include/glm/detail/func_exponential.inl
+../third-party/glm/include/glm/detail/func_exponential.inl
 
-.././third-party/glm/include/glm/detail/func_exponential.inl
+../third-party/glm/include/glm/detail/func_exponential.inl
 func_vector_relational.hpp
-.././third-party/glm/include/glm/detail/func_vector_relational.hpp
+../third-party/glm/include/glm/detail/func_vector_relational.hpp
 _vectorize.hpp
-.././third-party/glm/include/glm/detail/_vectorize.hpp
+../third-party/glm/include/glm/detail/_vectorize.hpp
 limits
 -
 cassert
 -
 
-.././third-party/glm/include/glm/detail/func_geometric.hpp
+../third-party/glm/include/glm/detail/func_geometric.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 func_geometric.inl
-.././third-party/glm/include/glm/detail/func_geometric.inl
+../third-party/glm/include/glm/detail/func_geometric.inl
 
-.././third-party/glm/include/glm/detail/func_geometric.inl
+../third-party/glm/include/glm/detail/func_geometric.inl
 func_exponential.hpp
-.././third-party/glm/include/glm/detail/func_exponential.hpp
+../third-party/glm/include/glm/detail/func_exponential.hpp
 func_common.hpp
-.././third-party/glm/include/glm/detail/func_common.hpp
+../third-party/glm/include/glm/detail/func_common.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 type_float.hpp
-.././third-party/glm/include/glm/detail/type_float.hpp
+../third-party/glm/include/glm/detail/type_float.hpp
 
-.././third-party/glm/include/glm/detail/func_integer.hpp
+../third-party/glm/include/glm/detail/func_integer.hpp
 setup.hpp
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 func_integer.inl
-.././third-party/glm/include/glm/detail/func_integer.inl
+../third-party/glm/include/glm/detail/func_integer.inl
 
-.././third-party/glm/include/glm/detail/func_integer.inl
+../third-party/glm/include/glm/detail/func_integer.inl
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 type_int.hpp
-.././third-party/glm/include/glm/detail/type_int.hpp
+../third-party/glm/include/glm/detail/type_int.hpp
 _vectorize.hpp
-.././third-party/glm/include/glm/detail/_vectorize.hpp
+../third-party/glm/include/glm/detail/_vectorize.hpp
 intrin.h
 -
 limits
 -
 
-.././third-party/glm/include/glm/detail/func_matrix.hpp
+../third-party/glm/include/glm/detail/func_matrix.hpp
 ../detail/precision.hpp
-.././third-party/glm/include/glm/detail/precision.hpp
+../third-party/glm/include/glm/detail/precision.hpp
 ../detail/setup.hpp
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 ../detail/type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 ../vec2.hpp
-.././third-party/glm/include/glm/vec2.hpp
+../third-party/glm/include/glm/vec2.hpp
 ../vec3.hpp
-.././third-party/glm/include/glm/vec3.hpp
+../third-party/glm/include/glm/vec3.hpp
 ../vec4.hpp
-.././third-party/glm/include/glm/vec4.hpp
+../third-party/glm/include/glm/vec4.hpp
 ../mat2x2.hpp
-.././third-party/glm/include/glm/mat2x2.hpp
+../third-party/glm/include/glm/mat2x2.hpp
 ../mat2x3.hpp
-.././third-party/glm/include/glm/mat2x3.hpp
+../third-party/glm/include/glm/mat2x3.hpp
 ../mat2x4.hpp
-.././third-party/glm/include/glm/mat2x4.hpp
+../third-party/glm/include/glm/mat2x4.hpp
 ../mat3x2.hpp
-.././third-party/glm/include/glm/mat3x2.hpp
+../third-party/glm/include/glm/mat3x2.hpp
 ../mat3x3.hpp
-.././third-party/glm/include/glm/mat3x3.hpp
+../third-party/glm/include/glm/mat3x3.hpp
 ../mat3x4.hpp
-.././third-party/glm/include/glm/mat3x4.hpp
+../third-party/glm/include/glm/mat3x4.hpp
 ../mat4x2.hpp
-.././third-party/glm/include/glm/mat4x2.hpp
+../third-party/glm/include/glm/mat4x2.hpp
 ../mat4x3.hpp
-.././third-party/glm/include/glm/mat4x3.hpp
+../third-party/glm/include/glm/mat4x3.hpp
 ../mat4x4.hpp
-.././third-party/glm/include/glm/mat4x4.hpp
+../third-party/glm/include/glm/mat4x4.hpp
 func_matrix.inl
-.././third-party/glm/include/glm/detail/func_matrix.inl
+../third-party/glm/include/glm/detail/func_matrix.inl
 
-.././third-party/glm/include/glm/detail/func_matrix.inl
+../third-party/glm/include/glm/detail/func_matrix.inl
 ../geometric.hpp
-.././third-party/glm/include/glm/geometric.hpp
+../third-party/glm/include/glm/geometric.hpp
 limits
 -
 
-.././third-party/glm/include/glm/detail/func_packing.hpp
+../third-party/glm/include/glm/detail/func_packing.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 func_packing.inl
-.././third-party/glm/include/glm/detail/func_packing.inl
+../third-party/glm/include/glm/detail/func_packing.inl
 
-.././third-party/glm/include/glm/detail/func_packing.inl
+../third-party/glm/include/glm/detail/func_packing.inl
 func_common.hpp
-.././third-party/glm/include/glm/detail/func_common.hpp
+../third-party/glm/include/glm/detail/func_common.hpp
 type_half.hpp
-.././third-party/glm/include/glm/detail/type_half.hpp
+../third-party/glm/include/glm/detail/type_half.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 
-.././third-party/glm/include/glm/detail/func_trigonometric.hpp
+../third-party/glm/include/glm/detail/func_trigonometric.hpp
 func_trigonometric.inl
-.././third-party/glm/include/glm/detail/func_trigonometric.inl
+../third-party/glm/include/glm/detail/func_trigonometric.inl
 
-.././third-party/glm/include/glm/detail/func_trigonometric.inl
+../third-party/glm/include/glm/detail/func_trigonometric.inl
 _vectorize.hpp
-.././third-party/glm/include/glm/detail/_vectorize.hpp
+../third-party/glm/include/glm/detail/_vectorize.hpp
 cmath
 -
 limits
 -
 
-.././third-party/glm/include/glm/detail/func_vector_relational.hpp
+../third-party/glm/include/glm/detail/func_vector_relational.hpp
 precision.hpp
-.././third-party/glm/include/glm/detail/precision.hpp
+../third-party/glm/include/glm/detail/precision.hpp
 setup.hpp
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 func_vector_relational.inl
-.././third-party/glm/include/glm/detail/func_vector_relational.inl
+../third-party/glm/include/glm/detail/func_vector_relational.inl
 
-.././third-party/glm/include/glm/detail/func_vector_relational.inl
+../third-party/glm/include/glm/detail/func_vector_relational.inl
 limits
 -
 
-.././third-party/glm/include/glm/detail/precision.hpp
+../third-party/glm/include/glm/detail/precision.hpp
 
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 cassert
 -
 cuda.h
@@ -232,255 +232,255 @@ pmmintrin.h
 emmintrin.h
 -
 
-.././third-party/glm/include/glm/detail/type_float.hpp
+../third-party/glm/include/glm/detail/type_float.hpp
 setup.hpp
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 
-.././third-party/glm/include/glm/detail/type_half.hpp
+../third-party/glm/include/glm/detail/type_half.hpp
 setup.hpp
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 type_half.inl
-.././third-party/glm/include/glm/detail/type_half.inl
+../third-party/glm/include/glm/detail/type_half.inl
 
-.././third-party/glm/include/glm/detail/type_half.inl
+../third-party/glm/include/glm/detail/type_half.inl
 
-.././third-party/glm/include/glm/detail/type_int.hpp
+../third-party/glm/include/glm/detail/type_int.hpp
 setup.hpp
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 cstdint
 -
 
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 precision.hpp
-.././third-party/glm/include/glm/detail/precision.hpp
+../third-party/glm/include/glm/detail/precision.hpp
 
-.././third-party/glm/include/glm/detail/type_mat2x2.hpp
+../third-party/glm/include/glm/detail/type_mat2x2.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 limits
 -
 type_mat2x2.inl
-.././third-party/glm/include/glm/detail/type_mat2x2.inl
+../third-party/glm/include/glm/detail/type_mat2x2.inl
 
-.././third-party/glm/include/glm/detail/type_mat2x2.inl
+../third-party/glm/include/glm/detail/type_mat2x2.inl
 
-.././third-party/glm/include/glm/detail/type_mat2x3.hpp
+../third-party/glm/include/glm/detail/type_mat2x3.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 limits
 -
 type_mat2x3.inl
-.././third-party/glm/include/glm/detail/type_mat2x3.inl
+../third-party/glm/include/glm/detail/type_mat2x3.inl
 
-.././third-party/glm/include/glm/detail/type_mat2x3.inl
+../third-party/glm/include/glm/detail/type_mat2x3.inl
 
-.././third-party/glm/include/glm/detail/type_mat2x4.hpp
+../third-party/glm/include/glm/detail/type_mat2x4.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 limits
 -
 type_mat2x4.inl
-.././third-party/glm/include/glm/detail/type_mat2x4.inl
+../third-party/glm/include/glm/detail/type_mat2x4.inl
 
-.././third-party/glm/include/glm/detail/type_mat2x4.inl
+../third-party/glm/include/glm/detail/type_mat2x4.inl
 
-.././third-party/glm/include/glm/detail/type_mat3x2.hpp
+../third-party/glm/include/glm/detail/type_mat3x2.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 limits
 -
 type_mat3x2.inl
-.././third-party/glm/include/glm/detail/type_mat3x2.inl
+../third-party/glm/include/glm/detail/type_mat3x2.inl
 
-.././third-party/glm/include/glm/detail/type_mat3x2.inl
+../third-party/glm/include/glm/detail/type_mat3x2.inl
 
-.././third-party/glm/include/glm/detail/type_mat3x3.hpp
+../third-party/glm/include/glm/detail/type_mat3x3.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 limits
 -
 type_mat3x3.inl
-.././third-party/glm/include/glm/detail/type_mat3x3.inl
+../third-party/glm/include/glm/detail/type_mat3x3.inl
 
-.././third-party/glm/include/glm/detail/type_mat3x3.inl
+../third-party/glm/include/glm/detail/type_mat3x3.inl
 
-.././third-party/glm/include/glm/detail/type_mat3x4.hpp
+../third-party/glm/include/glm/detail/type_mat3x4.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 limits
 -
 type_mat3x4.inl
-.././third-party/glm/include/glm/detail/type_mat3x4.inl
+../third-party/glm/include/glm/detail/type_mat3x4.inl
 
-.././third-party/glm/include/glm/detail/type_mat3x4.inl
+../third-party/glm/include/glm/detail/type_mat3x4.inl
 
-.././third-party/glm/include/glm/detail/type_mat4x2.hpp
+../third-party/glm/include/glm/detail/type_mat4x2.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 limits
 -
 type_mat4x2.inl
-.././third-party/glm/include/glm/detail/type_mat4x2.inl
+../third-party/glm/include/glm/detail/type_mat4x2.inl
 
-.././third-party/glm/include/glm/detail/type_mat4x2.inl
+../third-party/glm/include/glm/detail/type_mat4x2.inl
 
-.././third-party/glm/include/glm/detail/type_mat4x3.hpp
+../third-party/glm/include/glm/detail/type_mat4x3.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 limits
 -
 type_mat4x3.inl
-.././third-party/glm/include/glm/detail/type_mat4x3.inl
+../third-party/glm/include/glm/detail/type_mat4x3.inl
 
-.././third-party/glm/include/glm/detail/type_mat4x3.inl
+../third-party/glm/include/glm/detail/type_mat4x3.inl
 
-.././third-party/glm/include/glm/detail/type_mat4x4.hpp
+../third-party/glm/include/glm/detail/type_mat4x4.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 limits
 -
 cstddef
 -
 type_mat4x4.inl
-.././third-party/glm/include/glm/detail/type_mat4x4.inl
+../third-party/glm/include/glm/detail/type_mat4x4.inl
 
-.././third-party/glm/include/glm/detail/type_mat4x4.inl
+../third-party/glm/include/glm/detail/type_mat4x4.inl
 
-.././third-party/glm/include/glm/detail/type_vec.hpp
+../third-party/glm/include/glm/detail/type_vec.hpp
 precision.hpp
-.././third-party/glm/include/glm/detail/precision.hpp
+../third-party/glm/include/glm/detail/precision.hpp
 type_int.hpp
-.././third-party/glm/include/glm/detail/type_int.hpp
+../third-party/glm/include/glm/detail/type_int.hpp
 
-.././third-party/glm/include/glm/detail/type_vec1.hpp
+../third-party/glm/include/glm/detail/type_vec1.hpp
 ../fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 type_vec.hpp
-.././third-party/glm/include/glm/detail/type_vec.hpp
+../third-party/glm/include/glm/detail/type_vec.hpp
 _swizzle.hpp
-.././third-party/glm/include/glm/detail/_swizzle.hpp
+../third-party/glm/include/glm/detail/_swizzle.hpp
 _swizzle_func.hpp
-.././third-party/glm/include/glm/detail/_swizzle_func.hpp
+../third-party/glm/include/glm/detail/_swizzle_func.hpp
 cstddef
 -
 type_vec1.inl
-.././third-party/glm/include/glm/detail/type_vec1.inl
+../third-party/glm/include/glm/detail/type_vec1.inl
 
-.././third-party/glm/include/glm/detail/type_vec1.inl
+../third-party/glm/include/glm/detail/type_vec1.inl
 
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 type_vec.hpp
-.././third-party/glm/include/glm/detail/type_vec.hpp
+../third-party/glm/include/glm/detail/type_vec.hpp
 _swizzle.hpp
-.././third-party/glm/include/glm/detail/_swizzle.hpp
+../third-party/glm/include/glm/detail/_swizzle.hpp
 _swizzle_func.hpp
-.././third-party/glm/include/glm/detail/_swizzle_func.hpp
+../third-party/glm/include/glm/detail/_swizzle_func.hpp
 cstddef
 -
 type_vec2.inl
-.././third-party/glm/include/glm/detail/type_vec2.inl
+../third-party/glm/include/glm/detail/type_vec2.inl
 
-.././third-party/glm/include/glm/detail/type_vec2.inl
+../third-party/glm/include/glm/detail/type_vec2.inl
 
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 type_vec.hpp
-.././third-party/glm/include/glm/detail/type_vec.hpp
+../third-party/glm/include/glm/detail/type_vec.hpp
 _swizzle.hpp
-.././third-party/glm/include/glm/detail/_swizzle.hpp
+../third-party/glm/include/glm/detail/_swizzle.hpp
 _swizzle_func.hpp
-.././third-party/glm/include/glm/detail/_swizzle_func.hpp
+../third-party/glm/include/glm/detail/_swizzle_func.hpp
 cstddef
 -
 type_vec3.inl
-.././third-party/glm/include/glm/detail/type_vec3.inl
+../third-party/glm/include/glm/detail/type_vec3.inl
 
-.././third-party/glm/include/glm/detail/type_vec3.inl
+../third-party/glm/include/glm/detail/type_vec3.inl
 
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 setup.hpp
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 type_vec.hpp
-.././third-party/glm/include/glm/detail/type_vec.hpp
+../third-party/glm/include/glm/detail/type_vec.hpp
 _swizzle.hpp
-.././third-party/glm/include/glm/detail/_swizzle.hpp
+../third-party/glm/include/glm/detail/_swizzle.hpp
 _swizzle_func.hpp
-.././third-party/glm/include/glm/detail/_swizzle_func.hpp
+../third-party/glm/include/glm/detail/_swizzle_func.hpp
 cstddef
 -
 type_vec4.inl
-.././third-party/glm/include/glm/detail/type_vec4.inl
+../third-party/glm/include/glm/detail/type_vec4.inl
 
-.././third-party/glm/include/glm/detail/type_vec4.inl
+../third-party/glm/include/glm/detail/type_vec4.inl
 
-.././third-party/glm/include/glm/exponential.hpp
+../third-party/glm/include/glm/exponential.hpp
 detail/func_exponential.hpp
-.././third-party/glm/include/glm/detail/func_exponential.hpp
+../third-party/glm/include/glm/detail/func_exponential.hpp
 
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 detail/type_int.hpp
-.././third-party/glm/include/glm/detail/type_int.hpp
+../third-party/glm/include/glm/detail/type_int.hpp
 detail/type_float.hpp
-.././third-party/glm/include/glm/detail/type_float.hpp
+../third-party/glm/include/glm/detail/type_float.hpp
 detail/type_vec.hpp
-.././third-party/glm/include/glm/detail/type_vec.hpp
+../third-party/glm/include/glm/detail/type_vec.hpp
 detail/type_mat.hpp
-.././third-party/glm/include/glm/detail/type_mat.hpp
+../third-party/glm/include/glm/detail/type_mat.hpp
 
-.././third-party/glm/include/glm/geometric.hpp
+../third-party/glm/include/glm/geometric.hpp
 detail/func_geometric.hpp
-.././third-party/glm/include/glm/detail/func_geometric.hpp
+../third-party/glm/include/glm/detail/func_geometric.hpp
 
-.././third-party/glm/include/glm/glm.hpp
+../third-party/glm/include/glm/glm.hpp
 detail/_fixes.hpp
-.././third-party/glm/include/glm/detail/_fixes.hpp
+../third-party/glm/include/glm/detail/_fixes.hpp
 cmath
 -
 climits
@@ -492,117 +492,117 @@ limits
 cassert
 -
 fwd.hpp
-.././third-party/glm/include/glm/fwd.hpp
+../third-party/glm/include/glm/fwd.hpp
 vec2.hpp
-.././third-party/glm/include/glm/vec2.hpp
+../third-party/glm/include/glm/vec2.hpp
 vec3.hpp
-.././third-party/glm/include/glm/vec3.hpp
+../third-party/glm/include/glm/vec3.hpp
 vec4.hpp
-.././third-party/glm/include/glm/vec4.hpp
+../third-party/glm/include/glm/vec4.hpp
 mat2x2.hpp
-.././third-party/glm/include/glm/mat2x2.hpp
+../third-party/glm/include/glm/mat2x2.hpp
 mat2x3.hpp
-.././third-party/glm/include/glm/mat2x3.hpp
+../third-party/glm/include/glm/mat2x3.hpp
 mat2x4.hpp
-.././third-party/glm/include/glm/mat2x4.hpp
+../third-party/glm/include/glm/mat2x4.hpp
 mat3x2.hpp
-.././third-party/glm/include/glm/mat3x2.hpp
+../third-party/glm/include/glm/mat3x2.hpp
 mat3x3.hpp
-.././third-party/glm/include/glm/mat3x3.hpp
+../third-party/glm/include/glm/mat3x3.hpp
 mat3x4.hpp
-.././third-party/glm/include/glm/mat3x4.hpp
+../third-party/glm/include/glm/mat3x4.hpp
 mat4x2.hpp
-.././third-party/glm/include/glm/mat4x2.hpp
+../third-party/glm/include/glm/mat4x2.hpp
 mat4x3.hpp
-.././third-party/glm/include/glm/mat4x3.hpp
+../third-party/glm/include/glm/mat4x3.hpp
 mat4x4.hpp
-.././third-party/glm/include/glm/mat4x4.hpp
+../third-party/glm/include/glm/mat4x4.hpp
 trigonometric.hpp
-.././third-party/glm/include/glm/trigonometric.hpp
+../third-party/glm/include/glm/trigonometric.hpp
 exponential.hpp
-.././third-party/glm/include/glm/exponential.hpp
+../third-party/glm/include/glm/exponential.hpp
 common.hpp
-.././third-party/glm/include/glm/common.hpp
+../third-party/glm/include/glm/common.hpp
 packing.hpp
-.././third-party/glm/include/glm/packing.hpp
+../third-party/glm/include/glm/packing.hpp
 geometric.hpp
-.././third-party/glm/include/glm/geometric.hpp
+../third-party/glm/include/glm/geometric.hpp
 matrix.hpp
-.././third-party/glm/include/glm/matrix.hpp
+../third-party/glm/include/glm/matrix.hpp
 vector_relational.hpp
-.././third-party/glm/include/glm/vector_relational.hpp
+../third-party/glm/include/glm/vector_relational.hpp
 integer.hpp
-.././third-party/glm/include/glm/integer.hpp
+../third-party/glm/include/glm/integer.hpp
 
-.././third-party/glm/include/glm/gtc/constants.hpp
+../third-party/glm/include/glm/gtc/constants.hpp
 ../detail/setup.hpp
-.././third-party/glm/include/glm/detail/setup.hpp
+../third-party/glm/include/glm/detail/setup.hpp
 constants.inl
-.././third-party/glm/include/glm/gtc/constants.inl
+../third-party/glm/include/glm/gtc/constants.inl
 
-.././third-party/glm/include/glm/gtc/constants.inl
+../third-party/glm/include/glm/gtc/constants.inl
 limits
 -
 
-.././third-party/glm/include/glm/gtc/matrix_transform.hpp
+../third-party/glm/include/glm/gtc/matrix_transform.hpp
 ../mat4x4.hpp
-.././third-party/glm/include/glm/mat4x4.hpp
+../third-party/glm/include/glm/mat4x4.hpp
 ../vec2.hpp
-.././third-party/glm/include/glm/vec2.hpp
+../third-party/glm/include/glm/vec2.hpp
 ../vec3.hpp
-.././third-party/glm/include/glm/vec3.hpp
+../third-party/glm/include/glm/vec3.hpp
 ../vec4.hpp
-.././third-party/glm/include/glm/vec4.hpp
+../third-party/glm/include/glm/vec4.hpp
 ../gtc/constants.hpp
-.././third-party/glm/include/glm/gtc/constants.hpp
+../third-party/glm/include/glm/gtc/constants.hpp
 matrix_transform.inl
-.././third-party/glm/include/glm/gtc/matrix_transform.inl
+../third-party/glm/include/glm/gtc/matrix_transform.inl
 
-.././third-party/glm/include/glm/gtc/matrix_transform.inl
+../third-party/glm/include/glm/gtc/matrix_transform.inl
 ../geometric.hpp
-.././third-party/glm/include/glm/geometric.hpp
+../third-party/glm/include/glm/geometric.hpp
 ../trigonometric.hpp
-.././third-party/glm/include/glm/trigonometric.hpp
+../third-party/glm/include/glm/trigonometric.hpp
 ../matrix.hpp
-.././third-party/glm/include/glm/matrix.hpp
+../third-party/glm/include/glm/matrix.hpp
 
-.././third-party/glm/include/glm/gtc/quaternion.hpp
+../third-party/glm/include/glm/gtc/quaternion.hpp
 ../mat3x3.hpp
-.././third-party/glm/include/glm/mat3x3.hpp
+../third-party/glm/include/glm/mat3x3.hpp
 ../mat4x4.hpp
-.././third-party/glm/include/glm/mat4x4.hpp
+../third-party/glm/include/glm/mat4x4.hpp
 ../vec3.hpp
-.././third-party/glm/include/glm/vec3.hpp
+../third-party/glm/include/glm/vec3.hpp
 ../vec4.hpp
-.././third-party/glm/include/glm/vec4.hpp
+../third-party/glm/include/glm/vec4.hpp
 ../gtc/constants.hpp
-.././third-party/glm/include/glm/gtc/constants.hpp
+../third-party/glm/include/glm/gtc/constants.hpp
 quaternion.inl
-.././third-party/glm/include/glm/gtc/quaternion.inl
+../third-party/glm/include/glm/gtc/quaternion.inl
 
-.././third-party/glm/include/glm/gtc/quaternion.inl
+../third-party/glm/include/glm/gtc/quaternion.inl
 ../trigonometric.hpp
-.././third-party/glm/include/glm/trigonometric.hpp
+../third-party/glm/include/glm/trigonometric.hpp
 ../geometric.hpp
-.././third-party/glm/include/glm/geometric.hpp
+../third-party/glm/include/glm/geometric.hpp
 ../exponential.hpp
-.././third-party/glm/include/glm/exponential.hpp
+../third-party/glm/include/glm/exponential.hpp
 limits
 -
 
-.././third-party/glm/include/glm/gtc/random.hpp
+../third-party/glm/include/glm/gtc/random.hpp
 ../vec2.hpp
-.././third-party/glm/include/glm/vec2.hpp
+../third-party/glm/include/glm/vec2.hpp
 ../vec3.hpp
-.././third-party/glm/include/glm/vec3.hpp
+../third-party/glm/include/glm/vec3.hpp
 random.inl
-.././third-party/glm/include/glm/gtc/random.inl
+../third-party/glm/include/glm/gtc/random.inl
 
-.././third-party/glm/include/glm/gtc/random.inl
+../third-party/glm/include/glm/gtc/random.inl
 ../geometric.hpp
-.././third-party/glm/include/glm/geometric.hpp
+../third-party/glm/include/glm/geometric.hpp
 ../exponential.hpp
-.././third-party/glm/include/glm/exponential.hpp
+../third-party/glm/include/glm/exponential.hpp
 cstdlib
 -
 ctime
@@ -610,47 +610,47 @@ ctime
 cassert
 -
 
-.././third-party/glm/include/glm/gtc/type_ptr.hpp
+../third-party/glm/include/glm/gtc/type_ptr.hpp
 ../gtc/quaternion.hpp
-.././third-party/glm/include/glm/gtc/quaternion.hpp
+../third-party/glm/include/glm/gtc/quaternion.hpp
 ../vec2.hpp
-.././third-party/glm/include/glm/vec2.hpp
+../third-party/glm/include/glm/vec2.hpp
 ../vec3.hpp
-.././third-party/glm/include/glm/vec3.hpp
+../third-party/glm/include/glm/vec3.hpp
 ../vec4.hpp
-.././third-party/glm/include/glm/vec4.hpp
+../third-party/glm/include/glm/vec4.hpp
 ../mat2x2.hpp
-.././third-party/glm/include/glm/mat2x2.hpp
+../third-party/glm/include/glm/mat2x2.hpp
 ../mat2x3.hpp
-.././third-party/glm/include/glm/mat2x3.hpp
+../third-party/glm/include/glm/mat2x3.hpp
 ../mat2x4.hpp
-.././third-party/glm/include/glm/mat2x4.hpp
+../third-party/glm/include/glm/mat2x4.hpp
 ../mat3x2.hpp
-.././third-party/glm/include/glm/mat3x2.hpp
+../third-party/glm/include/glm/mat3x2.hpp
 ../mat3x3.hpp
-.././third-party/glm/include/glm/mat3x3.hpp
+../third-party/glm/include/glm/mat3x3.hpp
 ../mat3x4.hpp
-.././third-party/glm/include/glm/mat3x4.hpp
+../third-party/glm/include/glm/mat3x4.hpp
 ../mat4x2.hpp
-.././third-party/glm/include/glm/mat4x2.hpp
+../third-party/glm/include/glm/mat4x2.hpp
 ../mat4x3.hpp
-.././third-party/glm/include/glm/mat4x3.hpp
+../third-party/glm/include/glm/mat4x3.hpp
 ../mat4x4.hpp
-.././third-party/glm/include/glm/mat4x4.hpp
+../third-party/glm/include/glm/mat4x4.hpp
 cstring
 -
 type_ptr.inl
-.././third-party/glm/include/glm/gtc/type_ptr.inl
+../third-party/glm/include/glm/gtc/type_ptr.inl
 
-.././third-party/glm/include/glm/gtc/type_ptr.inl
+../third-party/glm/include/glm/gtc/type_ptr.inl
 cstring
 -
 
-.././third-party/glm/include/glm/gtx/io.hpp
+../third-party/glm/include/glm/gtx/io.hpp
 ../glm.hpp
-.././third-party/glm/include/glm/glm.hpp
+../third-party/glm/include/glm/glm.hpp
 ../gtx/quaternion.hpp
-.././third-party/glm/include/glm/gtx/quaternion.hpp
+../third-party/glm/include/glm/gtx/quaternion.hpp
 iosfwd
 -
 locale
@@ -658,149 +658,113 @@ locale
 utility
 -
 io.inl
-.././third-party/glm/include/glm/gtx/io.inl
+../third-party/glm/include/glm/gtx/io.inl
 
-.././third-party/glm/include/glm/gtx/io.inl
+../third-party/glm/include/glm/gtx/io.inl
 iomanip
 -
 ostream
 -
 
-.././third-party/glm/include/glm/gtx/norm.hpp
+../third-party/glm/include/glm/gtx/norm.hpp
 ../glm.hpp
-.././third-party/glm/include/glm/glm.hpp
+../third-party/glm/include/glm/glm.hpp
 ../gtx/quaternion.hpp
-.././third-party/glm/include/glm/gtx/quaternion.hpp
+../third-party/glm/include/glm/gtx/quaternion.hpp
 norm.inl
-.././third-party/glm/include/glm/gtx/norm.inl
+../third-party/glm/include/glm/gtx/norm.inl
 
-.././third-party/glm/include/glm/gtx/norm.inl
+../third-party/glm/include/glm/gtx/norm.inl
 
-.././third-party/glm/include/glm/gtx/quaternion.hpp
+../third-party/glm/include/glm/gtx/quaternion.hpp
 ../glm.hpp
-.././third-party/glm/include/glm/glm.hpp
+../third-party/glm/include/glm/glm.hpp
 ../gtc/constants.hpp
-.././third-party/glm/include/glm/gtc/constants.hpp
+../third-party/glm/include/glm/gtc/constants.hpp
 ../gtc/quaternion.hpp
-.././third-party/glm/include/glm/gtc/quaternion.hpp
+../third-party/glm/include/glm/gtc/quaternion.hpp
 ../gtx/norm.hpp
-.././third-party/glm/include/glm/gtx/norm.hpp
+../third-party/glm/include/glm/gtx/norm.hpp
 quaternion.inl
-.././third-party/glm/include/glm/gtx/quaternion.inl
+../third-party/glm/include/glm/gtx/quaternion.inl
 
-.././third-party/glm/include/glm/integer.hpp
+../third-party/glm/include/glm/integer.hpp
 detail/func_integer.hpp
-.././third-party/glm/include/glm/detail/func_integer.hpp
+../third-party/glm/include/glm/detail/func_integer.hpp
 
-.././third-party/glm/include/glm/mat2x2.hpp
+../third-party/glm/include/glm/mat2x2.hpp
 detail/type_mat2x2.hpp
-.././third-party/glm/include/glm/detail/type_mat2x2.hpp
+../third-party/glm/include/glm/detail/type_mat2x2.hpp
 
-.././third-party/glm/include/glm/mat2x3.hpp
+../third-party/glm/include/glm/mat2x3.hpp
 detail/type_mat2x3.hpp
-.././third-party/glm/include/glm/detail/type_mat2x3.hpp
+../third-party/glm/include/glm/detail/type_mat2x3.hpp
 
-.././third-party/glm/include/glm/mat2x4.hpp
+../third-party/glm/include/glm/mat2x4.hpp
 detail/type_mat2x4.hpp
-.././third-party/glm/include/glm/detail/type_mat2x4.hpp
+../third-party/glm/include/glm/detail/type_mat2x4.hpp
 
-.././third-party/glm/include/glm/mat3x2.hpp
+../third-party/glm/include/glm/mat3x2.hpp
 detail/type_mat3x2.hpp
-.././third-party/glm/include/glm/detail/type_mat3x2.hpp
+../third-party/glm/include/glm/detail/type_mat3x2.hpp
 
-.././third-party/glm/include/glm/mat3x3.hpp
+../third-party/glm/include/glm/mat3x3.hpp
 detail/type_mat3x3.hpp
-.././third-party/glm/include/glm/detail/type_mat3x3.hpp
+../third-party/glm/include/glm/detail/type_mat3x3.hpp
 
-.././third-party/glm/include/glm/mat3x4.hpp
+../third-party/glm/include/glm/mat3x4.hpp
 detail/type_mat3x4.hpp
-.././third-party/glm/include/glm/detail/type_mat3x4.hpp
+../third-party/glm/include/glm/detail/type_mat3x4.hpp
 
-.././third-party/glm/include/glm/mat4x2.hpp
+../third-party/glm/include/glm/mat4x2.hpp
 detail/type_mat4x2.hpp
-.././third-party/glm/include/glm/detail/type_mat4x2.hpp
+../third-party/glm/include/glm/detail/type_mat4x2.hpp
 
-.././third-party/glm/include/glm/mat4x3.hpp
+../third-party/glm/include/glm/mat4x3.hpp
 detail/type_mat4x3.hpp
-.././third-party/glm/include/glm/detail/type_mat4x3.hpp
+../third-party/glm/include/glm/detail/type_mat4x3.hpp
 
-.././third-party/glm/include/glm/mat4x4.hpp
+../third-party/glm/include/glm/mat4x4.hpp
 detail/type_mat4x4.hpp
-.././third-party/glm/include/glm/detail/type_mat4x4.hpp
+../third-party/glm/include/glm/detail/type_mat4x4.hpp
 
-.././third-party/glm/include/glm/matrix.hpp
+../third-party/glm/include/glm/matrix.hpp
 detail/func_matrix.hpp
-.././third-party/glm/include/glm/detail/func_matrix.hpp
+../third-party/glm/include/glm/detail/func_matrix.hpp
 
-.././third-party/glm/include/glm/packing.hpp
+../third-party/glm/include/glm/packing.hpp
 detail/func_packing.hpp
-.././third-party/glm/include/glm/detail/func_packing.hpp
+../third-party/glm/include/glm/detail/func_packing.hpp
 
-.././third-party/glm/include/glm/trigonometric.hpp
+../third-party/glm/include/glm/trigonometric.hpp
 detail/func_trigonometric.hpp
-.././third-party/glm/include/glm/detail/func_trigonometric.hpp
+../third-party/glm/include/glm/detail/func_trigonometric.hpp
 
-.././third-party/glm/include/glm/vec2.hpp
+../third-party/glm/include/glm/vec2.hpp
 detail/type_vec2.hpp
-.././third-party/glm/include/glm/detail/type_vec2.hpp
+../third-party/glm/include/glm/detail/type_vec2.hpp
 
-.././third-party/glm/include/glm/vec3.hpp
+../third-party/glm/include/glm/vec3.hpp
 detail/type_vec3.hpp
-.././third-party/glm/include/glm/detail/type_vec3.hpp
+../third-party/glm/include/glm/detail/type_vec3.hpp
 
-.././third-party/glm/include/glm/vec4.hpp
+../third-party/glm/include/glm/vec4.hpp
 detail/type_vec4.hpp
-.././third-party/glm/include/glm/detail/type_vec4.hpp
+../third-party/glm/include/glm/detail/type_vec4.hpp
 
-.././third-party/glm/include/glm/vector_relational.hpp
+../third-party/glm/include/glm/vector_relational.hpp
 detail/func_vector_relational.hpp
-.././third-party/glm/include/glm/detail/func_vector_relational.hpp
-
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Colour.hpp
-iostream
--
-glimac/glm.hpp
--
-Vec3D.hpp
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Vec3D.hpp
-
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Cube.hpp
-Colour.hpp
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Colour.hpp
-Displayable.hpp
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Displayable.hpp
-
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/CubeStack.hpp
-stack
--
-Cube.hpp
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Cube.hpp
-
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/CubeWorld.hpp
-Eigen/Dense
--
-CubeStack.hpp
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/CubeStack.hpp
-
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Displayable.hpp
-Vec3D.hpp
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Vec3D.hpp
-
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Vec3D.hpp
-iostream
--
-glimac/glm.hpp
--
+../third-party/glm/include/glm/detail/func_vector_relational.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/main.cpp
 iostream
 -
 ./src/wim/include/Vec3D.hpp
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Vec3D.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
 ./src/wim/include/Colour.hpp
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/Colour.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
 ./src/wim/include/CubeWorld.hpp
-/home/piptouque/Documents/projets_gite/world_imaker/./src/wim/include/CubeWorld.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
 iostream
@@ -832,11 +796,19 @@ CubeStack.hpp
 Vec3D.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
 
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+random
+-
+functional
+-
+
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
 iostream
 -
 glimac/glm.hpp
 -
+Randomisable.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp
 ../include/CubeStack.hpp
@@ -1742,41 +1714,27 @@ cstdint
 
 /usr/include/eigen3/Eigen/src/Core/util/XprHelper.h
 
-/usr/include/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h
-./HessenbergDecomposition.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/././HessenbergDecomposition.h
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/./RealQZ.h
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/./RealSchur.h
-./HessenbergDecomposition.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/././HessenbergDecomposition.h
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h
-
 /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h
 ./ComplexSchur.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h
 ./HessenbergDecomposition.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_LAPACKE.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h
 ./RealSchur.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./RealSchur.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h
 ./RealQZ.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./RealQZ.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h
 ./Tridiagonalization.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h
 
@@ -1786,13 +1744,13 @@ cstdint
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h
 ./HessenbergDecomposition.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_LAPACKE.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h
 ./Tridiagonalization.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_LAPACKE.h
 

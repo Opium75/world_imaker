@@ -10,6 +10,7 @@
 #include <iostream>
 #include <glimac/glm.hpp>
 
+
 #include "Vec3D.hpp"
 
 #define _MAX_COLOUR_VALUE_FLOAT 1

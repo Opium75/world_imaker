@@ -10,11 +10,13 @@
 #include <iostream>
 #include <glimac/glm.hpp>
 
+#include "Randomisable.hpp"
+
 namespace wim
 
 {
 
-    class Vec3D
+    class Vec3D : public Randomisable
     {
     protected:
         /* I used a typedef here to somewhat decouple

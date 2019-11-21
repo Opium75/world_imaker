@@ -14,7 +14,7 @@ namespace wim
     /*Will not be Displayed directly
     * But rather through the CubeStack class
      */
-    class Cube : protected Displayable
+    class Cube : protected Displayable, protected Randomisable
     {
     private:
         //No need for radius since every cube in the grid is the same size
