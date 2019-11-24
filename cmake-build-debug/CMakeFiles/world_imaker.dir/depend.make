@@ -100,6 +100,7 @@ CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/CubeStack.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/CubeWorld.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Displayable.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Randomisable.hpp
+CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Vec3D.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: /usr/include/eigen3/Eigen/Cholesky
 CMakeFiles/world_imaker.dir/main.cpp.o: /usr/include/eigen3/Eigen/Core
@@ -403,6 +404,7 @@ CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o: ../third-party/glm/include
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o: ../third-party/glm/include/glm/vector_relational.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o: ../src/wim/include/Colour.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o: ../src/wim/include/Randomisable.hpp
+CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o: ../src/wim/include/Vec3D.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o: ../src/wim/src/Colour.cpp
 
@@ -502,6 +504,7 @@ CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o: ../src/wim/include/Colour.hp
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o: ../src/wim/include/Cube.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o: ../src/wim/include/Displayable.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o: ../src/wim/include/Randomisable.hpp
+CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o: ../src/wim/include/Vec3D.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o: ../src/wim/src/Cube.cpp
 
@@ -602,6 +605,7 @@ CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Cube
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/CubeStack.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Displayable.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Randomisable.hpp
+CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Vec3D.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/src/CubeStack.cpp
 
@@ -703,6 +707,7 @@ CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Cube
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/CubeWorld.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Displayable.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Randomisable.hpp
+CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Vec3D.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/src/CubeWorld.cpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: /usr/include/eigen3/Eigen/Cholesky
@@ -1006,6 +1011,7 @@ CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../third-party/glm/include/
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../third-party/glm/include/glm/vec4.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../third-party/glm/include/glm/vector_relational.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../src/wim/include/Randomisable.hpp
+CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../src/wim/include/Vec3D.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../src/wim/src/Vec3D.cpp
 

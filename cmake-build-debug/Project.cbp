@@ -212,6 +212,9 @@
 		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp">
 			<Option target="world_imaker"/>
 		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
 		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp">
 			<Option target="world_imaker"/>
 		</Unit>

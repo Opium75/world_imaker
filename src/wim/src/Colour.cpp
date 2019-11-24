@@ -5,7 +5,7 @@
 
 using namespace wim;
 
-Colour::Colour(const float r, const float g, const float b) :
+Colour::Colour(const FloatType r, const FloatType g, const FloatType b) :
     Vec3D(colourValueFloat(r),colourValueFloat(g),colourValueFloat(b))
 {
 
@@ -52,8 +52,16 @@ Colour& Colour::operator*(const float alpha)
 Colour& Colour::operator/(const float alpha)
 {
         if(alpha==0)
-            throw std::string("Division by 0");
+            throw std::domain_error("Division by 0");
         else
             return (*this)*(1/alpha);
 }
 
+Colour Colour::Random()
+{
+    FloatType r,g,b;
+    r = RealRandomisable<FloatType>::Random(0, 1);
+    g = RealRandomisable<FloatType>::Random(0, 1);
+    b =  RealRandomisable<FloatType>::Random(0, 1);
+    return Colour(r,g,b);
+}

@@ -15,3 +15,8 @@ Cube::Cube(const Cube& cube) : _colour(cube._colour)
 {
 
 }
+
+Cube Cube::Random()
+{
+    return Cube(Colour::Random());
+}

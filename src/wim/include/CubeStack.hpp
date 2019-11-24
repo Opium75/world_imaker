@@ -8,6 +8,9 @@
 #pragma once
 
 #include <stack>
+#include <iostream>
+
+#include "Randomisable.hpp"
 #include "Cube.hpp"
 
 namespace wim
@@ -19,7 +22,7 @@ namespace wim
      * of Cubes in a CubeStack
      */
     ///A container for a Cube with its index in a CubeStack
-    class CubeFloor : protected Displayable, protected Randomisable
+    class CubeFloor : protected Displayable // protected Randomisable<CubeFloor>
     {
     public:
         typedef int FloorIndex;
@@ -55,11 +58,15 @@ namespace wim
         inline bool operator==(const CubeFloor &cFloor) { return (this->compareFloors(cFloor) == 0);};
 
         void display() const {};
+
+        static CubeFloor Random(const FloorIndex min, const FloorIndex max);
+        static CubeFloor Random(const FloorIndex max);
+
     };
 
     ///A stack of CubeFloor-class objects, sorted according to their floors
     //In fact using a standard double-ended queue
-    class CubeStack : protected Displayable, protected Randomisable
+    class CubeStack : protected Displayable //protected Randomisable<CubeStack>
     {
     private:
         typedef std::deque<CubeFloor> Stack;
@@ -77,6 +84,7 @@ namespace wim
         ///Returns actual floor of insertion on success
         ///Throws an exception on failure (only happens if insertHigher is false)
         CubeFloor::FloorIndex insertFloor(const Cube& cube, CubeFloor::FloorIndex floor, bool insertHigher = false);
+        CubeFloor::FloorIndex insertFloor(const CubeFloor& cubeFloor, bool insertHigher = false);
 
         ///Attemps to erase content at given floor in SORTED CubeStack
         ///If eraseHigher is true, then attemps to erase the next occupied floor
@@ -86,7 +94,26 @@ namespace wim
 
         //again, CubeStack will be Displayed through CubeWorld
         void display() const {};
+
+        static CubeStack Random(const size_t maxNbFloors, const CubeFloor::FloorIndex min, const CubeFloor::FloorIndex max);
+        static CubeStack Random(const size_t maxNbFloors, const CubeFloor::FloorIndex max);
+
+        friend std::ostream& operator<<(std::ostream& out, const CubeStack& cubeStack);
     };
+
+
+    inline std::ostream& operator<<(std::ostream& out, const CubeStack& cubeStack)
+    {
+        CubeFloor::FloorIndex former=0;
+        for(const auto& cubeFloor : cubeStack._stack )
+        {
+            for(CubeFloor::FloorIndex i=former; i<cubeFloor.floor(); ++i)
+                out << " xxx "<<std::endl;
+            out << cubeFloor.cube() << std::endl;
+            former = cubeFloor.floor();
+        }
+        return out;
+    }
 }
 
 #endif //WORLD_IMAKER_CUBESTACK_HPP
