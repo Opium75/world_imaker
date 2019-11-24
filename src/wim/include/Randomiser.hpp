@@ -55,7 +55,14 @@ template <typename IntType>
         {
 
         }
+        inline IntType getLowest() const {return _distrib.a();}
+        inline IntType getHighest() const {return _distrib.b();}
 
+        inline bool checkRange(const IntType lowest, const IntType highest) {return (lowest == getLowest()) && (highest == getHighest());}
+        inline void setRange(const IntType lowest, const IntType highest)
+        {
+            _distrib = RandomDistribution(lowest, highest);
+        }
         ///Returns random inr in [lowest, highest] according to distrib
         IntType operator()()
         {
@@ -80,6 +87,14 @@ template <typename RealType>
         DefaultRealRandomiser(const RealType lowest, const RealType highest, const SeedUInt seed = RandomEngine::default_seed) : Randomiser(seed), _distrib(lowest, highest)
         {
 
+        }
+        inline RealType getLowest() const {return _distrib.a();}
+        inline RealType getHighest() const {return _distrib.b();}
+
+        inline bool checkRange(const RealType lowest, const RealType highest) {return (lowest == getLowest()) && (highest == getHighest());}
+        inline void setRange(const RealType lowest, const RealType highest)
+        {
+            _distrib = RandomDistribution(lowest, highest);
         }
 
         ///Returns random real number in [lowest, highest] according to distrib

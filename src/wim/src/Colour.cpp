@@ -60,8 +60,8 @@ Colour& Colour::operator/(const float alpha)
 Colour Colour::Random()
 {
     FloatType r,g,b;
-    r = RealRandomisable<FloatType>::Random(0, 1);
-    g = RealRandomisable<FloatType>::Random(0, 1);
-    b =  RealRandomisable<FloatType>::Random(0, 1);
+    r = RealRandomisable<Colour, FloatType>::Random(0, 1);
+    g = RealRandomisable<Colour, FloatType>::Random(0, 1);
+    b =  RealRandomisable<Colour, FloatType>::Random(0, 1);
     return Colour(r,g,b);
 }
