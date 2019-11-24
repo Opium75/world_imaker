@@ -775,20 +775,30 @@ Vec3D.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
+iostream
+-
 Colour.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
 Displayable.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
+Randomisable.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
 stack
 -
+iostream
+-
+Randomisable.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
 Cube.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
 Eigen/Dense
 -
+Randomisable.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
 CubeStack.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
 
@@ -797,9 +807,19 @@ Vec3D.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+memory
+-
+ctime
+-
+Randomiser.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
+
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
 random
 -
 functional
+-
+iostream
 -
 
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp

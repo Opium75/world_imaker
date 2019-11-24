@@ -16,8 +16,10 @@ namespace wim
 
 {
 
-    class Vec3D : public Randomisable
+    class Vec3D //: public RealRandomisable<Vec3D, float>
     {
+    public:
+        typedef float FloatType;
     protected:
         /* I used a typedef here to somewhat decouple
          * the data structure and its uses in the member methods
@@ -27,22 +29,22 @@ namespace wim
         Coord _coord;
     public:
         Vec3D() = default;
-        Vec3D(const float x, const float y, const float z);
+        Vec3D(const FloatType x, const FloatType y, const FloatType z);
         Vec3D(const Vec3D& vec);
         ~Vec3D() = default;
 
-        inline float& x() {return _coord.x;}
-        inline float x() const {return _coord.x;}
+        inline FloatType& x() {return _coord.x;}
+        inline FloatType x() const {return _coord.x;}
 
-        inline float& y() {return _coord.y;}
-        inline float y() const {return _coord.x;}
+        inline FloatType& y() {return _coord.y;}
+        inline FloatType y() const {return _coord.x;}
 
-        inline float& z() {return _coord.z;}
-        inline float z() const {return _coord.z;}
+        inline FloatType& z() {return _coord.z;}
+        inline FloatType z() const {return _coord.z;}
 
         //No reason to check index bond errors, already done by glm
-        inline float& operator[](size_t dim) {return _coord[dim];}
-        inline float operator[](size_t dim) const {return _coord[dim];}
+        inline FloatType& operator[](size_t dim) {return _coord[dim];}
+        inline FloatType operator[](size_t dim) const {return _coord[dim];}
 
         Vec3D& operator=(const Vec3D& vec);
         Vec3D operator+(const Vec3D& vec) const;
@@ -50,8 +52,10 @@ namespace wim
         ///Returns the symmetric relative to the origin
         inline Vec3D operator-() const { return Vec3D( -_coord );}
 
-        Vec3D& operator*(const float alpha);
-        Vec3D& operator/(const float alpha);
+        Vec3D& operator*(const FloatType alpha);
+        Vec3D& operator/(const FloatType alpha);
+
+        static Vec3D Random(const FloatType lowest=-1, const FloatType highest=1);
 
         friend std::ostream& operator<<(std::ostream& out, const Vec3D& vec);
 

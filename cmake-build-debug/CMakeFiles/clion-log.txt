@@ -12,20 +12,6 @@ CMake Warning (dev) in CMakeLists.txt:
   line.
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
--- The C compiler identification is GNU 8.3.0
--- The CXX compiler identification is GNU 8.3.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: /usr/bin/c++
--- Check for working CXX compiler: /usr/bin/c++ -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
 CMAKE_VERSION          : 3.15.3
 CMAKE_SYSTEM_NAME      : Linux
 CMAKE_SYSTEM           : Linux-5.0.0-36-generic
@@ -60,8 +46,6 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 --   version 
 --   include 
 Looking for SDL...
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD
--- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
 -- ... found
 --   version 1.2.15
 --   include /usr/include/SDL

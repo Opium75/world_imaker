@@ -8,8 +8,10 @@ int main() {
 
     wim::Vec3D p1(1,-1, 0);
     wim::Point3D p2(1,3,3);
+    wim::Vec3D vRand = wim::Vec3D::Random();
     std::cout << "Point 1 : " << p1 << std::endl;
     std::cout << "Point 2 : " << p2 << std::endl;
+    std::cout << "Vecteur aléatoire :" << vRand << std::endl;
     std::cout << "Somme de deux points : " << p1 + p2 << std::endl;
 
     wim::Colour c1;
@@ -17,6 +19,10 @@ int main() {
     std::cout << "Couleur 1 : " << c1 << std::endl;
     std::cout << "Couleur 2 : " << c2 << std::endl;
     std::cout << "Moyenne de deux couleurs : " << c1.average(c2) << std::endl;
+
+    wim::CubeStack cubeStack = wim::CubeStack::Random(20, 10);
+    std::cout << "Pile de cubes aléatoires : " << std::endl;
+    std::cout << cubeStack << std::endl;
     return EXIT_SUCCESS;
 
 }
