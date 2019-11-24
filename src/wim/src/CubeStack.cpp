@@ -110,7 +110,7 @@ CubeFloor::FloorIndex CubeStack::eraseFloor(CubeFloor::FloorIndex floor, bool er
 CubeFloor CubeFloor::Random(const FloorIndex min, const FloorIndex max)
 {
     FloorIndex floor;
-    floor = IntRandomisable<FloorIndex>::Random(min, max);
+    floor = IntRandomisable<CubeFloor, FloorIndex>::Random(min, max);
     return CubeFloor(Cube::Random(), floor);
 }
 

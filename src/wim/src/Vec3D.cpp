@@ -57,8 +57,8 @@ Vec3D& Vec3D::operator/(const FloatType alpha)
 Vec3D Vec3D::Random(const FloatType lowest, const FloatType highest)
 {
     FloatType x,y,z;
-    x = RealRandomisable<FloatType>::Random(lowest, highest);
-    y = RealRandomisable<FloatType>::Random(lowest, highest);
-    z =  RealRandomisable<FloatType>::Random(lowest, highest);
+    x = RealRandomisable<Vec3D, FloatType>::Random(lowest, highest);
+    y = RealRandomisable<Vec3D, FloatType>::Random(lowest, highest);
+    z =  RealRandomisable<Vec3D, FloatType>::Random(lowest, highest);
    return Vec3D(x,y,z);
 }

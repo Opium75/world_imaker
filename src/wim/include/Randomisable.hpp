@@ -16,7 +16,11 @@ namespace wim
 {
     //Singleton (so as not to have multiple generators for the same thing
     //Using time since Epoch by defualt as seed.
-    template <typename IntType>
+    /* class C is not used, but passing it as a template parameter
+     * allows a Randomiser to be linked to every class
+     * So that Colour ans Vector3D use different ones.
+     */
+    template <class C, typename IntType>
     class IntRandomisable
     {
     public:
@@ -32,6 +36,11 @@ namespace wim
             {
                 _rand = std::make_shared<IntRandomiser>(IntRandomiser(lowest, highest, seed));
             }
+            else if ( !_rand->checkRange(lowest, highest))
+            {
+                //updating range of distribution.
+                _rand->setRange(lowest, highest);
+            }
             return _rand;
         }
     public:
@@ -46,7 +55,7 @@ namespace wim
         }
     };
 
-    template <typename RealType>
+    template <class C, typename RealType>
     class RealRandomisable
     {
     public:
@@ -59,8 +68,11 @@ namespace wim
         static RandPointer getRandomiser(const RealType lowest, const RealType highest, const Randomiser::SeedUInt seed = std::time(nullptr))
         {
             if( !_rand )
-            {
                 _rand = std::make_shared<RealRandomiser>(RealRandomiser(lowest, highest, seed));
+            else if ( !_rand->checkRange(lowest, highest))
+            {
+                //updating range of distribution.
+                _rand->setRange(lowest, highest);
             }
             return _rand;
         }
@@ -78,10 +90,10 @@ namespace wim
     };
 
     //Setting static attributes of template classes.
-    template <typename RealType>
-    std::shared_ptr<DefaultRealRandomiser<RealType>> RealRandomisable<RealType>::_rand = RandPointer(nullptr);
-    template <typename IntType>
-    std::shared_ptr<DefaultIntRandomiser<IntType>> IntRandomisable<IntType>::_rand = RandPointer(nullptr);
+    template <class C, typename RealType>
+    std::shared_ptr<DefaultRealRandomiser<RealType>> RealRandomisable<C, RealType>::_rand = RandPointer(nullptr);
+    template <class C, typename IntType>
+    std::shared_ptr<DefaultIntRandomiser<IntType>> IntRandomisable<C, IntType>::_rand = RandPointer(nullptr);
 
 }
 
