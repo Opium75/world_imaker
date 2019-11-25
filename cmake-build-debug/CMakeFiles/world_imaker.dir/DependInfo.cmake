@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o"
   "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o"
   "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o"
+  "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o"
   "/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

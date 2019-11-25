@@ -789,14 +789,20 @@ stack
 -
 iostream
 -
+Displayable.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
 Randomisable.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
 Cube.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
+iostream
+-
 Eigen/Dense
 -
+Displayable.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
 Randomisable.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
 CubeStack.hpp
@@ -805,6 +811,14 @@ CubeStack.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
 Vec3D.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
+
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayer.hpp
+Cube.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
+CubeStack.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
+CubeWorld.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
 memory
@@ -829,6 +843,18 @@ glimac/glm.hpp
 -
 Randomisable.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp
+../include/CubeStack.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
+
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp
+../include/CubeWorld.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
+
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp
+../include/Displayer.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayer.hpp
 
 /usr/include/eigen3/Eigen/Cholesky
 Core

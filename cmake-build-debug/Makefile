@@ -271,6 +271,33 @@ src/wim/src/CubeWorld.cpp.s:
 	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.s
 .PHONY : src/wim/src/CubeWorld.cpp.s
 
+src/wim/src/Displayer.o: src/wim/src/Displayer.cpp.o
+
+.PHONY : src/wim/src/Displayer.o
+
+# target to build an object file
+src/wim/src/Displayer.cpp.o:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o
+.PHONY : src/wim/src/Displayer.cpp.o
+
+src/wim/src/Displayer.i: src/wim/src/Displayer.cpp.i
+
+.PHONY : src/wim/src/Displayer.i
+
+# target to preprocess a source file
+src/wim/src/Displayer.cpp.i:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.i
+.PHONY : src/wim/src/Displayer.cpp.i
+
+src/wim/src/Displayer.s: src/wim/src/Displayer.cpp.s
+
+.PHONY : src/wim/src/Displayer.s
+
+# target to generate assembly for a file
+src/wim/src/Displayer.cpp.s:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.s
+.PHONY : src/wim/src/Displayer.cpp.s
+
 src/wim/src/Vec3D.o: src/wim/src/Vec3D.cpp.o
 
 .PHONY : src/wim/src/Vec3D.o
@@ -323,6 +350,9 @@ help:
 	@echo "... src/wim/src/CubeWorld.o"
 	@echo "... src/wim/src/CubeWorld.i"
 	@echo "... src/wim/src/CubeWorld.s"
+	@echo "... src/wim/src/Displayer.o"
+	@echo "... src/wim/src/Displayer.i"
+	@echo "... src/wim/src/Displayer.s"
 	@echo "... src/wim/src/Vec3D.o"
 	@echo "... src/wim/src/Vec3D.i"
 	@echo "... src/wim/src/Vec3D.s"

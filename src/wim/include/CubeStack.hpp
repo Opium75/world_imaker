@@ -10,11 +10,15 @@
 #include <stack>
 #include <iostream>
 
+#include "Displayable.hpp"
 #include "Randomisable.hpp"
 #include "Cube.hpp"
 
+
 namespace wim
 {
+
+    class Displayer;
     /* All right, bear with me here
      * I needed to have yet another class
      * so as not to insert the index attribute in Cube.
@@ -22,7 +26,7 @@ namespace wim
      * of Cubes in a CubeStack
      */
     ///A container for a Cube with its index in a CubeStack
-    class CubeFloor : protected Displayable // protected Randomisable<CubeFloor>
+    class CubeFloor // protected Randomisable<CubeFloor>
     {
     public:
         typedef int FloorIndex;
@@ -56,8 +60,6 @@ namespace wim
         inline bool operator>(const CubeFloor &cFloor) const { return (this->compareFloors(cFloor) == 1);};
         inline bool operator>=(const CubeFloor &cFloor) const { return (this->compareFloors(cFloor) >= 0);};
         inline bool operator==(const CubeFloor &cFloor) { return (this->compareFloors(cFloor) == 0);};
-
-        void display() const {};
 
         static CubeFloor Random(const FloorIndex min, const FloorIndex max);
         static CubeFloor Random(const FloorIndex max);
@@ -93,7 +95,7 @@ namespace wim
         CubeFloor::FloorIndex eraseFloor(CubeFloor::FloorIndex floor, bool eraseHigher = false);
 
         //again, CubeStack will be Displayed through CubeWorld
-        void display() const {};
+        void display(const Displayer& disp) const;
 
         static CubeStack Random(const size_t maxNbFloors, const CubeFloor::FloorIndex min, const CubeFloor::FloorIndex max);
         static CubeStack Random(const size_t maxNbFloors, const CubeFloor::FloorIndex max);

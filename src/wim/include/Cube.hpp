@@ -10,9 +10,10 @@
 #include "Randomisable.hpp"
 
 
-
 namespace wim
 {
+
+    class Displayer;
     ///Class for the structural Cube
     /*Will not be Displayed directly
     * But rather through the CubeStack class
@@ -34,7 +35,8 @@ namespace wim
 
     protected:
         //inherited from Displayable
-        void display() const {};
+        //Defined in Displayer source file
+        void display(const Displayer& disp) const;
     };
 
     inline std::ostream& operator<<(std::ostream& out, const Cube& cube) {return out << cube._colour;}

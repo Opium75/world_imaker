@@ -11,15 +11,18 @@
 
 namespace wim
 {
+    class Displayer;
     ///An interface for elements which will be shown in the world window
-    //Perhaps a Visitor class would be better ?
+    //Is Visited by Displayed
     class Displayable
     {
     protected:
         Point3D anchor;
     public :
-        virtual void display() const = 0;
+        virtual void display(const Displayer& disp) const = 0;
     };
+
+
 
 }
 

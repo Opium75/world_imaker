@@ -7,12 +7,18 @@
 
 #pragma once
 
+#include <iostream>
 #include <Eigen/Dense>
+
+#include "Displayable.hpp"
 #include "Randomisable.hpp"
 #include "CubeStack.hpp"
 
+
 namespace wim
 {
+    class Displayer;
+
     class CubeWorld : Displayable // Randomisable<CubeWorld, int>
     {
     private:
@@ -26,7 +32,12 @@ namespace wim
         inline WorldWidth getWidth() const {return _matrix.cols();}
         inline WorldLength getLength() const {return _matrix.rows();}
 
-        void display() const {};
+        inline CubeStack& operator()(const WorldWidth w, const WorldLength l) {return _matrix(w,l);}
+        inline const CubeStack& operator()(const WorldWidth w, const WorldLength l) const {return _matrix(w,l);}
+
+        //todo: define overload of operator() for Width, Length AND Height (w,l,h)
+
+        void display(const Displayer& disp) const;
 
         static CubeWorld Random(const WorldWidth width, const WorldLength length, const WorldHeight height);
     };
