@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cone.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ ./third-party/glm/CMakeFiles/glimac.dir/src/Cone.cpp.o"
+  "/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ ./third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.o"
   "/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ ./third-party/glm/CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.o"
   "/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Geometry.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ ./third-party/glm/CMakeFiles/glimac.dir/src/Geometry.cpp.o"
   "/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Image.cpp" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ ./third-party/glm/CMakeFiles/glimac.dir/src/Image.cpp.o"

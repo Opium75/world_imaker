@@ -16,7 +16,7 @@
 #define __CAMERA_FREEFLY_DEFAULT_PHI __WHATISTHIS_PI
 #define __CAMERA_FREEFLY_DEFAULT_THETA 0
 
-class FreeflyCamera {
+class FreeflyCamera : public GenericCamera{
 	private :
 		//coordonnées sphériques
 		glm::vec3 m_Position;

@@ -122,6 +122,9 @@
 		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/Cone.hpp">
 			<Option target="glimac"/>
 		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/Cube.hpp">
+			<Option target="glimac"/>
+		</Unit>
 		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/FilePath.hpp">
 			<Option target="glimac"/>
 		</Unit>
@@ -159,6 +162,9 @@
 			<Option target="glimac"/>
 		</Unit>
 		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cone.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp">
 			<Option target="glimac"/>
 		</Unit>
 		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp">
@@ -219,6 +225,9 @@
 			<Option target="world_imaker"/>
 		</Unit>
 		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/wim.hpp">
 			<Option target="world_imaker"/>
 		</Unit>
 		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp">

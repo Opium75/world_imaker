@@ -16,6 +16,12 @@ vector
 common.hpp
 ../lib/glimac/include/glimac/common.hpp
 
+../lib/glimac/include/glimac/Cube.hpp
+vector
+-
+common.hpp
+../lib/glimac/include/glimac/common.hpp
+
 ../lib/glimac/include/glimac/FilePath.hpp
 string
 -
@@ -106,6 +112,8 @@ GenericCamera.hpp
 
 ../lib/glimac/include/glimac/common.hpp
 GL/glew.h
+-
+memory
 -
 glm.hpp
 ../lib/glimac/include/glimac/glm.hpp
@@ -871,6 +879,10 @@ glimac/common.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/glimac/common.hpp
 glimac/Cone.hpp
 /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/glimac/Cone.hpp
+
+/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp
+glimac/Cube.hpp
+/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/glimac/Cube.hpp
 
 /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp
 glimac/FreeflyCamera.hpp

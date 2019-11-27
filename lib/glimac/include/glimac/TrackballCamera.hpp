@@ -13,7 +13,7 @@
 #define __CAMERA_TRACKBALL_DEFAULT_DISTANCE 5
 
 
-class TrackCamera {
+class TrackCamera : public GenericCamera {
 	private :
 		//coordonnées sphériques
 		float m_fDistance, m_fAngleX, m_fAngleY;

@@ -152,6 +152,33 @@ src/Cone.cpp.s:
 	cd /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug && $(MAKE) -f " ./third-party/glm/CMakeFiles/glimac.dir/build.make" " ./third-party/glm/CMakeFiles/glimac.dir/src/Cone.cpp.s"
 .PHONY : src/Cone.cpp.s
 
+src/Cube.o: src/Cube.cpp.o
+
+.PHONY : src/Cube.o
+
+# target to build an object file
+src/Cube.cpp.o:
+	cd /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug && $(MAKE) -f " ./third-party/glm/CMakeFiles/glimac.dir/build.make" " ./third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.o"
+.PHONY : src/Cube.cpp.o
+
+src/Cube.i: src/Cube.cpp.i
+
+.PHONY : src/Cube.i
+
+# target to preprocess a source file
+src/Cube.cpp.i:
+	cd /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug && $(MAKE) -f " ./third-party/glm/CMakeFiles/glimac.dir/build.make" " ./third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.i"
+.PHONY : src/Cube.cpp.i
+
+src/Cube.s: src/Cube.cpp.s
+
+.PHONY : src/Cube.s
+
+# target to generate assembly for a file
+src/Cube.cpp.s:
+	cd /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug && $(MAKE) -f " ./third-party/glm/CMakeFiles/glimac.dir/build.make" " ./third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.s"
+.PHONY : src/Cube.cpp.s
+
 src/FreeflyCamera.o: src/FreeflyCamera.cpp.o
 
 .PHONY : src/FreeflyCamera.o
@@ -407,6 +434,9 @@ help:
 	@echo "... src/Cone.o"
 	@echo "... src/Cone.i"
 	@echo "... src/Cone.s"
+	@echo "... src/Cube.o"
+	@echo "... src/Cube.i"
+	@echo "... src/Cube.s"
 	@echo "... src/FreeflyCamera.o"
 	@echo "... src/FreeflyCamera.i"
 	@echo "... src/FreeflyCamera.s"

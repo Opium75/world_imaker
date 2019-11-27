@@ -16,7 +16,7 @@
 class GenericCamera {
 	public :
 		GenericCamera();
-		virtual glm::mat4 getViewMatrix(void) const;
+		virtual glm::mat4 getViewMatrix(void) const = 0;
 };
 
 
