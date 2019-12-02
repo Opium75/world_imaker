@@ -30,25 +30,26 @@ void Cone::build(GLfloat height, GLfloat r, GLsizei discLat, GLsizei discHeight)
     for(GLsizei j = 0; j <= discHeight; ++j) {
         for(GLsizei i = 0; i < discLat; ++i) {
             ShapeVertex vertex;
-            
-            vertex.texCoords.x = i * rcpLat;
-            vertex.texCoords.y = j * rcpH;
-            
-            vertex.position.x = r * (height - j * dH) * sin(i * dPhi) / height;
-            vertex.position.y = j * dH;
-            vertex.position.z = r * (height - j * dH) * cos(i * dPhi) / height;
-            
+
+            vertex.setTexCoords( i * rcpLat, j * rcpH );
+
+            vertex.setPosition( r * (height - j * dH) * sin(i * dPhi) / height,
+                                j * dH,
+                                r * (height - j * dH) * cos(i * dPhi)/ height
+            );
+
             /* avec cette formule la normale est mal définie au sommet (= (0, 0, 0))
             vertex.normal.x = vertex.position.x;
             vertex.normal.y = r * r * (1 - vertex.position.y / height) / height;
             vertex.normal.z = vertex.position.z;
             vertex.normal = glm::normalize(vertex.normal);
             */
-            
-            vertex.normal.x = sin(i * dPhi);
-            vertex.normal.y = r / height;
-            vertex.normal.z = cos(i * dPhi);
-            vertex.normal = glm::normalize(vertex.normal);
+
+            vertex.setNormal( sin(i * dPhi),
+                                r / height,
+                                cos(i * dPhi)
+                                );
+            vertex.normaliseNormal();
             
             data.push_back(vertex);
         }

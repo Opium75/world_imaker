@@ -1,4 +1,4 @@
-/snap/clion/92/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/piptouque/Documents/projets_gite/world_imaker
+/snap/clion/97/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/piptouque/Documents/projets_gite/world_imaker
 CMake Warning (dev) in CMakeLists.txt:
   No project() command is present.  The top-level CMakeLists.txt file must
   contain a literal, direct call to the project() command.  Add a line of
@@ -22,7 +22,7 @@ CMAKE_HOME_DIRECTORY   : /home/piptouque/Documents/projets_gite/world_imaker
 PROJECT_BINARY_DIR     : ./build
 PROJECT_SOURCE_DIR     : ./src
 Looking for OpenGL...
-CMake Warning (dev) at /snap/clion/92/bin/cmake/linux/share/cmake-3.15/Modules/FindOpenGL.cmake:275 (message):
+CMake Warning (dev) at /snap/clion/97/bin/cmake/linux/share/cmake-3.15/Modules/FindOpenGL.cmake:275 (message):
   Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when
   available.  Run "cmake --help-policy CMP0072" for policy details.  Use the
   cmake_policy command to set the policy and suppress this warning.

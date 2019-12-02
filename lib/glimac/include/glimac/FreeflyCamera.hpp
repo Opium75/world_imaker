@@ -10,7 +10,7 @@
 #include "glm.hpp"
 #include "GenericCamera.hpp"
 
-#define __WHATISTHIS_PI 3.141592
+#define __WHATISTHIS_PI glm::pi<float>()
 
 #define __CAMERA_FREEFLY_DEFAULT_POSITION (glm::vec3(0.f, 0.f, 0.5f))
 #define __CAMERA_FREEFLY_DEFAULT_PHI __WHATISTHIS_PI

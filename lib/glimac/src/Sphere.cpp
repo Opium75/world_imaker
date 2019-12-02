@@ -6,6 +6,7 @@
 
 namespace glimac {
 
+
 void Sphere::build(GLfloat r, GLsizei discLat, GLsizei discLong) {
     // Equation paramétrique en (r, phi, theta) de la sphère 
     // avec r >= 0, -PI / 2 <= theta <= PI / 2, 0 <= phi <= 2PI
@@ -33,16 +34,15 @@ void Sphere::build(GLfloat r, GLsizei discLat, GLsizei discLong) {
         
         for(GLsizei i = 0; i <= discLat; ++i) {
             ShapeVertex vertex;
-            
-            vertex.texCoords.x = i * rcpLat;
-            vertex.texCoords.y = 1.f - j * rcpLong;
 
-            vertex.normal.x = sin(i * dPhi) * cosTheta;
-            vertex.normal.y = sinTheta;
-            vertex.normal.z = cos(i * dPhi) * cosTheta;
-            
-            vertex.position = r * vertex.normal;
-            
+            vertex.setTexCoords(i * rcpLat, 1.f - j * rcpLong);
+
+            vertex.setNormal( sin(i * dPhi) * cosTheta,
+                                sinTheta,
+                                cos(i * dPhi) * cosTheta);
+
+            vertex.setPosition(r * vertex.getNormal());
+
             data.push_back(vertex);
         }
     }
