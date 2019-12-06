@@ -15,6 +15,11 @@
 #define CUBE_NB_VERTEX 3*CUBE_GEOMETRY_NB_VERTEX
 #define CUBE_NB_INDEX_BUFFER (3*CUBE_NB_VERTEX)/2
 
+#define ATTR_POSITION_DEFAULT_LOC 0
+#define ATTR_NORMAL_DEFAULT_LOC 1
+#define ATTR_COLOUR_DEFAULT_LOC 2
+#define ATTR_TEXCOORDS_DEFAULT_LOC 3
+
 namespace glimac
 {
 
@@ -31,11 +36,18 @@ namespace glimac
          */
         ShapeVec3 _position;
         ShapeVec3 _normal;
-        ShapeVec3 _texCoords;
+        union
+        {
+            ShapeVec3 _texCoords;
+            ShapeVec3 _colour;
+        };
     public:
         ShapeVertexCube(const ShapeVec3&  pos, const ShapeVec3& normal, const ShapeVec3& texCoords) :
                 _position(pos), _normal(normal), _texCoords(texCoords) {}
-                /* hides same method from hapeVertex */
+
+        ShapeVertexCube(const ShapeVertexCube& shapeVertexCube) = default;
+        ~ShapeVertexCube() = default;
+
         inline const ShapeVec3& getTexCoords() {return _texCoords;}
         inline void setTexCoords(const ShapeFloat x, const ShapeFloat y, const ShapeFloat z)
         {
@@ -45,36 +57,82 @@ namespace glimac
         }
     };
 
-    class Cube
+    class AbstractCube
     {
-    private:
+    protected:
         std::vector<ShapeVertexCube> m_Vertices;
         std::vector<GLsizei> m_indexBuffer;
         GLsizei m_nVertexCount;
         GLsizei m_nIndexCount;
-
+        GLuint _vbo, _ibo, _vao;
     public:
-        Cube(const GLfloat radius) : m_nVertexCount(CUBE_NB_VERTEX), m_nIndexCount(CUBE_NB_INDEX_BUFFER)
+        AbstractCube(const GLfloat radius) :
+            m_nVertexCount(CUBE_NB_VERTEX), m_nIndexCount(CUBE_NB_INDEX_BUFFER)
         {
             build(radius);
         }
 
-       inline const ShapeVertexCube* getDataPointer() const {return m_Vertices.data();}
-       inline const GLsizei* getIndexPointer() const {return m_indexBuffer.data();}
+        ~AbstractCube()
+        {
+            glDeleteVertexArrays(1, &_vao);
+            glDeleteBuffers(1, &_ibo);
+            glDeleteBuffers(1, &_vbo);
+        }
 
-       inline GLsizei getVertexCount() const {return m_nVertexCount;}
+        inline const ShapeVertexCube* getDataPointer() const {return m_Vertices.data();}
+        inline const GLsizei* getIndexPointer() const {return m_indexBuffer.data();}
+
+        inline GLsizei getVertexCount() const {return m_nVertexCount;}
 
     private:
-        void build(const GLfloat radius);
-        void buildVBO(const GLfloat radius);
+        virtual void build(const GLfloat radius);
+        virtual void buildVBO(const GLfloat radius) = 0;
         void buildIBO();
 
-        void bind(GLuint &vbo, GLuint &ibo, GLuint &vao, const GLuint ATTR_POSITION=0, const GLuint ATTR_NORMAL=1, const GLuint ATTR_TEXCOORDS=2) const;
-        void bindVBO(GLuint &vbo) const;
-        void bindIBO(GLuint &ibo) const;
-        void bindVAO(GLuint &vao, const GLuint vbo, const GLuint ATTR_POSITION=0, const GLuint ATTR_NORMAL=1, const GLuint ATTR_TEXCOORDS=2) const;
+        void bind(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_THIRD);
+        void bindVBO();
+        void bindIBO();
+        void bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_THIRD);
 
-        void draw(const GLuint vao) const;
+        virtual void draw() const = 0;
+    };
+
+    class ColouredCube final : protected AbstractCube
+    {
+    public:
+        ColouredCube(const GLfloat radius) : AbstractCube(radius) {}
+        ~ColouredCube() {};
+    private:
+        void build(const GLfloat radius, const ShapeVec3& colour);
+        void buildVBO(const GLfloat radius, const ShapeVec3& colour);
+
+        void draw() const override {}
+    };
+
+    class TexturedCube final : protected  AbstractCube
+    {
+    public:
+        TexturedCube(const GLfloat radius) : AbstractCube(radius)
+        {
+            //should be done by AbstractCube constructor
+            //build(radius);
+        }
+
+        ~TexturedCube()
+        {
+            //Should be done by AbstractCube destructor
+            /*
+            glDeleteVertexArrays(1, &_vao);
+            glDeleteBuffers(1, &_ibo);
+            glDeleteBuffers(1, &_vbo);
+             */
+        }
+
+    private:
+        void buildVBO(const GLfloat radius) override;
+
+        void draw() const override {}
+
     };
 }
 #endif //GLIMAC_CUBE_HPP

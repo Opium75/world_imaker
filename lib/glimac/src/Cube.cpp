@@ -6,9 +6,9 @@
 
 namespace glimac
 {
-   //todo
+   //todo: refactor the two functions below
 
-   void Cube::buildVBO(const GLfloat radius)
+   void TexturedCube::buildVBO(const GLfloat radius)
    {
        /* offset for (x,y,z) positions */
        GLsizei offPos = CUBE_NB_VERTEX/3;
@@ -52,7 +52,45 @@ namespace glimac
        }
    }
 
-   void Cube::buildIBO()
+   void ColouredCube::buildVBO(const GLfloat radius, const ShapeVec3& colour) {
+       /* offset for (x,y,z) positions */
+       GLsizei offPos = CUBE_NB_VERTEX / 3;
+       /*Vertex assignment */
+       for (GLsizei x = 0; x < offPos; ++x) {
+           //todo: clean up this mess
+           for (GLsizei y = 0; y < offPos; ++y) {
+               for (GLsizei z = 0; z < offPos; ++z) {
+                   ShapeVec3 position = radius * ShapeVec3(x % offPos, y % offPos, z % offPos);
+                   /* need to get vertices three times
+                    * to account for different normals and texCoords
+                    */
+                   for (GLsizei i = 0; i < 3; ++i) {
+                       //todo: explain this
+                       ShapeVec3 rightDir = ShapeVec3(
+                               (x < offPos / 2) * 2 - 1,
+                               (y < offPos / 2) * 2 - 1,
+                               (z < offPos / 2) * 2 - 1
+                       );
+                       ShapeVec3 normal = ShapeVec3(
+                               (i % 3) * rightDir.x,
+                               ((i + 1) % 3) * rightDir.y,
+                               ((i + 2) % 3) * rightDir.z
+                       );
+                       //We use the given colour vector
+                       m_Vertices.at(i + 3 * (z + offPos * (y + offPos * x))) = ShapeVertexCube(
+                               position,
+                               normal,
+                               colour
+                       );
+
+                   }
+
+               }
+           }
+       }
+   }
+
+   void AbstractCube::buildIBO()
    {
        /*
        GLsizei i=0;
@@ -121,10 +159,10 @@ namespace glimac
 
    }
 
-   void Cube::bindVBO(GLuint &vbo) const
+   void AbstractCube::bindVBO()
    {
-        glGenBuffers(1, &vbo);
-        glBindBuffer(GL_ARRAY_BUFFER, vbo); //VBO target
+        glGenBuffers(1, &_vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, _vbo); //VBO target
             glBufferData(
                     GL_ARRAY_BUFFER,
                     m_nVertexCount*sizeof(ShapeVertexCube),
@@ -134,10 +172,10 @@ namespace glimac
         glBindBuffer(GL_ARRAY_BUFFER, 0);
    }
 
-   void Cube::bindIBO(GLuint &ibo) const
+   void AbstractCube::bindIBO()
    {
-       glGenBuffers(1, &ibo);
-       glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo); //IBO Target
+       glGenBuffers(1, &_ibo);
+       glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo); //IBO Target
             glBufferData(
                     GL_ELEMENT_ARRAY_BUFFER,
                     m_nIndexCount,
@@ -147,14 +185,14 @@ namespace glimac
        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
    }
 
-   void Cube::bindVAO(GLuint &vao, const GLuint vbo, const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_TEXCOORDS) const
+   void AbstractCube::bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_THIRD)
    {
-       glGenVertexArrays(1, &vao);
-       glBindVertexArray(vao);
+       glGenVertexArrays(1, &_vao);
+       glBindVertexArray(_vao);
             glEnableVertexAttribArray(ATTR_POSITION);
             glEnableVertexAttribArray(ATTR_NORMAL);
-            glEnableVertexAttribArray(ATTR_TEXCOORDS);
-            glBindBuffer(GL_ARRAY_BUFFER, vbo);
+            glEnableVertexAttribArray(ATTR_THIRD);
+            glBindBuffer(GL_ARRAY_BUFFER, _vbo);
                 glVertexAttribPointer(
                         ATTR_POSITION,
                         3, //3 fields -> (x,y,z) we work in 3D
@@ -171,21 +209,22 @@ namespace glimac
                         sizeof(ShapeVertexCube),
                         (const GLfloat *) offsetof(ShapeVertexCube, _normal)
                         );
+                //ATTR_THIRD is either ATTR_COLOUR or ATTR_TEXCOORDS
                 glVertexAttribPointer(
-                        ATTR_TEXCOORDS,
+                        ATTR_THIRD,
                         3,
                         GL_FLOAT,
                         GL_FALSE,
                         sizeof(ShapeVertexCube),
-                        (const GLfloat *) offsetof(ShapeVertexCube, _texCoords)
+                        (const GLfloat *) offsetof(ShapeVertexCube, _texCoords) //or _colour, does not matter here
                         );
             glBindBuffer(GL_ARRAY_BUFFER, 0);
        glBindVertexArray(0);
    }
 
-   void Cube::draw(const GLuint vao) const
+   void AbstractCube::draw() const
    {
-        glBindVertexArray(vao);
+        glBindVertexArray(_vao);
             glDrawElements(
                     GL_TRIANGLES,
                     m_nVertexCount,
@@ -195,7 +234,7 @@ namespace glimac
         glBindVertexArray(0);
    }
 
-   void Cube::build(const GLfloat radius)
+   void AbstractCube::build(const GLfloat radius)
    {
        //todo (with IBO)
        //VBO first
@@ -203,11 +242,11 @@ namespace glimac
         this->buildIBO();
    }
 
-   void Cube::bind(GLuint &vbo, GLuint &ibo, GLuint &vao, const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_TEXCOORDS) const
+   void AbstractCube::bind(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_THIRD)
    {
-       this->bindVBO(vbo);
-       this->bindIBO(ibo);
-       this->bindVAO(vao, ATTR_POSITION, ATTR_NORMAL, ATTR_TEXCOORDS);
+       this->bindVBO();
+       this->bindIBO();
+       this->bindVAO(ATTR_POSITION, ATTR_NORMAL, ATTR_THIRD);
    }
 
 

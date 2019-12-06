@@ -23,7 +23,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/SDL"
   "/usr/include/eigen3"
   ".././third-party/glm/include"
-  ".././lib/glimac/include"
   "../lib/glimac/include"
   )
 

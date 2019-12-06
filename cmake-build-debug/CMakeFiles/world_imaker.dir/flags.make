@@ -6,5 +6,5 @@ CXX_FLAGS =  -W -Wall -Werror -std=c++11 -g   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/SDL -I/usr/include/eigen3 -I/home/piptouque/Documents/projets_gite/world_imaker/./third-party/glm/include -I/home/piptouque/Documents/projets_gite/world_imaker/./lib/glimac/include 
+CXX_INCLUDES = -I/usr/include/SDL -I/usr/include/eigen3 -I/home/piptouque/Documents/projets_gite/world_imaker/third-party/glm/include -I/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include 
 

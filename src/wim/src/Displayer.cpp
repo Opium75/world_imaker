@@ -32,4 +32,16 @@ namespace wim {
         std::cout << world(0, 0) << std::endl;
     }
 
+    void Displayer::initDisplay() const
+    {
+        GLenum glewInitError = glewInit();
+        if(GLEW_OK != glewInitError)
+        {
+            throw Exception(1, ExceptCode::INIT_ERROR, "Could not initialise glew.");
+        }
+
+        std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+        std::cout << "GLEW Version:   " << glewGetString(GLEW_VERSION) << std::endl;
+
+    }
 }

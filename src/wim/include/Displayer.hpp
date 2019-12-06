@@ -6,6 +6,10 @@
 #define WORLD_IMAKER_DISPLAYER_HPP
 #pragma  once
 
+#include <GL/glew.h>
+
+#include "Exception.hpp"
+
 #include "Cube.hpp"
 #include "CubeStack.hpp"
 #include "CubeWorld.hpp"
@@ -21,6 +25,11 @@ namespace wim {
         void display(const Cube &cube) const;
         void display(const CubeStack &stack) const;
         void display(const CubeWorld &world) const;
+
+    private:
+        //todo: WE'VE GOT TO HOLD ON TO WHAT WE'VE GOT
+        //todo: IT DOESN'T EVEN MATTER IF WE MAKE IT OR NOT
+       void initDisplay() const;
     };
 }
 

@@ -9,10 +9,10 @@ message("CMAKE_SYSTEM_PROCESSOR : " ${CMAKE_SYSTEM_PROCESSOR})
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake)
 
-set(PROJECT_BINARY_DIR ./build)
-set(PROJECT_SOURCE_DIR  ./src)
-set(PROJECT_LIB_DIR ./lib)
-set(PROJECT_EXTLIB_DIR ./third-party)
+set(PROJECT_BINARY_DIR build)
+set(PROJECT_SOURCE_DIR  src)
+set(PROJECT_LIB_DIR lib)
+set(PROJECT_EXTLIB_DIR third-party)
 
 # specify the directories
 message("CMAKE_BINARY_DIR       : " ${CMAKE_BINARY_DIR})
@@ -77,8 +77,6 @@ set(ALL_LIBRARIES
         \ glimac
         \ glm)
 
-add_subdirectory(${PROJECT_LIB_DIR}/glimac
-        \ ${PROJECT_EXTLIB_DIR}/glm)
 
 # compilation flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall -Werror -std=c++11")
