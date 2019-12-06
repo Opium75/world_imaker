@@ -40,6 +40,16 @@ if(${OpenGL_FOUND})
     message(STATUS "  include " ${OpenGL_INCLUDE_DIR})
 
 endif()
+#glew
+message("Looking for glew...")
+find_package(GLEW REQUIRED)
+if(${GLEW_FOUND})
+    link_libraries(${GLEW_LIBRARIES}) #REQUIRED FOR GLEW, apparently
+    message(STATUS "... found")
+    message(STATUS "  version " ${GLEW_VERSION_STRING})
+    message(STATUS "  include " ${GLEW_INCLUDE_DIR})
+endif()
+
 
 #SDL
 message("Looking for SDL...")
@@ -73,12 +83,14 @@ include_directories(${SDL_INCLUDE_DIR}
 set(ALL_LIBRARIES
         \ ${SDL_LIBRARY}
         \ ${OPENGL_LIBRARIES}
-        \ ${GLEW_LIBRARY}
+        \ ${GLEW_LIBRARIES}
         \ glimac
         \ glm)
 
+
 add_subdirectory(${PROJECT_LIB_DIR}/glimac
         \ ${PROJECT_EXTLIB_DIR}/glm)
+
 
 # compilation flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall -Werror -std=c++11")
@@ -92,6 +104,16 @@ add_executable(world_imaker main.cpp
         src/wim/include/Displayable.hpp
         src/wim/src/Cube.cpp
         src/wim/include/CubeStack.hpp
-        src/wim/src/CubeStack.cpp src/wim/include/Vec3D.hpp src/wim/src/Vec3D.cpp src/wim/include/CubeWorld.hpp src/wim/src/CubeWorld.cpp src/wim/include/Randomiser.hpp src/wim/include/Randomisable.hpp src/wim/include/Displayer.hpp src/wim/src/Displayer.cpp src/wim/include/wim.hpp)
-
+        src/wim/src/CubeStack.cpp
+        src/wim/include/Vec3D.hpp
+        src/wim/src/Vec3D.cpp
+        src/wim/include/CubeWorld.hpp
+        src/wim/src/CubeWorld.cpp
+        src/wim/include/Randomiser.hpp
+        src/wim/include/Randomisable.hpp
+        src/wim/include/Displayer.hpp
+        src/wim/src/Displayer.cpp
+        src/wim/include/wim.hpp
+        src/wim/include/Window.hpp
+        src/wim/include/Exception.hpp)
 
