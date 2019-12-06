@@ -123,19 +123,6 @@ world_imaker/fast:
 	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/build
 .PHONY : world_imaker/fast
 
-#=============================================================================
-# Target rules for targets named glimac
-
-# Build rule for target.
-glimac: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 glimac
-.PHONY : glimac
-
-# fast build rule for target.
-glimac/fast:
-	$(MAKE) -f " ./third-party/glm/CMakeFiles/glimac.dir/build.make" " ./third-party/glm/CMakeFiles/glimac.dir/build"
-.PHONY : glimac/fast
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -334,7 +321,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... world_imaker"
 	@echo "... edit_cache"
-	@echo "... glimac"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

@@ -9,10 +9,10 @@ message("CMAKE_SYSTEM_PROCESSOR : " ${CMAKE_SYSTEM_PROCESSOR})
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake)
 
-set(PROJECT_BINARY_DIR ./build)
-set(PROJECT_SOURCE_DIR  ./src)
-set(PROJECT_LIB_DIR ./lib)
-set(PROJECT_EXTLIB_DIR ./third-party)
+set(PROJECT_BINARY_DIR build)
+set(PROJECT_SOURCE_DIR  src)
+set(PROJECT_LIB_DIR lib)
+set(PROJECT_EXTLIB_DIR third-party)
 
 # specify the directories
 message("CMAKE_BINARY_DIR       : " ${CMAKE_BINARY_DIR})
@@ -40,16 +40,6 @@ if(${OpenGL_FOUND})
     message(STATUS "  include " ${OpenGL_INCLUDE_DIR})
 
 endif()
-#glew
-message("Looking for glew...")
-find_package(GLEW REQUIRED)
-if(${GLEW_FOUND})
-    link_libraries(${GLEW_LIBRARIES}) #REQUIRED FOR GLEW, apparently
-    message(STATUS "... found")
-    message(STATUS "  version " ${GLEW_VERSION_STRING})
-    message(STATUS "  include " ${GLEW_INCLUDE_DIR})
-endif()
-
 
 #SDL
 message("Looking for SDL...")
@@ -83,13 +73,9 @@ include_directories(${SDL_INCLUDE_DIR}
 set(ALL_LIBRARIES
         \ ${SDL_LIBRARY}
         \ ${OPENGL_LIBRARIES}
-        \ ${GLEW_LIBRARIES}
+        \ ${GLEW_LIBRARY}
         \ glimac
         \ glm)
-
-
-add_subdirectory(${PROJECT_LIB_DIR}/glimac
-        \ ${PROJECT_EXTLIB_DIR}/glm)
 
 
 # compilation flags
@@ -104,16 +90,6 @@ add_executable(world_imaker main.cpp
         src/wim/include/Displayable.hpp
         src/wim/src/Cube.cpp
         src/wim/include/CubeStack.hpp
-        src/wim/src/CubeStack.cpp
-        src/wim/include/Vec3D.hpp
-        src/wim/src/Vec3D.cpp
-        src/wim/include/CubeWorld.hpp
-        src/wim/src/CubeWorld.cpp
-        src/wim/include/Randomiser.hpp
-        src/wim/include/Randomisable.hpp
-        src/wim/include/Displayer.hpp
-        src/wim/src/Displayer.cpp
-        src/wim/include/wim.hpp
-        src/wim/include/Window.hpp
-        src/wim/include/Exception.hpp)
+        src/wim/src/CubeStack.cpp src/wim/include/Vec3D.hpp src/wim/src/Vec3D.cpp src/wim/include/CubeWorld.hpp src/wim/src/CubeWorld.cpp src/wim/include/Randomiser.hpp src/wim/include/Randomisable.hpp src/wim/include/Displayer.hpp src/wim/src/Displayer.cpp src/wim/include/wim.hpp)
+
 
