@@ -1,4 +1,4 @@
-# Install script for directory: /home/piptouque/Documents/projets_gite/world_imaker
+# Install script for directory: /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -27,14 +27,15 @@ if(NOT CMAKE_INSTALL_COMPONENT)
   endif()
 endif()
 
-# Install shared libraries without execute permission?
-if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
-  set(CMAKE_INSTALL_SO_NO_EXE "1")
-endif()
-
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
+endif()
+
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for each subdirectory.
+  include("/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm/cmake_install.cmake")
+
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
