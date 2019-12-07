@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/97/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/98/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/97/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/98/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/piptouque/Documents/projets_gite/world_imaker/cmake-bui
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/97/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/98/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/97/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/98/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -122,6 +122,19 @@ world_imaker: cmake_check_build_system
 world_imaker/fast:
 	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/build
 .PHONY : world_imaker/fast
+
+#=============================================================================
+# Target rules for targets named glimac
+
+# Build rule for target.
+glimac: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 glimac
+.PHONY : glimac
+
+# fast build rule for target.
+glimac/fast:
+	$(MAKE) -f " third-party/glm/CMakeFiles/glimac.dir/build.make" " third-party/glm/CMakeFiles/glimac.dir/build"
+.PHONY : glimac/fast
 
 main.o: main.cpp.o
 
@@ -321,6 +334,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... world_imaker"
 	@echo "... edit_cache"
+	@echo "... glimac"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

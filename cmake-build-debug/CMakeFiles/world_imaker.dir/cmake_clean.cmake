@@ -6,8 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o"
   "CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o"
   "CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o"
-  "build/bin/world_imaker"
-  "build/bin/world_imaker.pdb"
+  "build/output/world_imaker"
+  "build/output/world_imaker.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="world_imaker"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\modules\;CMake Files\lib\;CMake Files\lib\glimac\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="world_imaker">
+				<Option output="/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/build/output/world_imaker" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="build/output"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/SDL-1.2.15/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/{GLU_DIRNAME}/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/eigen3"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/glm/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 world_imaker"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="world_imaker/fast">
+				<Option output="/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/build/output/world_imaker" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="build/output"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/SDL-1.2.15/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/{GLU_DIRNAME}/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/eigen3"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/glm/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 world_imaker/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glimac">
+				<Option output="/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm/libglimac.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/SDL-1.2.15/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/{GLU_DIRNAME}/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/eigen3"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/glm/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/\ third-party/glm/Makefile&quot;  VERBOSE=1 glimac"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/\ third-party/glm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/\ third-party/glm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/\ third-party/glm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glimac/fast">
+				<Option output="/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm/libglimac.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/SDL-1.2.15/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/{GLU_DIRNAME}/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/eigen3"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/third-party/glm/include"/>
+					<Add directory="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include"/>
+					<Add directory="/usr/include/c++/8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/8"/>
+					<Add directory="/usr/include/c++/8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/\ third-party/glm/Makefile&quot;  VERBOSE=1 glimac/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/\ third-party/glm/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/\ third-party/glm/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/\ third-party/glm/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/BBox.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/Cone.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/Cube.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/FilePath.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/FreeflyCamera.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/GenericCamera.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/Geometry.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/Image.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/Program.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/SDLWindowManager.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/Shader.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/Sphere.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/TrackballCamera.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/common.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/include/glimac/glm.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cone.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Geometry.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Image.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Program.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/SDLWindowManager.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Shader.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Sphere.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/TrackballCamera.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/tiny_obj_loader.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/tiny_obj_loader.h">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/main.cpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayer.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Exception.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Window.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/wim.hpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp">
+			<Option target="world_imaker"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/modules/FindEigen3.cmake">
+			<Option virtualFolder="CMake Files\modules\"/>
+		</Unit>
+		<Unit filename="/home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib\glimac\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -16,8 +16,10 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/include/SDL"
-  "/usr/include/eigen3"
+  "../third-party/SDL-1.2.15/include"
+  "../third-party/{GLU_DIRNAME}/include"
+  "../third-party/freeglut-3.2.1"
+  "../third-party/eigen3"
   "../third-party/glm/include"
   "../lib/glimac/include"
   )

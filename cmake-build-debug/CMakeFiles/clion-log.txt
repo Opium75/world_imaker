@@ -1,17 +1,4 @@
-/snap/clion/97/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/piptouque/Documents/projets_gite/world_imaker
-CMake Warning (dev) in CMakeLists.txt:
-  No project() command is present.  The top-level CMakeLists.txt file must
-  contain a literal, direct call to the project() command.  Add a line of
-  code such as
-
-    project(ProjectName)
-
-  near the top of the file, but after cmake_minimum_required().
-
-  CMake is pretending there is a "project(Project)" command on the first
-  line.
-This warning is for project developers.  Use -Wno-dev to suppress it.
-
+/snap/clion/98/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/piptouque/Documents/projets_gite/world_imaker
 CMAKE_VERSION          : 3.15.3
 CMAKE_SYSTEM_NAME      : Linux
 CMAKE_SYSTEM           : Linux-5.0.0-36-generic
@@ -21,8 +8,10 @@ CMAKE_SOURCE_DIR       : /home/piptouque/Documents/projets_gite/world_imaker
 CMAKE_HOME_DIRECTORY   : /home/piptouque/Documents/projets_gite/world_imaker
 PROJECT_BINARY_DIR     : build
 PROJECT_SOURCE_DIR     : src
+PROJECT_LIB_DIR     : lib
+PROJECT_EXTLIB_DIR     : third-party
 Looking for OpenGL...
-CMake Warning (dev) at /snap/clion/97/bin/cmake/linux/share/cmake-3.15/Modules/FindOpenGL.cmake:275 (message):
+CMake Warning (dev) at /snap/clion/98/bin/cmake/linux/share/cmake-3.15/Modules/FindOpenGL.cmake:275 (message):
   Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when
   available.  Run "cmake --help-policy CMP0072" for policy details.  Use the
   cmake_policy command to set the policy and suppress this warning.
@@ -39,20 +28,24 @@ CMake Warning (dev) at /snap/clion/97/bin/cmake/linux/share/cmake-3.15/Modules/F
   OpenGL_GL_PREFERENCE has not been set to "GLVND" or "LEGACY", so for
   compatibility with CMake 3.10 and below the legacy GL library will be used.
 Call Stack (most recent call first):
-  CMakeLists.txt:36 (find_package)
+  CMakeLists.txt:72 (find_package)
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
 -- ... found
 --   version 
 --   include 
-Looking for SDL...
--- ... found
---   version 1.2.15
---   include /usr/include/SDL
 Looking for Eigen...
 -- ...found
---   version 3.3.7
---   include /usr/include/eigen3
+--   version 
+--   include third-party/eigen3
+Looking for GLUT...
+-- ...found
+--   version 
+--   include third-party/freeglut-3.2.1
+Looking for glew...
+-- ... found
+--   version 
+--   include /usr/include
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug
