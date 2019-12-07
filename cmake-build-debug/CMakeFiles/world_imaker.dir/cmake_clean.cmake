@@ -6,8 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o"
   "CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o"
   "CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o"
-  "build/output/libworld_imaker.dll.a"
-  "build/output/world_imaker.exe"
+  "build/output/world_imaker"
   "build/output/world_imaker.pdb"
 )
 

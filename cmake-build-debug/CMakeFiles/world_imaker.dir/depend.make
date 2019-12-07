@@ -1126,7 +1126,6 @@ CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/eigen3/E
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
-CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glew-2.1.0/include/GL/glew.h
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/include/glm/common.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/include/glm/detail/_fixes.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/include/glm/detail/_swizzle.hpp

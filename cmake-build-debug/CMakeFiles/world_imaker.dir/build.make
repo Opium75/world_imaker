@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/Pip/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /snap/clion/98/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/Pip/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe -E remove -f
+RM = /snap/clion/98/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker
+CMAKE_SOURCE_DIR = /home/piptouque/Documents/projets_gite/world_imaker
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug
+CMAKE_BINARY_DIR = /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/world_imaker.dir/depend.make
@@ -59,94 +59,94 @@ include CMakeFiles/world_imaker.dir/flags.make
 
 CMakeFiles/world_imaker.dir/main.cpp.o: CMakeFiles/world_imaker.dir/flags.make
 CMakeFiles/world_imaker.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/world_imaker.dir/main.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/main.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/world_imaker.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/main.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/main.cpp
 
 CMakeFiles/world_imaker.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/world_imaker.dir/main.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/main.cpp > CMakeFiles/world_imaker.dir/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/main.cpp > CMakeFiles/world_imaker.dir/main.cpp.i
 
 CMakeFiles/world_imaker.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/world_imaker.dir/main.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/main.cpp -o CMakeFiles/world_imaker.dir/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/main.cpp -o CMakeFiles/world_imaker.dir/main.cpp.s
 
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o: CMakeFiles/world_imaker.dir/flags.make
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o: ../src/wim/src/Colour.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp
 
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp > CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp > CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.i
 
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.s
 
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o: CMakeFiles/world_imaker.dir/flags.make
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o: ../src/wim/src/Cube.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp
 
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp > CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp > CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.i
 
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.s
 
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: CMakeFiles/world_imaker.dir/flags.make
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/src/CubeStack.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp
 
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp > CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp > CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.i
 
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.s
 
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: CMakeFiles/world_imaker.dir/flags.make
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../src/wim/src/Vec3D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp
 
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp > CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp > CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.i
 
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.s
 
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: CMakeFiles/world_imaker.dir/flags.make
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/src/CubeWorld.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp
 
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp > CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp > CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.i
 
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.s
 
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: CMakeFiles/world_imaker.dir/flags.make
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../src/wim/src/Displayer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o"
-	/usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp
 
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.i"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp > CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp > CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.i
 
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.s"
-	/usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp -o CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.s
 
 # Object files for target world_imaker
 world_imaker_OBJECTS = \
@@ -161,24 +161,23 @@ world_imaker_OBJECTS = \
 # External object files for target world_imaker
 world_imaker_EXTERNAL_OBJECTS =
 
-build/output/world_imaker.exe: CMakeFiles/world_imaker.dir/main.cpp.o
-build/output/world_imaker.exe: CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o
-build/output/world_imaker.exe: CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o
-build/output/world_imaker.exe: CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o
-build/output/world_imaker.exe: CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o
-build/output/world_imaker.exe: CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o
-build/output/world_imaker.exe: CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o
-build/output/world_imaker.exe: CMakeFiles/world_imaker.dir/build.make
-build/output/world_imaker.exe: /usr/lib/w32api/libopengl32.a
-build/output/world_imaker.exe: /usr/lib/w32api/libglu32.a
-build/output/world_imaker.exe: ../third-party/SDL-1.2.15/lib/libSDLmain.a
-build/output/world_imaker.exe: ../third-party/glew-2.1.0/bin/Release/x64/glew32.dll
-build/output/world_imaker.exe: CMakeFiles/world_imaker.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable build/output/world_imaker.exe"
+build/output/world_imaker: CMakeFiles/world_imaker.dir/main.cpp.o
+build/output/world_imaker: CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o
+build/output/world_imaker: CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o
+build/output/world_imaker: CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o
+build/output/world_imaker: CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o
+build/output/world_imaker: CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o
+build/output/world_imaker: CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o
+build/output/world_imaker: CMakeFiles/world_imaker.dir/build.make
+build/output/world_imaker: /usr/lib/x86_64-linux-gnu/libGL.so
+build/output/world_imaker: /usr/lib/x86_64-linux-gnu/libGLU.so
+build/output/world_imaker: /usr/lib/x86_64-linux-gnu/libGLEW.so
+build/output/world_imaker: CMakeFiles/world_imaker.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable build/output/world_imaker"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/world_imaker.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/world_imaker.dir/build: build/output/world_imaker.exe
+CMakeFiles/world_imaker.dir/build: build/output/world_imaker
 
 .PHONY : CMakeFiles/world_imaker.dir/build
 
@@ -187,6 +186,6 @@ CMakeFiles/world_imaker.dir/clean:
 .PHONY : CMakeFiles/world_imaker.dir/clean
 
 CMakeFiles/world_imaker.dir/depend:
-	cd /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles/world_imaker.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/piptouque/Documents/projets_gite/world_imaker /home/piptouque/Documents/projets_gite/world_imaker /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles/world_imaker.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/world_imaker.dir/depend
 

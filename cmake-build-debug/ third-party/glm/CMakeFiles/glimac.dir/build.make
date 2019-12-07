@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/Pip/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /snap/clion/98/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/Pip/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe -E remove -f
+RM = /snap/clion/98/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker
+CMAKE_SOURCE_DIR = /home/piptouque/Documents/projets_gite/world_imaker
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug
+CMAKE_BINARY_DIR = /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include \ third-party/glm/CMakeFiles/glimac.dir/depend.make
@@ -59,146 +59,146 @@ include \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Cone.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/Cone.cpp.o: ../lib/glimac/src/Cone.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Cone.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Cone.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Cone.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Cone.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Cone.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cone.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Cone.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/Cone.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Cone.cpp > CMakeFiles/glimac.dir/src/Cone.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cone.cpp > CMakeFiles/glimac.dir/src/Cone.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Cone.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/Cone.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Cone.cpp -o CMakeFiles/glimac.dir/src/Cone.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cone.cpp -o CMakeFiles/glimac.dir/src/Cone.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.o: ../lib/glimac/src/Cube.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Cube.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Cube.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/Cube.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp > CMakeFiles/glimac.dir/src/Cube.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp > CMakeFiles/glimac.dir/src/Cube.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Cube.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/Cube.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp -o CMakeFiles/glimac.dir/src/Cube.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Cube.cpp -o CMakeFiles/glimac.dir/src/Cube.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.o: ../lib/glimac/src/FreeflyCamera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp > CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp > CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp -o CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/FreeflyCamera.cpp -o CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Geometry.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/Geometry.cpp.o: ../lib/glimac/src/Geometry.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Geometry.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Geometry.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Geometry.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Geometry.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Geometry.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Geometry.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Geometry.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/Geometry.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Geometry.cpp > CMakeFiles/glimac.dir/src/Geometry.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Geometry.cpp > CMakeFiles/glimac.dir/src/Geometry.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Geometry.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/Geometry.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Geometry.cpp -o CMakeFiles/glimac.dir/src/Geometry.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Geometry.cpp -o CMakeFiles/glimac.dir/src/Geometry.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Image.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/Image.cpp.o: ../lib/glimac/src/Image.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Image.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Image.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Image.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Image.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Image.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Image.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Image.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/Image.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Image.cpp > CMakeFiles/glimac.dir/src/Image.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Image.cpp > CMakeFiles/glimac.dir/src/Image.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Image.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/Image.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Image.cpp -o CMakeFiles/glimac.dir/src/Image.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Image.cpp -o CMakeFiles/glimac.dir/src/Image.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Program.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/Program.cpp.o: ../lib/glimac/src/Program.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Program.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Program.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Program.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Program.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Program.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Program.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Program.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/Program.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Program.cpp > CMakeFiles/glimac.dir/src/Program.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Program.cpp > CMakeFiles/glimac.dir/src/Program.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Program.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/Program.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Program.cpp -o CMakeFiles/glimac.dir/src/Program.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Program.cpp -o CMakeFiles/glimac.dir/src/Program.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o: ../lib/glimac/src/SDLWindowManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/SDLWindowManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/SDLWindowManager.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/SDLWindowManager.cpp > CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/SDLWindowManager.cpp > CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/SDLWindowManager.cpp -o CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/SDLWindowManager.cpp -o CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Shader.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/Shader.cpp.o: ../lib/glimac/src/Shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Shader.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Shader.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Shader.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Shader.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Shader.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Shader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/Shader.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Shader.cpp > CMakeFiles/glimac.dir/src/Shader.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Shader.cpp > CMakeFiles/glimac.dir/src/Shader.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Shader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/Shader.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Shader.cpp -o CMakeFiles/glimac.dir/src/Shader.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Shader.cpp -o CMakeFiles/glimac.dir/src/Shader.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Sphere.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/Sphere.cpp.o: ../lib/glimac/src/Sphere.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Sphere.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Sphere.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Sphere.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/Sphere.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/Sphere.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Sphere.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Sphere.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/Sphere.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Sphere.cpp > CMakeFiles/glimac.dir/src/Sphere.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Sphere.cpp > CMakeFiles/glimac.dir/src/Sphere.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/Sphere.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/Sphere.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/Sphere.cpp -o CMakeFiles/glimac.dir/src/Sphere.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/Sphere.cpp -o CMakeFiles/glimac.dir/src/Sphere.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o: ../lib/glimac/src/TrackballCamera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/TrackballCamera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/TrackballCamera.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/TrackballCamera.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/TrackballCamera.cpp > CMakeFiles/glimac.dir/src/TrackballCamera.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/TrackballCamera.cpp > CMakeFiles/glimac.dir/src/TrackballCamera.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/TrackballCamera.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/TrackballCamera.cpp -o CMakeFiles/glimac.dir/src/TrackballCamera.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/TrackballCamera.cpp -o CMakeFiles/glimac.dir/src/TrackballCamera.cpp.s
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.o: \ third-party/glm/CMakeFiles/glimac.dir/flags.make
 \ third-party/glm/CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.o: ../lib/glimac/src/tiny_obj_loader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.o"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.o -c /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/tiny_obj_loader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object  third-party/glm/CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.o"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.o -c /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/tiny_obj_loader.cpp
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.i"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/tiny_obj_loader.cpp > CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.i
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/tiny_obj_loader.cpp > CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.i
 
 \ third-party/glm/CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.s"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac/src/tiny_obj_loader.cpp -o CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.s
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac/src/tiny_obj_loader.cpp -o CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.s
 
 # Object files for target glimac
 glimac_OBJECTS = \
@@ -230,9 +230,9 @@ glimac_EXTERNAL_OBJECTS =
 \ third-party/glm/libglimac.a: \ third-party/glm/CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.o
 \ third-party/glm/libglimac.a: \ third-party/glm/CMakeFiles/glimac.dir/build.make
 \ third-party/glm/libglimac.a: \ third-party/glm/CMakeFiles/glimac.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libglimac.a"
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && $(CMAKE_COMMAND) -P CMakeFiles/glimac.dir/cmake_clean_target.cmake
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glimac.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libglimac.a"
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && $(CMAKE_COMMAND) -P CMakeFiles/glimac.dir/cmake_clean_target.cmake
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/glimac.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 \ third-party/glm/CMakeFiles/glimac.dir/build: \ third-party/glm/libglimac.a
@@ -240,10 +240,10 @@ glimac_EXTERNAL_OBJECTS =
 .PHONY : \ third-party/glm/CMakeFiles/glimac.dir/build
 
 \ third-party/glm/CMakeFiles/glimac.dir/clean:
-	cd "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && $(CMAKE_COMMAND) -P CMakeFiles/glimac.dir/cmake_clean.cmake
+	cd "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" && $(CMAKE_COMMAND) -P CMakeFiles/glimac.dir/cmake_clean.cmake
 .PHONY : \ third-party/glm/CMakeFiles/glimac.dir/clean
 
 \ third-party/glm/CMakeFiles/glimac.dir/depend:
-	cd /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/lib/glimac /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm/CMakeFiles/glimac.dir/DependInfo.cmake" --color=$(COLOR)
+	cd /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/piptouque/Documents/projets_gite/world_imaker /home/piptouque/Documents/projets_gite/world_imaker/lib/glimac /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm" "/home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/ third-party/glm/CMakeFiles/glimac.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : \ third-party/glm/CMakeFiles/glimac.dir/depend
 
