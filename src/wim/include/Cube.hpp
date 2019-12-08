@@ -29,6 +29,8 @@ namespace wim
         Cube(const Cube& cube);
         ~Cube() = default;
 
+        Cube& operator=(const Cube& cube);
+
         static Cube Random();
 
         friend std::ostream& operator<<(std::ostream& out, const Cube& cube);

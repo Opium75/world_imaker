@@ -11,6 +11,13 @@ namespace wim
 
     }
 
+    CubeFloor& CubeFloor::operator=(const CubeFloor &cFloor)
+    {
+        _cube = cFloor._cube;
+        _floor = cFloor._floor;
+        return *this;
+    }
+
     CubeStack::CubeStack(const CubeStack &cubeStack) : _stack(cubeStack._stack) {
 
     }
@@ -29,8 +36,13 @@ namespace wim
             return _stack.back().cube();
     }
 
-    CubeFloor::FloorIndex
-    CubeStack::insertFloor(const Cube &cube, CubeFloor::FloorIndex insertFloor, bool insertHigher) {
+    CubeStack& CubeStack::operator=(const CubeStack& cubeStack)
+    {
+        _stack = cubeStack._stack;
+        return *this;
+    }
+
+    CubeFloor::FloorIndex CubeStack::insertFloor(const Cube &cube, CubeFloor::FloorIndex insertFloor, bool insertHigher) {
         /**Assumes the stack is already sorted **/
         Stack::iterator it = _stack.begin();
         int comparison;

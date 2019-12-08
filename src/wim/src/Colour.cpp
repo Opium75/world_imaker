@@ -15,6 +15,11 @@ namespace  wim
 
     }
 
+    Colour& Colour::operator=(const Colour &c)
+    {
+        _coord = c._coord;
+        return *this;
+    }
 
     Colour Colour::operator+(const Colour &c) const {
         Colour sum;

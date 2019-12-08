@@ -55,6 +55,8 @@ namespace wim
         ///Return 1 if this Cube is on a higher floor than one given as argument, 0 if equal and -1 if lower
         inline int compareFloors(const CubeFloor &cFloor) const {return this->compareFloors(cFloor.floor());}
 
+        CubeFloor& operator=(const CubeFloor &cFloor);
+
         /* convenient operators : FLOOR COMPARISON */
         ///Operator for comparison of floors, for Cube-related comparisons (Colours, etc.) see Cube Class
         inline bool operator>(const CubeFloor &cFloor) const { return (this->compareFloors(cFloor) == 1);};
@@ -80,6 +82,8 @@ namespace wim
 
         Cube& topCube();
         const Cube& topCube() const;
+
+        CubeStack& operator=(const CubeStack &cubeStack);
 
         ///Attempts to insert Cube at given floor in SORTED CubeStack
         ///If insertHigher is true, then the cube is inserted on the next available floor

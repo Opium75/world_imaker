@@ -36,11 +36,8 @@ namespace glimac
          */
         ShapeVec3 _position;
         ShapeVec3 _normal;
-        union
-        {
-            ShapeVec3 _texCoords;
-            ShapeVec3 _colour;
-        };
+        /** will store either colour or texCoords **/
+        ShapeVec3 _texCoords;
     public:
         ShapeVertexCube(const ShapeVec3&  pos, const ShapeVec3& normal, const ShapeVec3& texCoords) :
                 _position(pos), _normal(normal), _texCoords(texCoords) {}

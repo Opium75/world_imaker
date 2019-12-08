@@ -15,7 +15,8 @@ namespace wim
 {
     enum class ExceptCode
     {
-        INIT_ERROR
+        INIT_ERROR,
+        OUT_OF_RANGE
     };
 
 

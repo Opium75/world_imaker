@@ -28,6 +28,7 @@ namespace wim
         Colour(const Vec3D &vec);
         ~Colour() = default;
 
+        Colour& operator=(const Colour &c);
         ///Returns first RGB value (red)
         inline FloatType& r(){return _coord.r;}
         inline FloatType r() const{return _coord.r;}
