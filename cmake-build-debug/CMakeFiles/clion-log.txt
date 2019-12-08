@@ -1,36 +1,31 @@
-/snap/clion/98/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/piptouque/Documents/projets_gite/world_imaker
+C:\Users\Pip\.CLion2019.3\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker
+-- The C compiler identification is GNU 7.4.0
+-- The CXX compiler identification is GNU 7.4.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++.exe
+-- Check for working CXX compiler: /usr/bin/c++.exe -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 CMAKE_VERSION          : 3.15.3
-CMAKE_SYSTEM_NAME      : Linux
-CMAKE_SYSTEM           : Linux-5.0.0-36-generic
+CMAKE_SYSTEM_NAME      : CYGWIN
+CMAKE_SYSTEM           : CYGWIN-3.0.7(0.338/5/3)
 CMAKE_SYSTEM_PROCESSOR : x86_64
-CMAKE_BINARY_DIR       : /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug
-CMAKE_SOURCE_DIR       : /home/piptouque/Documents/projets_gite/world_imaker
-CMAKE_HOME_DIRECTORY   : /home/piptouque/Documents/projets_gite/world_imaker
+CMAKE_BINARY_DIR       : /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug
+CMAKE_SOURCE_DIR       : /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker
+CMAKE_HOME_DIRECTORY   : /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker
 PROJECT_BINARY_DIR     : build
 PROJECT_SOURCE_DIR     : src
 PROJECT_LIB_DIR     : lib
 PROJECT_EXTLIB_DIR     : third-party
 Looking for OpenGL...
-CMake Warning (dev) at /snap/clion/98/bin/cmake/linux/share/cmake-3.15/Modules/FindOpenGL.cmake:275 (message):
-  Policy CMP0072 is not set: FindOpenGL prefers GLVND by default when
-  available.  Run "cmake --help-policy CMP0072" for policy details.  Use the
-  cmake_policy command to set the policy and suppress this warning.
-
-  FindOpenGL found both a legacy GL library:
-
-    OPENGL_gl_LIBRARY: /usr/lib/x86_64-linux-gnu/libGL.so
-
-  and GLVND libraries for OpenGL and GLX:
-
-    OPENGL_opengl_LIBRARY: /usr/lib/x86_64-linux-gnu/libOpenGL.so
-    OPENGL_glx_LIBRARY: /usr/lib/x86_64-linux-gnu/libGLX.so
-
-  OpenGL_GL_PREFERENCE has not been set to "GLVND" or "LEGACY", so for
-  compatibility with CMake 3.10 and below the legacy GL library will be used.
-Call Stack (most recent call first):
-  CMakeLists.txt:72 (find_package)
-This warning is for project developers.  Use -Wno-dev to suppress it.
-
+-- Found OpenGL: /usr/lib/w32api/libopengl32.a   
 -- ... found
 --   version 
 --   include 
@@ -39,13 +34,10 @@ Looking for Eigen...
 --   version 
 --   include third-party/eigen3
 Looking for GLUT...
+-- Found GLUT: third-party/{GLUT_DIRNAME}/lib  
 -- ...found
 --   version 
 --   include third-party/freeglut-3.2.1
-Looking for glew...
--- ... found
---   version 
---   include /usr/include
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug
+-- Build files have been written to: /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug
