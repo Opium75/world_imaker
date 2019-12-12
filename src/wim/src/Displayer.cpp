@@ -5,6 +5,8 @@
 //Already includes Cube, CubeStack, CubeWorld headers.
 #include "../include/Displayer.hpp"
 
+#include<imgui.h>
+
 namespace wim {
 
 
@@ -37,8 +39,13 @@ namespace wim {
         GLenum glewInitError = glewInit();
         if(GLEW_OK != glewInitError)
         {
-            throw Exception(1, ExceptCode::INIT_ERROR, "Could not initialise glew.");
+            throw Exception(ExceptCode::INIT_ERROR, 1, "Could not initialise glew.");
         }
+
+        /* Start-up imgui */
+
+        IMGUI_CHECKVERSION();
+        ImGui::CreateContext();
 
         std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
         std::cout << "GLEW Version:   " << glewGetString(GLEW_VERSION) << std::endl;

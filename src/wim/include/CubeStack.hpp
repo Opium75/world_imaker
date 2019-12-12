@@ -10,6 +10,7 @@
 #include <stack>
 #include <iostream>
 
+#include "Exception.hpp"
 #include "Displayable.hpp"
 #include "Randomisable.hpp"
 #include "Cube.hpp"

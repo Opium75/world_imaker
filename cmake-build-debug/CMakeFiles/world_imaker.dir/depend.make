@@ -306,6 +306,7 @@ CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Cube.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/CubeStack.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/CubeWorld.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Displayable.hpp
+CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Exception.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Randomisable.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/main.cpp.o: ../src/wim/include/Vec3D.hpp
@@ -604,6 +605,7 @@ CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Colo
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Cube.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/CubeStack.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Displayable.hpp
+CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Exception.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Randomisable.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o: ../src/wim/include/Vec3D.hpp
@@ -913,6 +915,7 @@ CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Cube
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/CubeStack.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/CubeWorld.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Displayable.hpp
+CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Exception.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Randomisable.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o: ../src/wim/include/Vec3D.hpp
@@ -1126,7 +1129,6 @@ CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/eigen3/E
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
-CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glew-2.1.0/include/GL/glew.h
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/include/glm/common.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/include/glm/detail/_fixes.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/include/glm/detail/_swizzle.hpp
@@ -1218,6 +1220,8 @@ CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/incl
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/include/glm/vec3.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/include/glm/vec4.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/glm/include/glm/vector_relational.hpp
+CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/imgui-master/imconfig.h
+CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../third-party/imgui-master/imgui.h
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../src/wim/include/Colour.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../src/wim/include/Cube.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o: ../src/wim/include/CubeStack.hpp
@@ -1326,4 +1330,24 @@ CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../src/wim/include/Randomis
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../src/wim/include/Randomiser.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../src/wim/include/Vec3D.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o: ../src/wim/src/Vec3D.cpp
+
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui.cpp.o: ../third-party/imgui-master/imconfig.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui.cpp.o: ../third-party/imgui-master/imgui.cpp
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui.cpp.o: ../third-party/imgui-master/imgui.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui.cpp.o: ../third-party/imgui-master/imgui_internal.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui.cpp.o: ../third-party/imgui-master/imstb_textedit.h
+
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.o: ../third-party/imgui-master/imconfig.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.o: ../third-party/imgui-master/imgui.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.o: ../third-party/imgui-master/imgui_draw.cpp
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.o: ../third-party/imgui-master/imgui_internal.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.o: ../third-party/imgui-master/imstb_rectpack.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.o: ../third-party/imgui-master/imstb_textedit.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.o: ../third-party/imgui-master/imstb_truetype.h
+
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_widgets.cpp.o: ../third-party/imgui-master/imconfig.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_widgets.cpp.o: ../third-party/imgui-master/imgui.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_widgets.cpp.o: ../third-party/imgui-master/imgui_internal.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_widgets.cpp.o: ../third-party/imgui-master/imgui_widgets.cpp
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_widgets.cpp.o: ../third-party/imgui-master/imstb_textedit.h
 

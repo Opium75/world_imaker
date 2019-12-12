@@ -42,6 +42,7 @@ set(SDL_DIRNAME SDL-1.2.15)
 set(EIGEN3_DIRNAME eigen3)
 set(GLM_DIRNAME glm)
 set(GLIMAC_DIRNAME glimac)
+set(IMGUI_DIRNAME imgui-master)
 
 #
 
@@ -50,6 +51,8 @@ set(GLUT_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME})
 set(GLUT_glut_LIBRARY ${PROJECT_EXTLIB_DIR}/{GLUT_DIRNAME}/lib)
 
 set(GLEW_INCLUDE_DIRS ${PROJECT_EXTLIB_DIR}/${GLEW_DIRNAME}/include)
+
+set(IMGUI_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${IMGUI_DIRNAME})
 
 if(CYGWIN)
     set(GLEW_LIBRARIES ${PROJECT_EXTLIB_DIR}/${GLEW_DIRNAME}/bin)
@@ -127,7 +130,9 @@ include_directories(${SDL_INCLUDE_DIR}
         \ ${GLEW_INCLUDE_DIRS}
         \ ${EIGEN3_INCLUDE_DIR}
         \ ${GLM_INCLUDE_DIR}
-        \ ${GLIMAC_INCLUDE_DIR})
+        \ ${GLIMAC_INCLUDE_DIR}
+        \ ${IMGUI_INCLUDE_DIR}
+        )
 
 
 set(ALL_LIBRARIES
@@ -163,7 +168,13 @@ add_executable(world_imaker main.cpp
         src/wim/src/Displayer.cpp
         src/wim/include/Exception.hpp
         src/wim/include/Window.hpp
-        src/wim/include/wim.hpp)
+        src/wim/include/wim.hpp
+        ##IMGUI source files
+        ${IMGUI_INCLUDE_DIR}/imgui.cpp
+        ${IMGUI_INCLUDE_DIR}/imgui.h
+        ${IMGUI_INCLUDE_DIR}/imgui_draw.cpp
+        ${IMGUI_INCLUDE_DIR}/imgui_widgets.cpp
+        )
 
 if(CYGWIN)
     target_link_libraries(world_imaker

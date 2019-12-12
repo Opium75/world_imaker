@@ -24,14 +24,14 @@ namespace wim
 
     Cube &CubeStack::topCube() {
         if (_stack.empty())
-            throw std::out_of_range("Trying to access content of empty stack.");
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Trying to access content of empty stack.");
         else
             return _stack.back().cube();
     }
 
     const Cube &CubeStack::topCube() const {
         if (_stack.empty())
-            throw std::out_of_range("Trying to access content of empty stack.");
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Trying to access content of empty stack.");
         else
             return _stack.back().cube();
     }
@@ -55,8 +55,7 @@ namespace wim
                 return insertFloor;
             } else if (comparison == 0 && !insertHigher) {
                 //if floor already taken AND not allowing insertion on higher floors
-                throw std::out_of_range(
-                        "Attempting to insert a Cube on an occupied floor, forbidding insertion on higher floor.");
+                throw Exception(ExceptCode::OUT_OF_RANGE,1,"Attempting to insert a Cube on an occupied floor, forbidding insertion on higher floor.");
             } else if (comparison == 0 && insertHigher) {
                 //if allowed, be trying again on the next floor
                 ++insertFloor;
@@ -91,7 +90,7 @@ namespace wim
                  * and we can't erase the next highest,
                  * so we throw
                  */
-                throw std::out_of_range("Attempting to erase a free floor, forbidding erasing on higher floor.");
+                throw Exception(ExceptCode::OUT_OF_RANGE,1,"Attempting to erase a free floor, forbidding erasing on higher floor.");
 
             } else if ((comparison == 1) && eraseHigher) {
                 ++floor;
@@ -100,7 +99,7 @@ namespace wim
             ++it;
         }
         /* we could not erase said floor, throwing. */
-        throw std::out_of_range("Attempting to erase a free floor (stack may be empty).");
+        throw Exception(ExceptCode::OUT_OF_RANGE,1, "Attempting to erase a free floor (stack may be empty.");
     }
 
     CubeFloor CubeFloor::Random(const FloorIndex min, const FloorIndex max) {

@@ -25,13 +25,13 @@ namespace wim
     public:
         typedef int ExceptLvl;
     private:
-        const ExceptLvl  _lvl;
         const ExceptCode _code;
+        const ExceptLvl  _lvl;
         const std::string _msg;
 
     public:
-        Exception(const ExceptLvl lvl, const ExceptCode& code, const std::string& msg) noexcept
-            : _lvl(lvl), _code(code), _msg(msg)
+        Exception(const ExceptCode& code, const ExceptLvl lvl, const std::string& msg) noexcept
+            : _code(code), _lvl(lvl), _msg(msg)
         {}
         virtual ~Exception() noexcept {}
 

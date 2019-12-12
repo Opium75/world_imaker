@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/Pip/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /snap/clion/98/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/Pip/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe -E remove -f
+RM = /snap/clion/98/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker
+CMAKE_SOURCE_DIR = /home/piptouque/Documents/projets_gite/world_imaker
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug
+CMAKE_BINARY_DIR = /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cma
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/cygdrive/c/Users/Pip/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/98/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/cygdrive/c/Users/Pip/.CLion2019.3/system/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/98/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/piptouque/Documents/projets_gite/world_imaker/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -325,6 +325,87 @@ src/wim/src/Vec3D.cpp.s:
 	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.s
 .PHONY : src/wim/src/Vec3D.cpp.s
 
+third-party/imgui-master/imgui.o: third-party/imgui-master/imgui.cpp.o
+
+.PHONY : third-party/imgui-master/imgui.o
+
+# target to build an object file
+third-party/imgui-master/imgui.cpp.o:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui.cpp.o
+.PHONY : third-party/imgui-master/imgui.cpp.o
+
+third-party/imgui-master/imgui.i: third-party/imgui-master/imgui.cpp.i
+
+.PHONY : third-party/imgui-master/imgui.i
+
+# target to preprocess a source file
+third-party/imgui-master/imgui.cpp.i:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui.cpp.i
+.PHONY : third-party/imgui-master/imgui.cpp.i
+
+third-party/imgui-master/imgui.s: third-party/imgui-master/imgui.cpp.s
+
+.PHONY : third-party/imgui-master/imgui.s
+
+# target to generate assembly for a file
+third-party/imgui-master/imgui.cpp.s:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui.cpp.s
+.PHONY : third-party/imgui-master/imgui.cpp.s
+
+third-party/imgui-master/imgui_draw.o: third-party/imgui-master/imgui_draw.cpp.o
+
+.PHONY : third-party/imgui-master/imgui_draw.o
+
+# target to build an object file
+third-party/imgui-master/imgui_draw.cpp.o:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.o
+.PHONY : third-party/imgui-master/imgui_draw.cpp.o
+
+third-party/imgui-master/imgui_draw.i: third-party/imgui-master/imgui_draw.cpp.i
+
+.PHONY : third-party/imgui-master/imgui_draw.i
+
+# target to preprocess a source file
+third-party/imgui-master/imgui_draw.cpp.i:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.i
+.PHONY : third-party/imgui-master/imgui_draw.cpp.i
+
+third-party/imgui-master/imgui_draw.s: third-party/imgui-master/imgui_draw.cpp.s
+
+.PHONY : third-party/imgui-master/imgui_draw.s
+
+# target to generate assembly for a file
+third-party/imgui-master/imgui_draw.cpp.s:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.s
+.PHONY : third-party/imgui-master/imgui_draw.cpp.s
+
+third-party/imgui-master/imgui_widgets.o: third-party/imgui-master/imgui_widgets.cpp.o
+
+.PHONY : third-party/imgui-master/imgui_widgets.o
+
+# target to build an object file
+third-party/imgui-master/imgui_widgets.cpp.o:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_widgets.cpp.o
+.PHONY : third-party/imgui-master/imgui_widgets.cpp.o
+
+third-party/imgui-master/imgui_widgets.i: third-party/imgui-master/imgui_widgets.cpp.i
+
+.PHONY : third-party/imgui-master/imgui_widgets.i
+
+# target to preprocess a source file
+third-party/imgui-master/imgui_widgets.cpp.i:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_widgets.cpp.i
+.PHONY : third-party/imgui-master/imgui_widgets.cpp.i
+
+third-party/imgui-master/imgui_widgets.s: third-party/imgui-master/imgui_widgets.cpp.s
+
+.PHONY : third-party/imgui-master/imgui_widgets.s
+
+# target to generate assembly for a file
+third-party/imgui-master/imgui_widgets.cpp.s:
+	$(MAKE) -f CMakeFiles/world_imaker.dir/build.make CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_widgets.cpp.s
+.PHONY : third-party/imgui-master/imgui_widgets.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -356,6 +437,15 @@ help:
 	@echo "... src/wim/src/Vec3D.o"
 	@echo "... src/wim/src/Vec3D.i"
 	@echo "... src/wim/src/Vec3D.s"
+	@echo "... third-party/imgui-master/imgui.o"
+	@echo "... third-party/imgui-master/imgui.i"
+	@echo "... third-party/imgui-master/imgui.s"
+	@echo "... third-party/imgui-master/imgui_draw.o"
+	@echo "... third-party/imgui-master/imgui_draw.i"
+	@echo "... third-party/imgui-master/imgui_draw.s"
+	@echo "... third-party/imgui-master/imgui_widgets.o"
+	@echo "... third-party/imgui-master/imgui_widgets.i"
+	@echo "... third-party/imgui-master/imgui_widgets.s"
 .PHONY : help
 
 

@@ -301,15 +301,16 @@ CMakeFiles/world_imaker.dir/main.cpp.o
  ../third-party/glm/include/glm/vec3.hpp
  ../third-party/glm/include/glm/vec4.hpp
  ../third-party/glm/include/glm/vector_relational.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/main.cpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/main.cpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Exception.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
 CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o
  ../lib/glimac/include/glimac/glm.hpp
  ../third-party/glm/include/glm/common.hpp
@@ -403,11 +404,11 @@ CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.o
  ../third-party/glm/include/glm/vec3.hpp
  ../third-party/glm/include/glm/vec4.hpp
  ../third-party/glm/include/glm/vector_relational.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Colour.cpp
 CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o
  ../lib/glimac/include/glimac/glm.hpp
  ../third-party/glm/include/glm/common.hpp
@@ -501,13 +502,13 @@ CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.o
  ../third-party/glm/include/glm/vec3.hpp
  ../third-party/glm/include/glm/vec4.hpp
  ../third-party/glm/include/glm/vector_relational.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Cube.cpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o
  ../lib/glimac/include/glimac/glm.hpp
  ../third-party/glm/include/glm/common.hpp
@@ -601,14 +602,15 @@ CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.o
  ../third-party/glm/include/glm/vec3.hpp
  ../third-party/glm/include/glm/vec4.hpp
  ../third-party/glm/include/glm/vector_relational.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Exception.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeStack.cpp
 CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o
  ../lib/glimac/include/glimac/glm.hpp
  ../third-party/eigen3/Eigen/Cholesky
@@ -909,15 +911,16 @@ CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.o
  ../third-party/glm/include/glm/vec3.hpp
  ../third-party/glm/include/glm/vec4.hpp
  ../third-party/glm/include/glm/vector_relational.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Exception.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/CubeWorld.cpp
 CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o
  ../lib/glimac/include/glimac/glm.hpp
  ../third-party/eigen3/Eigen/Cholesky
@@ -1127,7 +1130,6 @@ CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o
  ../third-party/eigen3/Eigen/src/plugins/CommonCwiseUnaryOps.h
  ../third-party/eigen3/Eigen/src/plugins/MatrixCwiseBinaryOps.h
  ../third-party/eigen3/Eigen/src/plugins/MatrixCwiseUnaryOps.h
- ../third-party/glew-2.1.0/include/GL/glew.h
  ../third-party/glm/include/glm/common.hpp
  ../third-party/glm/include/glm/detail/_fixes.hpp
  ../third-party/glm/include/glm/detail/_swizzle.hpp
@@ -1219,17 +1221,19 @@ CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.o
  ../third-party/glm/include/glm/vec3.hpp
  ../third-party/glm/include/glm/vec4.hpp
  ../third-party/glm/include/glm/vector_relational.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Displayer.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Exception.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp
+ ../third-party/imgui-master/imconfig.h
+ ../third-party/imgui-master/imgui.h
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Colour.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Cube.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeStack.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/CubeWorld.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Displayer.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Exception.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Displayer.cpp
 CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o
  ../lib/glimac/include/glimac/glm.hpp
  ../third-party/glm/include/glm/common.hpp
@@ -1323,7 +1327,27 @@ CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.o
  ../third-party/glm/include/glm/vec3.hpp
  ../third-party/glm/include/glm/vec4.hpp
  ../third-party/glm/include/glm/vector_relational.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
- /cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomisable.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Randomiser.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/include/Vec3D.hpp
+ /home/piptouque/Documents/projets_gite/world_imaker/src/wim/src/Vec3D.cpp
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui.cpp.o
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imconfig.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imgui.cpp
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imgui.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imgui_internal.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imstb_textedit.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_draw.cpp.o
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imconfig.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imgui.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imgui_draw.cpp
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imgui_internal.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imstb_rectpack.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imstb_textedit.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imstb_truetype.h
+CMakeFiles/world_imaker.dir/third-party/imgui-master/imgui_widgets.cpp.o
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imconfig.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imgui.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imgui_internal.h
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imgui_widgets.cpp
+ /home/piptouque/Documents/projets_gite/world_imaker/third-party/imgui-master/imstb_textedit.h
