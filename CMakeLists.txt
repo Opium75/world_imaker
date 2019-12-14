@@ -35,6 +35,8 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/output)
 
 
 ## INCLUDE LIB ##
+set(WIM_DIRNAME wim)
+
 set(GLU_DIRNAME glu-9.0.1)
 set(GLUT_DIRNAME freeglut-3.2.1)
 set(GLEW_DIRNAME glew-2.1.0)
@@ -45,55 +47,34 @@ set(GLIMAC_DIRNAME glimac)
 set(IMGUI_DIRNAME imgui-master)
 
 #
-
-set(GLU_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLU_DIRNAME}/include)
-set(GLUT_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME})
-set(GLUT_glut_LIBRARY ${PROJECT_EXTLIB_DIR}/{GLUT_DIRNAME}/lib)
-
-set(GLEW_INCLUDE_DIRS ${PROJECT_EXTLIB_DIR}/${GLEW_DIRNAME}/include)
-
-set(IMGUI_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${IMGUI_DIRNAME})
-
-if(CYGWIN)
-    set(GLEW_LIBRARIES ${PROJECT_EXTLIB_DIR}/${GLEW_DIRNAME}/bin)
-    set(GLEW_LIB_FILEPATH ${GLEW_LIBRARIES}/Release/x64/glew32.dll)
-endif(CYGWIN)
-
-set(SDL_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${SDL_DIRNAME}/include)
-set(SDL_LIBRARY ${PROJECT_EXTLIB_DIR}/${SDL_DIRNAME}/lib)
-if(CYGWIN)
-    set(SDL_LIB_FILEPATH ${SDL_LIBRARY}/libSDLmain.a)
-endif(CYGWIN)
-
-set(EIGEN3_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${EIGEN3_DIRNAME})
-set(GLM_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLM_DIRNAME}/include)
-set(GLIMAC_INCLUDE_DIR ${PROJECT_LIB_DIR}/${GLIMAC_DIRNAME}/include)
+set(WIM_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/${WIM_DIRNAME}/include)
 #
 
 #OpenGL
 message("Looking for OpenGL...")
 find_package(OpenGL REQUIRED)
 if(${OpenGL_FOUND})
-    link_libraries(${OPENGL_LIBRARIES})
     message(STATUS "... found")
     message(STATUS "  version " ${OpenGL_VERSION_STRING})
     message(STATUS "  include " ${OpenGL_INCLUDE_DIR})
-
 endif()
 
 
 #SDL
-#message("Looking for SDL...")
-#find_package(SDL REQUIRED)
-if(${SDL_FOUND})
-    message(STATUS "... found")
-    message(STATUS "  version " ${SDL_VERSION_STRING})
-    message(STATUS "  include " ${SDL_INCLUDE_DIR})
-endif()
+message("Looking for SDL...")
+set(SDL_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${SDL_DIRNAME}/include)
+set(SDL_LIBRARY_DIR ${PROJECT_EXTLIB_DIR}/${SDL_DIRNAME}/lib)
+if(CYGWIN)
+    set(SDL_LIBRARY ${CMAKE_HOME_DIRECTORY}/${SDL_LIBRARY_DIR}/win64/libSDLmain.a)
+else()
+    set(SDL_LIBRARY ${CMAKE_HOME_DIRECTORY}/${SDL_LIBRARY_DIR}/lin64/libSDL-1.2.so.0)
+endif(CYGWIN)
 
 #Eigen
 message("Looking for Eigen...")
-find_package(Eigen3 REQUIRED)
+set(EIGEN3_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${EIGEN3_DIRNAME})
+#find_package(Eigen3 REQUIRED)
+#Nothing to do here ?
 if(${EIGEN3_FOUND})
     message(STATUS "...found")
     message(STATUS "  version " ${EIGEN3_VERSION_STRING})
@@ -102,7 +83,15 @@ endif()
 
 #GLUT
 message("Looking for GLUT...")
-find_package(GLUT REQUIRED)
+set(GLUT_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME}/include)
+set(GLUT_LIBRARY_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME}/lib)
+if(CYGWIN)
+    set(GLUT_glut_LIBRARY ${CMAKE_HOME_DIRECTORY}/${GLUT_LIBRARY_DIR}/...?)
+else()
+    set(GLUT_glut_LIBRARY ${CMAKE_HOME_DIRECTORY}/${GLUT_LIBRARY_DIR}/libglut.so)
+endif(CYGWIN)
+
+#find_package(GLUT REQUIRED)
 if(${GLUT_FOUND})
     message(STATUS "...found")
     message(STATUS "  version " ${GLUT_VERSION_STRING})
@@ -110,78 +99,87 @@ if(${GLUT_FOUND})
 endif()
 
 #glew
-if(NOT CYGWIN)
-    message("Looking for glew...")
-    find_package(GLEW REQUIRED)
-    if(${GLEW_FOUND})
-        link_libraries(${GLEW_LIBRARIES})
-        message(STATUS "... found")
-        message(STATUS "  version " ${GLEW_VERSION_STRING})
-        message(STATUS "  include " ${GLEW_INCLUDE_DIRS})
-    endif()
-endif(NOT CYGWIN)
+set(GLEW_INCLUDE_DIRS ${PROJECT_EXTLIB_DIR}/${GLEW_DIRNAME}/include)
+set(GLEW_LIBRARY_DIR ${PROJECT_EXTLIB_DIR}/${GLEW_DIRNAME}/lib)
+if(CYGWIN)
+    set(GLEW_LIBRARIES ${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/win64/glew32.lib)
+else()
+    set(GLEW_LIBRARIES ${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/lin64/libGLEW.so)
+endif(CYGWIN)
 
+#GLM
+set(GLM_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLM_DIRNAME}/include)
 
-# lib include path
-include_directories(${SDL_INCLUDE_DIR}
+# Include paths, inorder to use #include <....>
+include_directories(${WIM_INCLUDE_DIR}
+        \ ${SDL_INCLUDE_DIR}
         \ ${OPENGL_INCLUDE_DIR}
-        \ ${GLU_INCLUDE_DIR}
         \ ${GLUT_INCLUDE_DIR}
         \ ${GLEW_INCLUDE_DIRS}
         \ ${EIGEN3_INCLUDE_DIR}
         \ ${GLM_INCLUDE_DIR}
-        \ ${GLIMAC_INCLUDE_DIR}
-        \ ${IMGUI_INCLUDE_DIR}
         )
+### INTERNAL STATIC LIBS ###
 
+#imgui
+set(IMGUI_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${IMGUI_DIRNAME})
+add_subdirectory(${IMGUI_INCLUDE_DIR})
+
+#glimac
+set(GLIMAC_INCLUDE_DIR ${PROJECT_LIB_DIR}/${GLIMAC_DIRNAME}/include)
+add_subdirectory(${PROJECT_LIB_DIR}/${GLIMAC_DIRNAME})
+##
+
+include_directories(
+        ${IMGUI_INCLUDE_DIR}
+        \ ${GLIMAC_INCLUDE_DIR}
+)
+set(STATIC_LIBRARIES glimac imgui)
+
+##### #####
 
 set(ALL_LIBRARIES
         \ ${SDL_LIBRARY}
         \ ${OPENGL_LIBRARIES}
         \ ${GLEW_LIBRARIES}
-        \ ${SDL_LIBRARY}
-        \ glimac
-        \ glm)
-add_subdirectory(${PROJECT_LIB_DIR}/${GLIMAC_DIRNAME}
-        \ ${PROJECT_EXTLIB_DIR}/${GLM_DIRNAME}
-      )
+        \ ${GLUT_glut_LIBRARY}
+        \ ${STATIC_LIBRARIES}
+        )
 
 # compilation flags
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall -Werror -std=c++11")
 set(CMAKE_CXX_FLAGS_DEBUG_INIT "-g")
 
-add_executable(world_imaker main.cpp
-        src/wim/include/Cube.hpp
-        src/wim/include/Colour.hpp
+add_executable(world_imaker
+        ##WORLD IMAKER
+        #source files
+        main.cpp
         src/wim/src/Colour.cpp
-        src/wim/include/Displayable.hpp
         src/wim/src/Cube.cpp
-        src/wim/include/CubeStack.hpp
         src/wim/src/CubeStack.cpp
-        src/wim/include/Vec3D.hpp
         src/wim/src/Vec3D.cpp
-        src/wim/include/CubeWorld.hpp
         src/wim/src/CubeWorld.cpp
-        src/wim/include/Randomiser.hpp
-        src/wim/include/Randomisable.hpp
-        src/wim/include/Displayer.hpp
         src/wim/src/Displayer.cpp
-        src/wim/include/Exception.hpp
-        src/wim/include/Window.hpp
-        src/wim/include/wim.hpp
-        ##IMGUI source files
-        ${IMGUI_INCLUDE_DIR}/imgui.cpp
-        ${IMGUI_INCLUDE_DIR}/imgui.h
-        ${IMGUI_INCLUDE_DIR}/imgui_draw.cpp
-        ${IMGUI_INCLUDE_DIR}/imgui_widgets.cpp
+        #headers
+        src/wim/include/wim/Displayer.hpp
+        src/wim/include/wim/Vec3D.hpp
+        src/wim/include/wim/CubeWorld.hpp
+        src/wim/include/wim/CubeStack.hpp
+        src/wim/include/wim/Randomiser.hpp
+        src/wim/include/wim/Randomisable.hpp
+        src/wim/include/wim/Displayable.hpp
+        src/wim/include/wim/Cube.hpp
+        src/wim/include/wim/Colour.hpp
+        src/wim/include/wim/Exception.hpp
+        src/wim/include/wim/Window.hpp
+        src/wim/include/wim/wim.hpp
         )
 
-if(CYGWIN)
-    target_link_libraries(world_imaker
-        ${CMAKE_SOURCE_DIR}/${SDL_LIB_FILEPATH}
-        ${CMAKE_SOURCE_DIR}/${GLEW_LIB_FILEPATH}
-        )
-endif(CYGWIN)
-
-
+target_link_libraries(world_imaker
+        ${STATIC_LIBRARIES}
+        ${OPENGL_LIBRARIES}
+        ${SDL_LIBRARY}
+        ${GLEW_LIBRARIES}
+        ${GLUT_glut_LIBRARY}
+)
 

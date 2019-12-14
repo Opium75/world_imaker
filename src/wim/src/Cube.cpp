@@ -2,7 +2,7 @@
 // Created by piptouque on 15/11/2019.
 //
 
-#include "../include/Cube.hpp"
+#include "../include/wim/Cube.hpp"
 
 namespace wim
 {

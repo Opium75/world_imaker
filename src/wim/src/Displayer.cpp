@@ -3,9 +3,8 @@
 //
 
 //Already includes Cube, CubeStack, CubeWorld headers.
-#include "../include/Displayer.hpp"
+#include "../include/wim/Displayer.hpp"
 
-#include<imgui.h>
 
 namespace wim {
 
@@ -34,8 +33,17 @@ namespace wim {
         std::cout << world(0, 0) << std::endl;
     }
 
-    void Displayer::initDisplay() const
+    void Displayer::initDisplay()
     {
+
+        //Init SDLWIndowManager
+        _manager = std::make_shared<glimac::SDLWindowManager>(
+                glimac::SDLWindowManager(
+                       // DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, DISP_WINDOW_NAME
+                        400, 400, "wim"
+                       )
+        );
+
         GLenum glewInitError = glewInit();
         if(GLEW_OK != glewInitError)
         {
@@ -43,7 +51,6 @@ namespace wim {
         }
 
         /* Start-up imgui */
-
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
 

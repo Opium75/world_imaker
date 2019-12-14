@@ -1,0 +1,1 @@
+/usr/bin/cc  -Wall -pedantic  -rdynamic CMakeFiles/timer_callback.dir/progs/demos/timer_callback/timer.c.o  -o bin/timer_callback -Wl,-rpath,/home/piptouque/Téléchargements/freeglut-3.2.1/lib -lGLU -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi -lm lib/libglut.so.3.11.0 -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi 

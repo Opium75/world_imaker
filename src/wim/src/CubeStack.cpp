@@ -2,7 +2,7 @@
 // Created by piptouque on 15/11/2019.
 //
 
-#include "../include/CubeStack.hpp"
+#include "../include/wim/CubeStack.hpp"
 
 namespace wim
 {

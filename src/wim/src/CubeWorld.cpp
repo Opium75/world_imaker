@@ -2,7 +2,7 @@
 // Created by piptouque on 19/11/2019.
 //
 
-#include "../include/CubeWorld.hpp"
+#include "../include/wim/CubeWorld.hpp"
 
 
 namespace wim

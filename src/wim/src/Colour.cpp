@@ -1,7 +1,7 @@
 //
 // Created by piptouque on 15/11/2019.
 //
-#include "../include/Colour.hpp"
+#include "../include/wim/Colour.hpp"
 
 namespace  wim
 {

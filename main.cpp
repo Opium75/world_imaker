@@ -2,12 +2,11 @@
 #include <iostream>
 
 
-#include "./src/wim/include/Vec3D.hpp"
-#include "./src/wim/include/Colour.hpp"
-#include "./src/wim/include/CubeWorld.hpp"
+#include <wim/wim.hpp>
 
 int main() {
 
+    //wim::Displayer display;
     wim::Vec3D p1(1,-1, 0);
     wim::Point3D p2(1,3,3);
     wim::Vec3D v1 = wim::Vec3D::Random();
