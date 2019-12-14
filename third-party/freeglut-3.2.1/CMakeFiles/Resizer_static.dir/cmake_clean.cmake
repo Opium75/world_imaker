@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Resizer_static.dir/progs/demos/Resizer/Resizer.cpp.o"
   "bin/Resizer_static.pdb"
-  "bin/Resizer_static"
+  "bin/Resizer_static.exe"
+  "lib/libResizer_static.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

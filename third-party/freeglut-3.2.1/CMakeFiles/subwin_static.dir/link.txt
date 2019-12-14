@@ -1,1 +1,1 @@
-/usr/bin/cc  -Wall -pedantic  -rdynamic CMakeFiles/subwin_static.dir/progs/demos/subwin/subwin.c.o  -o bin/subwin_static -lGLU -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi -lm lib/libglut.a -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi 
+/usr/bin/cc  -Wall -pedantic  -Wl,--enable-auto-import CMakeFiles/subwin_static.dir/progs/demos/subwin/subwin.c.o  -o bin/subwin_static.exe -Wl,--out-implib,lib/libsubwin_static.dll.a -Wl,--major-image-version,0,--minor-image-version,0 -lGLU -lGL -lm -lX11 -lXrandr -lXi -lm lib/libglut.a -lGL -lm -lX11 -lXrandr -lXi 

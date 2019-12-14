@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/progs/demos/One/one.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/progs/demos/One/one.c
 stdio.h
 -
 stdlib.h

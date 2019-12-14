@@ -2,7 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/shapes.dir/progs/demos/shapes/shapes.c.o"
   "CMakeFiles/shapes.dir/progs/demos/shapes/glmatrix.c.o"
   "bin/shapes.pdb"
-  "bin/shapes"
+  "bin/shapes.exe"
+  "lib/libshapes.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

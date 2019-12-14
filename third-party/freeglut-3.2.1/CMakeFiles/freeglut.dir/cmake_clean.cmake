@@ -41,10 +41,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/freeglut.dir/src/x11/fg_state_x11_glx.c.o"
   "CMakeFiles/freeglut.dir/src/x11/fg_window_x11_glx.c.o"
   "CMakeFiles/freeglut.dir/src/util/xparsegeometry_repl.c.o"
-  "lib/libglut.pdb"
-  "lib/libglut.so.3.11.0"
-  "lib/libglut.so"
-  "lib/libglut.so.3"
+  "bin/cygglut-3.pdb"
+  "bin/cygglut-3.dll"
+  "lib/libglut.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/timer.dir/progs/demos/timer/timer.c.o"
   "bin/timer.pdb"
-  "bin/timer"
+  "bin/timer.exe"
+  "lib/libtimer.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

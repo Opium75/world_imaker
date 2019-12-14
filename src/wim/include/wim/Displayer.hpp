@@ -6,8 +6,10 @@
 #define WORLD_IMAKER_DISPLAYER_HPP
 #pragma  once
 
-
+//Use glew as static library
+#define GLEW_STATIC
 #include <GL/glew.h>
+
 #include <imgui.h>
 
 #include <glimac/SDLWindowManager.hpp>

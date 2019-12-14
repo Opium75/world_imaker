@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Fractals.dir/progs/demos/Fractals/fractals.c.o"
   "bin/Fractals.pdb"
-  "bin/Fractals"
+  "bin/Fractals.exe"
+  "lib/libFractals.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

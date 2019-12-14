@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/multi-touch.dir/progs/demos/multi-touch/multi-touch.c.o"
   "bin/multi-touch.pdb"
-  "bin/multi-touch"
+  "bin/multi-touch.exe"
+  "lib/libmulti-touch.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -8,12 +8,12 @@ set(CMAKE_IMPORT_FILE_VERSION 1)
 # Import target "FreeGLUT::freeglut" for configuration ""
 set_property(TARGET FreeGLUT::freeglut APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(FreeGLUT::freeglut PROPERTIES
-  IMPORTED_LOCATION_NOCONFIG "${_IMPORT_PREFIX}/lib/libglut.so.3.11.0"
-  IMPORTED_SONAME_NOCONFIG "libglut.so.3"
+  IMPORTED_IMPLIB_NOCONFIG "${_IMPORT_PREFIX}/lib/libglut.dll.a"
+  IMPORTED_LOCATION_NOCONFIG "${_IMPORT_PREFIX}/bin/cygglut-3.dll"
   )
 
 list(APPEND _IMPORT_CHECK_TARGETS FreeGLUT::freeglut )
-list(APPEND _IMPORT_CHECK_FILES_FOR_FreeGLUT::freeglut "${_IMPORT_PREFIX}/lib/libglut.so.3.11.0" )
+list(APPEND _IMPORT_CHECK_FILES_FOR_FreeGLUT::freeglut "${_IMPORT_PREFIX}/lib/libglut.dll.a" "${_IMPORT_PREFIX}/bin/cygglut-3.dll" )
 
 # Import target "FreeGLUT::freeglut_static" for configuration ""
 set_property(TARGET FreeGLUT::freeglut_static APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)

@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/CallbackMaker_static.dir/progs/demos/CallbackMaker/CallbackMaker.c.o"
   "bin/CallbackMaker_static.pdb"
-  "bin/CallbackMaker_static"
+  "bin/CallbackMaker_static.exe"
+  "lib/libCallbackMaker_static.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

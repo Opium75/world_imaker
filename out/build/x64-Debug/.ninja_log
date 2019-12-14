@@ -1,0 +1,26 @@
+# ninja log v5
+6	3402	598044118	CMakeFiles/world_imaker.dir/src/wim/src/Cube.cpp.obj	2e8387a19ec1cb61
+4	3470	598044118	CMakeFiles/world_imaker.dir/src/wim/src/Colour.cpp.obj	2f8b256a118196a1
+12	3500	598044118	CMakeFiles/world_imaker.dir/src/wim/src/Vec3D.cpp.obj	d365cc42880c3c3a
+8	3555	598044118	CMakeFiles/world_imaker.dir/src/wim/src/CubeStack.cpp.obj	8ffb57acc713878a
+14	4278	598044119	CMakeFiles/world_imaker.dir/src/wim/src/CubeWorld.cpp.obj	7bdffe1943b87a33
+1	4926	598044119	CMakeFiles/world_imaker.dir/main.cpp.obj	d7a3ae3c6e9b10d4
+3502	5415	598044120	third-party/imgui-master/CMakeFiles/imgui.dir/imgui_draw.cpp.obj	d79b6e8bcc696713
+3557	5511	598044120	third-party/imgui-master/CMakeFiles/imgui.dir/imgui_widgets.cpp.obj	e15f419bf62a7bcc
+3497	6223	598044121	third-party/imgui-master/CMakeFiles/imgui.dir/imgui.cpp.obj	a80ae122e0f60edd
+6233	6712	598044121	third-party/imgui-master/imgui.lib	7d056e1667b455fc
+4947	8038	598044122	lib/glimac/CMakeFiles/glimac.dir/src/Cube.cpp.obj	d4d055d61fe31e16
+4321	8224	598044122	lib/glimac/CMakeFiles/glimac.dir/src/Cone.cpp.obj	c1ab251f03d197ed
+5415	8651	598044123	lib/glimac/CMakeFiles/glimac.dir/src/FreeflyCamera.cpp.obj	ba0bf5e20842ac72
+5512	8749	598044123	lib/glimac/CMakeFiles/glimac.dir/src/Geometry.cpp.obj	64df9c24ebefb89a
+3465	9907	598044124	CMakeFiles/world_imaker.dir/src/wim/src/Displayer.cpp.obj	6d2bf7b62de85bbc
+8039	11475	598044126	lib/glimac/CMakeFiles/glimac.dir/src/Program.cpp.obj	78b85bcf3d3d126d
+8684	11561	598044126	lib/glimac/CMakeFiles/glimac.dir/src/Shader.cpp.obj	d808b11052729db6
+6712	11619	598044126	lib/glimac/CMakeFiles/glimac.dir/src/Image.cpp.obj	4091e611977ec119
+8751	12455	598044127	lib/glimac/CMakeFiles/glimac.dir/src/Sphere.cpp.obj	739e678c9256e03a
+8226	12577	598044127	lib/glimac/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.obj	286653926b249335
+9935	12695	598044127	lib/glimac/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.obj	802c487da3f0a56
+11476	13637	598044128	lib/glimac/CMakeFiles/glimac.dir/src/tiny_obj_loader.cpp.obj	89111c0a6e1af6e0
+13638	13738	598044128	lib/glimac/glimac.lib	cb13bb6f19f93d8c
+4	296	598044238	build.ninja	5f367ba780d8aaec
+3	1590	598044240	build/output/world_imaker.exe	9f3b7174b0ee2acd

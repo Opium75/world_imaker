@@ -1,1 +1,1 @@
-/usr/bin/cc  -Wall -pedantic  -rdynamic CMakeFiles/subwin.dir/progs/demos/subwin/subwin.c.o  -o bin/subwin -Wl,-rpath,/home/piptouque/Téléchargements/freeglut-3.2.1/lib -lGLU -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi -lm lib/libglut.so.3.11.0 -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi 
+/usr/bin/cc  -Wall -pedantic  -Wl,--enable-auto-import CMakeFiles/subwin.dir/progs/demos/subwin/subwin.c.o  -o bin/subwin.exe -Wl,--out-implib,lib/libsubwin.dll.a -Wl,--major-image-version,0,--minor-image-version,0 -lGLU -lGL -lm -lX11 -lXrandr -lXi -lm lib/libglut.dll.a -lGL -lm -lX11 -lXrandr -lXi 

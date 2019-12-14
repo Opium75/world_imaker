@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/progs/demos/smooth_opengl3/smooth_opengl3.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/progs/demos/smooth_opengl3/smooth_opengl3.c
 GL/freeglut.h
 -
 stdlib.h

@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/One_static.dir/progs/demos/One/one.c.o"
   "bin/One_static.pdb"
-  "bin/One_static"
+  "bin/One_static.exe"
+  "lib/libOne_static.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

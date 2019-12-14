@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Fractals_random_static.dir/progs/demos/Fractals_random/fractals_random.c.o"
   "bin/Fractals_random_static.pdb"
-  "bin/Fractals_random_static"
+  "bin/Fractals_random_static.exe"
+  "lib/libFractals_random_static.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/piptouque/Téléchargements/freeglut-3.2.1/progs/demos/CallbackMaker/CallbackMaker.c" "/home/piptouque/Téléchargements/freeglut-3.2.1/CMakeFiles/CallbackMaker_static.dir/progs/demos/CallbackMaker/CallbackMaker.c.o"
+  "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/progs/demos/CallbackMaker/CallbackMaker.c" "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/CMakeFiles/CallbackMaker_static.dir/progs/demos/CallbackMaker/CallbackMaker.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
@@ -22,7 +22,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/piptouque/Téléchargements/freeglut-3.2.1/CMakeFiles/freeglut_static.dir/DependInfo.cmake"
+  "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/CMakeFiles/freeglut_static.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

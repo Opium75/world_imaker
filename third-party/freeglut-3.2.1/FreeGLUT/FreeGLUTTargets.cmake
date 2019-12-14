@@ -45,28 +45,28 @@ unset(_expectedTargets)
 add_library(FreeGLUT::freeglut SHARED IMPORTED)
 
 set_target_properties(FreeGLUT::freeglut PROPERTIES
-  INTERFACE_LINK_LIBRARIES "/usr/lib/x86_64-linux-gnu/libGL.so;m;/usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXrandr.so;/usr/lib/x86_64-linux-gnu/libXxf86vm.so;/usr/lib/x86_64-linux-gnu/libXi.so"
+  INTERFACE_LINK_LIBRARIES "/usr/lib/libGL.dll.a;m;/usr/lib/libX11.dll.a;/usr/lib/libXrandr.dll.a;/usr/lib/libXi.dll.a"
 )
 
 # Create imported target FreeGLUT::freeglut_static
 add_library(FreeGLUT::freeglut_static STATIC IMPORTED)
 
 set_target_properties(FreeGLUT::freeglut_static PROPERTIES
-  INTERFACE_LINK_LIBRARIES "/usr/lib/x86_64-linux-gnu/libGL.so;m;/usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXrandr.so;/usr/lib/x86_64-linux-gnu/libXxf86vm.so;/usr/lib/x86_64-linux-gnu/libXi.so"
+  INTERFACE_LINK_LIBRARIES "/usr/lib/libGL.dll.a;m;/usr/lib/libX11.dll.a;/usr/lib/libXrandr.dll.a;/usr/lib/libXi.dll.a"
 )
 
 # Import target "FreeGLUT::freeglut" for configuration ""
 set_property(TARGET FreeGLUT::freeglut APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(FreeGLUT::freeglut PROPERTIES
-  IMPORTED_LOCATION_NOCONFIG "/home/piptouque/Téléchargements/freeglut-3.2.1/lib/libglut.so.3.11.0"
-  IMPORTED_SONAME_NOCONFIG "libglut.so.3"
+  IMPORTED_IMPLIB_NOCONFIG "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/lib/libglut.dll.a"
+  IMPORTED_LOCATION_NOCONFIG "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/bin/cygglut-3.dll"
   )
 
 # Import target "FreeGLUT::freeglut_static" for configuration ""
 set_property(TARGET FreeGLUT::freeglut_static APPEND PROPERTY IMPORTED_CONFIGURATIONS NOCONFIG)
 set_target_properties(FreeGLUT::freeglut_static PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_NOCONFIG "C"
-  IMPORTED_LOCATION_NOCONFIG "/home/piptouque/Téléchargements/freeglut-3.2.1/lib/libglut.a"
+  IMPORTED_LOCATION_NOCONFIG "/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/lib/libglut.a"
   )
 
 # This file does not depend on other imported targets which have

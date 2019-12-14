@@ -2,7 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/spaceball.dir/progs/demos/spaceball/spaceball.c.o"
   "CMakeFiles/spaceball.dir/progs/demos/spaceball/vmath.c.o"
   "bin/spaceball.pdb"
-  "bin/spaceball"
+  "bin/spaceball.exe"
+  "lib/libspaceball.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

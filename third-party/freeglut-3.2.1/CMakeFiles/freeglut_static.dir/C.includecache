@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/android/fg_internal_android.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/android/fg_internal_android.h
 egl/fg_internal_egl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/android/egl/fg_internal_egl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/android/egl/fg_internal_egl.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/blackberry/fg_internal_blackberry.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/blackberry/fg_internal_blackberry.h
 egl/fg_internal_egl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/blackberry/egl/fg_internal_egl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/blackberry/egl/fg_internal_egl.h
 screen/screen.h
 -
 bps/event.h
@@ -20,95 +20,95 @@ bps/event.h
 bps/navigator.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_callback_macros.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_callback_macros.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_callbacks.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_callbacks.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_cursor.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_cursor.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_display.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_display.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_ext.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_ext.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_font.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_font.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_font_data.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_font_data.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_gamemode.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_gamemode.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_geometry.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_geometry.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 fg_gl2.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_gl2.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_gl2.h
 math.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_gl2.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_gl2.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 fg_gl2.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_gl2.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_gl2.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_gl2.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_gl2.h
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_init.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_init.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 util/xparsegeometry_repl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/util/xparsegeometry_repl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/util/xparsegeometry_repl.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_input_devices.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_input_devices.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 config.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/config.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/config.h
 fg_version.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_version.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_version.h
 fg_callback_macros.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_callback_macros.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_callback_macros.h
 stdio.h
 -
 string.h
@@ -138,15 +138,15 @@ stdint.h
 inttypes.h
 -
 wayland/fg_internal_wl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/wayland/fg_internal_wl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/wayland/fg_internal_wl.h
 x11/fg_internal_x11.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_internal_x11.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_internal_x11.h
 mswin/fg_internal_mswin.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/mswin/fg_internal_mswin.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/mswin/fg_internal_mswin.h
 android/fg_internal_android.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/android/fg_internal_android.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/android/fg_internal_android.h
 blackberry/fg_internal_blackberry.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/blackberry/fg_internal_blackberry.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/blackberry/fg_internal_blackberry.h
 InputSprocket.h
 -
 mach/mach.h
@@ -156,19 +156,19 @@ IOKit/IOkitLib.h
 IOKit/hid/IOHIDLib.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_joystick.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_joystick.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 sys/param.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_main.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_main.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 errno.h
 -
 stdarg.h
@@ -176,81 +176,81 @@ stdarg.h
 limits.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_menu.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_menu.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_misc.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_misc.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_overlay.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_overlay.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_spaceball.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_spaceball.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_state.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_state.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_stroke_mono_roman.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_stroke_mono_roman.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_stroke_roman.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_stroke_roman.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_structure.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_structure.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_teapot.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_teapot.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 fg_teapot_data.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_teapot_data.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_teapot_data.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_teapot_data.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_teapot_data.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_version.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_version.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_videoresize.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_videoresize.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_window.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_window.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 fg_gl2.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_gl2.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_gl2.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/mswin/fg_internal_mswin.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/mswin/fg_internal_mswin.h
 windows.h
 -
 windowsx.h
@@ -260,17 +260,17 @@ mmsystem.h
 tchar.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/util/xparsegeometry_repl.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/util/xparsegeometry_repl.c
 stdlib.h
 -
 xparsegeometry_repl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/util/xparsegeometry_repl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/util/xparsegeometry_repl.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/util/xparsegeometry_repl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/util/xparsegeometry_repl.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/wayland/fg_internal_wl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/wayland/fg_internal_wl.h
 egl/fg_internal_egl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/wayland/egl/fg_internal_egl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/wayland/egl/fg_internal_egl.h
 wayland-egl.h
 -
 wayland-client.h
@@ -294,55 +294,55 @@ machine/joystick.h
 linux/joystick.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_cursor_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_cursor_x11.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 X11/cursorfont.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_display_x11_glx.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_display_x11_glx.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_ext_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_ext_x11.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_gamemode_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_gamemode_x11.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_glutfont_definitions_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_glutfont_definitions_x11.c
 GL/freeglut_std.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_init_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_init_x11.c
 limits.h
 -
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_internal.h
 fg_init.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_init.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_init.h
 egl/fg_init_egl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/egl/fg_init_egl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/egl/fg_init_egl.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_input_devices_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_input_devices_x11.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 errno.h
 -
 sys/ioctl.h
@@ -358,13 +358,13 @@ termios.h
 fcntl.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_internal_x11.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_internal_x11.h
 egl/fg_internal_egl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/egl/fg_internal_egl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/egl/fg_internal_egl.h
 GL/glx.h
 -
 x11/fg_internal_x11_glx.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/x11/fg_internal_x11_glx.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/x11/fg_internal_x11_glx.h
 X11/Xlib.h
 -
 X11/Xatom.h
@@ -392,11 +392,11 @@ machine/joystick.h
 linux/joystick.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_joystick_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_joystick_x11.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 sys/param.h
 -
 fcntl.h
@@ -416,11 +416,11 @@ legacy/dev/usb/usb.h
 dev/usb/usbhid.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_main_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_main_x11.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 errno.h
 -
 stdarg.h
@@ -428,17 +428,17 @@ stdarg.h
 limits.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_menu_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_menu_x11.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_spaceball_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_spaceball_x11.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 X11/Xlib.h
 -
 stdio.h
@@ -454,33 +454,33 @@ X11/Xlib.h
 X11/Xutil.h
 -
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_state_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_state_x11.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_internal.h
 egl/fg_state_egl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/egl/fg_state_egl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/egl/fg_state_egl.h
 x11/fg_state_x11_glx.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/x11/fg_state_x11_glx.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/x11/fg_state_x11_glx.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_state_x11_glx.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_state_x11_glx.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_internal.h
 x11/fg_window_x11_glx.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/x11/fg_window_x11_glx.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/x11/fg_window_x11_glx.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_structure_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_structure_x11.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_internal.h
 egl/fg_structure_egl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/egl/fg_structure_egl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/egl/fg_structure_egl.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_window_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_window_x11.c
 GL/freeglut.h
 -
 limits.h
@@ -490,23 +490,23 @@ unistd.h
 sys/types.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 egl/fg_window_egl.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/egl/fg_window_egl.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/egl/fg_window_egl.h
 x11/fg_window_x11_glx.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/x11/fg_window_x11_glx.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/x11/fg_window_x11_glx.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_window_x11_glx.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_window_x11_glx.c
 GL/freeglut.h
 -
 fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_internal.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/x11/fg_xinput_x11.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/x11/fg_xinput_x11.c
 GL/freeglut.h
 -
 ../fg_internal.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/src/fg_internal.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/src/fg_internal.h
 errno.h
 -
 stdarg.h

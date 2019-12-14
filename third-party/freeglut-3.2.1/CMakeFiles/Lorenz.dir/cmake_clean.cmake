@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Lorenz.dir/progs/demos/Lorenz/lorenz.c.o"
   "bin/Lorenz.pdb"
-  "bin/Lorenz"
+  "bin/Lorenz.exe"
+  "lib/libLorenz.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

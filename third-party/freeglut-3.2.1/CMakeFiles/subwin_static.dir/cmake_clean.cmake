@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/subwin_static.dir/progs/demos/subwin/subwin.c.o"
   "bin/subwin_static.pdb"
-  "bin/subwin_static"
+  "bin/subwin_static.exe"
+  "lib/libsubwin_static.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

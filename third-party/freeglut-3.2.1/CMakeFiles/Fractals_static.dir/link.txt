@@ -1,1 +1,1 @@
-/usr/bin/cc  -Wall -pedantic  -rdynamic CMakeFiles/Fractals_static.dir/progs/demos/Fractals/fractals.c.o  -o bin/Fractals_static -lGLU -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi -lm lib/libglut.a -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi 
+/usr/bin/cc  -Wall -pedantic  -Wl,--enable-auto-import CMakeFiles/Fractals_static.dir/progs/demos/Fractals/fractals.c.o  -o bin/Fractals_static.exe -Wl,--out-implib,lib/libFractals_static.dll.a -Wl,--major-image-version,0,--minor-image-version,0 -lGLU -lGL -lm -lX11 -lXrandr -lXi -lm lib/libglut.a -lGL -lm -lX11 -lXrandr -lXi 

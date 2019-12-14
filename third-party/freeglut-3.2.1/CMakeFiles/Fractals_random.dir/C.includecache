@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/progs/demos/Fractals_random/fractals_random.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/progs/demos/Fractals_random/fractals_random.c
 GL/freeglut.h
 -
 stdio.h

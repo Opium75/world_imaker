@@ -1,7 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/timer_callback_static.dir/progs/demos/timer_callback/timer.c.o"
   "bin/timer_callback_static.pdb"
-  "bin/timer_callback_static"
+  "bin/timer_callback_static.exe"
+  "lib/libtimer_callback_static.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

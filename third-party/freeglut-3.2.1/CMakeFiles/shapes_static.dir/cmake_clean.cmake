@@ -2,7 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/shapes_static.dir/progs/demos/shapes/shapes.c.o"
   "CMakeFiles/shapes_static.dir/progs/demos/shapes/glmatrix.c.o"
   "bin/shapes_static.pdb"
-  "bin/shapes_static"
+  "bin/shapes_static.exe"
+  "lib/libshapes_static.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

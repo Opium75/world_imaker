@@ -1,1 +1,1 @@
-/usr/bin/c++    -rdynamic CMakeFiles/Resizer.dir/progs/demos/Resizer/Resizer.cpp.o  -o bin/Resizer -Wl,-rpath,/home/piptouque/Téléchargements/freeglut-3.2.1/lib -lGLU -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi -lm lib/libglut.so.3.11.0 -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi 
+/usr/bin/c++.exe   -Wl,--enable-auto-import CMakeFiles/Resizer.dir/progs/demos/Resizer/Resizer.cpp.o  -o bin/Resizer.exe -Wl,--out-implib,lib/libResizer.dll.a -Wl,--major-image-version,0,--minor-image-version,0 -lGLU -lGL -lm -lX11 -lXrandr -lXi -lm lib/libglut.dll.a -lGL -lm -lX11 -lXrandr -lXi 

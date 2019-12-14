@@ -25,8 +25,9 @@ message("PROJECT_BINARY_DIR     : " ${PROJECT_BINARY_DIR})
 message("PROJECT_SOURCE_DIR     : " ${PROJECT_SOURCE_DIR})
 message("PROJECT_LIB_DIR     : " ${PROJECT_LIB_DIR})
 message("PROJECT_EXTLIB_DIR     : " ${PROJECT_EXTLIB_DIR})
-set(CMAKE_CXX_STANDARD 17)
 
+
+set(CMAKE_CXX_STANDARD 17)
 
 # add a "output" directory in the project binary directory
 #file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/output)
@@ -37,10 +38,9 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/output)
 ## INCLUDE LIB ##
 set(WIM_DIRNAME wim)
 
-set(GLU_DIRNAME glu-9.0.1)
 set(GLUT_DIRNAME freeglut-3.2.1)
 set(GLEW_DIRNAME glew-2.1.0)
-set(SDL_DIRNAME SDL-1.2.15)
+set(SDL2_DIRNAME SDL2-2.0.10)
 set(EIGEN3_DIRNAME eigen3)
 set(GLM_DIRNAME glm)
 set(GLIMAC_DIRNAME glimac)
@@ -53,72 +53,79 @@ set(WIM_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/${WIM_DIRNAME}/include)
 #OpenGL
 message("Looking for OpenGL...")
 find_package(OpenGL REQUIRED)
-if(${OpenGL_FOUND})
-    message(STATUS "... found")
-    message(STATUS "  version " ${OpenGL_VERSION_STRING})
-    message(STATUS "  include " ${OpenGL_INCLUDE_DIR})
-endif()
+message(STATUS "  version " ${OpenGL_VERSION_STRING})
+message(STATUS "  include " ${OpenGL_INCLUDE_DIR})
 
 
-#SDL
+#SDL2
 message("Looking for SDL...")
-set(SDL_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${SDL_DIRNAME}/include)
-set(SDL_LIBRARY_DIR ${PROJECT_EXTLIB_DIR}/${SDL_DIRNAME}/lib)
-if(CYGWIN)
-    set(SDL_LIBRARY ${CMAKE_HOME_DIRECTORY}/${SDL_LIBRARY_DIR}/win64/libSDLmain.a)
+set(SDL2_LIBRARY_DIR  ${PROJECT_EXTLIB_DIR}/${SDL2_DIRNAME}/lib)
+set(SDL2_INCLUDE_DIR  ${PROJECT_EXTLIB_DIR}/${SDL2_DIRNAME}/include)
+if(WIN32)
+    #x86 or x64
+    if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
+        set(SDL2_LIBRARY "${CMAKE_HOME_DIRECTORY}/${SDL2_LIBRARY_DIR}/x64/SDL2.lib;${CMAKE_HOME_DIRECTORY}/${SDL2_LIBRARY_DIR}/x64/SDL2main.lib")
+    else ()
+        set(SDL2_LIBRARY "${CMAKE_HOME_DIRECTORY}/${SDL2_LIBRARY_DIR}/x86/SDL2.lib;${CMAKE_HOME_DIRECTORY}/${SDL2_LIBRARY_DIR}/x86/SDL2main.lib")
+    endif ()
+    string(STRIP "${SDL_LIBRARY}" SDL2_LIBRARIES)
 else()
-    set(SDL_LIBRARY ${CMAKE_HOME_DIRECTORY}/${SDL_LIBRARY_DIR}/lin64/libSDL-1.2.so.0.11.4)
-endif(CYGWIN)
+    find_package(SDL2 REQUIRED)
+endif(WIN32)
+
+message(STATUS " lib " ${SDL2_LIBRARY})
+message(STATUS " include " ${SDL2_INCLUDE_DIR})
 
 #Eigen
 message("Looking for Eigen...")
 set(EIGEN3_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${EIGEN3_DIRNAME})
-#find_package(Eigen3 REQUIRED)
+find_package(Eigen3 REQUIRED)
 #Nothing to do here ?
-#if(${EIGEN3_FOUND})
-#    message(STATUS "...found")
-#    message(STATUS "  version " ${EIGEN3_VERSION_STRING})
-#    message(STATUS "  include " ${EIGEN3_INCLUDE_DIR})
-#endif()
+message(STATUS " include " ${EIGEN3_INCLUDE_DIR})
 
 #GLUT
 message("Looking for GLUT...")
 set(GLUT_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME}/include)
 set(GLUT_LIBRARY_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME}/lib)
-if(CYGWIN)
-    set(GLUT_glut_LIBRARY ${CMAKE_HOME_DIRECTORY}/${GLUT_LIBRARY_DIR}/...?)
+if(WIN32)
+    set(GLUT_glut_LIBRARY ${CMAKE_HOME_DIRECTORY}/${GLUT_LIBRARY_DIR}/x64/libgluts.lib)
 else()
     set(GLUT_glut_LIBRARY ${CMAKE_HOME_DIRECTORY}/${GLUT_LIBRARY_DIR}/libglut.so.3.11.0)
-endif(CYGWIN)
-
-#find_package(GLUT REQUIRED)
-#if(${GLUT_FOUND})
-#    message(STATUS "...found")
-#    message(STATUS "  version " ${GLUT_VERSION_STRING})
-#    message(STATUS "  include " ${GLUT_INCLUDE_DIR})
-#endif()
+endif(WIN32)
+message(STATUS " include " ${GLUT_INCLUDE_DIR})
+message(STATUS " lib " ${GLUT_glut_LIBRARY})
 
 #glew
+message("Looking for GLEW...")
 set(GLEW_INCLUDE_DIRS ${PROJECT_EXTLIB_DIR}/${GLEW_DIRNAME}/include)
 set(GLEW_LIBRARY_DIR ${PROJECT_EXTLIB_DIR}/${GLEW_DIRNAME}/lib)
-if(CYGWIN)
-    set(GLEW_LIBRARIES ${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/win64/glew32.lib)
+if(WIN32)
+    if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
+        set(GLEW_LIBRARIES "${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/x64/glew32s.lib")
+    else()
+        set(GLEW_LIBRARIES "${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/x86/glew32s.lib")
+    endif()
 else()
-    set(GLEW_LIBRARIES ${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/lin64/libGLEW.so.2.1.0)
-endif(CYGWIN)
+    set(GLEW_LIBRARIES ${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/unix/libGLEW.so.2.1.0)
+endif(WIN32)
+message(STATUS " include " ${GLEW_INCLUDE_DIRS})
+message(STATUS " lib " ${GLEW_LIBRARIES})
+
+
 
 #GLM
 set(GLM_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLM_DIRNAME}/include)
 
-# Include paths, inorder to use #include <....>
+# Include paths, in order to use #include <....>
 include_directories(${WIM_INCLUDE_DIR}
-        \ ${SDL_INCLUDE_DIR}
-        \ ${OPENGL_INCLUDE_DIR}
-        \ ${GLUT_INCLUDE_DIR}
-        \ ${GLEW_INCLUDE_DIRS}
-        \ ${EIGEN3_INCLUDE_DIR}
-        \ ${GLM_INCLUDE_DIR}
+        ${SDL2_INCLUDE_DIR}
+        ${OPENGL_INCLUDE_DIR}
+        ${GLUT_INCLUDE_DIR}
+        ${GLEW_INCLUDE_DIRS}
+        ${EIGEN3_INCLUDE_DIR}
+        ${GLM_INCLUDE_DIR}
         )
+
 ### INTERNAL STATIC LIBS ###
 
 #imgui
@@ -132,23 +139,29 @@ add_subdirectory(${PROJECT_LIB_DIR}/${GLIMAC_DIRNAME})
 
 include_directories(
         ${IMGUI_INCLUDE_DIR}
-        \ ${GLIMAC_INCLUDE_DIR}
+      \ ${GLIMAC_INCLUDE_DIR}
 )
-set(STATIC_LIBRARIES glimac imgui)
+set(INTERN_LIBRARIES glimac imgui)
 
 ##### #####
 
+
 set(ALL_LIBRARIES
-        \ ${SDL_LIBRARY}
-        \ ${OPENGL_LIBRARIES}
-        \ ${GLEW_LIBRARIES}
-        \ ${GLUT_glut_LIBRARY}
-        \ ${STATIC_LIBRARIES}
+        ${SDL2_LIBRARY}
+        ${OPENGL_LIBRARIES}
+        ${GLEW_LIBRARIES}
+        ${GLUT_glut_LIBRARY}
+        ${INTERN_LIBRARIES}
         )
 
 # compilation flags
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall -Werror -std=c++11")
-set(CMAKE_CXX_FLAGS_DEBUG_INIT "-g")
+if(WIN32)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 ")
+    set(CMAKE_CXX_FLAGS_DEBUG_INIT "/g")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall -Werror -std=c++11")
+    set(CMAKE_CXX_FLAGS_DEBUG_INIT "-g")
+endif(WIN32)
 
 add_executable(world_imaker
         ##WORLD IMAKER
@@ -175,11 +188,25 @@ add_executable(world_imaker
         src/wim/include/wim/wim.hpp
         )
 
+
 target_link_libraries(world_imaker
-        ${STATIC_LIBRARIES}
         ${OPENGL_LIBRARIES}
-        ${SDL_LIBRARY}
         ${GLEW_LIBRARIES}
         ${GLUT_glut_LIBRARY}
-)
+        ${INTERN_LIBRARIES}
+        ${SDL2_LIBRARY}
+        )
 
+if(WIN32)
+    ###ADDING SDL2 DLLs to ouput folder###
+    if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
+        set(SDL2_LIBRARY_DLL ${SDL2_LIBRARY_DIR}/x64/SDL2.dll)
+    else()
+        set(SDL2_LIBRARY_DLL ${SDL2_LIBRARY_DIR}/x86/SDL2.dll)
+    endif()
+    message(STATUS ${SDL2_LIBRARY_DLL})
+    add_custom_command(TARGET world_imaker POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    "${CMAKE_HOME_DIRECTORY}/${SDL2_LIBRARY_DLL}"
+                    $<TARGET_FILE_DIR:world_imaker>)
+endif(WIN32)

@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/progs/demos/shapes/glmatrix.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/progs/demos/shapes/glmatrix.c
 string.h
 -
 math.h
 -
 glmatrix.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/progs/demos/shapes/glmatrix.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/progs/demos/shapes/glmatrix.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/progs/demos/shapes/glmatrix.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/progs/demos/shapes/glmatrix.h
 
-/home/piptouque/Téléchargements/freeglut-3.2.1/progs/demos/shapes/shapes.c
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/progs/demos/shapes/shapes.c
 GL/freeglut.h
 -
 stdarg.h
@@ -28,7 +28,7 @@ stdlib.h
 stddef.h
 -
 glmatrix.h
-/home/piptouque/Téléchargements/freeglut-3.2.1/progs/demos/shapes/glmatrix.h
+/cygdrive/c/Users/Pip/Documents/projets_gite/world_imaker/third-party/freeglut-3.2.1/progs/demos/shapes/glmatrix.h
 crtdbg.h
 -
 
