@@ -9,6 +9,7 @@
 //Use glew as static library
 #define GLEW_STATIC
 #include <GL/glew.h>
+#include <GL/glut.h>
 
 #include <imgui.h>
 
@@ -20,16 +21,16 @@
 #include "CubeStack.hpp"
 #include "CubeWorld.hpp"
 
-//default values for the SDL display window.
-/*const char* DISP_WINDOW_NAME = "wim";
-const float DEFAULT_WINDOW_WIDTH = 600.f;
-const float DEFAULT_WINDOW_HEIGHT = 400.f;
-*/
+
 namespace wim {
+    //default values for the SDL display window.
+    static const float DISP_WINDOW_WIDTH = 600.f;
+    static const float DISP_WINDOW_HEIGHT = 400.f;
+    constexpr static const char* DISP_WINDOW_NAME = "wim"; //Look! We used constexpr!
     //Visitor class
     class Displayer {
     private:
-        typedef std::shared_ptr<glimac::SDLWindowManager> WManagerPtr;
+        typedef std::unique_ptr<glimac::SDLWindowManager> WManagerPtr;
         WManagerPtr _manager;
     public:
         Displayer() : _manager()

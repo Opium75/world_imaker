@@ -7,15 +7,24 @@ SDLWindowManager::SDLWindowManager(uint32_t width, uint32_t height, const char* 
         std::cerr << SDL_GetError() << std::endl;
         return;
     }
-   /* if(!SDL_SetVideoMode(width, height, 32, SDL_OPENGL)) {
-        std::cerr << SDL_GetError() << std::endl;
-        return;
-    }
-    */
-   // SDL_WM_SetCaption(title, nullptr);
+
+   _window.reset(SDL_CreateWindow(
+           title,
+           SDL_WINDOWPOS_UNDEFINED,
+           SDL_WINDOWPOS_UNDEFINED,
+           width,
+           height,
+           SDL_WINDOW_OPENGL
+                 ), WindowDeleter()
+   );
+   _context = SDL_GL_CreateContext(&*_window);
+
 }
 
 SDLWindowManager::~SDLWindowManager() {
+    SDL_GL_DeleteContext(_context);
+    //Destroying window by resetting the pointer (through WindowDeleter, see header.)
+    _window.reset();
     SDL_Quit();
 }
 
@@ -24,8 +33,8 @@ bool SDLWindowManager::pollEvent(SDL_Event& e) {
 }
 
 bool SDLWindowManager::isKeyPressed(SDL_Keycode key) const {
-   // return SDL_GetKeyState(nullptr)[key];
-    return false;
+   //return SDL_GetKey(nullptr)[key];
+   return false;
 }
 
 // button can SDL_BUTTON_LEFT, SDL_BUTTON_RIGHT and SDL_BUTTON_MIDDLE

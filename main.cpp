@@ -1,7 +1,6 @@
 
 #include <iostream>
 
-
 #include <wim/wim.hpp>
 
 int main() {

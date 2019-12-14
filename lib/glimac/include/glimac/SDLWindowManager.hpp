@@ -1,8 +1,9 @@
 #pragma once
 
+#include <memory>
 #include <cstdint>
 #include <iostream>
-#include <SDL/SDL.h>
+#include <SDL2/SDL.h>
 
 //to avoid linking error
 #undef main
@@ -12,8 +13,25 @@
 namespace glimac {
 
     /* todo: Migrate to SDL2 !! */
-
+    class WindowDeleter {
+        /* We have use a custom destructor,
+        * and so specify what action to perform
+        * (destroy window) as template param during the initialisation
+        * when deleting the object.
+         * But we can only use a type as param,
+         * thus this class.
+        */
+    public:
+        WindowDeleter() = default;
+        ~WindowDeleter() = default;
+        inline void operator()(SDL_Window* window) {SDL_DestroyWindow(window);}
+    };
 class SDLWindowManager {
+private:
+    typedef std::shared_ptr<SDL_Window> SDL_WindowPtr;
+    SDL_WindowPtr _window;
+    SDL_GLContext _context;
+
 public:
     SDLWindowManager(uint32_t width, uint32_t height, const char* title);
 

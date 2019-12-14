@@ -37,11 +37,10 @@ namespace wim {
     {
 
         //Init SDLWIndowManager
-        _manager = std::make_shared<glimac::SDLWindowManager>(
-                glimac::SDLWindowManager(
-                       // DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT, DISP_WINDOW_NAME
-                        400, 400, "wim"
-                       )
+        _manager = std::make_unique<glimac::SDLWindowManager>(
+                       wim::DISP_WINDOW_WIDTH,
+                       wim::DISP_WINDOW_HEIGHT,
+                       wim::DISP_WINDOW_NAME
         );
 
         GLenum glewInitError = glewInit();
@@ -49,8 +48,7 @@ namespace wim {
         {
             throw Exception(ExceptCode::INIT_ERROR, 1, "Could not initialise glew.");
         }
-
-        /* Start-up imgui */
+        //Start-up imgui
         IMGUI_CHECKVERSION();
         ImGui::CreateContext();
 

@@ -59,9 +59,9 @@ message(STATUS "  include " ${OpenGL_INCLUDE_DIR})
 
 #SDL2
 message("Looking for SDL...")
-set(SDL2_LIBRARY_DIR  ${PROJECT_EXTLIB_DIR}/${SDL2_DIRNAME}/lib)
-set(SDL2_INCLUDE_DIR  ${PROJECT_EXTLIB_DIR}/${SDL2_DIRNAME}/include)
 if(WIN32)
+    set(SDL2_LIBRARY_DIR  ${PROJECT_EXTLIB_DIR}/${SDL2_DIRNAME}/lib)
+    set(SDL2_INCLUDE_DIRS  ${PROJECT_EXTLIB_DIR}/${SDL2_DIRNAME}/include)
     #x86 or x64
     if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
         set(SDL2_LIBRARY "${CMAKE_HOME_DIRECTORY}/${SDL2_LIBRARY_DIR}/x64/SDL2.lib;${CMAKE_HOME_DIRECTORY}/${SDL2_LIBRARY_DIR}/x64/SDL2main.lib")
@@ -83,18 +83,6 @@ find_package(Eigen3 REQUIRED)
 #Nothing to do here ?
 message(STATUS " include " ${EIGEN3_INCLUDE_DIR})
 
-#GLUT
-message("Looking for GLUT...")
-set(GLUT_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME}/include)
-set(GLUT_LIBRARY_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME}/lib)
-if(WIN32)
-    set(GLUT_glut_LIBRARY ${CMAKE_HOME_DIRECTORY}/${GLUT_LIBRARY_DIR}/x64/libgluts.lib)
-else()
-    set(GLUT_glut_LIBRARY ${CMAKE_HOME_DIRECTORY}/${GLUT_LIBRARY_DIR}/libglut.so.3.11.0)
-endif(WIN32)
-message(STATUS " include " ${GLUT_INCLUDE_DIR})
-message(STATUS " lib " ${GLUT_glut_LIBRARY})
-
 #glew
 message("Looking for GLEW...")
 set(GLEW_INCLUDE_DIRS ${PROJECT_EXTLIB_DIR}/${GLEW_DIRNAME}/include)
@@ -106,19 +94,30 @@ if(WIN32)
         set(GLEW_LIBRARIES "${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/x86/glew32s.lib")
     endif()
 else()
-    set(GLEW_LIBRARIES ${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/unix/libGLEW.so.2.1.0)
+    set(GLEW_LIBRARIES ${CMAKE_HOME_DIRECTORY}/${GLEW_LIBRARY_DIR}/unix/libGLEW.a)
 endif(WIN32)
 message(STATUS " include " ${GLEW_INCLUDE_DIRS})
 message(STATUS " lib " ${GLEW_LIBRARIES})
 
 
+#GLUT
+message("Looking for GLUT...")
+set(GLUT_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME}/include)
+set(GLUT_LIBRARY_DIR ${PROJECT_EXTLIB_DIR}/${GLUT_DIRNAME}/lib)
+if(WIN32)
+    set(GLUT_glut_LIBRARY ${CMAKE_HOME_DIRECTORY}/${GLUT_LIBRARY_DIR}/x64/libgluts.lib)
+else()
+    set(GLUT_glut_LIBRARY ${CMAKE_HOME_DIRECTORY}/${GLUT_LIBRARY_DIR}/unix/libglut.so)
+endif(WIN32)
+message(STATUS " include " ${GLUT_INCLUDE_DIR})
+message(STATUS " lib " ${GLUT_glut_LIBRARY})
 
 #GLM
 set(GLM_INCLUDE_DIR ${PROJECT_EXTLIB_DIR}/${GLM_DIRNAME}/include)
 
 # Include paths, in order to use #include <....>
 include_directories(${WIM_INCLUDE_DIR}
-        ${SDL2_INCLUDE_DIR}
+        ${SDL2_INCLUDE_DIRS}
         ${OPENGL_INCLUDE_DIR}
         ${GLUT_INCLUDE_DIR}
         ${GLEW_INCLUDE_DIRS}
@@ -147,7 +146,7 @@ set(INTERN_LIBRARIES glimac imgui)
 
 
 set(ALL_LIBRARIES
-        ${SDL2_LIBRARY}
+        ${SDL2_LIBRARIES}
         ${OPENGL_LIBRARIES}
         ${GLEW_LIBRARIES}
         ${GLUT_glut_LIBRARY}
@@ -194,7 +193,7 @@ target_link_libraries(world_imaker
         ${GLEW_LIBRARIES}
         ${GLUT_glut_LIBRARY}
         ${INTERN_LIBRARIES}
-        ${SDL2_LIBRARY}
+        ${SDL2_LIBRARIES}
         )
 
 if(WIN32)
