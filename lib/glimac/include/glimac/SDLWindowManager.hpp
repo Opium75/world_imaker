@@ -6,7 +6,9 @@
 #include <SDL2/SDL.h>
 
 //to avoid linking error
-#undef main
+#ifdef main
+    #undef main
+#endif
 
 #include "glm.hpp"
 
