@@ -11,7 +11,7 @@ message("CMAKE_SYSTEM_PROCESSOR : " ${CMAKE_SYSTEM_PROCESSOR})
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/modules)
 
-set(PROJECT_BINARY_DIR  build)
+set(PROJECT_BINARY_DIR  bin)
 set(PROJECT_SOURCE_DIR  src)
 set(PROJECT_LIB_DIR lib)
 set(PROJECT_EXTLIB_DIR  third-party)
@@ -30,9 +30,8 @@ message("PROJECT_EXTLIB_DIR     : " ${PROJECT_EXTLIB_DIR})
 set(CMAKE_CXX_STANDARD 14)
 
 # add a "output" directory in the project binary directory
-#file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/output)
 # put the binary files in this directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/output)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/wim)
 
 
 ## INCLUDE LIB ##
