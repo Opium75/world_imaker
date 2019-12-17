@@ -15,20 +15,20 @@ SDLWindowManager::SDLWindowManager(uint32_t width, uint32_t height, const char* 
            width,
            height,
            SDL_WINDOW_OPENGL
-                 ), WindowDeleter()
-   );
-   _context = SDL_GL_CreateContext(&*_window);
-
+    ), WindowDeleter()
+    );
+    _context = SDL_GL_CreateContext(&*_window);
+    SDL_GL_MakeCurrent(&*_window, &*_context);
 }
 
-SDLWindowManager::~SDLWindowManager() {
-    SDL_GL_DeleteContext(_context);
-    //Destroying window by resetting the pointer (through WindowDeleter, see header.)
-    _window.reset();
-    SDL_Quit();
-}
+    SDLWindowManager::~SDLWindowManager() {
+        SDL_GL_DeleteContext(_context);
+        //Destroying window by resetting the pointer (through WindowDeleter, see header.)
+        _window.reset();
+        SDL_Quit();
+    }
 
-bool SDLWindowManager::pollEvent(SDL_Event& e) {
+    bool SDLWindowManager::pollEvent(SDL_Event& e) {
     return SDL_PollEvent(&e);
 }
 

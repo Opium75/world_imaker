@@ -183,8 +183,9 @@ add_executable(world_imaker
         src/wim/include/wim/Cube.hpp
         src/wim/include/wim/Colour.hpp
         src/wim/include/wim/Exception.hpp
-        src/wim/include/wim/Window.hpp
+        src/wim/include/wim/Widgets.hpp
         src/wim/include/wim/wim.hpp
+        src/wim/include/wim/Controller.hpp
         )
 
 

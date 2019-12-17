@@ -11,11 +11,10 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 
-#include <imgui.h>
-
 #include <glimac/SDLWindowManager.hpp>
 
 #include "Exception.hpp"
+#include "Widgets.hpp"
 
 #include "Cube.hpp"
 #include "CubeStack.hpp"
@@ -32,10 +31,12 @@ namespace wim {
     private:
         typedef std::unique_ptr<glimac::SDLWindowManager> WManagerPtr;
         WManagerPtr _manager;
+        Widgets _widget;
     public:
-        Displayer() : _manager()
+        Displayer() : _manager(), _widget()
         {
             this->initDisplay();
+            _widget = Widgets(_manager.get()->getWindowPtr(), _manager.get()->getGlContext());
         }
         ~Displayer() = default;
 
@@ -43,6 +44,9 @@ namespace wim {
         void display(const Cube &cube) const;
         void display(const CubeStack &stack) const;
         void display(const CubeWorld &world) const;
+        void display(const Widgets &widget) const;
+
+        void displayAll() const;
 
     private:
         //todo: WE'VE GOT TO HOLD ON TO WHAT WE'VE GOT

@@ -14,6 +14,6 @@
 #include "CubeStack.hpp"
 #include "CubeWorld.hpp"
 
-#include "Displayer.hpp"
+#include "Controller.hpp"
 
 #endif //WORLD_IMAKER_WIM_HPP

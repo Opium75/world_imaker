@@ -4,7 +4,9 @@
 #include <wim/wim.hpp>
 
 int main() {
-    wim::Displayer display;
+    wim::Controller controller;
+    controller.runApp();
+
     wim::Vec3D p1(1,-1, 0);
     wim::Point3D p2(1,3,3);
     wim::Vec3D v1 = wim::Vec3D::Random();

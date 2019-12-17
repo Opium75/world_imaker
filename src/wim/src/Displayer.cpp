@@ -9,28 +9,61 @@
 namespace wim {
 
 
-    void Cube::display(const Displayer &disp) const {
+    void Cube::display(const Displayer &disp) const
+    {
         return disp.display(*this);
     }
 
-    void CubeStack::display(const Displayer &disp) const {
+    void CubeStack::display(const Displayer &disp) const
+    {
         return disp.display(*this);
     }
 
-    void CubeWorld::display(const Displayer &disp) const {
+    void CubeWorld::display(const Displayer &disp) const
+    {
         return disp.display(*this);
     }
 
-    void Displayer::display(const Cube &cube) const {
+    void Widgets::display(const Displayer &disp) const
+    {
+        disp.display(*this);
+    };
+
+    void Displayer::display(const Cube &cube) const
+    {
         std::cout << cube << std::endl;
     }
 
-    void Displayer::display(const CubeStack &stack) const {
+    void Displayer::display(const CubeStack &stack) const
+    {
         std::cout << stack << std::endl;
     }
 
-    void Displayer::display(const CubeWorld &world) const {
+    void Displayer::display(const CubeWorld &world) const
+    {
         std::cout << world(0, 0) << std::endl;
+    }
+
+    void Displayer::display(const Widgets &widget) const
+    {
+        /* */
+        ImGui::SetCurrentContext(widget._context);
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplSDL2_NewFrame(_manager->getWindowPtr().get());
+        ImGui::NewFrame();
+
+        widget.showDemo(_manager->getWindowPtr());
+
+        /** ImGuiRendering **/
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+    }
+
+
+
+    void Displayer::displayAll() const
+    {
+        this->display(_widget);
     }
 
     void Displayer::initDisplay()
@@ -48,9 +81,6 @@ namespace wim {
         {
             throw Exception(ExceptCode::INIT_ERROR, 1, "Could not initialise glew.");
         }
-        //Start-up imgui
-        IMGUI_CHECKVERSION();
-        ImGui::CreateContext();
 
         std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
         std::cout << "GLEW Version:   " << glewGetString(GLEW_VERSION) << std::endl;
