@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.7)
 
 project(world_imaker)
 
@@ -11,7 +11,7 @@ message("CMAKE_SYSTEM_PROCESSOR : " ${CMAKE_SYSTEM_PROCESSOR})
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/modules)
 
-set(PROJECT_BINARY_DIR  build)
+set(PROJECT_BINARY_DIR  bin)
 set(PROJECT_SOURCE_DIR  src)
 set(PROJECT_LIB_DIR lib)
 set(PROJECT_EXTLIB_DIR  third-party)
@@ -27,12 +27,11 @@ message("PROJECT_LIB_DIR     : " ${PROJECT_LIB_DIR})
 message("PROJECT_EXTLIB_DIR     : " ${PROJECT_EXTLIB_DIR})
 
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
 # add a "output" directory in the project binary directory
-#file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/output)
 # put the binary files in this directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/output)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/wim)
 
 
 ## INCLUDE LIB ##
@@ -198,7 +197,7 @@ target_link_libraries(world_imaker
         )
 
 if(WIN32)
-    ###ADDING SDL2 DLLs to ouput folder###
+    ###ADDING SDL2 DLL to output folder for runtime library###
     if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
         set(SDL2_LIBRARY_DLL ${SDL2_LIBRARY_DIR}/x64/SDL2.dll)
     else()
