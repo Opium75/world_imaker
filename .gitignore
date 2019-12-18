@@ -2,5 +2,10 @@
 .idea/dictionaries/piptouque.xml
 build/
 build-release/
+<<<<<<< HEAD
 
 imgui.ini
+=======
+
+cmake-build-debug/
+>>>>>>> ImGui

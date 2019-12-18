@@ -39,9 +39,21 @@ namespace wim {
                     loop = false;
                     break;
 
+                case SDL_KEYDOWN  :
+                    //Fonction in Controller or switch and case ?
+                    std::cout << "Ahaha" << std::endl;
+                    break;
 
+                case SDL_MOUSEMOTION :
+                    //Get the position
+                    break;
+
+                case SDL_MOUSEBUTTONDOWN :
+                    //
+                    break;
 
                 default :
+                    std::cout << "e event :" << e.type << std::endl;
                     break;
             }
         }
