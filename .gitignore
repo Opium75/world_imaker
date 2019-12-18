@@ -2,3 +2,5 @@
 .idea/dictionaries/piptouque.xml
 build/
 build-release/
+
+cmake-build-debug/
