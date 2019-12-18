@@ -90,7 +90,7 @@ namespace wim {
         }
 
         //Loading shaders according to conf file in resources/shaders
-        //_shaders = ShaderManager(appPath);
+        _loader = ShaderLoader(appPath);
         std::cout << appPath << std::endl;
         //for now, we use only one set of shaders:
 

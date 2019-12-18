@@ -2,7 +2,7 @@
 // Created by piptouque on 18/12/2019.
 //
 
-#include "../include/wim/ShaderManager.hpp"
+#include "../include/wim/ShaderLoader.hpp"
 
 namespace wim
 {

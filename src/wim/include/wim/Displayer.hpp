@@ -15,7 +15,7 @@
 
 #include "Exception.hpp"
 #include "Widgets.hpp"
-//#include "ShaderManager.hpp"
+#include "ShaderLoader.hpp"
 
 #include "Cube.hpp"
 #include "CubeStack.hpp"
@@ -32,13 +32,12 @@ namespace wim {
     private:
         typedef std::unique_ptr<glimac::SDLWindowManager> WManagerPtr;
         WManagerPtr _manager;
-        //ShaderManager _shaders;
+        ShaderLoader _loader;
         Widgets _widget;
     public:
-        Displayer(const char* appPath) : _manager(),_widget()
+        Displayer(const char* appPath) : _manager(), _loader(), _widget()
         {
             this->initDisplay(appPath);
-            //std::cout << _shaders;
         }
         ~Displayer() = default;
 

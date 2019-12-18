@@ -10,7 +10,7 @@ namespace wim {
     ShaderCouple ShaderCouple::loadCouple(std::ifstream &stream) {
         ShaderCouple couple;
         if (!stream.is_open()) {
-            throw Exception(ExceptCode::NULL_POINTER, 1, "Trying to acess empty stream. Is file properly loaded ?");
+            throw Exception(ExceptCode::NULL_POINTER, 1, "Trying to access empty stream. Is file properly loaded ?");
         }
         //vs, then fs
         char *buffer = new char[MAX_SIZE_SHADER_FILENAME];
@@ -76,4 +76,12 @@ namespace wim {
 
 
     }
+
+
+    void ShaderManager::initManager(const glimac::FilePath& appPathDir, const ShaderCouple& couple)
+    {
+        this->loadProgramme(appPathDir, couple);
+        this->loadUniAttrLoc();
+    }
+
 }
