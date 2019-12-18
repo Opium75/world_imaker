@@ -73,8 +73,9 @@ namespace wim
 
         void sendUniAttribLight(const glm::vec3& lightPos_vs, const glm::vec3& lightIntensity) const;
 
+        inline const glimac::Program& getProgramme() const {return _programme;}
 
-
+        inline glimac::Program& getProgramme() {return _programme;}
 
         inline void useShaders() const {_programme.use();}
 
