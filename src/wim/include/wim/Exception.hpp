@@ -16,7 +16,10 @@ namespace wim
     enum class ExceptCode
     {
         INIT_ERROR,
-        OUT_OF_RANGE
+        OUT_OF_RANGE,
+        NULL_POINTER,
+        END_OF_FILE,
+        CATASTROPHIC_FAILURE
     };
 
 
@@ -33,6 +36,10 @@ namespace wim
         Exception(const ExceptCode& code, const ExceptLvl lvl, const std::string& msg) noexcept
             : _code(code), _lvl(lvl), _msg(msg)
         {}
+        Exception(const Exception& except) noexcept
+            : _code(except._code), _lvl(except._lvl), _msg(except._msg)
+        {}
+
         virtual ~Exception() noexcept {}
 
         inline ExceptLvl getLevel() const noexcept {return _lvl;}

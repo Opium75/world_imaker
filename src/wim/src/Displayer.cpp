@@ -47,26 +47,33 @@ namespace wim {
     void Displayer::display(const Widgets &widget) const
     {
         /* */
-        ImGui::SetCurrentContext(widget._context);
+        /*
+        ImGui::SetCurrentContext(widget.getIGContext());
+        ImGuiIO &io = ImGui::GetIO(); (void)io;
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplSDL2_NewFrame(_manager->getWindowPtr().get());
         ImGui::NewFrame();
 
-        widget.showDemo(_manager->getWindowPtr());
-
+        widget.showDemo();
+*/
+        widget.showDemo(_manager->getWindowPtr()/*, _manager->getGlContext()*/);
         /** ImGuiRendering **/
+        /*
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+         */
     }
 
 
 
     void Displayer::displayAll() const
     {
+
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         this->display(_widget);
     }
 
-    void Displayer::initDisplay()
+    void Displayer::initDisplay(const char* appPath)
     {
 
         //Init SDLWIndowManager
@@ -81,6 +88,18 @@ namespace wim {
         {
             throw Exception(ExceptCode::INIT_ERROR, 1, "Could not initialise glew.");
         }
+
+        //Loading shaders according to conf file in resources/shaders
+        //_shaders = ShaderManager(appPath);
+        std::cout << appPath << std::endl;
+        //for now, we use only one set of shaders:
+
+
+        //init Imgui ? Nope, gets done befor by Controller.
+        _widget = Widgets(/*_manager.get()->getWindowPtr(), _manager.get()->getGlContext()*/);
+
+        //FOR 3d
+        glEnable(GL_DEPTH_TEST);
 
         std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
         std::cout << "GLEW Version:   " << glewGetString(GLEW_VERSION) << std::endl;

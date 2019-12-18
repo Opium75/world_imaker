@@ -3,10 +3,17 @@
 
 #include <wim/wim.hpp>
 
-int main() {
-    wim::Controller controller;
+int main(int argc, char **argv) {
+    if(argc<1)
+    {
+        /*that won't happen, but whatever. I need to use argc somehow
+        *  so I don't get the unused variable warning (treated as an error).
+         */
+        throw wim::Exception(wim::ExceptCode::CATASTROPHIC_FAILURE, 42, "All your bases are belong to us!");
+    }
+    wim::Controller controller(argv[0]);
     controller.runApp();
-
+/*
     wim::Vec3D p1(1,-1, 0);
     wim::Point3D p2(1,3,3);
     wim::Vec3D v1 = wim::Vec3D::Random();
@@ -29,7 +36,7 @@ int main() {
     std::cout << s1 << std::endl;
     std::cout << "Pile de cubes aléatoires 2 : " << std::endl;
     std::cout << s2 << std::endl;
-
+*/
     return EXIT_SUCCESS;
 
 }

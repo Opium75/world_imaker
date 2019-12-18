@@ -14,11 +14,12 @@ SDLWindowManager::SDLWindowManager(uint32_t width, uint32_t height, const char* 
            SDL_WINDOWPOS_UNDEFINED,
            width,
            height,
-           SDL_WINDOW_OPENGL
+           (SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)
     ), WindowDeleter()
     );
     _context = SDL_GL_CreateContext(&*_window);
-    SDL_GL_MakeCurrent(&*_window, &*_context);
+    SDL_GL_MakeCurrent(&*_window, _context);
+    SDL_GL_SetSwapInterval(1); //for vsync (?)
 }
 
     SDLWindowManager::~SDLWindowManager() {

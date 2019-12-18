@@ -26,25 +26,28 @@ namespace wim
     private:
         typedef ImGuiContext* IGContextPtr;
         IGContextPtr _context;
+        ImGuiIO* _io;
     public:
-        Widgets() = default;
-        Widgets(const glimac::SDLWindowManager::SDL_WindowPtr& window, const SDL_GLContext& glContext)
+        //Widgets() = default;
+        Widgets(/*const glimac::SDLWindowManager::SDL_WindowPtr& window, const SDL_GLContext& glContext*/)
         {
-            this->initWidgets(window, glContext);
+            this->initWidgets(/*window, glContext*/);
         }
 
         ~Widgets()
         {
-            ImGui_ImplOpenGL3_Shutdown();
+            /*ImGui_ImplOpenGL3_Shutdown();
             ImGui_ImplSDL2_Shutdown();
+            ImGui::SetCurrentContext(_context);
             ImGui::DestroyContext();
+             */
         }
 
-        IGContextPtr getIGContext() {return _context;}
+        const IGContextPtr& getIGContext() const {return _context;}
 
-        void initWidgets(const glimac::SDLWindowManager::SDL_WindowPtr& window, const SDL_GLContext& glContext)
+        void initWidgets(/*const glimac::SDLWindowManager::SDL_WindowPtr& window, const SDL_GLContext& glContext*/)
         {
-            std::string glslVersion = std::string("#version 150");
+          /*std::string glslVersion = std::string("#version 150");
             //Start-up imgui
             IMGUI_CHECKVERSION();
             _context = ImGui::CreateContext();
@@ -53,17 +56,41 @@ namespace wim
 
             //style
             ImGui::StyleColorsDark();
+            io.Fonts->AddFontDefault();
 
             //init for SDL2 and OpenGL 3
             ImGui_ImplSDL2_InitForOpenGL(window.get(), glContext);
             ImGui_ImplOpenGL3_Init(glslVersion.c_str());
+            */
         }
 
-        void showDemo(const glimac::SDLWindowManager::SDL_WindowPtr window) const
+        void showDemo(const glimac::SDLWindowManager::SDL_WindowPtr& window/*, const SDL_GLContext& glContext*/) const
         {
+           /*std::string glslVersion = std::string("#version 150");
+            //Start-up imgui
+            IMGUI_CHECKVERSION();
+            ImGui::CreateContext();
 
-            std::cout << "Contexte :" << ImGui::GetCurrentContext() << std::endl;
+            //style
+            ImGui::StyleColorsDark();
+
+            //init for SDL2 and OpenGL 3
+            ImGui_ImplSDL2_InitForOpenGL(window.get(), glContext);
+            ImGui_ImplOpenGL3_Init(glslVersion.c_str());
+            */
+            //std::cout << "Contexte :" << ImGui::GetCurrentContext() << std::endl;
+            ImGui::SetCurrentContext(this->getIGContext());
+            ImGuiIO &io = ImGui::GetIO(); (void)io;
+            ImGui_ImplOpenGL3_NewFrame();
+            ImGui_ImplSDL2_NewFrame(window.get());
+            ImGui::NewFrame();
+
             ImGui::ShowDemoWindow();
+
+            /*
+            ImGui::Render();
+            ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+             */
         }
 
         void display(const Displayer &disp) const;

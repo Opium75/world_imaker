@@ -16,6 +16,9 @@ set(PROJECT_SOURCE_DIR  src)
 set(PROJECT_LIB_DIR lib)
 set(PROJECT_EXTLIB_DIR  third-party)
 
+set(PROJECT_EXEC_NAME world_imaker)
+set(PROJECT_RESOURCE_DIR resources)
+SET(PROJECT_SHADER_DIR shaders)
 
 # specify the directories
 message("CMAKE_BINARY_DIR       : " ${CMAKE_BINARY_DIR})
@@ -145,11 +148,11 @@ set(INTERN_LIBRARIES glimac imgui)
 
 
 set(ALL_LIBRARIES
-        ${SDL2_LIBRARIES}
         ${OPENGL_LIBRARIES}
         ${GLEW_LIBRARIES}
         ${GLUT_glut_LIBRARY}
         ${INTERN_LIBRARIES}
+        ${SDL2_LIBRARIES}
         )
 
 # compilation flags
@@ -161,7 +164,7 @@ else()
     set(CMAKE_CXX_FLAGS_DEBUG_INIT "-g")
 endif(WIN32)
 
-add_executable(world_imaker
+add_executable(${PROJECT_EXEC_NAME}
         ##WORLD IMAKER
         #source files
         main.cpp
@@ -185,27 +188,42 @@ add_executable(world_imaker
         src/wim/include/wim/Widgets.hpp
         src/wim/include/wim/wim.hpp
         src/wim/include/wim/Controller.hpp
+        src/wim/src/Controller.cpp
+        #ignoring these files for the time being.
+        #src/wim/include/wim/ShaderManager.hpp
+        #src/wim/include/wim/ShaderLoader.hpp
+        #src/wim/src/ShaderLoader.cpp
+        #src/wim/src/ShaderManager.cpp
         )
 
 
-target_link_libraries(world_imaker
-        ${OPENGL_LIBRARIES}
-        ${GLEW_LIBRARIES}
-        ${GLUT_glut_LIBRARY}
-        ${INTERN_LIBRARIES}
-        ${SDL2_LIBRARIES}
+target_link_libraries(${PROJECT_EXEC_NAME}
+        ${ALL_LIBRARIES}
         )
 
 if(WIN32)
+    message("Adding DLL to executable dir:")
     ###ADDING SDL2 DLL to output folder for runtime library###
     if (${CMAKE_SIZEOF_VOID_P} MATCHES 8)
         set(SDL2_LIBRARY_DLL ${SDL2_LIBRARY_DIR}/x64/SDL2.dll)
     else()
         set(SDL2_LIBRARY_DLL ${SDL2_LIBRARY_DIR}/x86/SDL2.dll)
     endif()
-    message(STATUS ${SDL2_LIBRARY_DLL})
-    add_custom_command(TARGET world_imaker POST_BUILD
+    message(STATUS "Copying DLL: ${SDL2_LIBRARY_DLL} to ")
+    add_custom_command(TARGET ${PROJECT_EXEC_NAME} POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                     "${CMAKE_HOME_DIRECTORY}/${SDL2_LIBRARY_DLL}"
-                    $<TARGET_FILE_DIR:world_imaker>)
+                    $<TARGET_FILE_DIR:${PROJECT_EXEC_NAME}>)
 endif(WIN32)
+
+##SHADERS##
+#adding Shaders to build directory after compiling
+
+message("Adding Shaders and config to executable dir:")
+file(GLOB SHADERS ${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR}/*.glsl ${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR}/*.conf)
+foreach(SHADER ${SHADERS})
+    file( RELATIVE_PATH SHADER_REL ${CMAKE_HOME_DIRECTORY}/${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR} ${SHADER})
+    message(STATUS "Copying shader: ${SHADER_REL} to ${CMAKE_BINARY_DIR}/${PROJECT_BINARY_DIR}/${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR}/${SHADER_REL}")
+    configure_file(${SHADER} ${CMAKE_BINARY_DIR}/${PROJECT_BINARY_DIR}/${PROJECT_RESOURCE_DIR}//${PROJECT_SHADER_DIR}/${SHADER_REL} COPYONLY)
+
+endforeach()

@@ -17,53 +17,26 @@ namespace wim
     private:
         Displayer _disp;
     public:
-        DisplayController(): _disp()
-        {}
-        void runDisplay()
-        {
-            _disp.displayAll();
+        DisplayController(const char* appPath): _disp(appPath) {}
+        void runDisplay() const;
 
-        }
+        inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr()const {return _disp.getWindowPtr();}
+        inline const SDL_GLContext& getGLContext()const {return _disp.getGLContext();}
+
     };
 
     class UIController
     {
     private:
     public:
-        bool runInterface()
-        {
-
-            bool loop = true;
-
-            SDL_Event e;
-            while(SDL_PollEvent(&e))
-            {
-                //ImGui does its thing
-                ImGui_ImplSDL2_ProcessEvent(&e);
-
-                switch(e.type)
-                {
-                    case SDL_QUIT :
-                        loop = false;
-                        break;
-
-                        
-
-                    default :
-                        break;
-                }
-            }
-
-            return loop;
-
-        }
+        bool runInterface() const;
     };
 
     class ComputeController
     {
     private:
     public:
-        void runCompute()
+        void runCompute() const
         {
             /* Compute calculations on Model
              * add cubes, etc..
@@ -79,24 +52,11 @@ namespace wim
         UIController _uiCtrl;
         ComputeController _compCtrl;
     public:
-        Controller(): _dispCtrl(), _uiCtrl()
-        {}
+        Controller(const char* appPath): _dispCtrl(appPath), _uiCtrl() {}
 
-        bool runLoop()
-        {
-            bool loop;
-            /* */
-            //display
-            _dispCtrl.runDisplay();
-            //user interface (managing input)
-            loop = _uiCtrl.runInterface();
-            //calculating results
-            _compCtrl.runCompute();
+        bool runLoop() const;
 
-            return loop;
-        }
-
-        void runApp()
+        void runApp() const
         {
             while( this->runLoop() );
         }
