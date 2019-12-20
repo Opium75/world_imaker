@@ -7,20 +7,8 @@
 namespace wim {
     void DisplayController::runDisplay() const
     {
-        ImGuiIO &io = ImGui::GetIO();
-        (void) io;
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplSDL2_NewFrame(this->getWindowPtr().get());
-        ImGui::NewFrame();
-            //ImGui::ShowDemoWindow();
-        ImGui::Begin("T'as vu ?");
-        ImGui::End();
+        _disp.displayAll();
 
-        //_disp.displayAll();
-        ImGui::Render();
-        glViewport(0, 0, (int) io.DisplaySize.x, (int) io.DisplaySize.y);
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-        SDL_GL_SwapWindow(_disp.getWindowPtr().get());
     }
 
     bool UIController::runInterface() const
@@ -47,6 +35,8 @@ namespace wim {
                 case SDL_MOUSEMOTION :
                     //Get the position
                     break;
+
+                case SDL_MOUSEWHEEL:
 
                 case SDL_MOUSEBUTTONDOWN :
                     //

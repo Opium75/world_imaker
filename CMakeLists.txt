@@ -54,6 +54,7 @@ set(WIM_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/${WIM_DIRNAME}/include)
 
 #OpenGL
 message("Looking for OpenGL...")
+set(OpenGL_GL_PREFERENCE LEGACY)
 find_package(OpenGL REQUIRED)
 message(STATUS "  version " ${OpenGL_VERSION_STRING})
 message(STATUS "  include " ${OpenGL_INCLUDE_DIR})
@@ -74,9 +75,8 @@ if(WIN32)
 else()
     find_package(SDL2 REQUIRED)
 endif(WIN32)
-
-message(STATUS " lib " ${SDL2_LIBRARY})
 message(STATUS " include " ${SDL2_INCLUDE_DIR})
+message(STATUS " lib " ${SDL2_LIBRARIES})
 
 #Eigen
 message("Looking for Eigen...")
@@ -174,6 +174,10 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/src/Vec3D.cpp
         src/wim/src/CubeWorld.cpp
         src/wim/src/Displayer.cpp
+        src/wim/src/Controller.cpp
+        src/wim/src/ShaderManager.cpp
+        src/wim/src/ShaderSender.cpp
+        src/wim/src/CameraManager.cpp
         #headers
         src/wim/include/wim/Displayer.hpp
         src/wim/include/wim/Vec3D.hpp
@@ -185,17 +189,15 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/Cube.hpp
         src/wim/include/wim/Colour.hpp
         src/wim/include/wim/Exception.hpp
-        src/wim/include/wim/Widgets.hpp
+        src/wim/include/wim/WidgetManager.hpp
         src/wim/include/wim/wim.hpp
         src/wim/include/wim/Controller.hpp
-        src/wim/src/Controller.cpp
-        #ignoring these files for the time being.
-        #src/wim/include/wim/ShaderManager.hpp
-        #src/wim/include/wim/ShaderLoader.hpp
-        #src/wim/src/ShaderLoader.cpp
-        #src/wim/src/ShaderManager.cpp
-        )
-
+        src/wim/include/wim/ShaderSender.hpp
+        src/wim/include/wim/ShaderManager.hpp
+        src/wim/include/wim/Light.hpp
+        src/wim/include/wim/CameraManager.hpp
+        src/wim/include/wim/PatternManager.hpp
+        src/wim/include/wim/SceneRenderer.hpp)
 
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}
@@ -209,7 +211,7 @@ if(WIN32)
     else()
         set(SDL2_LIBRARY_DLL ${SDL2_LIBRARY_DIR}/x86/SDL2.dll)
     endif()
-    message(STATUS "Copying DLL: ${SDL2_LIBRARY_DLL} to ")
+    message(STATUS "Copying DLL: ${SDL2_LIBRARY_DLL}")
     add_custom_command(TARGET ${PROJECT_EXEC_NAME} POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                     "${CMAKE_HOME_DIRECTORY}/${SDL2_LIBRARY_DLL}"
@@ -225,5 +227,4 @@ foreach(SHADER ${SHADERS})
     file( RELATIVE_PATH SHADER_REL ${CMAKE_HOME_DIRECTORY}/${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR} ${SHADER})
     message(STATUS "Copying shader: ${SHADER_REL} to ${CMAKE_BINARY_DIR}/${PROJECT_BINARY_DIR}/${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR}/${SHADER_REL}")
     configure_file(${SHADER} ${CMAKE_BINARY_DIR}/${PROJECT_BINARY_DIR}/${PROJECT_RESOURCE_DIR}//${PROJECT_SHADER_DIR}/${SHADER_REL} COPYONLY)
-
 endforeach()

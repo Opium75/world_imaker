@@ -11,13 +11,14 @@
 #define __CAMERA_GENERIC_DEFAULT_ANGLE_X 0
 #define __CAMERA_GENERIC_DEFAULT_ANGLE_Y 0
 
+namespace glimac
+{
+    class GenericCamera {
+    public :
+        GenericCamera();
+        virtual glm::mat4 getViewMatrix(void) const = 0;
+    };
 
-
-class GenericCamera {
-	public :
-		GenericCamera();
-		virtual glm::mat4 getViewMatrix(void) const = 0;
-};
-
+}
 
 #endif

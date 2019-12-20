@@ -17,9 +17,21 @@ SDLWindowManager::SDLWindowManager(uint32_t width, uint32_t height, const char* 
            (SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI)
     ), WindowDeleter()
     );
-    _context = SDL_GL_CreateContext(&*_window);
-    SDL_GL_MakeCurrent(&*_window, _context);
-    SDL_GL_SetSwapInterval(1); //for vsync (?)
+    _context = SDL_GL_CreateContext(_window.get());
+    SDL_GL_MakeCurrent(_window.get(), _context);
+    SDL_GL_SetSwapInterval(1); //for vsync (?)    //SDL init done in initialisation list
+
+    GLenum glewInitError = glewInit();
+    if(GLEW_OK != glewInitError)
+    {
+       //throw Exception(ExceptCode::INIT_ERROR, 1, "Could not initialise glew.");
+    }
+
+    //FOR 3d
+    glEnable(GL_DEPTH_TEST);
+
+    std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+    std::cout << "GLEW Version:   " << glewGetString(GLEW_VERSION) << std::endl;
 }
 
     SDLWindowManager::~SDLWindowManager() {
@@ -34,8 +46,7 @@ SDLWindowManager::SDLWindowManager(uint32_t width, uint32_t height, const char* 
 }
 
 bool SDLWindowManager::isKeyPressed(SDL_Keycode key) const {
-   //return SDL_GetKey(nullptr)[key];
-   return false;
+   return SDL_GetKeyboardState(nullptr)[key];
 }
 
 // button can SDL_BUTTON_LEFT, SDL_BUTTON_RIGHT and SDL_BUTTON_MIDDLE
@@ -50,7 +61,7 @@ glm::ivec2 SDLWindowManager::getMousePosition() const {
 }
 
 void SDLWindowManager::swapBuffers() {
-    //SDL_GL_Swa();
+    SDL_GL_SwapWindow(_window.get());
 }
 
 float SDLWindowManager::getTime() const {

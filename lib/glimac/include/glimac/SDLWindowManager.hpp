@@ -10,6 +10,7 @@
     #undef main
 #endif
 
+#include <GL/glew.h>
 #include "glm.hpp"
 
 namespace glimac {

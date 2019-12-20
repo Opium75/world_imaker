@@ -24,13 +24,14 @@ namespace wim {
         return disp.display(*this);
     }
 
-    void Widgets::display(const Displayer &disp) const
+    void WidgetManager::display(const Displayer &disp) const
     {
         disp.display(*this);
     };
 
     void Displayer::display(const Cube &cube) const
     {
+       //todo: Add cube to rendering stack
         std::cout << cube << std::endl;
     }
 
@@ -44,7 +45,7 @@ namespace wim {
         std::cout << world(0, 0) << std::endl;
     }
 
-    void Displayer::display(const Widgets &widget) const
+    void Displayer::display(const WidgetManager &widgets) const
     {
         /* */
         /*
@@ -56,7 +57,7 @@ namespace wim {
 
         widget.showDemo();
 */
-        widget.showDemo(_manager->getWindowPtr()/*, _manager->getGlContext()*/);
+        widgets.showDemo(/*_manager->getWindowPtr(), _manager->getGlContext()*/);
         /** ImGuiRendering **/
         /*
         ImGui::Render();
@@ -68,41 +69,36 @@ namespace wim {
 
     void Displayer::displayAll() const
     {
-
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        this->display(_widget);
+        ImGuiIO &io = ImGui::GetIO();
+        (void) io;
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplSDL2_NewFrame(this->getWindowPtr().get());
+        ImGui::NewFrame();
+        ImGui::ShowDemoWindow();
+        ImGui::Begin("T'as vu ?");
+        ImGui::End();
+
+        this->display(_widgets);
+
+        ImGui::Render();
+        glViewport(0, 0, (int) io.DisplaySize.x, (int) io.DisplaySize.y);
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+        SDL_GL_SwapWindow(this->getWindowPtr().get());
     }
 
-    void Displayer::initDisplay(const char* appPath)
+    void Displayer::initDisplay(/*const char* appPath*/)
     {
 
-        //Init SDLWIndowManager
-        _manager = std::make_unique<glimac::SDLWindowManager>(
-                       wim::DISP_WINDOW_WIDTH,
-                       wim::DISP_WINDOW_HEIGHT,
-                       wim::DISP_WINDOW_NAME
-        );
-
-        GLenum glewInitError = glewInit();
-        if(GLEW_OK != glewInitError)
-        {
-            throw Exception(ExceptCode::INIT_ERROR, 1, "Could not initialise glew.");
-        }
-
+   /*
         //Loading shaders according to conf file in resources/shaders
-        _loader = ShaderLoader(appPath);
+        _shaders = ShaderManager();
         std::cout << appPath << std::endl;
         //for now, we use only one set of shaders:
-
-
+*/
         //init Imgui ? Nope, gets done befor by Controller.
-        _widget = Widgets(/*_manager.get()->getWindowPtr(), _manager.get()->getGlContext()*/);
+        //_widget = Widgets(/*_manager.get()->getWindowPtr(), _manager.get()->getGlContext()*/);
 
-        //FOR 3d
-        glEnable(GL_DEPTH_TEST);
-
-        std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
-        std::cout << "GLEW Version:   " << glewGetString(GLEW_VERSION) << std::endl;
 
     }
 }

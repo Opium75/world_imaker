@@ -1,16 +1,16 @@
-#include "glimac/Program.hpp"
+#include "glimac/Programme.hpp"
 #include <stdexcept>
 
 namespace glimac {
 
-bool Program::link() {
+bool Programme::link() {
 	glLinkProgram(m_nGLId);
 	GLint status;
 	glGetProgramiv(m_nGLId, GL_LINK_STATUS, &status);
 	return status == GL_TRUE;
 }
 
-const std::string Program::getInfoLog() const {
+const std::string Programme::getInfoLog() const {
 	GLint length;
 	glGetProgramiv(m_nGLId, GL_INFO_LOG_LENGTH, &length);
 	char* log = new char[length];
@@ -21,7 +21,7 @@ const std::string Program::getInfoLog() const {
 }
 
 // Build a GLSL program from source code
-Program buildProgram(const GLchar* vsSrc, const GLchar* fsSrc) {
+Programme buildProgramme(const GLchar* vsSrc, const GLchar* fsSrc) {
 	Shader vs(GL_VERTEX_SHADER);
 	vs.setSource(vsSrc);
 
@@ -36,19 +36,19 @@ Program buildProgram(const GLchar* vsSrc, const GLchar* fsSrc) {
 		throw std::runtime_error("Compilation error for fragment shader: " + fs.getInfoLog());
 	}
 
-	Program program;
-	program.attachShader(vs);
-	program.attachShader(fs);
+	Programme programme;
+	programme.attachShader(vs);
+	programme.attachShader(fs);
 
-	if(!program.link()) {
-		throw std::runtime_error("Link error: " + program.getInfoLog());
+	if(!programme.link()) {
+		throw std::runtime_error("Link error: " + programme.getInfoLog());
 	}
 
-	return program;
+	return programme;
 }
 
 // Load source code from files and build a GLSL program
-Program loadProgram(const FilePath& vsFile, const FilePath& fsFile) {
+Programme loadProgramme(const FilePath& vsFile, const FilePath& fsFile) {
 	Shader vs = loadShader(GL_VERTEX_SHADER, vsFile);
 	Shader fs = loadShader(GL_FRAGMENT_SHADER, fsFile);
 
@@ -60,15 +60,15 @@ Program loadProgram(const FilePath& vsFile, const FilePath& fsFile) {
 		throw std::runtime_error("Compilation error for fragment shader (from file " + std::string(fsFile) + "): " + fs.getInfoLog());
 	}
 
-	Program program;
-	program.attachShader(vs);
-	program.attachShader(fs);
+	Programme programme;
+	programme.attachShader(vs);
+	programme.attachShader(fs);
 
-	if(!program.link()) {
-        throw std::runtime_error("Link error (for files " + vsFile.str() + " and " + fsFile.str() + "): " + program.getInfoLog());
+	if(!programme.link()) {
+        throw std::runtime_error("Link error (for files " + vsFile.str() + " and " + fsFile.str() + "): " + programme.getInfoLog());
 	}
 
-	return program;
+	return programme;
 }
 
 }

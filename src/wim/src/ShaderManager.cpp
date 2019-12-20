@@ -2,72 +2,46 @@
 // Created by piptouque on 18/12/2019.
 //
 
-#include "../include/wim/ShaderLoader.hpp"
+#include "wim/ShaderManager.hpp"
 
-namespace wim
-{
-    void ShaderManager::sendUniAttribMatrix(const glm::mat4& MVMatrix, const glm::mat4& MVPMatrix, const glm::mat4& NormalMatrix) const
+namespace wim {
+
+
+
+    void ShaderManager::readConfig()
     {
-        //Only send Matrix attributes to shaders.
-        glUniformMatrix4fv(_uMVMatrix,
-                           1, //only one matrix sent
-                           GL_FALSE, //is it normalised? Nope.
-                           glm::value_ptr(MVMatrix)
-        );
-        glUniformMatrix4fv(_uMVPMatrix,
-                           1, //only one matrix sent
-                           GL_FALSE,
-                           glm::value_ptr(MVPMatrix)
-        );
-        glUniformMatrix4fv(_uNormalMatrix,
-                           1, //only one matrix sent
-                           GL_FALSE,
-                           glm::value_ptr(NormalMatrix)
-        );
-    }
+        std::ifstream conf;
+        std::string confPath = std::string(_appPathDir) + SEP + DEFAULT_SHADER_DIR + SEP + DEFAULT_SHADER_CONF_FILENAME;
+        conf.open(confPath);
+        if (!conf.is_open())
+            throw Exception(ExceptCode::NULL_POINTER, 1, std::string("Could not open file at path: ") + confPath);
+        //get expected number of couples
+        size_t n;
+        conf >> n;
+        //ending line
+        conf.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        //fill vector of Shader Couples
+        _listSender.reserve(n);
+        //do n times
+        for (size_t i = 0; i < n; ++i) {
+            if (conf.eof())
+                throw Exception(ExceptCode::END_OF_FILE, 1,
+                        std::string("Fewer shader couples than expected: expected ")
+                        + std::to_string(n) + std::string(", found ") + std::to_string(i)
+                        );
 
-    void ShaderManager::sendUniAttribMaterial(const glm::vec3& kD, const glm::vec3& kS, const glm::vec3& shininess) const
-    {
-        glUniform3fv(_uKd,
-                     1,
-                     glm::value_ptr(kD)
-        );
-        glUniform3fv(_uKs,
-                     1,
-                     glm::value_ptr(kS)
-        );
-        glUniform3fv(_uShininess,
-                     1,
-                     glm::value_ptr(shininess)
-        );
+            _listSender.push_back(
+                    ShaderSender(_appPathDir, ShaderCouple::loadCouple(conf))
+            );
+            /*_vecShaderCouple.push_back(ShaderCouple::loadCouple(conf));
+            _vecProgramme.push_back(this->loadProgramme(_vecShaderCouple.back()));
+             */
 
-    }
-
-    void ShaderManager::sendUniAttribLight(const glm::vec3& lightPos_vs, const glm::vec3& lightIntensity) const
-    {
-        glUniform3fv(_uLightPos_vs,
-                     1,
-                     glm::value_ptr(lightPos_vs)
-        );
-        glUniform3fv(_uLightIntensity,
-                     1,
-                     glm::value_ptr(lightIntensity)
-        );
+        }
+        conf.close();
     }
 
 
-    void ShaderManager::loadUniAttrLoc()
-    {
-        //
-        _uMVPMatrix = glGetUniformLocation(_programme.getGLId(), UNI_MVP_NAME);
-        _uMVMatrix = glGetUniformLocation(_programme.getGLId(), UNI_MV_NAME);
-        _uNormalMatrix = glGetUniformLocation(_programme.getGLId(), UNI_NORMAL_NAME);
-        //
-        _uKd = glGetUniformLocation(_programme.getGLId(), UNI_KD_NAME);
-        _uKs = glGetUniformLocation(_programme.getGLId(), UNI_KS_NAME);
-        _uShininess = glGetUniformLocation(_programme.getGLId(), UNI_SHININESS_NAME);
-        //
-        _uLightPos_vs = glGetUniformLocation(_programme.getGLId(), UNI_LIGHTPOS_NAME);
-        _uLightIntensity = glGetUniformLocation( _programme.getGLId(), UNI_LIGHTINTENSITY_NAME);
-    }
+
+
 }

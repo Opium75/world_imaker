@@ -6,20 +6,20 @@
 
 namespace glimac {
 
-class Program {
+class Programme {
 public:
-	Program(): m_nGLId(glCreateProgram()) {
+	Programme(): m_nGLId(glCreateProgram()) {
 	}
 
-	~Program() {
+	~Programme() {
 		glDeleteProgram(m_nGLId);
 	}
 
-	Program(Program&& rvalue): m_nGLId(rvalue.m_nGLId) {
-		rvalue.m_nGLId = 0;
+    Programme(Programme&& rvalue): m_nGLId(rvalue.m_nGLId) {
+        rvalue.m_nGLId = 0;
 	}
 
-	Program& operator =(Program&& rvalue) {
+	Programme& operator =(Programme&& rvalue) {
 		m_nGLId = rvalue.m_nGLId;
 		rvalue.m_nGLId = 0;
 		return *this;
@@ -42,17 +42,17 @@ public:
 	}
 
 private:
-	Program(const Program&);
-	Program& operator =(const Program&);
+	Programme(const Programme&);
+	Programme& operator =(const Programme&);
 
 	GLuint m_nGLId;
 };
 
 // Build a GLSL program from source code
-Program buildProgram(const GLchar* vsSrc, const GLchar* fsSrc);
+Programme buildProgramme(const GLchar* vsSrc, const GLchar* fsSrc);
 
 // Load source code from files and build a GLSL program
-Program loadProgram(const FilePath& vsFile, const FilePath& fsFile);
+Programme loadProgramme(const FilePath& vsFile, const FilePath& fsFile);
 
 
 }

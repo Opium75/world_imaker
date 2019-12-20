@@ -12,10 +12,11 @@
 #include <GL/glut.h>
 
 #include <glimac/SDLWindowManager.hpp>
+#include <glimac/Cube.hpp>
 
 #include "Exception.hpp"
-#include "Widgets.hpp"
-#include "ShaderLoader.hpp"
+#include "WidgetManager.hpp"
+#include "SceneRenderer.hpp"
 
 #include "Cube.hpp"
 #include "CubeStack.hpp"
@@ -30,14 +31,16 @@ namespace wim {
     //Visitor class
     class Displayer {
     private:
-        typedef std::unique_ptr<glimac::SDLWindowManager> WManagerPtr;
-        WManagerPtr _manager;
-        ShaderLoader _loader;
-        Widgets _widget;
+        typedef glimac::SDLWindowManager WindowManager;
+        WindowManager _manager;
+        WidgetManager _widgets;
+        SceneRenderer _renderer;
+
     public:
-        Displayer(const char* appPath) : _manager(), _loader(), _widget()
+        Displayer(const char* appPath) :
+            _manager(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME), _widgets(), _renderer(appPath)
         {
-            this->initDisplay(appPath);
+            this->initDisplay();
         }
         ~Displayer() = default;
 
@@ -45,17 +48,17 @@ namespace wim {
         void display(const Cube &cube) const;
         void display(const CubeStack &stack) const;
         void display(const CubeWorld &world) const;
-        void display(const Widgets &widget) const;
+        void display(const WidgetManager &widgets) const;
 
         void displayAll() const;
 
-        inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr() const {return _manager->getWindowPtr();};
-        inline const SDL_GLContext& getGLContext() const {return _manager->getGlContext();};
+        inline const WindowManager::SDL_WindowPtr& getWindowPtr() const {return _manager.getWindowPtr();};
+        inline const SDL_GLContext& getGLContext() const {return _manager.getGlContext();};
 
     private:
         //todo: WE'VE GOT TO HOLD ON TO WHAT WE'VE GOT
         //todo: IT DOESN'T EVEN MATTER IF WE MAKE IT OR NOT
-       void initDisplay(const char* appPath);
+       void initDisplay(/*const char* appPath*/);
     };
 }
 

@@ -1,5 +1,5 @@
 //
-// Created by piptouque on 18/12/2019.
+// Created by piptouque on 17/12/2019.
 //
 
 #ifndef WORLD_IMAKER_SHADERMANAGER_HPP
@@ -9,56 +9,58 @@
 
 #include <vector>
 
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/vec3.hpp>
-#include <glm/mat4x4.hpp>
 
-#include <glimac/Program.hpp>
 #include <glimac/FilePath.hpp>
+#include <glimac/Programme.hpp>
 
+#include "ShaderSender.hpp"
+#include "Exception.hpp"
 
 namespace wim
 {
+    class ShaderManager
+    {
+    public:
+        //typedef for convenience
+        typedef std::vector<ShaderSender> ListSender;
+    private:
+        glimac::FilePath _appPathDir;
+        ListSender  _listSender;
+    public:
+        ShaderManager() = default;
 
-
-
-<<<<<<< HEAD
-=======
-        void initManager(const glimac::FilePath& appPathDir, const ShaderCouple& couple)
+        ShaderManager(const glimac::FilePath& appPath) : _appPathDir(glimac::FilePath(appPath).dirPath().dirPath())
         {
-            this->loadProgramme(appPathDir, couple);
-            this->loadUniAttrLoc();
+           this->readConfig();
         }
+        ~ShaderManager() = default;
 
-        void sendUniAttribMatrix(const glm::mat4& MVMatrix, const glm::mat4& MVPMatrix, const glm::mat4& NormalMatrix) const;
-
-
-        void sendUniAttribMaterial(const glm::vec3& kD, const glm::vec3& kS, const glm::vec3& shininess) const;
+        void readConfig();
 
 
-        void sendUniAttribLight(const glm::vec3& lightPos_vs, const glm::vec3& lightIntensity) const;
+        inline void useProgramme(const size_t index) const { _listSender.at(index).useProgramme();}
 
-        inline const glimac::Program& getProgramme() const {return _programme;}
+        inline glimac::Programme& programme(const size_t index) {return _listSender.at(index).getProgramme();}
+        inline const glimac::Programme& programme(const size_t index) const {return _listSender.at(index).getProgramme();}
 
-        inline glimac::Program& getProgramme() {return _programme;}
+        inline ShaderCouple& couple(const size_t index) {return _listSender.at(index).couple();}
+        inline const ShaderCouple& couple(const size_t index) const {return _listSender.at(index).couple();}
 
-        inline void useShaders() const {_programme.use();}
 
-        friend std::ostream& operator<<(std::ostream& stream, const ShaderManager& manager)
+
+       /* friend std::ostream& operator<<(std::ostream& stream, const ListCouple& vecShaderCouple)
         {
-            stream << manager._couple << std::endl;
+            for(const auto& couple : vecShaderCouple)
+            {
+                stream << couple << std::endl;
+            }
+
             return stream;
         }
+        */
 
-    private:
-       void loadProgramme(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
-
-        void loadUniAttrLoc();
-
-
-        void loadProgramme(const glimac::FilePath &appPathDir, const ShaderCouple &couple);
     };
->>>>>>> ImGui
+
 
 }
 
