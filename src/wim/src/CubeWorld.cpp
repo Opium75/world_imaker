@@ -11,12 +11,10 @@ namespace wim
 
 //todo
 
-    CubeWorld::CubeWorld(const CubeWorld::WorldWidth width, const CubeWorld::WorldLength length) : _matrix(width,
-                                                                                                           length) {
-
+    CubeWorld::CubeWorld(const XUint width, const YUint length) : _matrix(width, length) {
     }
 
-    CubeWorld CubeWorld::Random(const WorldWidth width, const WorldLength length, const WorldHeight height) {
+    CubeWorld CubeWorld::Random(const XUint width, const YUint length, const ZUint height) {
         CubeWorld world(width, length);
         for (size_t i = 0; i < width; ++i) {
             for (size_t j = 0; j < length; ++j) {

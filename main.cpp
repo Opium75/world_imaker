@@ -11,11 +11,13 @@ int main(int argc, char **argv) {
          */
         throw wim::Exception(wim::ExceptCode::CATASTROPHIC_FAILURE, 42, "All your bases are belong to us!");
     }
-    std::cout << argv[0] << std::endl;
-    /*
-    wim::Controller controller(argv[0]);
+    const char* appPath = argv[0];
+    const wim::XUint worldWidth = 10;
+    const wim::YUint worldLength = 10;
+
+    wim::MasterController controller(appPath, worldWidth, worldLength);
     controller.runApp();
-     */
+/*
     wim::Vec3D p1(1,-1, 0);
     wim::Point3Int p2(1,3,3);
     wim::Vec3D v1 = wim::Vec3D::Random();
@@ -38,7 +40,7 @@ int main(int argc, char **argv) {
     std::cout << s1 << std::endl;
     std::cout << "Pile de cubes aléatoires 2 : " << std::endl;
     std::cout << s2 << std::endl;
-
+*/
     return EXIT_SUCCESS;
 
 }

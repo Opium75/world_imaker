@@ -10,36 +10,45 @@
 #include <iostream>
 #include <Eigen/Dense>
 
-#include "Displayable.hpp"
+#include "Types.hpp"
 #include "Randomisable.hpp"
 #include "CubeStack.hpp"
 
 
 namespace wim
 {
-    class Displayer;
 
-    class CubeWorld : Displayable // Randomisable<CubeWorld, int>
+    class CubeWorld
     {
+    public:
     private:
-        typedef size_t WorldWidth, WorldLength, WorldHeight;
         typedef Eigen::Matrix<CubeStack, Eigen::Dynamic, Eigen::Dynamic> StackMatrix;
         StackMatrix _matrix;
     public:
         //todo
-        CubeWorld(const WorldWidth width, const WorldLength length);
+        CubeWorld(const XUint width, const YUint length);
 
-        inline WorldWidth getWidth() const {return _matrix.cols();}
-        inline WorldLength getLength() const {return _matrix.rows();}
+        inline XUint getWidth() const {return _matrix.cols();}
+        inline YUint getLength() const {return _matrix.rows();}
 
-        inline CubeStack& operator()(const WorldWidth w, const WorldLength l) {return _matrix(w,l);}
-        inline const CubeStack& operator()(const WorldWidth w, const WorldLength l) const {return _matrix(w,l);}
+        inline CubeStack& operator()(const XUint x, const YUint y) {return _matrix(x,y);}
+        inline const CubeStack& operator()(const XUint x, const YUint y) const {return _matrix(x,y);}
 
         //todo: define overload of operator() for Width, Length AND Height (w,l,h)
+        inline Cube& operator()(const XUint x, const YUint y, const ZUint z)
+        {
+            try
+            {
+                return _matrix(x,y).cube(z);
+            }
+            catch(Exception& e)
+            {
+               e.addMessageHead(std::string("In  CubeStack (")+std::to_string(x)+", "+std::to_string(y)+") :");
+                throw;
+            }
+        }
 
-        void display(const Displayer& disp) const;
-
-        static CubeWorld Random(const WorldWidth width, const WorldLength length, const WorldHeight height);
+        static CubeWorld Random(const XUint width, const YUint length, const ZUint height);
     };
 }
 

@@ -24,17 +24,19 @@ namespace wim
     class SceneRenderer
     {
     public:
-        typedef std::deque<AbstractLight> ListLight;
-        typedef std::stack<Displayable> RenderingStack;
+        typedef std::stack<Renderable> RenderingStack;
     private:
         ShaderManager _shaders;
         PatternManager _patterns;
+        LightManagerPtr _lights;
         RenderingStack _stack;
     public:
-        SceneRenderer(const char* appPath) : _shaders(appPath), _patterns()
+        SceneRenderer(const char* appPath, const LightManagerPtr& lights) : _shaders(appPath), _patterns(), _lights(lights), _stack()
         {
-
         }
+
+        inline void addToStack(const Renderable& item) {_stack.push(item);}
+
 
 
     };

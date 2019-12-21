@@ -5,10 +5,16 @@
 #include "../include/wim/Controller.hpp"
 
 namespace wim {
+
+    //Default initialisation.
+    AbstractController::DisplayerPtr AbstractController::_displayer(nullptr);
+    AbstractController::ModelPtr AbstractController::_model(nullptr);
+
     void DisplayController::runDisplay() const
     {
-        _disp.displayAll();
-
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        _displayer->displayAll(*_model);
+        SDL_GL_SwapWindow(_displayer->getWindowPtr().get());
     }
 
     bool UIController::runInterface() const
@@ -50,7 +56,7 @@ namespace wim {
         return loop;
     }
 
-    bool Controller::runLoop() const
+    bool MasterController::runLoop() const
     {
         /** ImGui INITIALISATION **/
         std::string glslVersion = std::string("#version 130");

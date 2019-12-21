@@ -7,35 +7,65 @@
 
 #pragma once
 
+#include <memory>
+
 #include <SDL2/SDL.h>
 
 #include "Displayer.hpp"
+#include "Model.hpp"
 
 namespace wim
 {
-    class DisplayController {
+    class AbstractController
+    {
+    protected:
+        typedef std::unique_ptr<Displayer> DisplayerPtr;
+        typedef std::unique_ptr<Model> ModelPtr;
+    protected:
+        static DisplayerPtr _displayer;
+        static ModelPtr _model;
+    protected:
+        inline const DisplayerPtr& getDisplayer() const {return _displayer;}
+        inline DisplayerPtr& getDisplayer() {return _displayer;}
+
+        inline const ModelPtr& getModel() const { return _model;}
+        inline ModelPtr& getModel() {return _model;}
+    };
+
+
+    class DisplayController : protected AbstractController
+            {
     private:
-        Displayer _disp;
     public:
-        DisplayController(const char* appPath): _disp(appPath) {}
+        DisplayController(const char* appPath, const LightManagerPtr& lights)
+        {
+            //initialising display
+            _displayer.reset(new Displayer(appPath, lights));
+        }
         void runDisplay() const;
 
-        inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr()const {return _disp.getWindowPtr();}
-        inline const SDL_GLContext& getGLContext()const {return _disp.getGLContext();}
+        inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr()const {return _displayer->getWindowPtr();}
+        inline const SDL_GLContext& getGLContext()const {return _displayer->getGLContext();}
 
     };
 
-    class UIController
+    class UIController : protected AbstractController
     {
     private:
     public:
         bool runInterface() const;
     };
 
-    class ComputeController
+    class ComputeController : protected AbstractController
     {
     private:
     public:
+        ComputeController() = default;
+        ComputeController(const XUint worldWidth, const YUint worldLength)
+        {
+            //initialsation world
+            _model.reset(new Model(worldWidth, worldLength));
+        }
         void runCompute() const
         {
             /* Compute calculations on Model
@@ -46,13 +76,19 @@ namespace wim
         }
     };
 
-    class Controller {
+    class MasterController : protected AbstractController
+    {
     private:
+        /* ComputeController needs to be initialiased first
+        * before it initialises the model too
+         * And the display uses a shared pointer to lights.
+         */
+        ComputeController _compCtrl;
         DisplayController _dispCtrl;
         UIController _uiCtrl;
-        ComputeController _compCtrl;
     public:
-        Controller(const char* appPath): _dispCtrl(appPath), _uiCtrl() {}
+        MasterController(const char* appPath, const XUint worldWidth, const YUint worldLength):
+                _compCtrl(worldWidth, worldLength),_dispCtrl(appPath, _model->getLightManagerPtr()), _uiCtrl()  {}
 
         bool runLoop() const;
 
@@ -63,6 +99,7 @@ namespace wim
 
 
     };
+
 
 
 }

@@ -11,6 +11,7 @@
 #include <iostream>
 #include <glimac/glm.hpp>
 
+#include "Types.hpp"
 #include "Exception.hpp"
 #include "Randomisable.hpp"
 
@@ -124,10 +125,10 @@ namespace wim
     template<typename T>
     using TPoint3D = TVec3D<T>;
 
-    using Vec3D = TVec3D<float>;
+    using Vec3D = TVec3D<FloatType>;
     using Point3D = Vec3D;
 
-    using Vec3Int = TVec3D<int>;
+    using Vec3Int = TVec3D<XUint>;
     using Point3Int = Vec3Int;
 
 }

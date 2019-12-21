@@ -9,82 +9,76 @@
 namespace wim {
 
 
-    void Cube::display(const Displayer &disp) const
-    {
-        return disp.display(*this);
-    }
 
-    void CubeStack::display(const Displayer &disp) const
-    {
-        return disp.display(*this);
-    }
-
-    void CubeWorld::display(const Displayer &disp) const
-    {
-        return disp.display(*this);
-    }
-
-    void WidgetManager::display(const Displayer &disp) const
-    {
-        disp.display(*this);
-    };
-
-    void Displayer::display(const Cube &cube) const
+    void Displayer::display(const Cube &cube, const XUint x, const YUint y, const ZUint z) const
     {
        //todo: Add cube to rendering stack
-        std::cout << cube << std::endl;
+
+        this->addToRenderingStack( cube, Renderable::Anchor(x,y,z) );
     }
 
-    void Displayer::display(const CubeStack &stack) const
+    void Displayer::display(const CubeFloor &cubeFloor, const XUint x, const YUint y) const
     {
-        std::cout << stack << std::endl;
+        const ZUint z = cubeFloor.floor();
+        this->display(cubeFloor.cube(), x,y,z);
+    }
+
+    void Displayer::display(const CubeStack &cubeStack, const XUint x, const YUint y) const
+    {
+        for( auto& cubeFloor : cubeStack.stack() )
+        {
+            this->display(cubeFloor, x, y);
+        }
     }
 
     void Displayer::display(const CubeWorld &world) const
     {
-        std::cout << world(0, 0) << std::endl;
+        //setting-up anchors for (x,y)
+        const XUint width = world.getWidth();
+        const YUint length = world.getLength();
+        //Eigen matrices are column-major by default
+        for(YUint y=0; y<length; ++y)
+        {
+            for(XUint x=0; x<width; ++x)
+            {
+                this->display(world(x,y), x, y);
+            }
+        }
     }
 
-    void Displayer::display(const WidgetManager &widgets) const
+    void Displayer::displayWidgets() const
     {
-        /* */
-        /*
-        ImGui::SetCurrentContext(widget.getIGContext());
-        ImGuiIO &io = ImGui::GetIO(); (void)io;
-        ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplSDL2_NewFrame(_manager->getWindowPtr().get());
-        ImGui::NewFrame();
+        ImGui::Begin("T'as vu ?");
+        ImGui::End();
+        /* */;
 
-        widget.showDemo();
-*/
-        widgets.showDemo(/*_manager->getWindowPtr(), _manager->getGlContext()*/);
-        /** ImGuiRendering **/
-        /*
-        ImGui::Render();
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-         */
+        _widgets->showDemo(/*_manager->getWindowPtr(), _manager->getGlContext()*/);
     }
 
 
-
-    void Displayer::displayAll() const
+    void Displayer::displayModel(const Model& model) const
     {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+       this->display(*model.getWorldPtr());
+    }
+
+
+    void Displayer::displayAll(const Model& model) const
+    {
+        /* Preparing IMGUI for new Frame */
         ImGuiIO &io = ImGui::GetIO();
         (void) io;
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplSDL2_NewFrame(this->getWindowPtr().get());
         ImGui::NewFrame();
-        ImGui::ShowDemoWindow();
-        ImGui::Begin("T'as vu ?");
-        ImGui::End();
 
-        this->display(_widgets);
+        /* Actual displaying */
+        this->displayWidgets();
+        this->displayModel(model);
 
+        /* Rendering IMGUI */
         ImGui::Render();
         glViewport(0, 0, (int) io.DisplaySize.x, (int) io.DisplaySize.y);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-        SDL_GL_SwapWindow(this->getWindowPtr().get());
     }
 
     void Displayer::initDisplay(/*const char* appPath*/)

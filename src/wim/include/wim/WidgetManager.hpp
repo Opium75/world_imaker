@@ -19,8 +19,7 @@
 
 namespace wim
 {
-    class Displayer;
-    class WidgetManager: public Displayable
+    class WidgetManager
     {
     private:
         typedef ImGuiContext* IGContextPtr;
@@ -43,6 +42,7 @@ namespace wim
         }
 
         const IGContextPtr& getIGContext() const {return _context;}
+        const ImGuiIO* getIGIO() const {return _io;}
 
         void initWidgets(/*const glimac::SDLWindowManager::SDL_WindowPtr& window, const SDL_GLContext& glContext*/)
         {
@@ -66,8 +66,7 @@ namespace wim
     void showDemo(/*const glimac::SDLWindowManager::SDL_WindowPtr& window, const SDL_GLContext& glContext*/) const
         {
             ImGui::ShowDemoWindow();
-        }
-        void display(const Displayer &disp) const;
+        };
     };
 }
 #endif //WORLD_IMAKER_WIDGETMANAGER_HPP

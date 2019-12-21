@@ -6,15 +6,19 @@
 #define WORLD_IMAKER_DISPLAYER_HPP
 #pragma  once
 
+#include <memory>
+
 //Use glew as static library
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GL/glut.h>
 
 #include <glimac/SDLWindowManager.hpp>
-#include <glimac/Cube.hpp>
 
+#include "Displayable.hpp"
 #include "Exception.hpp"
+#include "Light.hpp"
+#include "Model.hpp"
 #include "WidgetManager.hpp"
 #include "SceneRenderer.hpp"
 
@@ -31,29 +35,40 @@ namespace wim {
     //Visitor class
     class Displayer {
     private:
-        typedef glimac::SDLWindowManager WindowManager;
-        WindowManager _manager;
-        WidgetManager _widgets;
-        SceneRenderer _renderer;
+        typedef std::unique_ptr<glimac::SDLWindowManager> WindowManagerPtr;
+        typedef std::unique_ptr<WidgetManager> WidgetManagerPtr;
+        typedef std::unique_ptr<SceneRenderer> SceneRendererPtr;
+        WindowManagerPtr _window;
+        WidgetManagerPtr _widgets;
+        SceneRendererPtr _renderer;
 
     public:
-        Displayer(const char* appPath) :
-            _manager(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME), _widgets(), _renderer(appPath)
+        Displayer(const char* appPath, const LightManagerPtr& lights) :
+            _window(std::make_unique<glimac::SDLWindowManager>(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
+            _widgets(std::make_unique<WidgetManager>()),
+            _renderer(std::make_unique<SceneRenderer>(appPath, lights))
         {
             this->initDisplay();
         }
         ~Displayer() = default;
 
         //const methods until I know what to do with them
-        void display(const Cube &cube) const;
-        void display(const CubeStack &stack) const;
+        void display(const Cube &cube, const XUint x, const YUint y, const ZUint z) const;
+        void display(const CubeFloor &cubeFloor, const XUint x, const YUint y) const;
+        void display(const CubeStack &cubeStack, const XUint x, const YUint y) const;
         void display(const CubeWorld &world) const;
-        void display(const WidgetManager &widgets) const;
 
-        void displayAll() const;
+        void displayAll(const Model& model) const;
+        void displayModel(const Model& model) const;
+        void displayWidgets() const;
 
-        inline const WindowManager::SDL_WindowPtr& getWindowPtr() const {return _manager.getWindowPtr();};
-        inline const SDL_GLContext& getGLContext() const {return _manager.getGlContext();};
+        inline void addToRenderingStack(const Displayable &object, const Point3Int &anchor) const
+        {
+            _renderer->addToStack(Renderable(object, anchor));
+        }
+
+        inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr() const {return _window->getWindowPtr();};
+        inline const SDL_GLContext& getGLContext() const {return _window->getGlContext();};
 
     private:
         //todo: WE'VE GOT TO HOLD ON TO WHAT WE'VE GOT

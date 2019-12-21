@@ -29,9 +29,9 @@ namespace wim
     public:
         typedef int ExceptLvl;
     private:
-        const ExceptCode _code;
-        const ExceptLvl  _lvl;
-        const std::string _msg;
+        ExceptCode _code;
+        ExceptLvl  _lvl;
+        std::string _msg;
 
     public:
         Exception(const ExceptCode& code, const ExceptLvl lvl, const std::string& msg) noexcept
@@ -46,6 +46,13 @@ namespace wim
         inline ExceptLvl getLevel() const noexcept {return _lvl;}
         inline const ExceptCode& getCode() const noexcept {return _code;}
         inline const std::string& getMsg() const noexcept {return _msg;}
+
+        void addMessageHead(const std::string& msg)
+        {
+            std::string temp(_msg);
+            _msg.assign(msg);
+            _msg.append(temp);
+        }
 
         const char* what() const noexcept override
         {

@@ -9,9 +9,9 @@
 
 #include <stack>
 #include <iostream>
+#include <string>
 
 #include "Exception.hpp"
-#include "Displayable.hpp"
 #include "Randomisable.hpp"
 #include "Cube.hpp"
 
@@ -19,7 +19,6 @@
 namespace wim
 {
 
-    class Displayer;
     /* All right, bear with me here
      * I needed to have yet another class
      * so as not to insert the index attribute in Cube.
@@ -27,7 +26,7 @@ namespace wim
      * of Cubes in a CubeStack
      */
     ///A container for a Cube with its index in a CubeStack
-    class CubeFloor // protected Randomisable<CubeFloor>
+    class CubeFloor
     {
     public:
         typedef int FloorIndex;
@@ -60,9 +59,10 @@ namespace wim
 
         /* convenient operators : FLOOR COMPARISON */
         ///Operator for comparison of floors, for Cube-related comparisons (Colours, etc.) see Cube Class
-        inline bool operator>(const CubeFloor &cFloor) const { return (this->compareFloors(cFloor) == 1);};
-        inline bool operator>=(const CubeFloor &cFloor) const { return (this->compareFloors(cFloor) >= 0);};
-        inline bool operator==(const CubeFloor &cFloor) { return (this->compareFloors(cFloor) == 0);};
+        inline bool operator>(const CubeFloor &cFloor) const { return (this->compareFloors(cFloor) == 1);}
+        inline bool operator>=(const CubeFloor &cFloor) const { return (this->compareFloors(cFloor) >= 0);}
+        inline bool operator==(const CubeFloor &cFloor) { return (this->compareFloors(cFloor) == 0);}
+
 
         static CubeFloor Random(const FloorIndex min, const FloorIndex max);
         static CubeFloor Random(const FloorIndex max);
@@ -71,7 +71,7 @@ namespace wim
 
     ///A stack of CubeFloor-class objects, sorted according to their floors
     //In fact using a standard double-ended queue
-    class CubeStack : protected Displayable //protected Randomisable<CubeStack>
+    class CubeStack
     {
     private:
         typedef std::deque<CubeFloor> Stack;
@@ -83,6 +83,9 @@ namespace wim
 
         Cube& topCube();
         const Cube& topCube() const;
+
+        inline Stack& stack() {return _stack;}
+        inline const Stack& stack() const {return _stack;}
 
         CubeStack& operator=(const CubeStack &cubeStack);
 
@@ -99,8 +102,18 @@ namespace wim
         ///Throws exceptions on failure
         CubeFloor::FloorIndex eraseFloor(CubeFloor::FloorIndex floor, bool eraseHigher = false);
 
-        //again, CubeStack will be Displayed through CubeWorld
-        void display(const Displayer& disp) const;
+        Cube& cube(const CubeFloor::FloorIndex floor)
+        {
+           for( auto& cubeFloor : _stack )
+           {
+               if( cubeFloor.floor() == floor )
+                   return cubeFloor.cube();
+               else if( cubeFloor.floor() > floor )
+                   throw Exception(ExceptCode::OUT_OF_RANGE, 1, std::string("No cube at floor: ") + std::to_string(floor));
+           }
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, std::string("No cube at floor: ") + std::to_string(floor));
+        }
+
 
         static CubeStack Random(const size_t maxNbFloors, const CubeFloor::FloorIndex min, const CubeFloor::FloorIndex max);
         static CubeStack Random(const size_t maxNbFloors, const CubeFloor::FloorIndex max);

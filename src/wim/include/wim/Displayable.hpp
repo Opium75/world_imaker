@@ -7,19 +7,43 @@
 
 #pragma once
 
+#include "Types.hpp"
 #include "Vec3D.hpp"
 
 namespace wim
 {
-    class Displayer;
+    enum class DisplayPattern
+    {
+        FULL_CUBE,
+        WIREFRAME_CUBE
+    };
+
     ///An interface for elements which will be shown in the world window
-    //Is Visited by Displayed
     class Displayable
     {
     protected:
-        Point3D anchor;
-    public :
-        virtual void display(const Displayer& disp) const = 0;
+        //Should be overridden by every class, with one of the above Patterns
+        virtual DisplayPattern getDisplayPattern() const = 0;
+    };
+
+    class Renderable
+    {
+    public:
+        typedef Point3Int Anchor;
+    protected:
+        const Displayable* const _objectPtr;
+        Anchor _anchor;
+    public:
+        Renderable(const Displayable& object, const Anchor& anchor) : _objectPtr(&object), _anchor(anchor)
+        {
+
+        }
+
+        ~Renderable()
+        {
+            //We do NOT delete the displayable object
+        }
+
     };
 
 

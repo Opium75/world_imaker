@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include "Types.hpp"
 #include "Vec3D.hpp"
 #include "Colour.hpp"
 
