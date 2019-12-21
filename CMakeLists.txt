@@ -30,7 +30,7 @@ message("PROJECT_LIB_DIR     : " ${PROJECT_LIB_DIR})
 message("PROJECT_EXTLIB_DIR     : " ${PROJECT_EXTLIB_DIR})
 
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 # add a "output" directory in the project binary directory
 # put the binary files in this directory
@@ -160,7 +160,7 @@ if(WIN32)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 ")
     set(CMAKE_CXX_FLAGS_DEBUG_INIT "/g")
 else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall -Werror -std=c++11")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -W -Wall -Werror -std=c++${CMAKE_CXX_STANDARD}")
     set(CMAKE_CXX_FLAGS_DEBUG_INIT "-g")
 endif(WIN32)
 
@@ -171,7 +171,6 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/src/Colour.cpp
         src/wim/src/Cube.cpp
         src/wim/src/CubeStack.cpp
-        src/wim/src/Vec3D.cpp
         src/wim/src/CubeWorld.cpp
         src/wim/src/Displayer.cpp
         src/wim/src/Controller.cpp

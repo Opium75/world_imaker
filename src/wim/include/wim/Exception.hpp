@@ -17,6 +17,7 @@ namespace wim
     {
         INIT_ERROR,
         OUT_OF_RANGE,
+        DOMAIN_ERROR,
         NULL_POINTER,
         END_OF_FILE,
         CATASTROPHIC_FAILURE

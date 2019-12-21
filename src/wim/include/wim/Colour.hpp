@@ -10,6 +10,7 @@
 #include <iostream>
 #include <glimac/glm.hpp>
 
+#include "Exception.hpp"
 #include "Vec3D.hpp"
 
 #define _MAX_COLOUR_VALUE_FLOAT 1
@@ -20,7 +21,8 @@ namespace wim
     //Colour inherits from Vec3D conceptually
     class Colour : public Vec3D {
     private:
-        //The RGB values are inherited from the Vec3D class
+        typedef float FloatType;
+        //The RGB values are inherited from the Vec3D<Float> class
     public:
         Colour() = default;
         Colour(const FloatType r, const FloatType g, const FloatType b);
@@ -56,7 +58,7 @@ namespace wim
     };
 
     ///Format float value to colour value
-    inline Vec3D::FloatType colourValueFloat(const Vec3D::FloatType value)
+    inline Vec3D::ValueType colourValueFloat(const Vec3D::ValueType value)
     {
         if(value>_MAX_COLOUR_VALUE_FLOAT)
             return _MAX_COLOUR_VALUE_FLOAT;

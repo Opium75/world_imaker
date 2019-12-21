@@ -49,7 +49,7 @@ namespace  wim
 
     Colour &Colour::operator/(const float alpha) {
         if (alpha == 0)
-            throw std::domain_error("Division by 0");
+            throw Exception(ExceptCode::DOMAIN_ERROR, 1, "Trying to divide by O.");
         else
             return (*this) * (1 / alpha);
     }
