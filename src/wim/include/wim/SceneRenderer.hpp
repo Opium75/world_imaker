@@ -10,6 +10,7 @@
 #include <stack>
 #include <deque>
 
+#include "CameraManager.hpp"
 #include "Light.hpp"
 #include "Displayable.hpp"
 #include "PatternManager.hpp"
@@ -29,16 +30,22 @@ namespace wim
         ShaderManager _shaders;
         PatternManager _patterns;
         LightManagerPtr _lights;
+        CameraManagerPtr _cameras;
         RenderingStack _stack;
     public:
-        SceneRenderer(const char* appPath, const LightManagerPtr& lights) : _shaders(appPath), _patterns(), _lights(lights), _stack()
+        SceneRenderer(const char* appPath, const LightManagerPtr& lights, const CameraManagerPtr& cameras) :
+        _shaders(appPath), _patterns(), _lights(lights), _cameras(cameras), _stack()
         {
 
         }
 
         inline void addToStack(const Renderable& item) {_stack.push(item);}
 
+        inline UniformMatrix getActiveCameraViewMatrix() const {return _cameras->getActiveCameraViewMatrix();}
 
+        //todo: this.
+        ///brief: render Displayable elements in stack, with respect to active Camera, lighting, and Shaders
+        void render();
 
     };
 

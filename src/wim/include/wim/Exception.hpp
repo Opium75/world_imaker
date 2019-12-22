@@ -20,6 +20,7 @@ namespace wim
         DOMAIN_ERROR,
         NULL_POINTER,
         END_OF_FILE,
+        ILLIGAL,
         CATASTROPHIC_FAILURE
     };
 

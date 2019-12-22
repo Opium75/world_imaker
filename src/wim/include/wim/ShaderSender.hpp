@@ -25,24 +25,24 @@ namespace wim
      * For now, we will only support one light source. IN POINT LIGHT
      */
     //MATRIX
-    constexpr const char* UNI_MVP_NAME = "uMVPMatrix";
-    constexpr const char* UNI_MV_NAME = "uMVMatrix";
-    constexpr const char* UNI_NORMAL_NAME = "uNormalMatrix";
+   static constexpr const char* UNI_MVP_NAME = "uMVPMatrix";
+    static constexpr const char* UNI_MV_NAME = "uMVMatrix";
+    static constexpr const char* UNI_NORMAL_NAME = "uNormalMatrix";
     //MATERIAL
-    constexpr const char* UNI_KD_NAME = "uKd";
-    constexpr const char* UNI_KS_NAME = "uKs";
-    constexpr const char* UNI_SHININESS_NAME = "uShininess";
+    static constexpr const char* UNI_KD_NAME = "uKd";
+    static constexpr const char* UNI_KS_NAME = "uKs";
+    static constexpr const char* UNI_SHININESS_NAME = "uShininess";
     //LIGHT
-    constexpr const char* UNI_LIGHTPOS_NAME = "uLightPos_vs";
-    constexpr const char* UNI_LIGHTINTENSITY_NAME = "uLightPos_vs";
+    static constexpr const char* UNI_LIGHTPOS_NAME = "uLightPos_vs";
+    static constexpr const char* UNI_LIGHTINTENSITY_NAME = "uLightPos_vs";
 
     /* Path to shaders and config file relative to build directory */
-    const std::string DEFAULT_SHADER_DIR("resources/shaders");
-    const std::string DEFAULT_SHADER_CONF_FILENAME("shaders.conf");
+    static constexpr const char* DEFAULT_SHADER_DIR = "resources/shaders";
+    static constexpr const char* DEFAULT_SHADER_CONF_FILENAME = "shaders.conf";
 
     /* Constant used in shader files loading?*/
-    const unsigned int MAX_SIZE_SHADER_FILENAME = 15;
-    const char SEP = glimac::FilePath::PATH_SEPARATOR; //defined in FilePath
+    static const unsigned int MAX_SIZE_SHADER_FILENAME = 15;
+    static const char SEP = glimac::FilePath::PATH_SEPARATOR; //defined in FilePath
 
     struct ShaderCouple
     {
@@ -76,6 +76,7 @@ namespace wim
         /* Only the ID of the property is stored, not the light itself
          * which will change depending on the camera.
          */
+        //todo: add support for multiple lights, including directional light.
         GLint _uLightPos_vs, _uLightIntensity;
     private:
         void loadProgramme(const glimac::FilePath& appPathDir, const ShaderCouple& couple);

@@ -21,7 +21,6 @@ namespace wim
     //Colour inherits from Vec3D conceptually
     class Colour : public Vec3D {
     private:
-        typedef float FloatType;
         //The RGB values are inherited from the Vec3D<Float> class
     public:
         Colour() = default;
@@ -58,7 +57,7 @@ namespace wim
     };
 
     ///Format float value to colour value
-    inline Vec3D::ValueType colourValueFloat(const Vec3D::ValueType value)
+    inline FloatType colourValueFloat(const FloatType value)
     {
         if(value>_MAX_COLOUR_VALUE_FLOAT)
             return _MAX_COLOUR_VALUE_FLOAT;

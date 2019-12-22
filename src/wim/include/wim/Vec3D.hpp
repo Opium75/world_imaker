@@ -23,8 +23,6 @@ namespace wim
     class TVec3D
     {
     public:
-        typedef T ValueType;
-
         template<typename U>
         friend class TVec3D;
     protected:
@@ -97,7 +95,7 @@ namespace wim
                 return (*this) * (1 / alpha);
         }
 
-        static TVec3D Random(const T lowest=-1, const T highest=1)
+        static TVec3D Random(const T lowest= static_cast<T>(-1), const T highest= static_cast<T>(1))
         {
             T x, y, z;
             if constexpr ( std::is_floating_point<T>::value )
@@ -112,7 +110,6 @@ namespace wim
                 x = IntRandomisable<TVec3D, T>::Random(lowest, highest);
                 y = IntRandomisable<TVec3D, T>::Random(lowest, highest);
                 z = IntRandomisable<TVec3D, T>::Random(lowest, highest);
-
             }
             return TVec3D(x, y, z);
         }

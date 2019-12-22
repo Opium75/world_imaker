@@ -9,6 +9,7 @@ namespace wim {
     //Default initialisation.
     AbstractController::DisplayerPtr AbstractController::_displayer(nullptr);
     AbstractController::ModelPtr AbstractController::_model(nullptr);
+    Application::ControllerPtr Application::_ctrl(nullptr);
 
     void DisplayController::runDisplay() const
     {

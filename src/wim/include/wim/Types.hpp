@@ -14,6 +14,7 @@ namespace wim
     typedef float FloatType;
 
     typedef std::size_t XUint, YUint, ZUint;
+    typedef std::size_t SizeInt;
 }
 
 #endif //WORLD_IMAKER_TYPES_HPP

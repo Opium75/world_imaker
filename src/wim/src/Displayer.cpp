@@ -52,7 +52,7 @@ namespace wim {
         ImGui::End();
         /* */;
 
-        _widgets->showDemo(/*_manager->getWindowPtr(), _manager->getGlContext()*/);
+        _widgets->showDemo();
     }
 
 

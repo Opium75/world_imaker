@@ -7,27 +7,27 @@
 namespace wim
 {
 
-    const glimac::GenericCamera& CameraManager::getCurrentCamera() const
+    const glimac::GenericCamera& CameraManager::getActiveCamera() const
     {
-        if ( _currentIndex > _listCamera.size() )
-            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Current index of matrix does not correspond to any camera.");
+        if ( _activeIndex > _listCamera.size() )
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Active index of matrix does not correspond to any camera.");
         else
-            return _listCamera.at(_currentIndex);
+            return _listCamera.at(_activeIndex);
     }
 
-    void CameraManager::setCurrentCamera(SizeInt index) {
+    void CameraManager::setActiveCamera(SizeInt index) {
         if (index > _listCamera.size())
-            throw Exception(ExceptCode::OUT_OF_RANGE, 1, " Trying to set a non-existent camera as current.");
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, " Trying to set a non-existent camera as active.");
         else
-            _currentIndex = index;
+            _activeIndex = index;
     }
 
-    void CameraManager::setCurrentCameraNext()
+    void CameraManager::setActiveCameraNext()
     {
-        if (_listCamera.begin() + _currentIndex >= _listCamera.end() )
-            _currentIndex = 0;
+        if (_listCamera.begin() + _activeIndex >= _listCamera.end() )
+            _activeIndex = 0;
         else
-            ++_currentIndex;
+            ++_activeIndex;
     }
 
     void CameraManager::deleteCamera(SizeInt index)
@@ -38,10 +38,10 @@ namespace wim
             _listCamera.erase(_listCamera.begin()+index);
     }
 
-    glm::mat4 CameraManager::getCurrentCameraViewMatrix() const
+    UniformMatrix CameraManager::getActiveCameraViewMatrix() const
     {
-        //Exception thrown by getCurrentCamera.
-        return this->getCurrentCamera().getViewMatrix();
+        //Exception thrown by getActiveCamera.
+        return this->getActiveCamera().getViewMatrix();
     }
 
 }

@@ -34,7 +34,6 @@ namespace wim
         inline CubeStack& operator()(const XUint x, const YUint y) {return _matrix(x,y);}
         inline const CubeStack& operator()(const XUint x, const YUint y) const {return _matrix(x,y);}
 
-        //todo: define overload of operator() for Width, Length AND Height (w,l,h)
         inline Cube& operator()(const XUint x, const YUint y, const ZUint z)
         {
             try

@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <memory>
 #include <deque>
 
 #include <glm/glm.hpp>
@@ -15,18 +16,19 @@
 #include <glimac/TrackballCamera.hpp>
 #include <glimac/FreeflyCamera.hpp>
 #include "Exception.hpp"
+#include "Types.hpp"
 
 
 namespace wim
 {
+    typedef glm::mat4 UniformMatrix;
     class CameraManager
     {
     public:
-        typedef std::size_t SizeInt;
         typedef std::deque<glimac::TrackballCamera> ListCamera;
     private:
         ListCamera _listCamera;
-        SizeInt _currentIndex;
+        SizeInt _activeIndex;
     public:
         CameraManager() = default;
         ~CameraManager() = default;
@@ -34,18 +36,18 @@ namespace wim
         inline void addTrackball() { _listCamera.push_back(glimac::TrackballCamera());}
         inline void addFreefly() {_listCamera.push_back(glimac::TrackballCamera());}
 
-        const glimac::GenericCamera& getCurrentCamera() const;
-        void setCurrentCamera(SizeInt index);
-        ///brief: Set current camera as the next one in the list. It was the last one, it loops back to the first.
-        void setCurrentCameraNext();
+        const glimac::GenericCamera& getActiveCamera() const;
+        void setActiveCamera(SizeInt index);
+        ///brief: Set active camera as the next one in the list. It was the last one, it loops back to the first.
+        void setActiveCameraNext();
 
         void deleteCamera(SizeInt index);
 
-        glm::mat4 getCurrentCameraViewMatrix() const;
-
-
+        UniformMatrix getActiveCameraViewMatrix() const;
     };
 
+    //Cameras will be shared between the Model and the Scene Renderer.
+    typedef std::shared_ptr<CameraManager> CameraManagerPtr;
 }
 
 

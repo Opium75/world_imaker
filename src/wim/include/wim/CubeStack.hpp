@@ -29,7 +29,7 @@ namespace wim
     class CubeFloor
     {
     public:
-        typedef int FloorIndex;
+        typedef SizeInt FloorIndex;
     private:
         Cube _cube;
         FloorIndex _floor;

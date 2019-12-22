@@ -15,6 +15,10 @@
 
 #include <glimac/SDLWindowManager.hpp>
 
+#include <imgui.h>
+#include <imgui_impl_sdl.h>
+#include <imgui_impl_opengl3.h>
+
 #include "Displayable.hpp"
 #include "Exception.hpp"
 #include "Light.hpp"
@@ -43,10 +47,10 @@ namespace wim {
         SceneRendererPtr _renderer;
 
     public:
-        Displayer(const char* appPath, const LightManagerPtr& lights) :
+        Displayer(const char* appPath, const LightManagerPtr& lights, const CameraManagerPtr& cameras) :
             _window(std::make_unique<glimac::SDLWindowManager>(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
             _widgets(std::make_unique<WidgetManager>()),
-            _renderer(std::make_unique<SceneRenderer>(appPath, lights))
+            _renderer(std::make_unique<SceneRenderer>(appPath, lights, cameras))
         {
             this->initDisplay();
         }
@@ -71,8 +75,6 @@ namespace wim {
         inline const SDL_GLContext& getGLContext() const {return _window->getGlContext();};
 
     private:
-        //todo: WE'VE GOT TO HOLD ON TO WHAT WE'VE GOT
-        //todo: IT DOESN'T EVEN MATTER IF WE MAKE IT OR NOT
        void initDisplay(/*const char* appPath*/);
     };
 }
