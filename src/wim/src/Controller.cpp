@@ -56,7 +56,22 @@ namespace wim {
         return loop;
     }
 
-    bool MasterController::runLoop() const
+    bool MainController::runLoop() const
+    {
+
+
+
+        /** Display Controller */
+        _dispCtrl.runDisplay();
+        /** Controller user interface (managing input) **/
+        bool  loop = _uiCtrl.runInterface();
+        /** Cinbtroller for  calculating results **/
+        _compCtrl.runCompute();
+
+
+        return loop;
+    }
+    void MainController::runApp() const
     {
         /** ImGui INITIALISATION **/
         std::string glslVersion = std::string("#version 130");
@@ -74,21 +89,14 @@ namespace wim {
         ImGui_ImplSDL2_InitForOpenGL(_dispCtrl.getWindowPtr().get(), _dispCtrl.getGLContext());
         ImGui_ImplOpenGL3_Init(glslVersion.c_str());
 
-
-        /** Display Controller */
-        _dispCtrl.runDisplay();
-        /** Controller user interface (managing input) **/
-        bool  loop = _uiCtrl.runInterface();
-        /** Cinbtroller for  calculating results **/
-        _compCtrl.runCompute();
+        /** RUNNING APPLICATION LOOP **/
+        while( this->runLoop() );
 
         /** FREEING ImGui RESOURCES **/
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplSDL2_Shutdown();
         ImGui::DestroyContext();
 
-        return loop;
     }
-
 
 }

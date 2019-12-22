@@ -76,7 +76,7 @@ namespace wim
         }
     };
 
-    class MasterController : protected AbstractController
+    class MainController : protected AbstractController
     {
     private:
         /* ComputeController needs to be initialiased first
@@ -87,15 +87,12 @@ namespace wim
         DisplayController _dispCtrl;
         UIController _uiCtrl;
     public:
-        MasterController(const char* appPath, const XUint worldWidth, const YUint worldLength):
+        MainController(const char* appPath, const XUint worldWidth, const YUint worldLength):
                 _compCtrl(worldWidth, worldLength),_dispCtrl(appPath, _model->getLightManagerPtr()), _uiCtrl()  {}
 
         bool runLoop() const;
 
-        void runApp() const
-        {
-            while( this->runLoop() );
-        }
+        void runApp() const;
 
 
     };

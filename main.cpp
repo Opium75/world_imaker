@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
     const wim::XUint worldWidth = 10;
     const wim::YUint worldLength = 10;
 
-    wim::MasterController controller(appPath, worldWidth, worldLength);
+    wim::MainController controller(appPath, worldWidth, worldLength);
     controller.runApp();
 /*
     wim::Vec3D p1(1,-1, 0);

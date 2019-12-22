@@ -33,6 +33,7 @@ namespace wim
     public:
         SceneRenderer(const char* appPath, const LightManagerPtr& lights) : _shaders(appPath), _patterns(), _lights(lights), _stack()
         {
+
         }
 
         inline void addToStack(const Renderable& item) {_stack.push(item);}

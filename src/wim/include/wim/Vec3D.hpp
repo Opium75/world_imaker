@@ -65,9 +65,10 @@ namespace wim
         inline T& operator[](size_t dim) {return _coord[dim];}
         inline T operator[](size_t dim) const {return _coord[dim];}
 
-        TVec3D& operator=(const TVec3D& vec)
+        //I just learnt of the copy and swap idiom, so here goes:
+        TVec3D& operator=(TVec3D vec)
         {
-            this->_coord = vec._coord;
+            std::swap(_coord, vec._coord);
             return *this;
         }
         TVec3D operator+(const TVec3D& vec) const
