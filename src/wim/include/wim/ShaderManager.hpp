@@ -13,6 +13,7 @@
 #include <glimac/FilePath.hpp>
 #include <glimac/Programme.hpp>
 
+#include "Types.hpp"
 #include "ShaderSender.hpp"
 #include "Exception.hpp"
 
@@ -26,6 +27,7 @@ namespace wim
     private:
         glimac::FilePath _appPathDir;
         ListSender  _listSender;
+        SizeInt _currentIndex;
     public:
         ShaderManager() = default;
 
@@ -38,26 +40,23 @@ namespace wim
         void readConfig();
 
 
-        inline void useProgramme(const size_t index) const { _listSender.at(index).useProgramme();}
-
-        inline glimac::Programme& programme(const size_t index) {return _listSender.at(index).getProgramme();}
-        inline const glimac::Programme& programme(const size_t index) const {return _listSender.at(index).getProgramme();}
-
-        inline ShaderCouple& couple(const size_t index) {return _listSender.at(index).couple();}
-        inline const ShaderCouple& couple(const size_t index) const {return _listSender.at(index).couple();}
-
-
-
-       /* friend std::ostream& operator<<(std::ostream& stream, const ListCouple& vecShaderCouple)
+        inline void setCurrentProgramme(const SizeInt index)
         {
-            for(const auto& couple : vecShaderCouple)
-            {
-                stream << couple << std::endl;
-            }
 
-            return stream;
+            _listSender.at(index).useProgramme();
+            _currentIndex = index;
         }
-        */
+
+        inline glimac::Programme& programme(const SizeInt index) {return _listSender.at(index).programme();}
+        inline const glimac::Programme& programme(const SizeInt index) const {return _listSender.at(index).programme();}
+
+        inline ShaderCouple& couple(const SizeInt index) {return _listSender.at(index).couple();}
+        inline const ShaderCouple& couple(const SizeInt index) const {return _listSender.at(index).couple();}
+
+        inline const glimac::Programme& currentProgramme() const {return this->programme(_currentIndex);}
+
+        inline void sendMVPNMatrixCurrent() const {}
+
 
     };
 

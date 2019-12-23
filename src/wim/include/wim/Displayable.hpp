@@ -9,6 +9,7 @@
 
 #include "Types.hpp"
 #include "Vec3D.hpp"
+#include "Material.hpp"
 
 namespace wim
 {
@@ -22,8 +23,13 @@ namespace wim
     class Displayable
     {
     protected:
+        Material _material;
+    protected:
+        Displayable(const Material &material) : _material(material) {}
         //Should be overridden by every class, with one of the above Patterns
         virtual DisplayPattern getDisplayPattern() const = 0;
+    public:
+        const Material& getMaterial() const {return this->_material;}
     };
 
     class Renderable
@@ -43,6 +49,7 @@ namespace wim
         {
             //We do NOT delete the displayable object
         }
+        const Material& getMaterial() const {return this->_objectPtr->getMaterial();}
 
     };
 

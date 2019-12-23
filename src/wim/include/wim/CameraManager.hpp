@@ -21,7 +21,6 @@
 
 namespace wim
 {
-    typedef glm::mat4 UniformMatrix;
     class CameraManager
     {
     public:

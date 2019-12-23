@@ -7,25 +7,21 @@
 namespace wim
 {
 
-    Cube::Cube(const Colour &colour) : _colour(colour)
+    Cube::Cube(const Material &material) : Displayable(material)
     {
 
     }
 
-    Cube::Cube(const Cube &cube) : Cube(cube._colour)
-    {
-
-    }
-
-    Cube& Cube::operator=(const Cube& cube)
-    {
-        _colour = cube._colour;
+    Cube& Cube::operator=(Cube cube)
+            {
+        std::swap(*this, cube);
         return *this;
     }
 
     Cube Cube::Random()
     {
-        return Cube(Colour::Random());
+        return Cube(Material::Random());
+
     }
 
 }

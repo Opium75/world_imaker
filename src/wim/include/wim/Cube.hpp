@@ -4,11 +4,10 @@
 #pragma once
 
 #include <iostream>
+#include <utility>
 
-#include "Colour.hpp"
 #include "Displayable.hpp"
-#include "Randomisable.hpp"
-
+#include "Material.hpp"
 
 namespace wim
 {
@@ -20,14 +19,14 @@ namespace wim
     {
     private:
         //No need for radius since every cube in the grid is the same size
-        Colour _colour;
+        //inherits Material from Displayable.
     public:
         Cube() = default;
-        Cube(const Colour& colour);
-        Cube(const Cube& cube);
+        Cube(const Material& material);
+        Cube(const Cube& cube) = default;
         ~Cube() = default;
 
-        Cube& operator=(const Cube& cube);
+        Cube& operator=(Cube cube);
 
         static Cube Random();
 
@@ -36,7 +35,10 @@ namespace wim
         friend std::ostream& operator<<(std::ostream& out, const Cube& cube);
 
     };
-    inline std::ostream& operator<<(std::ostream& out, const Cube& cube) {return out << cube._colour;}
+    inline std::ostream& operator<<(std::ostream& out, const Cube& cube)
+    {
+        return out << cube._material;
+    }
 
 }
 

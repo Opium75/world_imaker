@@ -44,10 +44,7 @@ namespace wim
             return _rand;
         }
     public:
-        ~IntRandomisable()
-        {
-            _rand.reset();
-        }
+        ~IntRandomisable() = default;
         static IntType Random(const IntType lowest, const IntType highest)
         {
            return getRandomiser(lowest, highest)->operator()();
@@ -76,10 +73,7 @@ namespace wim
             return _rand;
         }
     public:
-        ~RealRandomisable()
-        {
-            _rand.reset();
-        }
+        ~RealRandomisable() = default;
         static RealType Random(const RealType lowest, const RealType highest)
         {
             return getRandomiser(lowest, highest)->operator()();

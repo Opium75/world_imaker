@@ -196,7 +196,7 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/Light.hpp
         src/wim/include/wim/CameraManager.hpp
         src/wim/include/wim/PatternManager.hpp
-        src/wim/include/wim/SceneRenderer.hpp src/wim/include/wim/Types.hpp src/wim/include/wim/Model.hpp src/wim/src/SceneRenderer.cpp)
+        src/wim/include/wim/SceneRenderer.hpp src/wim/include/wim/Types.hpp src/wim/include/wim/Model.hpp src/wim/src/SceneRenderer.cpp src/wim/include/wim/Material.hpp src/wim/src/Light.cpp src/wim/include/wim/CommunDisplay.hpp)
 
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}

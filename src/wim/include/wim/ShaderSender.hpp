@@ -11,13 +11,13 @@
 #include <iostream>
 #include <fstream>
 
-#define GLM_FORCE_RADIANS
-#include <glm/gtc/type_ptr.hpp>
-
 #include <glimac/Programme.hpp>
 #include <glimac/FilePath.hpp>
 
+
+#include "Types.hpp"
 #include "Exception.hpp"
+#include "Material.hpp"
 
 namespace wim
 {
@@ -32,9 +32,16 @@ namespace wim
     static constexpr const char* UNI_KD_NAME = "uKd";
     static constexpr const char* UNI_KS_NAME = "uKs";
     static constexpr const char* UNI_SHININESS_NAME = "uShininess";
-    //LIGHT
-    static constexpr const char* UNI_LIGHTPOS_NAME = "uLightPos_vs";
-    static constexpr const char* UNI_LIGHTINTENSITY_NAME = "uLightPos_vs";
+    /* LIGHTs
+     * One ambiant, and multiple point and directional lights
+     * (using shader storage buffers; see Light.hpp for storage details.)
+     */
+    static constexpr const char* UNI_AMBIANT_NAME = "uAmbiantLightData";
+    static constexpr const char* STORAGE_POSLIGHT_NAME = "sPosLightData_vs";
+    static constexpr const char* STORAGE_DIRLIGHT_NAME = "sDirLightData_vs";
+    static const GLuint BINDING_POSLIGHT_INDEX = 0;
+    static const GLuint BINDING_DIRLIGHT_INDEX = 1;
+
 
     /* Path to shaders and config file relative to build directory */
     static constexpr const char* DEFAULT_SHADER_DIR = "resources/shaders";
@@ -67,50 +74,46 @@ namespace wim
         ShaderCouple _couple;
         glimac::Programme _programme;
         //Matrix for transformations
-        GLint _uMVPMatrix;
-        GLint _uMVMatrix;
-        GLint _uNormalMatrix;
+        GLuint _uMVPMatrix;
+        GLuint _uMVMatrix;
+        GLuint _uNormalMatrix;
         //for Blinn-Phong, properties of the material
-        GLint _uKd, _uKs, _uShininess;
+        GLuint _uColour, _uKd, _uKs, _uShininess;
         //light properties (light position is in View Space coordinates)
         /* Only the ID of the property is stored, not the light itself
          * which will change depending on the camera.
          */
         //todo: add support for multiple lights, including directional light.
-        GLint _uLightPos_vs, _uLightIntensity;
+        GLuint _uAmbiantLightData;
+        GLuint _sPointLightData_vs, _sDirLightData_vs;
+
     private:
         void loadProgramme(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
-        void getAllUniAttrLoc();
+        void getAllAttrLoc();
     private:
         void initSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
     public:
         ShaderSender() = default;
-        ShaderSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple) : _couple(couple), _programme()
-        {
-            //checking for an error in creating the OpenGL programme
-            if( _programme.getGLId()  == 0 )
-                throw Exception(ExceptCode::INIT_ERROR, 1, "Could not create OpenGL programme.");
-            this->initSender(appPathDir, couple);
-            //use first programme to begin with ?
-            //Nope, will be decided by ShaderManager.
-            //this->useProgramme();
-        }
+        ShaderSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
+
 
 
         ///brief; Send ModelView, ModevViewPorjection (From Projection and ModelView), and Normal matrices to shaders
 
-        void sendUniAttribMatrix4(const GLint uniTarget, const glm::mat4 &M) const;
-        void sendUniAttribVec3(const GLint uniTarget, const glm::vec3 &vec) const;
-        void sendUniAttribFloat(const GLint uniTarget, const GLfloat value) const;
+        void sendUniAttribMatrix4(const GLuint uniTarget, const UniformMatrix &M) const;
+        void sendUniAttribVec3(const GLuint uniTarget, const glm::vec3 &vec) const;
+        void sendUniAttribFloat(const GLuint uniTarget, const GLfloat value) const;
 
-        void sendMVPNMatrices(const glm::mat4& MVMatrix, const glm::mat4& ProjMatrix, const glm::mat4& NormalMatrix) const;
-        void sendMaterial(const glm::vec3& kD, const glm::vec3& kS, const GLfloat shininess) const;
-        void sendLight(const glm::vec3& lightPos_vs, const glm::vec3& lightIntensity) const;
+        void sendStorageBlockBuffer(const GLuint blockTarget, const GLuint bindTarget) const;
+
+        void sendMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix, const UniformMatrix& NormalMatrix) const;
+        void sendMaterial(const Material& material);
+        void sendLights() const;
 
         inline void useProgramme() const {_programme.use();}
 
-        inline const glimac::Programme& getProgramme() const {return _programme;}
-        inline glimac::Programme& getProgramme() {return _programme;}
+        inline const glimac::Programme& programme() const {return _programme;}
+        inline glimac::Programme& programme() {return _programme;}
 
         inline const ShaderCouple& couple() const { return _couple;}
         inline ShaderCouple& couple() { return _couple;}

@@ -13,5 +13,6 @@ namespace wim
 
 
         //todo: Then, send lighting from every source
+        //this->
     }
 }

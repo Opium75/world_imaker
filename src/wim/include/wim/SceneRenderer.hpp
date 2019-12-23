@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <memory>
 #include <stack>
 #include <deque>
 
@@ -33,8 +34,11 @@ namespace wim
         CameraManagerPtr _cameras;
         RenderingStack _stack;
     public:
-        SceneRenderer(const char* appPath, const LightManagerPtr& lights, const CameraManagerPtr& cameras) :
-        _shaders(appPath), _patterns(), _lights(lights), _cameras(cameras), _stack()
+        SceneRenderer(const char* appPath):
+        _shaders(appPath), _patterns(),
+        _lights(std::make_unique<LightManager>()),
+        _cameras(std::make_unique<CameraManager>()),
+        _stack()
         {
 
         }
@@ -43,10 +47,12 @@ namespace wim
 
         inline UniformMatrix getActiveCameraViewMatrix() const {return _cameras->getActiveCameraViewMatrix();}
 
+        inline const LightManagerPtr& getLightManagerPtr() const {return this->_lights;}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return this->_cameras;}
+
         //todo: this.
         ///brief: render Displayable elements in stack, with respect to active Camera, lighting, and Shaders
         void render();
-
     };
 
 }

@@ -42,7 +42,6 @@ namespace wim
         inline FloatType& b(){return _coord.b;}
         inline FloatType b() const {return _coord.b;}
 
-
         //Redefined Vec3D to jeep colour values in [0,1]
         Colour operator+(const Colour &c) const;
         Colour& operator+=(const Colour &c);

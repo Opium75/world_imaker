@@ -8,10 +8,7 @@
 
 #include <memory>
 
-//Use glew as static library
-#define GLEW_STATIC
-#include <GL/glew.h>
-#include <GL/glut.h>
+#include "CommunDisplay.hpp"
 
 #include <glimac/SDLWindowManager.hpp>
 
@@ -47,10 +44,10 @@ namespace wim {
         SceneRendererPtr _renderer;
 
     public:
-        Displayer(const char* appPath, const LightManagerPtr& lights, const CameraManagerPtr& cameras) :
+        Displayer(const char* appPath) :
             _window(std::make_unique<glimac::SDLWindowManager>(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
             _widgets(std::make_unique<WidgetManager>()),
-            _renderer(std::make_unique<SceneRenderer>(appPath, lights, cameras))
+            _renderer(std::make_unique<SceneRenderer>(appPath))
         {
             this->initDisplay();
         }
@@ -71,6 +68,8 @@ namespace wim {
             _renderer->addToStack(Renderable(object, anchor));
         }
 
+        inline const LightManagerPtr& getLightManagerPtr() const {return _renderer->getLightManagerPtr();}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return _renderer->getCameraManagerPtr();}
         inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr() const {return _window->getWindowPtr();};
         inline const SDL_GLContext& getGLContext() const {return _window->getGlContext();};
 

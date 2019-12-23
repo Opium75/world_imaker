@@ -9,7 +9,6 @@
 
 #include <type_traits>
 #include <iostream>
-#include <glimac/glm.hpp>
 
 #include "Types.hpp"
 #include "Exception.hpp"
@@ -58,6 +57,8 @@ namespace wim
 
         inline T& z() {return _coord.z;}
         inline T z() const {return _coord.z;}
+
+       const Coord& getCoord() const { return _coord;}
 
         //No reason to check index bond errors, already done by glm
         inline T& operator[](size_t dim) {return _coord[dim];}

@@ -26,10 +26,9 @@ namespace wim {
         CameraManagerPtr _cameras;
     public:
         Model() = default;
-        Model(const XUint worldWidth, const YUint worldLength) :
+        Model(const XUint worldWidth, const YUint worldLength, const LightManagerPtr& lights, const CameraManagerPtr& cameras) :
             _world(std::make_unique<CubeWorld>(worldWidth, worldLength)),
-            _lights(std::make_shared<LightManager>()),
-             _cameras(std::make_shared<CameraManager>())
+            _lights(lights) ,_cameras(cameras)
              {}
         ~Model() = default;
 

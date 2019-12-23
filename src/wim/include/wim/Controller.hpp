@@ -42,16 +42,18 @@ namespace wim
     {
         friend class MainController;
     private:
-        DisplayController(const char* appPath, const LightManagerPtr& lights, const CameraManagerPtr& cameras)
+        DisplayController(const char* appPath)
         {
             //initialising display
-            _displayer.reset(new Displayer(appPath, lights, cameras));
+            _displayer.reset(new Displayer(appPath));
         }
         void runDisplay() const;
 
         inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr()const {return _displayer->getWindowPtr();}
         inline const SDL_GLContext& getGLContext()const {return _displayer->getGLContext();}
 
+        inline const LightManagerPtr& getLightManagerPtr() const {return _displayer->getLightManagerPtr();}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return _displayer->getCameraManagerPtr();}
     };
 
     class UIController : protected AbstractController
@@ -65,10 +67,10 @@ namespace wim
     {
         friend class MainController;
     private:
-        ComputeController(const XUint worldWidth, const YUint worldLength)
+        ComputeController(const XUint worldWidth, const YUint worldLength, const LightManagerPtr& lights, const CameraManagerPtr& cameras)
         {
             //initialising Model
-            _model.reset(new Model(worldWidth, worldLength));
+            _model.reset(new Model(worldWidth, worldLength, lights, cameras));
         }
         void runCompute() const
         {
@@ -85,17 +87,22 @@ namespace wim
     {
         friend class Application;
     private:
-        /* ComputeController needs to be initialiased first
-        * before it initialises the model too
-         * And the display uses a shared pointer to lights.
+        /* DisplayController needs to be initialised first
+         * to set-up the OpenGL, and SDL context,
+         * as well as lights and cameras.
          */
-        ComputeController _compCtrl;
+
         DisplayController _dispCtrl;
+        ComputeController _compCtrl;
         UIController _uiCtrl;
 
     private:
         MainController(const char* appPath, const XUint worldWidth, const YUint worldLength):
-                _compCtrl(worldWidth, worldLength),_dispCtrl(appPath, _model->getLightManagerPtr(), _model->getCameraManagerPtr()), _uiCtrl()  {}
+                _dispCtrl(appPath),
+                _compCtrl(worldWidth, worldLength,
+                        _dispCtrl.getLightManagerPtr(),
+                        _dispCtrl.getCameraManagerPtr()),
+                _uiCtrl()  {}
 
         bool runLoop() const;
         void runApp() const;
