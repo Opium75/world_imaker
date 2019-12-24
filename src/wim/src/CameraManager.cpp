@@ -7,12 +7,31 @@
 namespace wim
 {
 
-    const glimac::GenericCamera& CameraManager::getActiveCamera() const
+
+    const Camera& CameraManager::camera(const SizeInt index) const
     {
-        if ( _activeIndex > _listCamera.size() )
-            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Active index of matrix does not correspond to any camera.");
+        if ( index > _listCamera.size() )
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Index of matrix does not correspond to any camera.");
         else
-            return _listCamera.at(_activeIndex);
+            return _listCamera.at(index);
+    }
+
+    Camera& CameraManager::camera(const SizeInt index)
+    {
+        if ( index > _listCamera.size() )
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Index of matrix does not correspond to any camera.");
+        else
+            return _listCamera.at(index);
+    }
+
+    const Camera& CameraManager::active() const
+    {
+      return this->camera(_activeIndex);
+    }
+
+    Camera& CameraManager::active()
+    {
+        return this->camera(_activeIndex);
     }
 
     void CameraManager::setActiveCamera(SizeInt index) {
@@ -38,10 +57,54 @@ namespace wim
             _listCamera.erase(_listCamera.begin()+index);
     }
 
+    UniformMatrix CameraManager::getCameraViewMatrix(const SizeInt index) const
+    {
+        try
+        {
+            return this->camera(index).getViewMatrix();
+        }
+        catch(Exception& e)
+        {
+            throw;
+        }
+    }
+
     UniformMatrix CameraManager::getActiveCameraViewMatrix() const
     {
-        //Exception thrown by getActiveCamera.
-        return this->getActiveCamera().getViewMatrix();
+        try
+        {
+            return this->getCameraViewMatrix(_activeIndex);
+        }
+        catch(Exception& e)
+        {
+            throw;
+        }
+    }
+
+    UniformMatrix CameraManager::getElementModelViewMatrix(const SizeInt index, const Renderable& item) const
+    {
+        UniformMatrix MVMatrix = getCameraViewMatrix(index);
+        /* matching rotation around origin of World .
+        * -> nothing to do
+         */;
+        //Position
+        MVMatrix = glm::translate(
+                MVMatrix,
+                item.getAnchor().getCoord()
+        );
+
+        //Scale
+        /* nothing to do ?
+         *
+        MVMatrix = glm::scale(MVMatrix,
+                ???
+                );
+        */
+
+        /* Self rotation
+         * nothing to do.
+         */
+        return MVMatrix;
     }
 
 }

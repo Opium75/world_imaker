@@ -14,26 +14,26 @@
 #include <glimac/Programme.hpp>
 
 #include "Types.hpp"
-#include "ShaderSender.hpp"
 #include "Exception.hpp"
+#include "BufferManager.hpp"
+#include "ShaderSender.hpp"
 
 namespace wim
 {
     class ShaderManager
     {
-    public:
-        //typedef for convenience
-        typedef std::vector<ShaderSender> ListSender;
     private:
         glimac::FilePath _appPathDir;
         ListSender  _listSender;
         SizeInt _currentIndex;
+        BufferManager _buffers;
     public:
         ShaderManager() = default;
 
         ShaderManager(const glimac::FilePath& appPath) : _appPathDir(glimac::FilePath(appPath).dirPath().dirPath())
         {
            this->readConfig();
+           this->_buffers.init(_listSender);
         }
         ~ShaderManager() = default;
 
@@ -55,8 +55,20 @@ namespace wim
 
         inline const glimac::Programme& currentProgramme() const {return this->programme(_currentIndex);}
 
-        inline void sendMVPNMatrixCurrent() const {}
+        inline const ShaderSender& currentSender() const {return _listSender.at(_currentIndex);}
 
+        inline void updateMVPNMatricesCurrent(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix) const
+        {
+            this->_buffers.updateMatrices(MVMatrix, ProjMatrix);
+        }
+        inline void updateLightsCurrent(const AmbiantLightData& ambiant) const
+        {
+            this->_buffers.updateAmbiantLight(ambiant);
+        }
+        inline void updateMaterialCurrent(const Material& material ) const
+        {
+            this->_buffers.updateMaterial(material);
+        }
 
     };
 

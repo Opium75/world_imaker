@@ -11,10 +11,9 @@ namespace wim
 
     }
 
-    CubeFloor& CubeFloor::operator=(const CubeFloor &cFloor)
+    CubeFloor& CubeFloor::operator=(CubeFloor cFloor)
     {
-        _cube = cFloor._cube;
-        _floor = cFloor._floor;
+        std::swap(*this, cFloor);
         return *this;
     }
 
@@ -42,15 +41,16 @@ namespace wim
         return *this;
     }
 
+
     CubeFloor::FloorIndex CubeStack::insertFloor(const Cube &cube, CubeFloor::FloorIndex insertFloor, bool insertHigher) {
         /**Assumes the stack is already sorted **/
-        Stack::iterator it = _stack.begin();
+        auto it = _stack.begin();
         int comparison;
         /*Travelling the stack looking for the right place to insert*/
         while (it != _stack.end()) {
             comparison = it->compareFloors(insertFloor);
             if (comparison == 1) {
-                /* we found a higher floor, inserting below it, and call it a day. */
+                /* we found a higher floor, insert below it, and call it a day. */
                 _stack.insert(it, CubeFloor(cube, insertFloor));
                 return insertFloor;
             } else if (comparison == 0 && !insertHigher) {
@@ -113,10 +113,10 @@ namespace wim
     }
 
     CubeStack
-    CubeStack::Random(const size_t maxNbFloors, const CubeFloor::FloorIndex min, const CubeFloor::FloorIndex max) {
+    CubeStack::Random(const SizeInt maxNbFloors, const CubeFloor::FloorIndex min, const CubeFloor::FloorIndex max) {
         CubeStack cubeStack;
         CubeFloor::FloorIndex insertedFloor;
-        for (size_t i = 0; i < maxNbFloors; ++i) {
+        for (SizeInt i = 0; i < maxNbFloors; ++i) {
             /* Since the floors are random
              * we might have multiple cubes at the same floor,
              * so we insert higher in this case.
@@ -129,7 +129,8 @@ namespace wim
         return cubeStack;
     }
 
-    CubeStack CubeStack::Random(const size_t maxNbFloors, const CubeFloor::FloorIndex max) {
+    CubeStack
+    CubeStack::Random(const SizeInt maxNbFloors, const CubeFloor::FloorIndex max) {
         return CubeStack::Random(maxNbFloors, 0, max);
     }
 

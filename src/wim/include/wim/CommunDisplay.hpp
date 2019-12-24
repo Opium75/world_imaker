@@ -12,5 +12,6 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 #include <GL/glut.h>
+#include <glimac/glm.hpp>
 
 #endif //WORLD_IMAKER_COMMUNDISPLAY_HPP

@@ -71,10 +71,12 @@ namespace wim {
         ImGui_ImplSDL2_NewFrame(this->getWindowPtr().get());
         ImGui::NewFrame();
 
-        /* Actual displaying */
+        /*Adding elements to rendering stack. */
         this->displayWidgets();
         this->displayModel(model);
 
+        /* Rendering World */
+        _renderer->render();
         /* Rendering IMGUI */
         ImGui::Render();
         glViewport(0, 0, (int) io.DisplaySize.x, (int) io.DisplaySize.y);

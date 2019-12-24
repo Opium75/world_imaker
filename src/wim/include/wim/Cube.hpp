@@ -21,7 +21,6 @@ namespace wim
         //No need for radius since every cube in the grid is the same size
         //inherits Material from Displayable.
     public:
-        Cube() = default;
         Cube(const Material& material);
         Cube(const Cube& cube) = default;
         ~Cube() = default;
@@ -30,7 +29,7 @@ namespace wim
 
         static Cube Random();
 
-        DisplayPattern getDisplayPattern() const override {return DisplayPattern::FULL_CUBE;}
+        DisplayPattern getDisplayPattern() const override {return DisplayPattern::COLOURED_CUBE;}
 
         friend std::ostream& operator<<(std::ostream& out, const Cube& cube);
 

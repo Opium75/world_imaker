@@ -12,8 +12,9 @@ int main(int argc, char **argv) {
         throw wim::Exception(wim::ExceptCode::CATASTROPHIC_FAILURE, 42, "All your bases are belong to us!");
     }
     const char* appPath = argv[0];
-    const wim::XUint worldWidth = 10;
-    const wim::YUint worldLength = 10;
+    const wim::XUint worldWidth = 3;
+    const wim::YUint worldLength = 3;
+
 
     wim::Application::init(appPath, worldWidth, worldLength);
     wim::Application::run();

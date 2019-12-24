@@ -13,6 +13,7 @@ namespace wim {
 
     void DisplayController::runDisplay() const
     {
+        glClearColor(0.5,0.5, 0.5, 0.5);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         _displayer->displayAll(*_model);
         SDL_GL_SwapWindow(_displayer->getWindowPtr().get());
@@ -35,7 +36,7 @@ namespace wim {
                     break;
 
                 case SDL_KEYDOWN  :
-                    //Fonction in Controller or switch and case ?
+                    //Function in Controller or switch and case ?
                     std::cout << "Ahaha" << std::endl;
                     break;
 

@@ -14,6 +14,7 @@
 #include "Exception.hpp"
 #include "Displayer.hpp"
 #include "Model.hpp"
+#include "Interface.hpp"
 
 namespace wim
 {

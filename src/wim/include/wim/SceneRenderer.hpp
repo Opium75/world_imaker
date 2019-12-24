@@ -46,10 +46,33 @@ namespace wim
         inline void addToStack(const Renderable& item) {_stack.push(item);}
 
         inline UniformMatrix getActiveCameraViewMatrix() const {return _cameras->getActiveCameraViewMatrix();}
+        inline UniformMatrix getActiveElementModelViewMatrix(const Renderable& item)
+        {
+            return _cameras->getActiveElementModelViewMatrix(item);
+        }
+        inline UniformMatrix getActiveProjectionMatrix() const
+        {
+            return this->_cameras->getActiveProjectionMatrix();
+        }
 
-        inline const LightManagerPtr& getLightManagerPtr() const {return this->_lights;}
-        inline const CameraManagerPtr& getCameraManagerPtr() const {return this->_cameras;}
+        inline const LightManagerPtr& getLightManagerPtr() const {return _lights;}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return _cameras;}
 
+        inline void updateMaterialCurrent(const Material& material)
+        {
+            return _shaders.updateMaterialCurrent(material);
+        }
+        inline void updateMVPNMatricesCurrent(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix)
+        {
+            return _shaders.updateMVPNMatricesCurrent(MVMatrix, ProjMatrix);
+        }
+
+        void updateLightsCurrent() const;
+
+        inline void drawPattern(const DisplayPattern dispPat)
+        {
+           _patterns.draw(dispPat);
+        }
         //todo: this.
         ///brief: render Displayable elements in stack, with respect to active Camera, lighting, and Shaders
         void render();

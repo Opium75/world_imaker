@@ -20,11 +20,14 @@ namespace wim {
     ///brief: constant in order to limit the number of lights.
     static const unsigned int MAX_NB_EACH_LIGHTS = 10;
 
+    static const GLfloat DEFAULT_AMBIANT_INTENSITY = 1.f;
+    static const glm::vec3 DEFAULT_AMBIANT_COLOUR = {1.f, 1.f, 1.f};
 
     struct AmbiantLightData
     {
         glm::vec3 _colour;
         GLfloat  _intensity;
+        AmbiantLightData() : _colour(DEFAULT_AMBIANT_COLOUR), _intensity(DEFAULT_AMBIANT_INTENSITY) {}
         AmbiantLightData(const glm::vec3& colour, const GLfloat intensity) :
                 _colour(colour), _intensity(intensity)
         {
@@ -121,17 +124,20 @@ namespace wim {
     private:
         ListPLight _listPoint;
         ListDLight _listDir;
-        AmbiantLight _ambiant;
-        GLuint _uAmbiant, _ssboP, _ssboD;
+        AmbiantLightData _ambiant;
+        GLuint _ssboP, _ssboD;
 
     public:
         LightManager();
+        LightManager(const AmbiantLightData& ambiant) : _ambiant(ambiant) {}
         ~LightManager();
         inline void addPoint(const PointLight& pLight) {_listPoint.push_back(pLight.getSSBOData());}
         inline void addDir(const DirectionalLight& dLight) {_listDir.push_back(dLight.getSSBOData());}
 
         inline void removePoint(const size_t index) {_listPoint.erase(_listPoint.begin()+index);}
         inline void removeDir(const size_t index) {_listDir.erase(_listDir.begin()+index);}
+
+        inline const AmbiantLightData& getAmbiantLight() const {return _ambiant;}
 
         void buildSSBO() const;
         void updateSSBO() const;

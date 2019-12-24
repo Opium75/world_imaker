@@ -25,7 +25,6 @@ namespace wim
         typedef Eigen::Matrix<CubeStack, Eigen::Dynamic, Eigen::Dynamic> StackMatrix;
         StackMatrix _matrix;
     public:
-        //todo
         CubeWorld(const XUint width, const YUint length);
 
         inline XUint getWidth() const {return _matrix.cols();}

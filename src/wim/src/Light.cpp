@@ -7,13 +7,12 @@
 namespace wim
 {
     LightManager::LightManager() :
-        _listPoint(), _listDir(), _ambiant(), _uAmbiant(), _ssboP(), _ssboD()
+        _listPoint(), _listDir(), _ambiant(), _ssboP(), _ssboD()
     {
         //Enough space for lights
         _listPoint.reserve(MAX_NB_EACH_LIGHTS);
         _listDir.reserve(MAX_NB_EACH_LIGHTS);
         /* */
-        glGenBuffers(1, &_uAmbiant);
         glGenBuffers(1, &_ssboP);
         glGenBuffers(1, &_ssboD);
         /* */
@@ -22,7 +21,6 @@ namespace wim
 
     LightManager::~LightManager()
     {
-        glDeleteBuffers(1, &_uAmbiant);
         glDeleteBuffers(1, &_ssboP);
         glDeleteBuffers(1, &_ssboD);
     };

@@ -29,7 +29,7 @@ namespace wim
          * the data structure and its uses in the member methods
          * the type can be accessed outside the class as Vec3D::Coord
          */
-        typedef glm::detail::tvec3<T, glm::mediump> Coord;
+        typedef glm::detail::tvec3<T, glm::highp> Coord;
         Coord _coord;
     private :
         TVec3D(const Coord& coord) : _coord(coord) {};
@@ -37,7 +37,7 @@ namespace wim
         TVec3D() = default;
         TVec3D(const T x, const T y, const T z) : _coord(x,y,z)
         {
-            //Constraining use of class
+            //Constraining use of class to arithmetic types.
             static_assert(std::is_arithmetic<T>::value, "Vec3D used for arithmetics with float or int types.");
         };
         TVec3D(const TVec3D& vec) = default;

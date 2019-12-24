@@ -13,10 +13,42 @@
 
 namespace glimac
 {
+
+    static const GLfloat DEFAULT_CAMERA_VIEW_WIDTH = 800;
+    static const GLfloat DEFAULT_CAMERA_VIEW_HEIGHT = 600;
+
+    static const GLfloat DEFAULT_CAMERA_VIEW_FOVY = glm::pi<GLdouble>()/2;
+
+    static const GLfloat DEFAULT_CAMERA_RANGE_NEAR = 0.1f;
+    static const GLfloat DEFAULT_CAMERA_RANGE_FAR = 100.f;
+
     class GenericCamera {
+    private:
+        GLfloat _width, _height;
+        GLfloat _fov;
+        GLfloat _rangeNear, _rangeFar;
+
+
     public :
-        GenericCamera();
-        virtual glm::mat4 getViewMatrix(void) const = 0;
+        GenericCamera(const GLfloat width=DEFAULT_CAMERA_VIEW_WIDTH,
+                const GLfloat height=DEFAULT_CAMERA_VIEW_HEIGHT,
+                const GLfloat fov=DEFAULT_CAMERA_VIEW_FOVY,
+                const GLfloat rangeNear=DEFAULT_CAMERA_RANGE_NEAR,
+                const GLfloat rangeFar=DEFAULT_CAMERA_RANGE_FAR) :
+                    _width(width), _height(height), _fov(fov), _rangeNear(rangeNear), _rangeFar(rangeFar)
+        {}
+
+        virtual glm::mat4 getViewMatrix() const = 0;
+
+        inline glm::mat4 getProjectionMatrix() const
+        {
+            return glm::perspective(
+                    _fov,
+                    _width/_height,
+                    _rangeNear,
+                    _rangeFar
+                    );
+        }
     };
 
 }
