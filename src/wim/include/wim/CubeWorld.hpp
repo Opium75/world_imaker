@@ -30,8 +30,11 @@ namespace wim
         inline XUint getWidth() const {return _matrix.cols();}
         inline YUint getLength() const {return _matrix.rows();}
 
-        inline CubeStack& operator()(const XUint x, const YUint y) {return _matrix(x,y);}
-        inline const CubeStack& operator()(const XUint x, const YUint y) const {return _matrix(x,y);}
+        inline CubeStack& operator()(const XUint x, const YUint y){
+            //Eigen matrices are column-major.
+            return _matrix(y,x);
+        }
+        inline const CubeStack& operator()(const XUint x, const YUint y) const {return _matrix(y,x);}
 
         inline Cube& operator()(const XUint x, const YUint y, const ZUint z)
         {

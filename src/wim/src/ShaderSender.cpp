@@ -9,9 +9,6 @@ namespace wim
 
     ShaderSender::ShaderSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple) : _couple(couple), _programme()
     {
-        //checking for an error in creating the OpenGL programme
-        if( _programme.getGLId()  == 0 )
-            throw Exception(ExceptCode::INIT_ERROR, 1, "Could not create OpenGL programme.");
         this->initSender(appPathDir, couple);
         //use first programme to begin with ?
         //Nope, will be decided by ShaderManager.
@@ -21,7 +18,6 @@ namespace wim
     void ShaderSender::initSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple)
     {
         this->loadProgramme(appPathDir, couple);
-        this->getAllAttrLoc();
     }
 
     void ShaderSender::loadProgramme(const glimac::FilePath &appPathDir, const ShaderCouple &couple)
@@ -33,20 +29,6 @@ namespace wim
                                          shaderCoupleDirPath + SEP + couple._fs
         );
 
-
-    }
-
-    void ShaderSender::sendStorageBlockBuffer(const GLuint blockTarget, GLuint bindTarget) const
-    {
-        glShaderStorageBlockBinding(_programme.getGLId(), blockTarget, bindTarget);
-    }
-
-
-    void ShaderSender::getAllAttrLoc()
-    {
-        //
-        _sPointLightData_vs = glGetProgramResourceIndex(_programme.getGLId(), GL_SHADER_STORAGE_BLOCK, STORAGE_POSLIGHT_NAME);
-        _sDirLightData_vs = glGetProgramResourceIndex(_programme.getGLId(), GL_SHADER_STORAGE_BLOCK, STORAGE_DIRLIGHT_NAME);
 
     }
 

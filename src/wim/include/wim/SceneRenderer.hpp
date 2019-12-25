@@ -11,11 +11,10 @@
 #include <stack>
 #include <deque>
 
-#include "CameraManager.hpp"
-#include "Light.hpp"
 #include "Displayable.hpp"
 #include "PatternManager.hpp"
 #include "ShaderManager.hpp"
+#include "Model.hpp"
 
 namespace wim
 {
@@ -28,35 +27,34 @@ namespace wim
     public:
         typedef std::stack<Renderable> RenderingStack;
     private:
+        ModelPtr _model;
         ShaderManager _shaders;
         PatternManager _patterns;
-        LightManagerPtr _lights;
-        CameraManagerPtr _cameras;
         RenderingStack _stack;
     public:
-        SceneRenderer(const char* appPath):
-        _shaders(appPath), _patterns(),
-        _lights(std::make_unique<LightManager>()),
-        _cameras(std::make_unique<CameraManager>()),
-        _stack()
+        SceneRenderer(const char* appPath, const ModelPtr& model):
+        _model(model),
+        _shaders(appPath), _patterns(),_stack()
         {
-
         }
 
         inline void addToStack(const Renderable& item) {_stack.push(item);}
 
-        inline UniformMatrix getActiveCameraViewMatrix() const {return _cameras->getActiveCameraViewMatrix();}
-        inline UniformMatrix getActiveElementModelViewMatrix(const Renderable& item)
-        {
-            return _cameras->getActiveElementModelViewMatrix(item);
+        inline const LightManagerPtr& getLightManagerPtr() const {return _model->getLightManagerPtr();}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return _model->getCameraManagerPtr();}
+
+        inline UniformMatrix getCameraViewMatrix() const {
+            return this->getCameraManagerPtr()->getCameraViewMatrix();
         }
-        inline UniformMatrix getActiveProjectionMatrix() const
+        inline UniformMatrix getElementModelViewMatrix(const Renderable& item)
         {
-            return this->_cameras->getActiveProjectionMatrix();
+            return this->getCameraManagerPtr()->getElementModelViewMatrix(item);
+        }
+        inline UniformMatrix getProjectionMatrix() const
+        {
+            return this->getCameraManagerPtr()->getProjectionMatrix();
         }
 
-        inline const LightManagerPtr& getLightManagerPtr() const {return _lights;}
-        inline const CameraManagerPtr& getCameraManagerPtr() const {return _cameras;}
 
         inline void updateMaterialCurrent(const Material& material)
         {

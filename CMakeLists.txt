@@ -206,7 +206,7 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/CommunDisplay.hpp
         src/wim/include/wim/BufferManager.hpp
         src/wim/include/wim/Interface.hpp
-        )
+        src/wim/src/Interface.cpp)
 
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}

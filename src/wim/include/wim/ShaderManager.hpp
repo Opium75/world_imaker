@@ -30,10 +30,15 @@ namespace wim
     public:
         ShaderManager() = default;
 
-        ShaderManager(const glimac::FilePath& appPath) : _appPathDir(glimac::FilePath(appPath).dirPath().dirPath())
+        ShaderManager(const glimac::FilePath& appPath) :
+            _appPathDir(glimac::FilePath(appPath).dirPath().dirPath()),
+            _currentIndex(0)
         {
            this->readConfig();
-           this->_buffers.init(_listSender);
+            std::cout << *this << std::endl;
+           this->setCurrentProgramme(_currentIndex);
+           this->_buffers.bindShaders(_listSender);
+           std::cout << *this << std::endl;
         }
         ~ShaderManager() = default;
 
@@ -42,7 +47,6 @@ namespace wim
 
         inline void setCurrentProgramme(const SizeInt index)
         {
-
             _listSender.at(index).useProgramme();
             _currentIndex = index;
         }
@@ -61,7 +65,7 @@ namespace wim
         {
             this->_buffers.updateMatrices(MVMatrix, ProjMatrix);
         }
-        inline void updateLightsCurrent(const AmbiantLightData& ambiant) const
+        inline void updateLightsCurrent(const AmbiantLight& ambiant) const
         {
             this->_buffers.updateAmbiantLight(ambiant);
         }
@@ -69,6 +73,16 @@ namespace wim
         {
             this->_buffers.updateMaterial(material);
         }
+
+        friend std::ostream& operator<<(std::ostream& out, const ShaderManager& shaders)
+        {
+            for( const auto& shader : shaders._listSender)
+            {
+                out << shader << std::endl;
+            }
+            return out;
+        }
+
 
     };
 

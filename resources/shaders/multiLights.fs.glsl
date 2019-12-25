@@ -2,7 +2,6 @@
 
 in vec3 vVertexPosition;
 in vec3 vVertexNormal;
-in vec3 vFragColour;
 
 out vec3 fFragColour;
 
@@ -26,10 +25,6 @@ struct DirLightData
 	float intensity;
 };
 
-uniform sampler2D uTexture;
-uniform AmbiantLightData uAmbiantLight;
-
-
 //material
 layout(std140) uniform bMaterial
 {
@@ -37,7 +32,7 @@ layout(std140) uniform bMaterial
 	vec3 kD;
 	vec3 kS;
 	float shininess;
-};
+} Material;
 
 layout(std140) uniform bAmbiantLight
 {
@@ -47,13 +42,19 @@ layout(std140) uniform bAmbiantLight
 
 layout(std430, binding=0) buffer PointLights
 {
-	PointLightData pointData[];
+	PointLightData point[];
 };
 
 layout(std430, binding=1) buffer DirLightsData
 {
-	DirLightData dirData[];
+	DirLightData directional[];
 };
+
+
+vec3 ambiantLighting(const vec3 matColour, const AmbiantLightData light)
+{
+	return matColour*light.colour*light.intensity;
+}
 
 vec3 blinnPhongDir(vec3 kd, vec3 ks, float shiny, vec3 lightDir_vs, vec3 lightIntensity, vec3 position_vs, vec3 normal_vs)
 {
@@ -79,8 +80,9 @@ vec3 blinnPhongPoint(vec3 kd, vec3 ks, float shiny, vec3 lightPos_vs, vec3 light
 
 void main()
 {
-	vec3 fragColour = vFragColour;
+	vec3 fragColour = Material.colour;
 	//adding ambiant light
-	fragColour *= ambiant.colour*ambiant.intensity;
+	//fragColour *= ambiant.intensity;
+	fragColour = ambiantLighting(fragColour, ambiant);
 	fFragColour = fragColour;
 }

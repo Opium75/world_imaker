@@ -9,13 +9,12 @@ namespace wim
     void SceneRenderer::render()
     {
         //First, we can get the active camera.
-        UniformMatrix ProjMatrix = this->getActiveProjectionMatrix();
+        UniformMatrix ProjMatrix = this->getProjectionMatrix();
 
         //todo: Then, send lighting from every source.
         this->updateLightsCurrent();
 
         //Finally, we compute the MVPN matrices for each element before sending it.
-        std::cout << "Ouahhh " << _stack.size() << std::endl;
         while( !_stack.empty() )
         {
             //getting newt element
@@ -24,7 +23,7 @@ namespace wim
             /* */
 
            //Computing Model
-           UniformMatrix MVMatrix = this->getActiveElementModelViewMatrix(item);
+           UniformMatrix MVMatrix = this->getElementModelViewMatrix(item);
 
            //Sending Material and Matrices.
             this->updateMaterialCurrent(item.getMaterial());
@@ -38,6 +37,6 @@ namespace wim
     void SceneRenderer::updateLightsCurrent() const
     {
         //Ambiant light.
-        _shaders.updateLightsCurrent(_lights->getAmbiantLight());
+        _shaders.updateLightsCurrent(_model->getLightManagerPtr()->getAmbiantLight());
     }
 }

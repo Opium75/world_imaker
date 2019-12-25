@@ -69,16 +69,9 @@ namespace wim
         }
     }
 
-    UniformMatrix CameraManager::getActiveCameraViewMatrix() const
+    UniformMatrix CameraManager::getProjectionMatrix(const wim::SizeInt index) const
     {
-        try
-        {
-            return this->getCameraViewMatrix(_activeIndex);
-        }
-        catch(Exception& e)
-        {
-            throw;
-        }
+        return this->camera(index).getProjectionMatrix();
     }
 
     UniformMatrix CameraManager::getElementModelViewMatrix(const SizeInt index, const Renderable& item) const

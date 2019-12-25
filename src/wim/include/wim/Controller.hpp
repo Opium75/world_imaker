@@ -9,7 +9,6 @@
 
 #include <memory>
 
-#include <SDL2/SDL.h>
 
 #include "Exception.hpp"
 #include "Displayer.hpp"
@@ -21,17 +20,19 @@ namespace wim
     class AbstractController
     {
     protected:
-        typedef std::unique_ptr<Displayer> DisplayerPtr;
-        typedef std::unique_ptr<Model> ModelPtr;
-    protected:
         static ModelPtr _model;
         static DisplayerPtr _displayer;
+        static InterfacePtr _interface;
     protected:
-        inline const DisplayerPtr& getDisplayer() const {return _displayer;}
-        inline DisplayerPtr& getDisplayer() {return _displayer;}
 
-        inline const ModelPtr& getModel() const { return _model;}
-        inline ModelPtr& getModel() {return _model;}
+        inline const ModelPtr& model() const { return _model;}
+        inline ModelPtr& model() {return _model;}
+
+        inline const DisplayerPtr& displayer() const {return _displayer;}
+        inline DisplayerPtr& displayer() {return _displayer;}
+
+        inline const InterfacePtr& interface() const {return _interface;}
+        inline InterfacePtr& interface() {return _interface;}
     };
 
 
@@ -43,21 +44,17 @@ namespace wim
     {
         friend class MainController;
     private:
-        DisplayController(const char* appPath)
-        {
-            //initialising display
-            _displayer.reset(new Displayer(appPath));
-        }
+        DisplayController() = default;
         void runDisplay() const;
 
-        inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr()const {return _displayer->getWindowPtr();}
+        inline const WindowPtr& getWindowPtr()const {return _displayer->windowManager()->window();}
         inline const SDL_GLContext& getGLContext()const {return _displayer->getGLContext();}
 
         inline const LightManagerPtr& getLightManagerPtr() const {return _displayer->getLightManagerPtr();}
         inline const CameraManagerPtr& getCameraManagerPtr() const {return _displayer->getCameraManagerPtr();}
     };
 
-    class UIController : protected AbstractController
+    class InterfaceController : protected AbstractController
     {
         friend class MainController;
     private:
@@ -68,17 +65,13 @@ namespace wim
     {
         friend class MainController;
     private:
-        ComputeController(const XUint worldWidth, const YUint worldLength, const LightManagerPtr& lights, const CameraManagerPtr& cameras)
-        {
-            //initialising Model
-            _model.reset(new Model(worldWidth, worldLength, lights, cameras));
-        }
+        ComputeController() = default;
         void runCompute() const
         {
             /* Compute calculations on Model
              * add cubes, etc..
              * depending on what was decided
-             * by UICOntroller
+             * by InterfaceController
              */
         }
     };
@@ -95,15 +88,19 @@ namespace wim
 
         DisplayController _dispCtrl;
         ComputeController _compCtrl;
-        UIController _uiCtrl;
+        InterfaceController _interCtrl;
 
     private:
         MainController(const char* appPath, const XUint worldWidth, const YUint worldLength):
-                _dispCtrl(appPath),
-                _compCtrl(worldWidth, worldLength,
-                        _dispCtrl.getLightManagerPtr(),
-                        _dispCtrl.getCameraManagerPtr()),
-                _uiCtrl()  {}
+                _dispCtrl(),
+                _compCtrl(),
+                _interCtrl()
+                {
+                    //Initilisation Model And Display
+                    _model = std::make_shared<Model>(worldWidth, worldLength);
+                    _displayer = std::make_shared<Displayer>(appPath, _model);
+                    _interface = std::make_unique<Interface>(_model, _displayer);
+                }
 
         bool runLoop() const;
         void runApp() const;

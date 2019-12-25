@@ -7,55 +7,22 @@
 namespace wim {
 
     //Default initialisation.
-    AbstractController::DisplayerPtr AbstractController::_displayer(nullptr);
-    AbstractController::ModelPtr AbstractController::_model(nullptr);
+    ModelPtr AbstractController::_model(nullptr);
+    DisplayerPtr AbstractController::_displayer(nullptr);
+    InterfacePtr AbstractController::_interface(nullptr);
+
     Application::ControllerPtr Application::_ctrl(nullptr);
 
     void DisplayController::runDisplay() const
     {
-        glClearColor(0.5,0.5, 0.5, 0.5);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         _displayer->displayAll(*_model);
-        SDL_GL_SwapWindow(_displayer->getWindowPtr().get());
+        _displayer->windowManager()->swapBuffers();
     }
 
-    bool UIController::runInterface() const
+    bool InterfaceController::runInterface() const
     {
-        bool loop = true;
-
-        SDL_Event e;
-        while(SDL_PollEvent(&e))
-        {
-            //ImGui does its thing
-            ImGui_ImplSDL2_ProcessEvent(&e);
-
-            switch(e.type)
-            {
-                case SDL_QUIT :
-                    loop = false;
-                    break;
-
-                case SDL_KEYDOWN  :
-                    //Function in Controller or switch and case ?
-                    std::cout << "Ahaha" << std::endl;
-                    break;
-
-                case SDL_MOUSEMOTION :
-                    //Get the position
-                    break;
-
-                case SDL_MOUSEWHEEL:
-
-                case SDL_MOUSEBUTTONDOWN :
-                    //
-                    break;
-
-                default :
-                    std::cout << "e event :" << e.type << std::endl;
-                    break;
-            }
-        }
-        return loop;
+        return _interface->run();
     }
 
     bool MainController::runLoop() const
@@ -66,7 +33,7 @@ namespace wim {
         /** Display Controller */
         _dispCtrl.runDisplay();
         /** Controller user interface (managing input) **/
-        bool  loop = _uiCtrl.runInterface();
+        bool  loop = _interCtrl.runInterface();
         /** Cinbtroller for  calculating results **/
         _compCtrl.runCompute();
 
@@ -76,7 +43,7 @@ namespace wim {
     void MainController::runApp() const
     {
         /** ImGui INITIALISATION **/
-        std::string glslVersion = std::string("#version 130");
+        std::string glslVersion = std::string("#version 150");
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, 0);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);

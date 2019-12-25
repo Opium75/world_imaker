@@ -14,4 +14,9 @@
 #include <GL/glut.h>
 #include <glimac/glm.hpp>
 
+//IMGUI
+#include <imgui.h>
+#include <imgui_impl_sdl.h>
+#include <imgui_impl_opengl3.h>
+
 #endif //WORLD_IMAKER_COMMUNDISPLAY_HPP

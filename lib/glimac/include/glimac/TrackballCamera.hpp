@@ -13,15 +13,16 @@ namespace glimac
 {
 
 #define __CAMERA_TRACKBALL_DEFAULT_DISTANCE 5
-static const GLfloat DEFAULT_TRACKBALL_ZOOMSPEED = 0.1;
-static const GLfloat DEFAULT_TRACKBALL_XSPEED = 0.1;
-static const GLfloat DEFAULT_TRACKBALL_YSPEED = 0.1;
+static const GLfloat DEFAULT_TRACKBALL_ZOOMSPEED = 1;
+static const GLfloat DEFAULT_TRACKBALL_XSPEED = 1.;
+static const GLfloat DEFAULT_TRACKBALL_YSPEED = 1.;
 
     class TrackballCamera : public GenericCamera {
     private :
         //coordonnées sphériques
         GLfloat m_fDistance, m_fAngleX, m_fAngleY;
         GLfloat m_zoomSpeed, m_xSpeed, m_ySpeed;
+
 
     public :
         TrackballCamera(const GLfloat fDistance = __CAMERA_TRACKBALL_DEFAULT_DISTANCE,
@@ -43,7 +44,7 @@ static const GLfloat DEFAULT_TRACKBALL_YSPEED = 0.1;
         glm::mat4 getViewMatrix(void) const override;
 
         void zoomInput(const GLint input);
-        void rotateXY(const GLfloat x, const GLfloat y);
+        void rotate(const GLfloat x, const GLfloat y);
     };
 }
 

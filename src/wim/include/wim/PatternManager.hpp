@@ -38,8 +38,8 @@ namespace wim
 
         void loadPatterns()
         {
-            _listPatternPtr.at((SizeInt)DisplayPattern::COLOURED_CUBE) = std::make_unique<glimac::TexturedCube>(DEFAULT_CUBE_SIZE);
-            _listPatternPtr.at((SizeInt)DisplayPattern::TEXTURED_CUBE) = std::make_unique<glimac::ColouredCube>(DEFAULT_CUBE_SIZE);
+            _listPatternPtr.at((SizeInt)DisplayPattern::COLOURED_CUBE) = std::make_unique<glimac::ColouredCube>(DEFAULT_CUBE_SIZE);
+            _listPatternPtr.at((SizeInt)DisplayPattern::TEXTURED_CUBE) = std::make_unique<glimac::TexturedCube>(DEFAULT_CUBE_SIZE);
         }
 
         const PatternPtr& at(const DisplayPattern dispPat)

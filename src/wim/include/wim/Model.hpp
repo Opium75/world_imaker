@@ -16,6 +16,11 @@
 
 namespace wim {
 
+    static const XUint DEFAULT_CUBEWORLD_WIDTH = 3;
+    static const YUint DEFAULT_CUBEWORLD_LENGTH = 3;
+    static const ZUint DEFAULT_CUBEWORLD_HEIGHT = 3;
+
+
     //A structure for everything which needs computation
     class Model {
     public:
@@ -26,9 +31,12 @@ namespace wim {
         CameraManagerPtr _cameras;
     public:
         Model() = default;
-        Model(const XUint worldWidth, const YUint worldLength, const LightManagerPtr& lights, const CameraManagerPtr& cameras) :
-            _world(std::make_unique<CubeWorld>(CubeWorld::Random(worldWidth, worldLength, (worldWidth+worldLength)/2))),
-            _lights(lights) ,_cameras(cameras)
+        Model(const XUint worldWidth = DEFAULT_CUBEWORLD_WIDTH,
+              const YUint worldLength = DEFAULT_CUBEWORLD_LENGTH,
+              const ZUint worldHeight = DEFAULT_CUBEWORLD_HEIGHT) :
+            _world(std::make_unique<CubeWorld>(CubeWorld::Random(worldWidth, worldLength, worldHeight))),
+            _lights(std::make_unique<LightManager>()),
+            _cameras(std::make_unique<CameraManager>())
              {}
         ~Model() = default;
 
@@ -36,7 +44,9 @@ namespace wim {
         inline const LightManagerPtr& getLightManagerPtr() const {return _lights;}
         inline const CameraManagerPtr& getCameraManagerPtr() const {return _cameras;}
 
-
     };
+
+    //Model will be shared between Controllers, Scene Renderer and Interface
+    typedef std::shared_ptr<Model> ModelPtr;
 }
 #endif //WORLD_IMAKER_MODEL_HPP

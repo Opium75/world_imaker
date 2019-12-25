@@ -61,12 +61,9 @@ namespace wim
          * which will change depending on the camera.
          */
         //todo: add support for multiple lights, including directional light.
-        GLuint _bAmbiantLightData;
-        GLuint _sPointLightData_vs, _sDirLightData_vs;
 
     private:
         void loadProgramme(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
-        void getAllAttrLoc();
     private:
         void initSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
     public:
@@ -74,11 +71,10 @@ namespace wim
         ShaderSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
 
 
-
-
-        void sendStorageBlockBuffer(const GLuint blockTarget, const GLuint bindTarget) const;
-
-        inline void useProgramme() const {_programme.use();}
+        inline void useProgramme() const {
+            _programme.use();
+            std::cout << "Using programme: " << _programme.getGLId() << std::endl;
+        }
 
         inline const glimac::Programme& programme() const {return _programme;}
         inline glimac::Programme& programme() {return _programme;}
@@ -87,10 +83,10 @@ namespace wim
         inline ShaderCouple& couple() { return _couple;}
 
 
-        friend std::ostream& operator<<(std::ostream& stream, const ShaderSender& sender)
+        friend std::ostream& operator<<(std::ostream& out , const ShaderSender& sender)
         {
-            stream << sender._couple << std::endl;
-            return stream;
+            out << sender._programme.getGLId() << " | " << sender._couple;
+            return out;
         }
 
     };

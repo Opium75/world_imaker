@@ -33,10 +33,9 @@ namespace wim
         ListCamera _listCamera;
         SizeInt _activeIndex;
     public:
-        CameraManager()
+        CameraManager() : _activeIndex(0)
         {
             this->addTrackball();
-            _activeIndex = 0;
         };
         ~CameraManager() = default;
 
@@ -55,44 +54,50 @@ namespace wim
         void deleteCamera(SizeInt index);
 
 
+
+
+    private:
         UniformMatrix getCameraViewMatrix(const SizeInt index) const;
-        UniformMatrix getActiveCameraViewMatrix() const;
-
+        inline UniformMatrix getActiveCameraViewMatrix() const {return this->getCameraViewMatrix(_activeIndex);}
         UniformMatrix getElementModelViewMatrix(const SizeInt index, const Renderable& item) const;
+        inline UniformMatrix getActiveElementModelViewMatrix(const Renderable& item) const{return this->getElementModelViewMatrix(_activeIndex, item);}
 
-        inline UniformMatrix getActiveElementModelViewMatrix(const Renderable& item) const
+        UniformMatrix getProjectionMatrix(const SizeInt index) const;
+        inline UniformMatrix getActiveProjectionMatrix() const{return this->getProjectionMatrix(_activeIndex);}
+        inline void zoom(const SizeInt index, const GLint input) {this->camera(index).zoomInput(input);}
+        inline void rotate(const SizeInt index, const GLfloat xDeg, GLfloat yDeg) {this->camera(index).rotate(xDeg,yDeg);}
+
+        inline void zoomActive(const GLint input){this->zoom(_activeIndex, input);}
+        inline void rotateActive(const GLfloat xDeg, const GLfloat yDeg){this->active().rotate(xDeg,yDeg);}
+
+    public:
+        inline UniformMatrix getCameraViewMatrix() const
         {
-            return this->getElementModelViewMatrix(_activeIndex, item);
+            return this->getActiveCameraViewMatrix();
         }
 
-        inline UniformMatrix getActiveProjectionMatrix() const
+        inline UniformMatrix getProjectionMatrix() const
         {
-            return this->active().getProjectionMatrix();
+            return this->getActiveProjectionMatrix();
         }
 
-        inline void zoom(const SizeInt index, const GLint input)
+        inline UniformMatrix getElementModelViewMatrix(const Renderable& item) const
         {
-            this->camera(index).zoomInput(input);
+            return this->getActiveElementModelViewMatrix(item);
         }
 
-        inline void rotate(const SizeInt index, const GLfloat x, const GLfloat y)
+        inline void rotate(const GLfloat xDeg, const GLfloat yDeg)
         {
-            this->camera(index).rotateXY(x,y);
+            this->rotateActive(xDeg, yDeg);
         }
-
-        inline void rotateActive(const GLfloat x, const GLfloat y)
+        inline void zoom(const GLint input)
         {
-            this->active().rotateXY(x,y);
-        }
-
-        inline void zoomActive(const GLint input)
-        {
-            this->zoom(_activeIndex, input);
+            this->zoomActive(input);
         }
     };
 
     //Cameras will be shared between the Model and the Scene Renderer.
-    typedef std::shared_ptr<CameraManager> CameraManagerPtr;
+    typedef std::unique_ptr<CameraManager> CameraManagerPtr;
 }
 
 

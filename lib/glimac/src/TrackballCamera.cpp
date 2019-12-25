@@ -44,10 +44,10 @@ namespace glimac {
         this->moveFront(input*m_zoomSpeed);
     }
 
-    void TrackballCamera::rotateXY(const GLfloat x, const GLfloat y)
+    void TrackballCamera::rotate(const GLfloat xDeg, const GLfloat yDeg)
     {
-        this->rotateLeft(x*m_xSpeed);
-        this->rotateUp(y*m_ySpeed);
+        this->rotateLeft(xDeg*m_xSpeed);
+        this->rotateUp(yDeg*m_ySpeed);
     }
-
 }
+

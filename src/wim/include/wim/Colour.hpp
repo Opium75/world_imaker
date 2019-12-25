@@ -25,7 +25,7 @@ namespace wim
     public:
         Colour() = default;
         Colour(const FloatType r, const FloatType g, const FloatType b);
-        Colour(const Colour &c);
+        Colour(const Colour &c) = default;
         Colour(const Vec3D &vec);
         ~Colour() = default;
 

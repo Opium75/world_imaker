@@ -88,7 +88,7 @@ namespace wim
         inline Stack& stack() {return _stack;}
         inline const Stack& stack() const {return _stack;}
 
-        CubeStack& operator=(const CubeStack& cubeStack);
+        CubeStack& operator=(CubeStack cubeStack);
 
         ///Attempts to insert Cube at given floor in SORTED CubeStack
         ///If insertHigher is true, then the cube is inserted on the next available floor

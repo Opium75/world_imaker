@@ -16,6 +16,36 @@
 namespace wim
 {
 
+    struct CameraMatricesData
+    {
+        UniformMatrix _MVP, _MV, _Normal;
+        CameraMatricesData(const UniformMatrix& MV, const UniformMatrix& Proj) :
+            _MVP(Proj*MV), _MV(MV), _Normal(glm::transpose(glm::inverse(MV)))
+        {
+        }
+    };
+
+    struct MaterialData
+    {
+        glm::vec4 _colour, _kD;
+        glm::vec3 _kS;
+        GLfloat _shininess;
+        MaterialData(const Material& material) :
+            _colour(material.colour().getCoord(),0), _kD(material.kD().getCoord(),0), _kS(material.kS().getCoord()), _shininess(material.shininess())
+        {
+        }
+    };
+
+    struct AmbiantLightData
+    {
+        glm::vec3 _colour;
+        GLfloat _intensity;
+        AmbiantLightData(const AmbiantLight& ambiant):
+            _colour(ambiant.colour().getCoord()), _intensity(ambiant.intensity())
+        {
+        }
+    };
+
 
     /*Names of uniform attributs as they are used in the shaders
      * For now, we will only support one light source. IN POINT LIGHT
@@ -40,9 +70,12 @@ namespace wim
     static const GLuint BINDING_DIRLIGHT_INDEX = 4;
 
     //todo: find a way to get required sizes
-    static const GLsizeiptr DEFAULT_MATRICES_BUFFERSIZE = 3*sizeof(UniformMatrix);
-    static const GLsizeiptr DEFAULT_MATERIAL_BUFFERSIZE = 3*sizeof(Material);
-    static const GLsizeiptr DEFAULT_AMBIANTLIGHT_BUFFERSIZE = 3*sizeof(AmbiantLightData);
+    static const GLsizeiptr GLSL_STD140_FLOAT = 4;//in bytes
+    static const GLsizeiptr GLSL_STD140_VEC3 = 16;
+    static const GLsizeiptr GLSL_STD140_MAT4 = 64;
+    static const GLsizeiptr DEFAULT_MATRICES_BUFFERSIZE = sizeof(CameraMatricesData);
+    static const GLsizeiptr DEFAULT_MATERIAL_BUFFERSIZE = sizeof(MaterialData);
+    static const GLsizeiptr DEFAULT_AMBIANTLIGHT_BUFFERSIZE = 2*sizeof(AmbiantLightData);
 
 
     struct UBO
@@ -50,49 +83,60 @@ namespace wim
     public:
         GLuint _ubo;
     public:
-        UBO() : _ubo()
+        UBO(const GLsizeiptr size) : _ubo()
         {
             glGenBuffers(1, &_ubo);
+            this->alloc(size);
 
         }
-        ~UBO()
+        ~UBO() {glDeleteBuffers(1,&_ubo);}
+
+
+        void bind(const GLuint programme, const char* UNI_BUFFER_NAME, const GLuint binding) const;
+        void alloc(const GLsizeiptr size) const;
+        void update(const GLvoid* data,  const GLsizeiptr size) const;
+    private:
+        void bindBlock(const GLuint programme, const char* UNI_BUFFER_NAME, const GLuint binding) const;
+        void bindObject(const GLuint binding) const;
+    };
+
+    struct SSBO
+    {
+    public:
+        GLuint _ssbo;
+    public:
+        SSBO() : _ssbo()
         {
-            glDeleteBuffers(1,&_ubo);
+            glGenBuffers(1, &_ssbo);
+
+        }
+        ~SSBO()
+        {
+            glDeleteBuffers(1, &_ssbo);
         }
 
-
-        void bindBlock(const GLuint programme, const char* UNI_BUFFER_NAME, const GLuint binding) const
+        void buildObject(const GLvoid* data, const GLsizeiptr size) const
         {
-            GLuint index = glGetUniformBlockIndex(programme, UNI_BUFFER_NAME);
-            glUniformBlockBinding(programme, index, binding);
+            glBindBuffer(GL_SHADER_STORAGE_BUFFER, _ssbo);
+                glBufferData(GL_SHADER_STORAGE_BUFFER,
+                            size,
+                             data,
+                             GL_DYNAMIC_COPY
+                );
+            glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
         }
 
-        void bindObject(const GLuint binding) const
+        void updateObject(const GLvoid* data, const GLsizeiptr size) const
         {
-            glBindBufferBase(GL_UNIFORM_BUFFER, binding, _ubo);
-        }
-
-        void alloc(const GLsizeiptr size) const
-        {
-            glBindBuffer(GL_UNIFORM_BUFFER, _ubo);
-            glBufferData(GL_UNIFORM_BUFFER,
-                         size,
-                         NULL,
-                         GL_DYNAMIC_DRAW
-            );
-            glBindBuffer(GL_UNIFORM_BUFFER, 0);
-        }
-
-
-
-        void update(const GLvoid* data, const GLsizeiptr offset,  const GLsizeiptr size) const
-        {
-            glBindBuffer(GL_UNIFORM_BUFFER, _ubo);
-                glBufferSubData(GL_UNIFORM_BUFFER,
-                                offset,
-                                size,
-                                data);
-            glBindBuffer(GL_UNIFORM_BUFFER, 0);
+            GLvoid *bufferPtr;
+            glBindBuffer(GL_SHADER_STORAGE_BUFFER, _ssbo);
+                bufferPtr = glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_WRITE_ONLY);
+                    std::memcpy(bufferPtr,
+                            data,
+                            size);
+                glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+            //todo: Check if unbinding here is a mistake.
+            glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
         }
     };
 
@@ -102,28 +146,30 @@ namespace wim
 
     public:
 
-        BufferManager() = default;
+        BufferManager() :
+            _matrices(DEFAULT_MATRICES_BUFFERSIZE),
+            _material(DEFAULT_MATERIAL_BUFFERSIZE),
+            _ambiantLight(DEFAULT_AMBIANTLIGHT_BUFFERSIZE)
+        {
+
+        }
         ~BufferManager() = default;
 
-        void updateMatrix(const UniformMatrix& M, SizeInt indexOffset) const
-        {
-            this->_matrices.update(glm::value_ptr(M), indexOffset*sizeof(UniformMatrix), sizeof(UniformMatrix));
-        }
 
-        void bindShader(const ShaderSender& shader) const;
-        void allocAllUniBuffers() const;
-        void bindAllUBO() const;
-
-        void updateVec3Only(const UBO& object, const glm::vec3& vec, const SizeInt indexOffset) const;
-        void updateFloatLast(const UBO& object, const GLfloat value, const SizeInt indexOffset) const;
-
-
-        ///brief; update ModelView, ModevViewProjection (From Projection and ModelView), and Normal matrices to shaders
+        ///brief; update modelview, modevviewprojection (from projection and modelview), and normal matrices to shaders
         void updateMatrices(const UniformMatrix& MV, const UniformMatrix& Proj) const;
         void updateMaterial(const Material& material) const;
-        void updateAmbiantLight(const AmbiantLightData& ambiant) const;
+        void updateAmbiantLight(const AmbiantLight& ambiant) const;
 
-        void init(const ListSender& shaders) const;
+        void bindShaders(const ListSender& shaders) const;
+
+    private:
+        void bindShader(const ShaderSender& shader) const;
+     /*   void updateMatrix(const UniformMatrix& m, SizeInt indexoffset) const;
+        void updateVec3Only(const UBO& object, const glm::vec3& vec, const SizeInt indexoffset) const;
+        void updateFloatLast(const UBO& object, const GLfloat value, const SizeInt indexoffset) const;
+        */
+
     };
 }
 

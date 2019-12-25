@@ -17,10 +17,10 @@ namespace glimac
     static const GLfloat DEFAULT_CAMERA_VIEW_WIDTH = 800;
     static const GLfloat DEFAULT_CAMERA_VIEW_HEIGHT = 600;
 
-    static const GLfloat DEFAULT_CAMERA_VIEW_FOVY = glm::pi<GLdouble>()/2;
+    static const GLfloat DEFAULT_CAMERA_VIEW_FOVY = 25;
 
     static const GLfloat DEFAULT_CAMERA_RANGE_NEAR = 0.1f;
-    static const GLfloat DEFAULT_CAMERA_RANGE_FAR = 100.f;
+    static const GLfloat DEFAULT_CAMERA_RANGE_FAR = 1000.f;
 
     class GenericCamera {
     private:

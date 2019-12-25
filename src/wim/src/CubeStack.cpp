@@ -35,10 +35,10 @@ namespace wim
             return _stack.back().cube();
     }
 
-    CubeStack& CubeStack::operator=(const CubeStack& cubeStack)
+    CubeStack& CubeStack::operator=(CubeStack cubeStack)
     {
-        _stack = cubeStack._stack;
-        return *this;
+       std::swap(_stack, cubeStack._stack);
+       return *this;
     }
 
 

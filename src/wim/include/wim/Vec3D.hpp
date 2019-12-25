@@ -31,10 +31,9 @@ namespace wim
          */
         typedef glm::detail::tvec3<T, glm::highp> Coord;
         Coord _coord;
-    private :
-        TVec3D(const Coord& coord) : _coord(coord) {};
     public:
         TVec3D() = default;
+        TVec3D(const Coord& coord) : _coord(coord) {};
         TVec3D(const T x, const T y, const T z) : _coord(x,y,z)
         {
             //Constraining use of class to arithmetic types.
