@@ -24,19 +24,15 @@ namespace wim {
         _listSender.reserve(n);
         //do n times
         for (size_t i = 0; i < n; ++i) {
+            std::string strShader;
             if (conf.eof())
                 throw Exception(ExceptCode::END_OF_FILE, 1,
                         std::string("Fewer shader couples than expected: expected ")
                         + std::to_string(n) + std::string(", found ") + std::to_string(i)
                         );
-
             _listSender.push_back(
                     ShaderSender(_appPathDir, ShaderCouple::loadCouple(conf))
             );
-            /*_vecShaderCouple.push_back(ShaderCouple::loadCouple(conf));
-            _vecProgramme.push_back(this->loadProgramme(_vecShaderCouple.back()));
-             */
-
         }
         conf.close();
     }

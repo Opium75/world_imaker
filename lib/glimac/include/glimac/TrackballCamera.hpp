@@ -13,24 +13,38 @@ namespace glimac
 {
 
 #define __CAMERA_TRACKBALL_DEFAULT_DISTANCE 5
+static const GLfloat DEFAULT_TRACKBALL_ZOOMSPEED = 1;
+static const GLfloat DEFAULT_TRACKBALL_XSPEED = 1.;
+static const GLfloat DEFAULT_TRACKBALL_YSPEED = 1.;
 
     class TrackballCamera : public GenericCamera {
     private :
         //coordonnées sphériques
-        float m_fDistance, m_fAngleX, m_fAngleY;
+        GLfloat m_fDistance, m_fAngleX, m_fAngleY;
+        GLfloat m_zoomSpeed, m_xSpeed, m_ySpeed;
+
+
     public :
-        TrackballCamera(const float fDistance = __CAMERA_TRACKBALL_DEFAULT_DISTANCE,
-                    const float fAngleX = __CAMERA_GENERIC_DEFAULT_ANGLE_X,
-                    const float fAngleY = __CAMERA_GENERIC_DEFAULT_ANGLE_Y
+        TrackballCamera(const GLfloat fDistance = __CAMERA_TRACKBALL_DEFAULT_DISTANCE,
+                    const GLfloat fAngleX = __CAMERA_GENERIC_DEFAULT_ANGLE_X,
+                    const GLfloat fAngleY = __CAMERA_GENERIC_DEFAULT_ANGLE_Y,
+                    const GLfloat zoomSpeed = DEFAULT_TRACKBALL_ZOOMSPEED,
+                    const GLfloat xSpeed = DEFAULT_TRACKBALL_XSPEED,
+                    const GLfloat ySpeed = DEFAULT_TRACKBALL_YSPEED
         );
 
-        void moveFront(const float delta);
 
-        void rotateLeft(const float degrees);
 
-        void rotateUp(const float degrees);
+        void moveFront(const GLfloat delta);
+
+        void rotateLeft(const GLfloat degrees);
+
+        void rotateUp(const GLfloat degrees);
 
         glm::mat4 getViewMatrix(void) const override;
+
+        void zoomInput(const GLint input);
+        void rotate(const GLfloat x, const GLfloat y);
     };
 }
 

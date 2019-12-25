@@ -13,51 +13,76 @@
 #include <glimac/FilePath.hpp>
 #include <glimac/Programme.hpp>
 
-#include "ShaderSender.hpp"
+#include "Types.hpp"
 #include "Exception.hpp"
+#include "BufferManager.hpp"
+#include "ShaderSender.hpp"
 
 namespace wim
 {
     class ShaderManager
     {
-    public:
-        //typedef for convenience
-        typedef std::vector<ShaderSender> ListSender;
     private:
         glimac::FilePath _appPathDir;
         ListSender  _listSender;
+        SizeInt _currentIndex;
+        BufferManager _buffers;
     public:
         ShaderManager() = default;
 
-        ShaderManager(const glimac::FilePath& appPath) : _appPathDir(glimac::FilePath(appPath).dirPath().dirPath())
+        ShaderManager(const glimac::FilePath& appPath) :
+            _appPathDir(glimac::FilePath(appPath).dirPath().dirPath()),
+            _currentIndex(0)
         {
            this->readConfig();
+            std::cout << *this << std::endl;
+           this->setCurrentProgramme(_currentIndex);
+           this->_buffers.bindShaders(_listSender);
+           std::cout << *this << std::endl;
         }
         ~ShaderManager() = default;
 
         void readConfig();
 
 
-        inline void useProgramme(const size_t index) const { _listSender.at(index).useProgramme();}
-
-        inline glimac::Programme& programme(const size_t index) {return _listSender.at(index).getProgramme();}
-        inline const glimac::Programme& programme(const size_t index) const {return _listSender.at(index).getProgramme();}
-
-        inline ShaderCouple& couple(const size_t index) {return _listSender.at(index).couple();}
-        inline const ShaderCouple& couple(const size_t index) const {return _listSender.at(index).couple();}
-
-
-
-       /* friend std::ostream& operator<<(std::ostream& stream, const ListCouple& vecShaderCouple)
+        inline void setCurrentProgramme(const SizeInt index)
         {
-            for(const auto& couple : vecShaderCouple)
-            {
-                stream << couple << std::endl;
-            }
-
-            return stream;
+            _listSender.at(index).useProgramme();
+            _currentIndex = index;
         }
-        */
+
+        inline glimac::Programme& programme(const SizeInt index) {return _listSender.at(index).programme();}
+        inline const glimac::Programme& programme(const SizeInt index) const {return _listSender.at(index).programme();}
+
+        inline ShaderCouple& couple(const SizeInt index) {return _listSender.at(index).couple();}
+        inline const ShaderCouple& couple(const SizeInt index) const {return _listSender.at(index).couple();}
+
+        inline const glimac::Programme& currentProgramme() const {return this->programme(_currentIndex);}
+
+        inline const ShaderSender& currentSender() const {return _listSender.at(_currentIndex);}
+
+        inline void updateMVPNMatricesCurrent(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix) const
+        {
+            this->_buffers.updateMatrices(MVMatrix, ProjMatrix);
+        }
+        inline void updateLightsCurrent(const AmbiantLight& ambiant) const
+        {
+            this->_buffers.updateAmbiantLight(ambiant);
+        }
+        inline void updateMaterialCurrent(const Material& material ) const
+        {
+            this->_buffers.updateMaterial(material);
+        }
+
+        friend std::ostream& operator<<(std::ostream& out, const ShaderManager& shaders)
+        {
+            for( const auto& shader : shaders._listSender)
+            {
+                out << shader << std::endl;
+            }
+            return out;
+        }
+
 
     };
 

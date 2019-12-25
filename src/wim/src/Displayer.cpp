@@ -51,8 +51,6 @@ namespace wim {
         ImGui::Begin("T'as vu ?");
         ImGui::End();
         /* */;
-
-        _widgets->showDemo();
     }
 
 
@@ -61,38 +59,25 @@ namespace wim {
        this->display(*model.getWorldPtr());
     }
 
-
     void Displayer::displayAll(const Model& model) const
     {
         /* Preparing IMGUI for new Frame */
         ImGuiIO &io = ImGui::GetIO();
         (void) io;
         ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplSDL2_NewFrame(this->getWindowPtr().get());
+        ImGui_ImplSDL2_NewFrame(this->windowManager()->window().get());
         ImGui::NewFrame();
 
-        /* Actual displaying */
-        this->displayWidgets();
+        /*Adding elements to rendering stack. */
+       // this->displayWidgets();
         this->displayModel(model);
 
+        /* Rendering World */
+        _renderer->render();
         /* Rendering IMGUI */
         ImGui::Render();
         glViewport(0, 0, (int) io.DisplaySize.x, (int) io.DisplaySize.y);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
 
-    void Displayer::initDisplay(/*const char* appPath*/)
-    {
-
-   /*
-        //Loading shaders according to conf file in resources/shaders
-        _shaders = ShaderManager();
-        std::cout << appPath << std::endl;
-        //for now, we use only one set of shaders:
-*/
-        //init Imgui ? Nope, gets done befor by Controller.
-        //_widget = Widgets(/*_manager.get()->getWindowPtr(), _manager.get()->getGlContext()*/);
-
-
-    }
 }

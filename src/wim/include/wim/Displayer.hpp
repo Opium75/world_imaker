@@ -8,20 +8,12 @@
 
 #include <memory>
 
-//Use glew as static library
-#define GLEW_STATIC
-#include <GL/glew.h>
-#include <GL/glut.h>
+#include "CommunDisplay.hpp"
 
 #include <glimac/SDLWindowManager.hpp>
 
-#include <imgui.h>
-#include <imgui_impl_sdl.h>
-#include <imgui_impl_opengl3.h>
-
 #include "Displayable.hpp"
 #include "Exception.hpp"
-#include "Light.hpp"
 #include "Model.hpp"
 #include "WidgetManager.hpp"
 #include "SceneRenderer.hpp"
@@ -32,6 +24,9 @@
 
 
 namespace wim {
+
+    typedef std::unique_ptr<glimac::SDLWindowManager> WindowManagerPtr;
+    typedef glimac::SDLWindowManager::SDL_WindowPtr WindowPtr;
     //default values for the SDL display window.
     static const float DISP_WINDOW_WIDTH = 600.f;
     static const float DISP_WINDOW_HEIGHT = 400.f;
@@ -39,20 +34,18 @@ namespace wim {
     //Visitor class
     class Displayer {
     private:
-        typedef std::unique_ptr<glimac::SDLWindowManager> WindowManagerPtr;
         typedef std::unique_ptr<WidgetManager> WidgetManagerPtr;
         typedef std::unique_ptr<SceneRenderer> SceneRendererPtr;
-        WindowManagerPtr _window;
+        WindowManagerPtr _windows;
         WidgetManagerPtr _widgets;
         SceneRendererPtr _renderer;
 
     public:
-        Displayer(const char* appPath, const LightManagerPtr& lights, const CameraManagerPtr& cameras) :
-            _window(std::make_unique<glimac::SDLWindowManager>(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
+        Displayer(const char* appPath, const ModelPtr& model) :
+            _windows(std::make_unique<glimac::SDLWindowManager>(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
             _widgets(std::make_unique<WidgetManager>()),
-            _renderer(std::make_unique<SceneRenderer>(appPath, lights, cameras))
+            _renderer(std::make_unique<SceneRenderer>(appPath, model))
         {
-            this->initDisplay();
         }
         ~Displayer() = default;
 
@@ -71,12 +64,16 @@ namespace wim {
             _renderer->addToStack(Renderable(object, anchor));
         }
 
-        inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr() const {return _window->getWindowPtr();};
-        inline const SDL_GLContext& getGLContext() const {return _window->getGlContext();};
+        inline const LightManagerPtr& getLightManagerPtr() const {return _renderer->getLightManagerPtr();}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return _renderer->getCameraManagerPtr();}
+        inline const SDL_GLContext& getGLContext() const {return _windows->getGlContext();};
 
-    private:
-       void initDisplay(/*const char* appPath*/);
+        inline const WindowManagerPtr& windowManager() const {return _windows;};
+        inline WindowManagerPtr& windowManager() {return _windows;};
+
     };
+
+    typedef std::shared_ptr<Displayer> DisplayerPtr;
 }
 
 #endif //WORLD_IMAKER_DISPLAYER_HPP

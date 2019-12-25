@@ -177,6 +177,9 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/src/ShaderManager.cpp
         src/wim/src/ShaderSender.cpp
         src/wim/src/CameraManager.cpp
+        src/wim/src/SceneRenderer.cpp
+        src/wim/src/BufferManager.cpp
+        src/wim/src/Light.cpp
         #headers
         src/wim/include/wim/Displayer.hpp
         src/wim/include/wim/Vec3D.hpp
@@ -196,7 +199,14 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/Light.hpp
         src/wim/include/wim/CameraManager.hpp
         src/wim/include/wim/PatternManager.hpp
-        src/wim/include/wim/SceneRenderer.hpp src/wim/include/wim/Types.hpp src/wim/include/wim/Model.hpp src/wim/src/SceneRenderer.cpp)
+        src/wim/include/wim/SceneRenderer.hpp
+        src/wim/include/wim/Types.hpp
+        src/wim/include/wim/Model.hpp
+        src/wim/include/wim/Material.hpp
+        src/wim/include/wim/CommunDisplay.hpp
+        src/wim/include/wim/BufferManager.hpp
+        src/wim/include/wim/Interface.hpp
+        src/wim/src/Interface.cpp)
 
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}

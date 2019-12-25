@@ -25,7 +25,7 @@ namespace wim
     public:
         Colour() = default;
         Colour(const FloatType r, const FloatType g, const FloatType b);
-        Colour(const Colour &c);
+        Colour(const Colour &c) = default;
         Colour(const Vec3D &vec);
         ~Colour() = default;
 
@@ -41,7 +41,6 @@ namespace wim
         //Returns third RGB value (blue)
         inline FloatType& b(){return _coord.b;}
         inline FloatType b() const {return _coord.b;}
-
 
         //Redefined Vec3D to jeep colour values in [0,1]
         Colour operator+(const Colour &c) const;

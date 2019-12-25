@@ -9,12 +9,14 @@
 
 #include "Types.hpp"
 #include "Vec3D.hpp"
+#include "Material.hpp"
 
 namespace wim
 {
-    enum class DisplayPattern
+    enum class DisplayPattern : SizeInt
     {
-        FULL_CUBE,
+        COLOURED_CUBE,
+        TEXTURED_CUBE,
         WIREFRAME_CUBE
     };
 
@@ -22,14 +24,19 @@ namespace wim
     class Displayable
     {
     protected:
+        Material _material;
+    protected:
+        Displayable(const Material &material) : _material(material) {}
+    public:
         //Should be overridden by every class, with one of the above Patterns
         virtual DisplayPattern getDisplayPattern() const = 0;
+        const Material& getMaterial() const {return this->_material;}
     };
 
     class Renderable
     {
     public:
-        typedef Point3Int Anchor;
+        typedef Point3D Anchor;
     protected:
         const Displayable* const _objectPtr;
         Anchor _anchor;
@@ -43,7 +50,9 @@ namespace wim
         {
             //We do NOT delete the displayable object
         }
-
+        const Material& getMaterial() const {return this->_objectPtr->getMaterial();}
+        DisplayPattern getDisplayPattern() const {return _objectPtr->getDisplayPattern();}
+        const Anchor& getAnchor() const {return _anchor;}
     };
 
 

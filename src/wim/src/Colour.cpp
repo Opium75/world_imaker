@@ -11,7 +11,8 @@ namespace  wim
 
     }
 
-    Colour::Colour(const Colour &c) : Vec3D(c) {
+    Colour::Colour(const Vec3D &vec) : Colour(vec.x(), vec.y(), vec.z())
+    {
 
     }
 

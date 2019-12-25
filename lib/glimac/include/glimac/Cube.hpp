@@ -19,7 +19,6 @@
 
 #define ATTR_POSITION_DEFAULT_LOC 0
 #define ATTR_NORMAL_DEFAULT_LOC 1
-#define ATTR_COLOUR_DEFAULT_LOC 2
 #define ATTR_TEXCOORDS_DEFAULT_LOC 3
 
 namespace glimac
@@ -70,7 +69,7 @@ namespace glimac
         void bindIBO() const;
 
     public:
-        virtual void draw() const {};
+        void draw() const;
     };
 
     ///brief: a Cube which will be coloured by shaders. Does not store colour attributes.
@@ -83,11 +82,11 @@ namespace glimac
         ColouredCube(const GLfloat radius) :  m_Vertices(m_nVertexCount)
         {
             build(radius);
+            bind(ATTR_POSITION_DEFAULT_LOC, ATTR_NORMAL_DEFAULT_LOC);
         }
         ~ColouredCube() = default;
 
         inline const ShapeVertexColoured* getDataPointer() const {return m_Vertices.data();}
-        void draw() const override;
     private:
         void buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal) override;
 
@@ -106,11 +105,11 @@ namespace glimac
         TexturedCube(const GLfloat radius) : m_Vertices(m_nVertexCount)
         {
             build(radius);
+            bind(ATTR_POSITION_DEFAULT_LOC, ATTR_NORMAL_DEFAULT_LOC, ATTR_TEXCOORDS_DEFAULT_LOC);
         }
 
         ~TexturedCube() = default;
         inline const ShapeVertexTextured* getDataPointer() const {return m_Vertices.data();}
-        void draw() const override;
 
     private:
         void buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal) override;

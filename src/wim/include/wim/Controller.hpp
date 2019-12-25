@@ -9,28 +9,30 @@
 
 #include <memory>
 
-#include <SDL2/SDL.h>
 
 #include "Exception.hpp"
 #include "Displayer.hpp"
 #include "Model.hpp"
+#include "Interface.hpp"
 
 namespace wim
 {
     class AbstractController
     {
     protected:
-        typedef std::unique_ptr<Displayer> DisplayerPtr;
-        typedef std::unique_ptr<Model> ModelPtr;
-    protected:
         static ModelPtr _model;
         static DisplayerPtr _displayer;
+        static InterfacePtr _interface;
     protected:
-        inline const DisplayerPtr& getDisplayer() const {return _displayer;}
-        inline DisplayerPtr& getDisplayer() {return _displayer;}
 
-        inline const ModelPtr& getModel() const { return _model;}
-        inline ModelPtr& getModel() {return _model;}
+        inline const ModelPtr& model() const { return _model;}
+        inline ModelPtr& model() {return _model;}
+
+        inline const DisplayerPtr& displayer() const {return _displayer;}
+        inline DisplayerPtr& displayer() {return _displayer;}
+
+        inline const InterfacePtr& interface() const {return _interface;}
+        inline InterfacePtr& interface() {return _interface;}
     };
 
 
@@ -42,19 +44,17 @@ namespace wim
     {
         friend class MainController;
     private:
-        DisplayController(const char* appPath, const LightManagerPtr& lights, const CameraManagerPtr& cameras)
-        {
-            //initialising display
-            _displayer.reset(new Displayer(appPath, lights, cameras));
-        }
+        DisplayController() = default;
         void runDisplay() const;
 
-        inline const glimac::SDLWindowManager::SDL_WindowPtr& getWindowPtr()const {return _displayer->getWindowPtr();}
+        inline const WindowPtr& getWindowPtr()const {return _displayer->windowManager()->window();}
         inline const SDL_GLContext& getGLContext()const {return _displayer->getGLContext();}
 
+        inline const LightManagerPtr& getLightManagerPtr() const {return _displayer->getLightManagerPtr();}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return _displayer->getCameraManagerPtr();}
     };
 
-    class UIController : protected AbstractController
+    class InterfaceController : protected AbstractController
     {
         friend class MainController;
     private:
@@ -65,17 +65,13 @@ namespace wim
     {
         friend class MainController;
     private:
-        ComputeController(const XUint worldWidth, const YUint worldLength)
-        {
-            //initialising Model
-            _model.reset(new Model(worldWidth, worldLength));
-        }
+        ComputeController() = default;
         void runCompute() const
         {
             /* Compute calculations on Model
              * add cubes, etc..
              * depending on what was decided
-             * by UICOntroller
+             * by InterfaceController
              */
         }
     };
@@ -85,17 +81,26 @@ namespace wim
     {
         friend class Application;
     private:
-        /* ComputeController needs to be initialiased first
-        * before it initialises the model too
-         * And the display uses a shared pointer to lights.
+        /* DisplayController needs to be initialised first
+         * to set-up the OpenGL, and SDL context,
+         * as well as lights and cameras.
          */
-        ComputeController _compCtrl;
+
         DisplayController _dispCtrl;
-        UIController _uiCtrl;
+        ComputeController _compCtrl;
+        InterfaceController _interCtrl;
 
     private:
         MainController(const char* appPath, const XUint worldWidth, const YUint worldLength):
-                _compCtrl(worldWidth, worldLength),_dispCtrl(appPath, _model->getLightManagerPtr(), _model->getCameraManagerPtr()), _uiCtrl()  {}
+                _dispCtrl(),
+                _compCtrl(),
+                _interCtrl()
+                {
+                    //Initilisation Model And Display
+                    _model = std::make_shared<Model>(worldWidth, worldLength);
+                    _displayer = std::make_shared<Displayer>(appPath, _model);
+                    _interface = std::make_unique<Interface>(_model, _displayer);
+                }
 
         bool runLoop() const;
         void runApp() const;

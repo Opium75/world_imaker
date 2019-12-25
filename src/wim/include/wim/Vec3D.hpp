@@ -9,7 +9,6 @@
 
 #include <type_traits>
 #include <iostream>
-#include <glimac/glm.hpp>
 
 #include "Types.hpp"
 #include "Exception.hpp"
@@ -30,15 +29,14 @@ namespace wim
          * the data structure and its uses in the member methods
          * the type can be accessed outside the class as Vec3D::Coord
          */
-        typedef glm::detail::tvec3<T, glm::mediump> Coord;
+        typedef glm::detail::tvec3<T, glm::highp> Coord;
         Coord _coord;
-    private :
-        TVec3D(const Coord& coord) : _coord(coord) {};
     public:
         TVec3D() = default;
+        TVec3D(const Coord& coord) : _coord(coord) {};
         TVec3D(const T x, const T y, const T z) : _coord(x,y,z)
         {
-            //Constraining use of class
+            //Constraining use of class to arithmetic types.
             static_assert(std::is_arithmetic<T>::value, "Vec3D used for arithmetics with float or int types.");
         };
         TVec3D(const TVec3D& vec) = default;
@@ -58,6 +56,8 @@ namespace wim
 
         inline T& z() {return _coord.z;}
         inline T z() const {return _coord.z;}
+
+       const Coord& getCoord() const { return _coord;}
 
         //No reason to check index bond errors, already done by glm
         inline T& operator[](size_t dim) {return _coord[dim];}

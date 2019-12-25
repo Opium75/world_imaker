@@ -19,6 +19,13 @@ namespace glimac
         this->bindVAO(ATTR_POSITION, ATTR_NORMAL);
     }
 
+    void TexturedCube::bind(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_TEXCOORDS) const
+    {
+        this->bindVBO();
+        this->bindIBO();
+        this->bindVAO(ATTR_POSITION, ATTR_NORMAL, ATTR_TEXCOORDS);
+    }
+
    void AbstractCube::buildVBO(const GLfloat radius)
    {
        /* offset for (x,y,z) positions */
@@ -39,7 +46,7 @@ namespace glimac
 
    void AbstractCube::buildVBOLoop(const GLfloat radius, const GLsizei x, const GLsizei y, const GLsizei z, const GLsizei offPos)
    {
-       ShapeVec3 position = radius*ShapeVec3( x % offPos, y % offPos, z % offPos );
+       ShapeVec3 position = radius*ShapeVec3( x , y , z );
        /* need to get vertices three times
         * to account for different normals and texCoords
         */
@@ -108,8 +115,8 @@ namespace glimac
        ibo[8] = 13;//x=1, y=0, z=0, i=1
        //upper-left half
        ibo[9] = 13; //w=
-       ibo[10] = 4;
-       ibo[11] = 16;//x=1, y=0, z=1, i=1
+       ibo[10] = 16;
+       ibo[11] = 4;//x=1, y=0, z=1, i=1
        /*BOTTOM FACE*/
        //upper-left half
        ibo[12] = 2;//x=0, y=0, z=0, i=2
@@ -178,7 +185,7 @@ namespace glimac
        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo); //IBO Target
             glBufferData(
                     GL_ELEMENT_ARRAY_BUFFER,
-                    m_nIndexCount,
+                    m_nIndexCount*sizeof(GLsizei),
                     this->getIndexPointer(),
                     GL_STATIC_DRAW
             );
@@ -188,11 +195,12 @@ namespace glimac
    void TexturedCube::bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_TEXTURE) const
    {
        glBindVertexArray(_vao);
-            glEnableVertexAttribArray(ATTR_POSITION);
-            glEnableVertexAttribArray(ATTR_NORMAL);
-            glEnableVertexAttribArray(ATTR_TEXTURE);
-            glBindBuffer(GL_ARRAY_BUFFER, _vbo);
-                glVertexAttribPointer(
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
+                glEnableVertexAttribArray(ATTR_POSITION);
+                glEnableVertexAttribArray(ATTR_NORMAL);
+                glEnableVertexAttribArray(ATTR_TEXTURE);
+                glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+                    glVertexAttribPointer(
                         ATTR_POSITION,
                         3, //3 fields -> (x,y,z) we work in 3D
                         GL_FLOAT,
@@ -200,7 +208,7 @@ namespace glimac
                         sizeof(ShapeVertexTextured),
                         (const GLfloat *) offsetof(ShapeVertexTextured, _position)
                         );
-                glVertexAttribPointer(
+                    glVertexAttribPointer(
                         ATTR_NORMAL,
                         3,
                         GL_FLOAT,
@@ -208,8 +216,7 @@ namespace glimac
                         sizeof(ShapeVertexTextured),
                         (const GLfloat *) offsetof(ShapeVertexTextured, _normal)
                         );
-                //ATTR_THIRD is either ATTR_COLOUR or ATTR_TEXCOORDS
-                glVertexAttribPointer(
+                    glVertexAttribPointer(
                         ATTR_TEXTURE,
                         3,
                         GL_FLOAT,
@@ -217,13 +224,15 @@ namespace glimac
                         sizeof(ShapeVertexTextured),
                         (const GLfloat *) offsetof(ShapeVertexTextured, _texCoords) //or _colour, does not matter here
                         );
-            glBindBuffer(GL_ARRAY_BUFFER, 0);
+                glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
        glBindVertexArray(0);
    }
 
     void ColouredCube::bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL) const
     {
         glBindVertexArray(_vao);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
         glEnableVertexAttribArray(ATTR_POSITION);
         glEnableVertexAttribArray(ATTR_NORMAL);
         glBindBuffer(GL_ARRAY_BUFFER, _vbo);
@@ -244,26 +253,16 @@ namespace glimac
                 (const GLfloat *) offsetof(ShapeVertexColoured, _normal)
         );
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }
 
-    void TexturedCube::draw() const
+    void AbstractCube::draw() const
     {
         glBindVertexArray(_vao);
         glDrawElements(
                 GL_TRIANGLES,
-                m_nVertexCount,
-                GL_UNSIGNED_INT,
-                this->getIndexPointer()
-        );
-        glBindVertexArray(0);
-    }
-    void ColouredCube::draw() const
-    {
-        glBindVertexArray(_vao);
-        glDrawElements(
-                GL_TRIANGLES,
-                m_nVertexCount,
+                m_nIndexCount,
                 GL_UNSIGNED_INT,
                 this->getIndexPointer()
         );

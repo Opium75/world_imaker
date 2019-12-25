@@ -53,8 +53,15 @@ public:
     // Return the time in seconds
     float getTime() const;
 
-    inline const SDL_WindowPtr& getWindowPtr() const{return _window;}
     inline const SDL_GLContext& getGlContext() const{return _context;}
+
+    inline const SDL_WindowPtr& window() const{return _window;}
+    inline SDL_WindowPtr& window() {return _window;}
+
+    inline void getWindowSize(int& width, int& height)
+    {
+        SDL_GetWindowSize(_window.get(), &width, &height);
+    }
 };
 
 }

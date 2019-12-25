@@ -7,14 +7,14 @@
 
 #pragma once
 
+#include <memory>
 #include <stack>
 #include <deque>
 
-#include "CameraManager.hpp"
-#include "Light.hpp"
 #include "Displayable.hpp"
 #include "PatternManager.hpp"
 #include "ShaderManager.hpp"
+#include "Model.hpp"
 
 namespace wim
 {
@@ -27,26 +27,53 @@ namespace wim
     public:
         typedef std::stack<Renderable> RenderingStack;
     private:
+        ModelPtr _model;
         ShaderManager _shaders;
         PatternManager _patterns;
-        LightManagerPtr _lights;
-        CameraManagerPtr _cameras;
         RenderingStack _stack;
     public:
-        SceneRenderer(const char* appPath, const LightManagerPtr& lights, const CameraManagerPtr& cameras) :
-        _shaders(appPath), _patterns(), _lights(lights), _cameras(cameras), _stack()
+        SceneRenderer(const char* appPath, const ModelPtr& model):
+        _model(model),
+        _shaders(appPath), _patterns(),_stack()
         {
-
         }
 
         inline void addToStack(const Renderable& item) {_stack.push(item);}
 
-        inline UniformMatrix getActiveCameraViewMatrix() const {return _cameras->getActiveCameraViewMatrix();}
+        inline const LightManagerPtr& getLightManagerPtr() const {return _model->getLightManagerPtr();}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return _model->getCameraManagerPtr();}
 
+        inline UniformMatrix getCameraViewMatrix() const {
+            return this->getCameraManagerPtr()->getCameraViewMatrix();
+        }
+        inline UniformMatrix getElementModelViewMatrix(const Renderable& item)
+        {
+            return this->getCameraManagerPtr()->getElementModelViewMatrix(item);
+        }
+        inline UniformMatrix getProjectionMatrix() const
+        {
+            return this->getCameraManagerPtr()->getProjectionMatrix();
+        }
+
+
+        inline void updateMaterialCurrent(const Material& material)
+        {
+            return _shaders.updateMaterialCurrent(material);
+        }
+        inline void updateMVPNMatricesCurrent(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix)
+        {
+            return _shaders.updateMVPNMatricesCurrent(MVMatrix, ProjMatrix);
+        }
+
+        void updateLightsCurrent() const;
+
+        inline void drawPattern(const DisplayPattern dispPat)
+        {
+           _patterns.draw(dispPat);
+        }
         //todo: this.
         ///brief: render Displayable elements in stack, with respect to active Camera, lighting, and Shaders
         void render();
-
     };
 
 }

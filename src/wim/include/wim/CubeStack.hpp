@@ -7,10 +7,12 @@
 
 #pragma once
 
-#include <stack>
+#include <utility>
+#include <deque>
+#include <list>
 #include <iostream>
-#include <string>
 
+#include "Types.hpp"
 #include "Exception.hpp"
 #include "Randomisable.hpp"
 #include "Cube.hpp"
@@ -34,9 +36,10 @@ namespace wim
         Cube _cube;
         FloorIndex _floor;
     public:
-        CubeFloor() = default;
         CubeFloor(const Cube &c, const FloorIndex floor = -1);
         ~CubeFloor() = default;
+
+        CubeFloor& operator=(CubeFloor cFloor);
 
         inline Cube &cube() { return _cube; };
         inline const Cube &cube() const { return _cube; };
@@ -55,8 +58,6 @@ namespace wim
         ///Return 1 if this Cube is on a higher floor than one given as argument, 0 if equal and -1 if lower
         inline int compareFloors(const CubeFloor &cFloor) const {return this->compareFloors(cFloor.floor());}
 
-        CubeFloor& operator=(const CubeFloor &cFloor);
-
         /* convenient operators : FLOOR COMPARISON */
         ///Operator for comparison of floors, for Cube-related comparisons (Colours, etc.) see Cube Class
         inline bool operator>(const CubeFloor &cFloor) const { return (this->compareFloors(cFloor) == 1);}
@@ -74,7 +75,7 @@ namespace wim
     class CubeStack
     {
     private:
-        typedef std::deque<CubeFloor> Stack;
+        typedef std::list<CubeFloor> Stack;
         Stack _stack;
     public:
         CubeStack() = default;
@@ -87,7 +88,7 @@ namespace wim
         inline Stack& stack() {return _stack;}
         inline const Stack& stack() const {return _stack;}
 
-        CubeStack& operator=(const CubeStack &cubeStack);
+        CubeStack& operator=(CubeStack cubeStack);
 
         ///Attempts to insert Cube at given floor in SORTED CubeStack
         ///If insertHigher is true, then the cube is inserted on the next available floor
