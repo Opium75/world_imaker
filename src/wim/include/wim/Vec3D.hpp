@@ -98,19 +98,9 @@ namespace wim
         static TVec3D Random(const T lowest= static_cast<T>(-1), const T highest= static_cast<T>(1))
         {
             T x, y, z;
-            if constexpr ( std::is_floating_point<T>::value )
-            {
-                x = RealRandomisable<TVec3D, T>::Random(lowest, highest);
-                y = RealRandomisable<TVec3D, T>::Random(lowest, highest);
-                z = RealRandomisable<TVec3D, T>::Random(lowest, highest);
-            }
-            else
-            {
-                //Int type
-                x = IntRandomisable<TVec3D, T>::Random(lowest, highest);
-                y = IntRandomisable<TVec3D, T>::Random(lowest, highest);
-                z = IntRandomisable<TVec3D, T>::Random(lowest, highest);
-            }
+            x = RandomScalar(lowest, highest);
+            y = RandomScalar(lowest, highest);
+            z = RandomScalar(lowest, highest);
             return TVec3D(x, y, z);
         }
 

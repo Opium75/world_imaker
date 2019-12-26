@@ -61,15 +61,15 @@ namespace wim
 
         inline const ShaderSender& currentSender() const {return _listSender.at(_currentIndex);}
 
-        inline void updateMVPNMatricesCurrent(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix) const
+        inline void updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix) const
         {
             this->_buffers.updateMatrices(MVMatrix, ProjMatrix);
         }
-        inline void updateLightsCurrent(const AmbiantLight& ambiant) const
+        inline void updateLights(const LightManager& lights) const
         {
-            this->_buffers.updateAmbiantLight(ambiant);
+            this->_buffers.updateLights(lights);
         }
-        inline void updateMaterialCurrent(const Material& material ) const
+        inline void updateMaterial(const Material& material ) const
         {
             this->_buffers.updateMaterial(material);
         }

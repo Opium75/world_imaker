@@ -64,8 +64,8 @@ namespace wim {
             _renderer->addToStack(Renderable(object, anchor));
         }
 
-        inline const LightManagerPtr& getLightManagerPtr() const {return _renderer->getLightManagerPtr();}
-        inline const CameraManagerPtr& getCameraManagerPtr() const {return _renderer->getCameraManagerPtr();}
+        inline const LightManagerPtr& getLightManagerPtr() const {return _renderer->lightManager();}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return _renderer->cameraManager();}
         inline const SDL_GLContext& getGLContext() const {return _windows->getGlContext();};
 
         inline const WindowManagerPtr& windowManager() const {return _windows;};

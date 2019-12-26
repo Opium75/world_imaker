@@ -81,6 +81,20 @@ namespace wim
 
     };
 
+    //Shortcut for random scalar:
+    template <typename T>
+    constexpr T RandomScalar(const T& lowest = static_cast<T>(0), const T& highest= static_cast<T>(1))
+    {
+        //Function on scalar types only
+        static_assert(std::is_scalar<T>::value);
+        T value;
+        if constexpr ( std::is_floating_point<T>::value )
+            value = RealRandomisable<T, T>::Random(lowest, highest);
+        else
+            value = IntRandomisable<T,T>::Random(lowest,highest);
+        return value;
+    }
+
     //Setting static attributes of template classes.
     template<class C, typename RealType>
     typename RealRandomisable<C,RealType>::RandPointer RealRandomisable<C,RealType>::_rand = RandPointer(nullptr);

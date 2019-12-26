@@ -17,14 +17,24 @@ namespace wim {
 
     void Interface::processState() const
     {
-        //zoom
-        int zoomDir = this->isZooming();
-        if( zoomDir )
+
+
+    }
+
+    void Interface::processKeyboardUp(const SDL_Event& e) const
+    {
+        switch(e.key.keysym.sym)
         {
-            this->zoom(zoomDir);
+            case SDLK_p:
+                //Adding new pointlight
+                this->addPointLight(PointLight::Random());
+                break;
+            case SDLK_m:
+                //adding new directional light
+                this->addDirectionalLight(DirectionalLight::Random());
+            default:
+                break;
         }
-
-
     }
 
     void Interface::processMouseMotion(const SDL_Event& e) const
@@ -39,12 +49,22 @@ namespace wim {
         }
     }
 
+
+    void Interface::processMouseWheel(const SDL_Event& e) const
+    {
+        int zoomDir = e.wheel.y;
+        if( zoomDir )
+        {
+            this->zoom(zoomDir);
+        }
+    }
+
     bool Interface::processEvents() const {
 
         bool loop = true;
 
         SDL_Event e;
-        while (SDL_PollEvent(&e)) {
+        while (this->pollEvent(e)) {
             //ImGui does its thing
            // ImGui_ImplSDL2_ProcessEvent(&e);
 
@@ -53,8 +73,9 @@ namespace wim {
                     loop = false;
                     break;
 
-                case SDL_KEYDOWN  :
+                case SDL_KEYUP  :
                     //Function in Controller or switch and case ?
+                    this->processKeyboardUp(e);
                     break;
 
                 case SDL_MOUSEMOTION :
@@ -63,6 +84,8 @@ namespace wim {
                     break;
 
                 case SDL_MOUSEWHEEL:
+                    this->processMouseWheel(e);
+                    break;
 
                 case SDL_MOUSEBUTTONDOWN :
                     //
@@ -93,5 +116,28 @@ namespace wim {
     void Interface::rotate(const GLfloat xDeg, const GLfloat yDeg) const
     {
         _displayer->getCameraManagerPtr()->rotate(yDeg,xDeg);
+    }
+
+    void Interface::addPointLight(const PointLight &light) const
+    {
+        try
+        {
+            _model->addPointLight(light);
+        }
+        catch( Exception& e )
+        {
+            std::cout << e.what() << std::endl;
+        }
+    }
+    void Interface::addDirectionalLight(const DirectionalLight &light) const
+    {
+        try
+        {
+            _model->addDirectionalLight(light);
+        }
+        catch( Exception& e )
+        {
+            std::cout << e.what() << std::endl;
+        }
     }
 }

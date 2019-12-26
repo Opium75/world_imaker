@@ -7,7 +7,9 @@
 
 #pragma once
 
+
 #include <iostream>
+#include <utility>
 #include <Eigen/Dense>
 
 #include "Types.hpp"
@@ -25,8 +27,7 @@ namespace wim
         typedef Eigen::Matrix<CubeStack, Eigen::Dynamic, Eigen::Dynamic> StackMatrix;
         StackMatrix _matrix;
     public:
-        CubeWorld(const XUint width, const YUint length);
-
+        CubeWorld(const XUint width, const YUint length) : _matrix(width, length){}
         inline XUint getWidth() const {return _matrix.cols();}
         inline YUint getLength() const {return _matrix.rows();}
 
@@ -36,18 +37,13 @@ namespace wim
         }
         inline const CubeStack& operator()(const XUint x, const YUint y) const {return _matrix(y,x);}
 
-        inline Cube& operator()(const XUint x, const YUint y, const ZUint z)
+        CubeWorld& operator=(CubeWorld world)
         {
-            try
-            {
-                return _matrix(x,y).cube(z);
-            }
-            catch(Exception& e)
-            {
-               e.addMessageHead(std::string("In  CubeStack (")+std::to_string(x)+", "+std::to_string(y)+") :");
-                throw;
-            }
+            std::swap(_matrix, world._matrix);
+            return *this;
         }
+
+        Cube& operator()(const XUint x, const YUint y, const ZUint z);
 
         static CubeWorld Random(const XUint width, const YUint length, const ZUint height);
     };

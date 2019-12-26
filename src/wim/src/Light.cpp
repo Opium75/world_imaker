@@ -6,25 +6,61 @@
 
 namespace wim
 {
-    LightManager::LightManager() :
-        _listPoint(), _listDir(), _ambiant(), _ssboP(), _ssboD()
+
+    void LightManager::addPoint(const PointLight& pLight)
     {
-        //Enough space for lights
-        _listPoint.reserve(MAX_NB_EACH_LIGHTS);
-        _listDir.reserve(MAX_NB_EACH_LIGHTS);
-        /* */
-    };
-
-    LightManager::~LightManager()
-    {;
-    };
-
-
-    void update()
+        if( _listPoint.size() >= MAX_NB_EACH_LIGHT )
+            throw Exception(ExceptCode::OVERFLOW, 1, "Maximum number of point lights reached." );
+        _listPoint.push_back(pLight);
+        this->notify();
+    }
+    void LightManager::addDir(const DirectionalLight& dLight)
     {
-
-        //todo: only update SSBOs when there is a change in lights.
+        if( _listDirectional.size() >= MAX_NB_EACH_LIGHT )
+            throw Exception(ExceptCode::OVERFLOW, 1, "Maximum number of directional lights reached." );
+        _listDirectional.push_back(dLight);
+        this->notify();
+    }
+    void LightManager::removePoint(const size_t index)
+    {
+        if( index >= _listPoint.size() )
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Point light at index does not exist." );
+        _listPoint.erase(_listPoint.begin()+index);
+        this->notify();
+    }
+    void LightManager::removeDir(const size_t index)
+    {
+        if( index >= _listDirectional.size() )
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Directional light at index does not exist." );
+        _listDirectional.erase(_listDirectional.begin()+index);
+        this->notify();
     }
 
+    AmbiantLight AmbiantLight::Random()
+    {
+        return AmbiantLight(Colour::Random());
+    }
+
+    PointLight PointLight::Random()
+    {
+        return PointLight(AmbiantLight::Random(),
+                                Vec3D::Random()
+        );
+    }
+
+    DirectionalLight DirectionalLight::Random()
+    {
+        return DirectionalLight(AmbiantLight::Random(),
+                Vec3D::Random()
+                );
+    }
+    LightManager::LightManager() :
+        _listPoint(), _listDirectional(), _ambiant()
+    {
+        //Enough space for lights
+        _listPoint.reserve(MAX_NB_EACH_LIGHT);
+        _listDirectional.reserve(MAX_NB_EACH_LIGHT);
+        /* */
+    };
 
 }

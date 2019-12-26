@@ -8,45 +8,33 @@ namespace wim
 {
 
 
-    void BufferManager::bindShader(const ShaderSender& shader) const
-    {
+    void BufferManager::bindShader(const ShaderSender& shader) const {
         //MATRICES
         _matrices.bind(shader.programme().getGLId(),
-                                  UNI_BLOCK_MATRICES_NAME,
-                                  BINDING_MATRICES_INDEX
+                       UNI_BLOCK_MATRICES_NAME,
+                       BINDING_MATRICES_INDEX
         );
         //MATERIAL
         _material.bind(shader.programme().getGLId(),
-                                  UNI_BLOCK_MATERIAL_NAME,
-                                  BINDING_MATERIAL_INDEX
+                       UNI_BLOCK_MATERIAL_NAME,
+                       BINDING_MATERIAL_INDEX
         );
         //AMBIANT LIGHT
         _ambiantLight.bind(shader.programme().getGLId(),
-                                      UNI_BLOCK_AMBIANTLIGHT_NAME,
-                                      BINDING_AMBIANTLIGHT_INDEX
+                           UNI_BLOCK_AMBIANTLIGHT_NAME,
+                           BINDING_AMBIANTLIGHT_INDEX
+        );
+
+        //POINT AND DIRECTIONAL LIGHTS
+        _pointLights.bind(shader.programme().getGLId(),
+                          STORAGE_BLOCK_POINTLIGHT_NAME,
+                          BINDING_POINTLIGHT_INDEX
+        );
+        _directionalLights.bind(shader.programme().getGLId(),
+                                STORAGE_BLOCK_DIRECTIONALLIGHT_NAME,
+                                BINDING_DIRECTIONALLIGHT_INDEX
         );
     }
-/*
-    void BufferManager::updateMatrix(const UniformMatrix& m, SizeInt indexOffset) const
-    {
-        this->_matrices.update(glm::value_ptr(m),
-                indexOffset*GLSL_STD140_MAT4,
-                sizeof(UniformMatrix));
-    }
-
-    void BufferManager::updateVec3Only(const UBO& object, const glm::vec3& vec, const SizeInt indexOffset) const
-    {
-        object.update(glm::value_ptr(vec),
-                indexOffset*GLSL_STD140_VEC3,
-                sizeof(glm::vec3));
-    }
-
-    void BufferManager::updateFloatLast(const UBO& object, const GLfloat value, const SizeInt indexOffset) const
-    {
-        object.update(&value,
-                indexOffset*GLSL_STD140_VEC3,
-                sizeof(GLfloat));
-    }*/
 
     void BufferManager::updateMatrices(const UniformMatrix& MV, const UniformMatrix& Proj) const
     {
@@ -57,28 +45,33 @@ namespace wim
 
     void BufferManager::updateMaterial(const Material& material) const
     {
-        /*
-        //colour
-        this->updateVec3Only(_material, material.colour().getCoord(), 0);
-        //ks et ks
-        this->updateVec3Only(_material, material.kD().getCoord(), 1);
-        this->updateVec3Only(_material, material.kS().getCoord(), 2);
-        //shininess
-        this->updateFloatLast(_material, material.shininess(), 3);
-         */
         MaterialData data(material);
-        _material.update(&data, sizeof(data));
+        _material.update(&data, sizeof(MaterialData));
+    }
 
+    void BufferManager::updateLights(const LightManager &lights) const
+    {
+        this->updateAmbiantLight(lights.ambiant());
+        this->updatePointLights(lights.listPoint());
+        this->updateDirectionalLights(lights.listDirectional());
     }
 
     void BufferManager::updateAmbiantLight(const AmbiantLight &ambiant) const
     {
-        //colour
-        /*this->updateVec3Only(_ambiantLight, ambiant._colour, 0);
-        this->updateFloatLast(_ambiantLight, ambiant._intensity, 1);
-         */
         AmbiantLightData data(ambiant);
-        _ambiantLight.update(&data, sizeof(data));
+        _ambiantLight.update(&data, sizeof(AmbiantLightData));
+    }
+
+    void BufferManager::updatePointLights(const ListPLight& pLights) const
+    {
+        ListPLightData data(pLights.begin(), pLights.end());
+        _pointLights.update(data.data(), sizeof(PointLightData), data.size());
+
+    }
+    void BufferManager::updateDirectionalLights(const ListDLight& dLights) const
+    {
+        ListDLightData data(dLights.begin(), dLights.end());
+        _directionalLights.update(data.data(), sizeof(DirectionalLightData), data.size());
     }
 
     void BufferManager::bindShaders(const ListSender& shaders) const
@@ -113,7 +106,7 @@ namespace wim
         glBindBuffer(GL_UNIFORM_BUFFER, _ubo);
         glBufferData(GL_UNIFORM_BUFFER,
                      size,
-                     NULL,
+                     nullptr,
                      GL_DYNAMIC_DRAW
         );
         glBindBuffer(GL_UNIFORM_BUFFER, 0);
@@ -127,5 +120,49 @@ namespace wim
                 std::memcpy(p, data, size);
             glUnmapBuffer(GL_UNIFORM_BUFFER);
         glBindBuffer(GL_UNIFORM_BUFFER, 0);
+    }
+
+    void SSBO::alloc(const GLsizeiptr size, const SizeInt max) const
+    {
+        //We have to allocate enough memory
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, _ssbo);
+            glBufferData(GL_SHADER_STORAGE_BUFFER,
+                     size*max,
+                     nullptr,
+                     GL_DYNAMIC_COPY
+            );
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
+    }
+
+    void SSBO::bind(const GLuint programme, const char* storageBufferName, const GLuint binding) const
+    {
+        this->bindBlock(programme, storageBufferName, binding);
+        this->bindObject(binding);
+    }
+
+    void SSBO::bindObject(const GLuint binding) const
+    {
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, _ssbo);
+            glBindBufferBase(GL_SHADER_STORAGE_BUFFER, binding, _ssbo);
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
+    }
+
+    void SSBO::bindBlock(const GLuint programme, const char* storageBufferName, const GLuint binding) const
+    {
+        GLuint index = glGetProgramResourceIndex(programme, GL_SHADER_STORAGE_BLOCK, storageBufferName);
+        glShaderStorageBlockBinding(programme, index, binding);
+    }
+
+    void SSBO::update(const GLvoid* data, const GLsizeiptr size, const SizeInt nbUpdate) const
+    {
+        GLvoid *bufferPtr;
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, _ssbo);
+            bufferPtr = glMapBuffer(GL_SHADER_STORAGE_BUFFER, GL_WRITE_ONLY);
+                std::memcpy(bufferPtr,
+                    data,
+                    size*nbUpdate);
+            glUnmapBuffer(GL_SHADER_STORAGE_BUFFER);
+        //todo: Check if unbinding here is a mistake.
+        glBindBuffer(GL_SHADER_STORAGE_BUFFER, 0);
     }
 }

@@ -56,7 +56,7 @@ namespace wim {
 
     void Displayer::displayModel(const Model& model) const
     {
-       this->display(*model.getWorldPtr());
+       this->display(*model.world());
     }
 
     void Displayer::displayAll(const Model& model) const

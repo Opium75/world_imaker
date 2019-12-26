@@ -58,7 +58,7 @@ namespace wim
             return Material(Colour::Random(),
                     Vec3D::Random(0,1),
                     Vec3D::Random(0,1),
-                    RealRandomisable<FloatType, FloatType>::Random(0,1)
+                    RandomScalar(0,1)
             );
         }
 

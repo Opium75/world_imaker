@@ -7,9 +7,17 @@
 
 namespace wim
 {
-    CubeWorld::CubeWorld(const XUint width, const YUint length) : _matrix(width, length)
+    Cube& CubeWorld::operator()(const XUint x, const YUint y, const ZUint z)
     {
-
+        try
+        {
+            return _matrix(x,y).cube(z);
+        }
+        catch(Exception& e)
+        {
+            e.addMessageHead(std::string("In  CubeStack (")+std::to_string(x)+", "+std::to_string(y)+") :");
+            throw;
+        }
     }
 
     CubeWorld CubeWorld::Random(const XUint width, const YUint length, const ZUint height) {

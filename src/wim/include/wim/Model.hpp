@@ -40,10 +40,16 @@ namespace wim {
              {}
         ~Model() = default;
 
-        inline const WorldPtr& getWorldPtr() const {return _world;}
-        inline const LightManagerPtr& getLightManagerPtr() const {return _lights;}
-        inline const CameraManagerPtr& getCameraManagerPtr() const {return _cameras;}
+        inline const WorldPtr& world() const {return _world;}
+        inline WorldPtr& world() {return _world;}
+        inline const LightManagerPtr& lightManager() const {return _lights;}
+        inline LightManagerPtr& lightManager() {return _lights;}
+        inline const CameraManagerPtr& cameraManager() const {return _cameras;}
+        inline CameraManagerPtr& cameraManager() {return _cameras;}
 
+
+        void addPointLight(const PointLight& pLight) {this->_lights->addPoint(pLight);}
+        void addDirectionalLight(const DirectionalLight& dLight) {this->_lights->addDir(dLight);}
     };
 
     //Model will be shared between Controllers, Scene Renderer and Interface
