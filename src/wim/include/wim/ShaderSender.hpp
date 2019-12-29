@@ -10,7 +10,6 @@
 
 #include <glimac/Programme.hpp>
 
-
 #include "CommunPath.hpp"
 #include "Types.hpp"
 #include "Exception.hpp"

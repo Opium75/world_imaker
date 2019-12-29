@@ -211,7 +211,7 @@ namespace wim
 
     void SSBO::bindBlock(const GLuint programme, const char* storageBufferName, const GLuint binding) const
     {
-        GLuint index = glGetProgramResourceIndex(programme, GL_SHADER_STORAGE_BLOCK, storageBufferName);
+        GLint index = glGetProgramResourceIndex(programme, GL_SHADER_STORAGE_BLOCK, storageBufferName);
         if( index == GL_INVALID_INDEX )
         {
             throw Exception(ExceptCode::ILLIGAL, 1,

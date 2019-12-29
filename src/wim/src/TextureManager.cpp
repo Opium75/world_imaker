@@ -15,12 +15,6 @@ namespace wim {
         if (!conf.is_open()) {
             throw Exception(ExceptCode::NULL_POINTER, 1, "Trying to access empty stream. Is file properly loaded ?");
         }
-        /*
-        char *buffer = new char[MAX_SIZE_FILENAME];
-        conf.getline(buffer, MAX_SIZE_FILENAME, ' ');
-        _fileNames.push_back(std::string(buffer));
-        delete[] buffer;
-         */
         std::string buffer;
         conf >> buffer;
         _fileNames.push_back(buffer);
@@ -29,12 +23,12 @@ namespace wim {
 
     void CubeMap::loadImage(const glimac::FilePath &appPathDir)
     {
-        std::string texturePath = std::string(appPathDir) + SEP + DEFAULT_TEXTURE_DIR + SEP + _fileNames.back();
+        std::string texturePath = std::string(appPathDir) + SEP + DEFAULT_RESOURCES_DIR + SEP + DEFAULT_TEXTURE_DIR + SEP + _fileNames.back();
        _faces.push_back(glimac::ImageManager::loadImage(texturePath));
-        if( _faces.back() == nullptr )
-        {
+       if( _faces.back() == nullptr )
+       {
             throw Exception(ExceptCode::NULL_POINTER, 1, "Could not load texture at path: " + texturePath);
-        }
+       }
     }
 
     void CubeMap::loadFace(const glimac::FilePath &appDirPath, std::ifstream &conf)
@@ -54,7 +48,7 @@ namespace wim {
 
     void TextureManager::readConfig() {
         std::ifstream conf;
-        std::string confPath = std::string(_appPathDir) + SEP + DEFAULT_TEXTURE_DIR + SEP + DEFAULT_TEXTURE_CONF_FILENAME;
+        std::string confPath = std::string(_appPathDir) + SEP + DEFAULT_RESOURCES_DIR + SEP + DEFAULT_TEXTURE_DIR + SEP + DEFAULT_TEXTURE_CONF_FILENAME;
         conf.open(confPath);
         if (!conf.is_open())
             throw Exception(ExceptCode::NULL_POINTER, 1, std::string("Could not open file at path: ") + confPath);

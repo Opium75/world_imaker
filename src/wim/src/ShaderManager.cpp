@@ -12,7 +12,7 @@ namespace wim
     void ShaderManager::readConfig()
     {
         std::ifstream conf;
-        std::string confPath = std::string(_appPathDir) + SEP + DEFAULT_SHADER_DIR + SEP + DEFAULT_SHADER_CONF_FILENAME;
+        std::string confPath = std::string(_appPathDir) + SEP + DEFAULT_RESOURCES_DIR + SEP + DEFAULT_SHADER_DIR + SEP + DEFAULT_SHADER_CONF_FILENAME;
         conf.open(confPath);
         if (!conf.is_open())
             throw Exception(ExceptCode::NULL_POINTER, 1, std::string("Could not open file at path: ") + confPath);
