@@ -36,10 +36,9 @@ namespace wim {
         //setting-up anchors for (x,y)
         const XUint width = world.getWidth();
         const YUint length = world.getLength();
-        //Eigen matrices are column-major by default
-        for(YUint y=0; y<length; ++y)
+        for(XUint x=0; x<width; ++x)
         {
-            for(XUint x=0; x<width; ++x)
+            for(YUint y=0; y<length; ++y)
             {
                 this->display(world(x,y), x, y);
             }
@@ -56,7 +55,8 @@ namespace wim {
 
     void Displayer::displayModel(const Model& model) const
     {
-       this->display(*model.getWorldPtr());
+       this->display(*model.world());
+       //
     }
 
     void Displayer::displayAll(const Model& model) const

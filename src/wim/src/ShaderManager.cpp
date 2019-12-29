@@ -4,10 +4,11 @@
 
 #include "wim/ShaderManager.hpp"
 
-namespace wim {
+#include <string>
+#include <limits>
 
-
-
+namespace wim
+{
     void ShaderManager::readConfig()
     {
         std::ifstream conf;
@@ -16,15 +17,14 @@ namespace wim {
         if (!conf.is_open())
             throw Exception(ExceptCode::NULL_POINTER, 1, std::string("Could not open file at path: ") + confPath);
         //get expected number of couples
-        size_t n;
+        SizeInt n;
         conf >> n;
         //ending line
         conf.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         //fill vector of Shader Couples
         _listSender.reserve(n);
         //do n times
-        for (size_t i = 0; i < n; ++i) {
-            std::string strShader;
+        for (SizeInt i = 0; i < n; ++i) {
             if (conf.eof())
                 throw Exception(ExceptCode::END_OF_FILE, 1,
                         std::string("Fewer shader couples than expected: expected ")

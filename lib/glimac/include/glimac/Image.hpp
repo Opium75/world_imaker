@@ -15,6 +15,7 @@ private:
     unsigned int m_nHeight = 0u;
     std::unique_ptr<glm::vec4[]> m_Pixels;
 public:
+    Image() = default;
     Image(unsigned int width, unsigned int height):
         m_nWidth(width), m_nHeight(height), m_Pixels(new glm::vec4[width * height]) {
     }
@@ -42,7 +43,7 @@ class ImageManager {
 private:
     static std::unordered_map<FilePath, std::unique_ptr<Image>> m_ImageMap;
 public:
-    static const Image* loadImage(const FilePath& filepath);
+    static Image* loadImage(const FilePath& filepath);
 };
 
 }

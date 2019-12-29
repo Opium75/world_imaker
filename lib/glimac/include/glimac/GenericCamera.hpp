@@ -8,7 +8,7 @@
 #include "common.hpp"
 #include "glm.hpp"
 
-#define __CAMERA_GENERIC_DEFAULT_ANGLE_X 0
+#define __CAMERA_GENERIC_DEFAULT_ANGLE_X 180
 #define __CAMERA_GENERIC_DEFAULT_ANGLE_Y 0
 
 namespace glimac

@@ -7,7 +7,7 @@
 namespace wim
 {
 
-    Cube::Cube(const Material &material) : Displayable(material)
+    Cube::Cube(const Material &material, const SizeInt textureIndex) : Displayable(material, textureIndex)
     {
 
     }
@@ -20,7 +20,9 @@ namespace wim
 
     Cube Cube::Random()
     {
-        return Cube(Material::Random());
+        SizeInt textureIndex;
+        textureIndex = RandomScalar<SizeInt>(0, Displayable::getNumberTextures()-1);
+        return Cube(Material::Random(),textureIndex);
 
     }
 

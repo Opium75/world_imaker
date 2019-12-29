@@ -12,8 +12,9 @@
 #include <glimac/Cube.hpp>
 
 #include "Types.hpp"
-#include "Displayable.hpp"
 #include "Exception.hpp"
+#include "Displayable.hpp"
+#include "BufferManager.hpp"
 
 namespace wim
 {
@@ -38,8 +39,8 @@ namespace wim
 
         void loadPatterns()
         {
-            _listPatternPtr.at((SizeInt)DisplayPattern::COLOURED_CUBE) = std::make_unique<glimac::ColouredCube>(DEFAULT_CUBE_SIZE);
-            _listPatternPtr.at((SizeInt)DisplayPattern::TEXTURED_CUBE) = std::make_unique<glimac::TexturedCube>(DEFAULT_CUBE_SIZE);
+            _listPatternPtr.at((SizeInt)DisplayPattern::COLOURED_CUBE) = std::make_unique<glimac::CubePattern>(DEFAULT_CUBE_SIZE);
+            _listPatternPtr.at((SizeInt)DisplayPattern::TEXTURED_CUBE) = std::make_unique<glimac::CubePattern>(DEFAULT_CUBE_SIZE);
         }
 
         const PatternPtr& at(const DisplayPattern dispPat)
@@ -51,9 +52,16 @@ namespace wim
             return _listPatternPtr.at(index);
         }
 
-        inline void draw(const DisplayPattern dispPat)
+        inline void draw(const Renderable& item) const
         {
-            _listPatternPtr.at((SizeInt)dispPat)->draw();
+            bool isTextured = item.isTextured();
+            if( isTextured )
+            {
+                glBindTexture(GL_TEXTURE_CUBE_MAP, item.getTextureId());
+            }
+            _listPatternPtr.at((SizeInt)item.getDisplayPattern())->draw();
+            if( isTextured )
+                glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
         }
 
     };

@@ -14,47 +14,24 @@ namespace glimac {
      * and thus offsetoff() does not work
      * Can we fix this ?
      */
-    struct ShapeVertexTextured
-    {
-    public:
-        /* Will be using 3D textures for cubes,
-         */
-        ShapeVec3 _position;
-        ShapeVec3 _normal;
-        /** will store a Vec3 of  texCoords **/
-        ShapeVec3 _texCoords;
-    public:
-        ShapeVertexTextured() = default;
-        ShapeVertexTextured(const ShapeVec3&  pos, const ShapeVec3& normal, const ShapeVec3& texCoords) :
-                _position(pos), _normal(normal), _texCoords(texCoords) {}
 
-        ShapeVertexTextured(const ShapeVertexTextured& shapeVertexCube) = default;
-        ~ShapeVertexTextured() = default;
 
-        inline const ShapeVec3& getTexCoords() {return _texCoords;}
-        inline void setTexCoords(const ShapeFloat x, const ShapeFloat y, const ShapeFloat z)
-        {
-            _texCoords.x = x;
-            _texCoords.y = y;
-            _texCoords.z = z;
-        }
-    };
-
-    struct ShapeVertexColoured
+    struct ShapeVertexCube
     {
     public:
         /* Will be using shader colours,
          * Easier to handle this way,
+         * Will use Cube Maps, so no need to store texture coordinates
          */
         ShapeVec3 _position;
         ShapeVec3 _normal;
         /** will not store either colour or texCoords **/
     public:
-        ShapeVertexColoured() = default;
-        ShapeVertexColoured(const ShapeVec3&  pos, const ShapeVec3& normal) :
+        ShapeVertexCube() = default;
+        ShapeVertexCube(const ShapeVec3&  pos, const ShapeVec3& normal) :
                 _position(pos), _normal(normal) {}
-        ShapeVertexColoured(const ShapeVertexColoured& shapeVertexColoured) = default;
-        ~ShapeVertexColoured() = default;
+        ShapeVertexCube(const ShapeVertexCube& shapeVertexColoured) = default;
+        ~ShapeVertexCube() = default;
     };
 
     struct ShapeVertex {
@@ -101,6 +78,13 @@ namespace glimac {
         {
             _texCoords.x = x;
             _texCoords.y = y;
+        }
+
+        ShapeVec3 getSurfaceNormal(const ShapeVec3 &v1, const ShapeVec3 &v2, const ShapeVec3 &v3)
+        {
+            ShapeVec3 delta1 = v2 - v1;
+            ShapeVec3 delta2 = v3 - v1;
+            return glm::normalize(glm::cross(delta1, delta2));
         }
     };
 }

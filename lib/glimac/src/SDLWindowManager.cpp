@@ -29,6 +29,7 @@ SDLWindowManager::SDLWindowManager(uint32_t width, uint32_t height, const char* 
 
     //FOR 3d
     glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
 
     std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version:   " << glewGetString(GLEW_VERSION) << std::endl;

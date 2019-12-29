@@ -54,11 +54,15 @@ namespace wim
 
         static Material Random()
         {
-            //Everything between 0 and 1
+            //Everything between 0 and 1!!!
+            /* I swear I spent two whole days doing nothing productive
+             * because I would keep the Ks and Kd COEFFS higher than 1.
+             * Of course the lighting would be weird THESE ARE COEFFICENTS!
+             */
             return Material(Colour::Random(),
                     Vec3D::Random(0,1),
                     Vec3D::Random(0,1),
-                    RealRandomisable<FloatType, FloatType>::Random(0,1)
+                    RandomScalar<FloatType >(0,128)
             );
         }
 

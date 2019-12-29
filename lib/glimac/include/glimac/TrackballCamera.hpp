@@ -13,7 +13,7 @@ namespace glimac
 {
 
 #define __CAMERA_TRACKBALL_DEFAULT_DISTANCE 5
-static const GLfloat DEFAULT_TRACKBALL_ZOOMSPEED = 1;
+static const GLfloat DEFAULT_TRACKBALL_ZOOMSPEED = 3;
 static const GLfloat DEFAULT_TRACKBALL_XSPEED = 1.;
 static const GLfloat DEFAULT_TRACKBALL_YSPEED = 1.;
 

@@ -56,11 +56,7 @@ namespace  wim
     }
 
     Colour Colour::Random() {
-        FloatType r, g, b;
-        r = RealRandomisable<Colour, FloatType>::Random(_MIN_COLOUR_VALUE_FLOAT, _MAX_COLOUR_VALUE_FLOAT);
-        g = RealRandomisable<Colour, FloatType>::Random(_MIN_COLOUR_VALUE_FLOAT, _MAX_COLOUR_VALUE_FLOAT);
-        b = RealRandomisable<Colour, FloatType>::Random(_MIN_COLOUR_VALUE_FLOAT, _MAX_COLOUR_VALUE_FLOAT);
-        return Colour(r, g, b);
+        return Colour(Vec3D::Random(_MIN_COLOUR_VALUE_FLOAT, _MAX_COLOUR_VALUE_FLOAT));
     }
 
 }

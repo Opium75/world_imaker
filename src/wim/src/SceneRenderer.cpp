@@ -6,14 +6,32 @@
 
 namespace wim
 {
+
+    SceneRenderer::SceneRenderer(const char* appPath, ModelPtr& model):
+            _model(model),
+            _shaders(appPath), _patterns(),_stack()
+    {
+       // this->subscribe(this->lightManager().get());
+
+    }
+
+    SceneRenderer::~SceneRenderer()
+    {
+     //   this->unsubscribe(this->lightManager().get());
+    }
+
     void SceneRenderer::render()
     {
         //First, we can get the active camera.
+        UniformMatrix ViewMatrix = this->getProjectionMatrix();
         UniformMatrix ProjMatrix = this->getProjectionMatrix();
 
-        //todo: Then, send lighting from every source.
-        this->updateLightsCurrent();
-
+        /** IMPORTANT : light sources are not updated here
+         ** only when there is a change in Light Manager
+         ** through a Listerner
+         **/
+        // _shaders.bindShaders();
+         this->updateLights(ViewMatrix);
         //Finally, we compute the MVPN matrices for each element before sending it.
         while( !_stack.empty() )
         {
@@ -26,17 +44,16 @@ namespace wim
            UniformMatrix MVMatrix = this->getElementModelViewMatrix(item);
 
            //Sending Material and Matrices.
-            this->updateMaterialCurrent(item.getMaterial());
-            this->updateMVPNMatricesCurrent(MVMatrix, ProjMatrix);
+            this->updateMaterial(item);
+            this->updateMVPNMatrices(MVMatrix, ProjMatrix );
 
             //Actual drawing of the element.
-            this->drawPattern(item.getDisplayPattern());
+            this->drawItem(item);
         }
     }
 
-    void SceneRenderer::updateLightsCurrent() const
+    void SceneRenderer::updateLights(const UniformMatrix& View) const
     {
-        //Ambiant light.
-        _shaders.updateLightsCurrent(_model->getLightManagerPtr()->getAmbiantLight());
+        _shaders.updateLights(*_model->lightManager(), View);
     }
 }

@@ -11,6 +11,8 @@
 #include "Vec3D.hpp"
 #include "Material.hpp"
 
+#include "BufferManager.hpp"
+
 namespace wim
 {
     enum class DisplayPattern : SizeInt
@@ -25,12 +27,31 @@ namespace wim
     {
     protected:
         Material _material;
+        SizeInt _textureIndex;
+        static ListITOPtr _textures;
     protected:
-        Displayable(const Material &material) : _material(material) {}
+        Displayable(const Material &material, const SizeInt textureIndex=0) : _material(material), _textureIndex(textureIndex) {}
     public:
         //Should be overridden by every class, with one of the above Patterns
         virtual DisplayPattern getDisplayPattern() const = 0;
-        const Material& getMaterial() const {return this->_material;}
+        const Material& getMaterial() const {return _material;}
+        GLint getTextureId() const
+        {
+            if( _textureIndex >= _textures->size())
+                throw Exception(ExceptCode::OUT_OF_RANGE,1,"Invalid index for ITO.");
+            return _textures->at(_textureIndex)._ito;
+        }
+
+        inline static SizeInt getNumberTextures()
+        {
+            return _textures->size();
+        }
+
+        inline bool isTextured() const
+        {return this->getDisplayPattern() == DisplayPattern::TEXTURED_CUBE;}
+
+        static void linkTextures(ListITOPtr& textures)
+        {_textures = textures;}
     };
 
     class Renderable
@@ -50,11 +71,16 @@ namespace wim
         {
             //We do NOT delete the displayable object
         }
-        const Material& getMaterial() const {return this->_objectPtr->getMaterial();}
+        const Material& getMaterial() const {return _objectPtr->getMaterial();}
         DisplayPattern getDisplayPattern() const {return _objectPtr->getDisplayPattern();}
         const Anchor& getAnchor() const {return _anchor;}
-    };
+        GLint getTextureId() const {return _objectPtr->getTextureId(); }
 
+        inline bool isTextured()  const
+        {
+           return  _objectPtr->isTextured();
+        }
+    };
 
 
 }

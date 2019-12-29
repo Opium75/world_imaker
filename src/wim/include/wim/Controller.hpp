@@ -97,9 +97,11 @@ namespace wim
                 _interCtrl()
                 {
                     //Initilisation Model And Display
-                    _model = std::make_shared<Model>(worldWidth, worldLength);
+                    _model = std::make_shared<Model>();
                     _displayer = std::make_shared<Displayer>(appPath, _model);
                     _interface = std::make_unique<Interface>(_model, _displayer);
+                    //random world for starters
+                    *_model->world() = CubeWorld::Random(worldWidth, worldLength);
                 }
 
         bool runLoop() const;

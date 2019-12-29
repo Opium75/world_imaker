@@ -7,13 +7,17 @@
 
 #pragma once
 
+
 #include <iostream>
+#include <utility>
+#include <memory>
 #include <Eigen/Dense>
 
 #include "Types.hpp"
 #include "Randomisable.hpp"
+#include "TextureManager.hpp"
 #include "CubeStack.hpp"
-
+#include "Cube.hpp"
 
 namespace wim
 {
@@ -22,34 +26,33 @@ namespace wim
     {
     public:
     private:
-        typedef Eigen::Matrix<CubeStack, Eigen::Dynamic, Eigen::Dynamic> StackMatrix;
+        typedef Eigen::Matrix<CubeStack, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> StackMatrix;
         StackMatrix _matrix;
     public:
-        CubeWorld(const XUint width, const YUint length);
+        CubeWorld() = default;
+        CubeWorld(const XUint width, const YUint length) :
+            _matrix(width,length) {}
+        inline XUint getWidth() const {return _matrix.rows();}
+        inline YUint getLength() const {return _matrix.cols();}
 
-        inline XUint getWidth() const {return _matrix.cols();}
-        inline YUint getLength() const {return _matrix.rows();}
-
-        inline CubeStack& operator()(const XUint x, const YUint y){
-            //Eigen matrices are column-major.
-            return _matrix(y,x);
-        }
-        inline const CubeStack& operator()(const XUint x, const YUint y) const {return _matrix(y,x);}
-
-        inline Cube& operator()(const XUint x, const YUint y, const ZUint z)
+        inline CubeStack& operator()(const XUint x, const YUint y)
         {
-            try
-            {
-                return _matrix(x,y).cube(z);
-            }
-            catch(Exception& e)
-            {
-               e.addMessageHead(std::string("In  CubeStack (")+std::to_string(x)+", "+std::to_string(y)+") :");
-                throw;
-            }
+            return _matrix(x,y);
+        }
+        inline const CubeStack& operator()(const XUint x, const YUint y) const
+        {
+            return _matrix(x,y);
         }
 
-        static CubeWorld Random(const XUint width, const YUint length, const ZUint height);
+        CubeWorld& operator=(CubeWorld world)
+        {
+            std::swap(_matrix, world._matrix);
+            return *this;
+        }
+        Cube& operator()(const XUint x, const YUint y, const ZUint z);
+
+
+        static CubeWorld Random(const XUint width, const YUint length);
     };
 }
 

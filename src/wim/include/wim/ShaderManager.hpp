@@ -9,13 +9,16 @@
 
 #include <vector>
 
-
 #include <glimac/FilePath.hpp>
 #include <glimac/Programme.hpp>
 
 #include "Types.hpp"
 #include "Exception.hpp"
+#include "Displayable.hpp"
+#include "Model.hpp"
+#include "PatternManager.hpp"
 #include "BufferManager.hpp"
+#include "TextureManager.hpp"
 #include "ShaderSender.hpp"
 
 namespace wim
@@ -26,53 +29,62 @@ namespace wim
         glimac::FilePath _appPathDir;
         ListSender  _listSender;
         SizeInt _currentIndex;
-        BufferManager _buffers;
+        TextureManagerPtr _textures;
+        BufferManagerPtr _buffers;
     public:
-        ShaderManager() = default;
-
         ShaderManager(const glimac::FilePath& appPath) :
             _appPathDir(glimac::FilePath(appPath).dirPath().dirPath()),
-            _currentIndex(0)
+            _currentIndex(0),
+            _textures(std::make_unique<TextureManager>(_appPathDir)),
+            _buffers(std::make_unique<BufferManager>(_textures))
         {
            this->readConfig();
-            std::cout << *this << std::endl;
            this->setCurrentProgramme(_currentIndex);
-           this->_buffers.bindShaders(_listSender);
-           std::cout << *this << std::endl;
+           _buffers->bindShaders(_listSender);
+           _buffers->loadCubeMaps(_textures->getCubeMaps());
+           Displayable::linkTextures(_buffers->getListITO());
         }
         ~ShaderManager() = default;
 
         void readConfig();
 
 
+
+
         inline void setCurrentProgramme(const SizeInt index)
         {
             _listSender.at(index).useProgramme();
+            _buffers->localiseUniform(_listSender.at(index));
             _currentIndex = index;
         }
 
-        inline glimac::Programme& programme(const SizeInt index) {return _listSender.at(index).programme();}
         inline const glimac::Programme& programme(const SizeInt index) const {return _listSender.at(index).programme();}
 
-        inline ShaderCouple& couple(const SizeInt index) {return _listSender.at(index).couple();}
         inline const ShaderCouple& couple(const SizeInt index) const {return _listSender.at(index).couple();}
 
         inline const glimac::Programme& currentProgramme() const {return this->programme(_currentIndex);}
 
         inline const ShaderSender& currentSender() const {return _listSender.at(_currentIndex);}
 
-        inline void updateMVPNMatricesCurrent(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix) const
+        inline const BufferManagerPtr& bufferManager() const {return _buffers;}
+
+        inline void bindShaders() const
         {
-            this->_buffers.updateMatrices(MVMatrix, ProjMatrix);
+            _buffers->bindShaders(_listSender);
         }
-        inline void updateLightsCurrent(const AmbiantLight& ambiant) const
+        inline void updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix) const
         {
-            this->_buffers.updateAmbiantLight(ambiant);
+            this->_buffers->updateMatrices(MVMatrix, ProjMatrix);
         }
-        inline void updateMaterialCurrent(const Material& material ) const
+        inline void updateLights(const LightManager& lights, const UniformMatrix& View) const
         {
-            this->_buffers.updateMaterial(material);
+            this->_buffers->updateLights(lights, View);
         }
+        inline void updateMaterial(const Material& material, const bool isTextured) const
+        {
+            this->_buffers->updateMaterial(material, isTextured);
+        }
+
 
         friend std::ostream& operator<<(std::ostream& out, const ShaderManager& shaders)
         {
@@ -82,6 +94,12 @@ namespace wim
             }
             return out;
         }
+
+        inline void drawItem(const Renderable& item, const PatternManager& patterns) const
+        {
+            patterns.draw(item);
+        }
+        //todo: this.
 
 
     };

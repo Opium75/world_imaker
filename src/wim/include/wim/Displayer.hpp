@@ -41,7 +41,7 @@ namespace wim {
         SceneRendererPtr _renderer;
 
     public:
-        Displayer(const char* appPath, const ModelPtr& model) :
+        Displayer(const char* appPath, ModelPtr& model) :
             _windows(std::make_unique<glimac::SDLWindowManager>(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
             _widgets(std::make_unique<WidgetManager>()),
             _renderer(std::make_unique<SceneRenderer>(appPath, model))
@@ -64,8 +64,8 @@ namespace wim {
             _renderer->addToStack(Renderable(object, anchor));
         }
 
-        inline const LightManagerPtr& getLightManagerPtr() const {return _renderer->getLightManagerPtr();}
-        inline const CameraManagerPtr& getCameraManagerPtr() const {return _renderer->getCameraManagerPtr();}
+        inline const LightManagerPtr& getLightManagerPtr() const {return _renderer->lightManager();}
+        inline const CameraManagerPtr& getCameraManagerPtr() const {return _renderer->cameraManager();}
         inline const SDL_GLContext& getGLContext() const {return _windows->getGlContext();};
 
         inline const WindowManagerPtr& windowManager() const {return _windows;};

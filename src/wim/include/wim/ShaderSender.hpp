@@ -7,14 +7,11 @@
 
 #pragma once
 
-#include <string>
-#include <iostream>
-#include <fstream>
 
 #include <glimac/Programme.hpp>
-#include <glimac/FilePath.hpp>
 
 
+#include "CommunPath.hpp"
 #include "Types.hpp"
 #include "Exception.hpp"
 #include "Material.hpp"
@@ -24,15 +21,6 @@ namespace wim
 
     static constexpr const char* STORAGE_POSLIGHT_NAME = "sPosLight_vs";
     static constexpr const char* STORAGE_DIRLIGHT_NAME = "sDirLight_vs";
-
-
-    /* Path to shaders and config file relative to build directory */
-    static constexpr const char* DEFAULT_SHADER_DIR = "resources/shaders";
-    static constexpr const char* DEFAULT_SHADER_CONF_FILENAME = "shaders.conf";
-
-    /* Constant used in shader files loading?*/
-    static const unsigned int MAX_SIZE_SHADER_FILENAME = 30;
-    static const char SEP = glimac::FilePath::PATH_SEPARATOR; //defined in FilePath
 
     struct ShaderCouple
     {
@@ -67,13 +55,13 @@ namespace wim
     private:
         void initSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
     public:
-        ShaderSender() = default;
+       // ShaderSender() = default;
         ShaderSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
 
 
         inline void useProgramme() const {
             _programme.use();
-            std::cout << "Using programme: " << _programme.getGLId() << std::endl;
+            std::cout << "Using programme #" << _programme.getGLId() << std::endl;
         }
 
         inline const glimac::Programme& programme() const {return _programme;}

@@ -13,6 +13,7 @@
 #include <glimac/SDLWindowManager.hpp>
 
 #include "CommunDisplay.hpp"
+#include "Exception.hpp"
 #include "Model.hpp"
 #include "Displayer.hpp"
 
@@ -33,10 +34,16 @@ namespace wim
         inline const WindowManagerPtr& windowManager() const {return _displayer->windowManager();}
         inline WindowManagerPtr& windowManager() {return _displayer->windowManager();}
 
+
+        inline bool pollEvent(SDL_Event &e) const {return this->windowManager()->pollEvent(e);}
+        inline bool isKeyPressed(const SDL_Keycode key) const {return this->windowManager()->isKeyPressed(key);}
+
         void processState() const;
         bool processEvents() const;
 
+        void processKeyboardUp(const SDL_Event& e) const;
         void processMouseMotion(const SDL_Event& e) const;
+        void processMouseWheel(const SDL_Event& e) const;
 
         inline bool isMouseButtonPressed(uint32_t button) const
         {
@@ -45,12 +52,14 @@ namespace wim
 
         void getRelativePosMouse(GLfloat& xRel, GLfloat& yRel) const;
 
-        inline int isZooming() const {return (this->isMouseButtonPressed(SDL_BUTTON_LEFT) - this->isMouseButtonPressed(SDL_BUTTON_RIGHT));}
         inline bool isRotating() const {return this->isMouseButtonPressed(SDL_BUTTON_MIDDLE);}
 
         void zoom(const GLint zoomDir) const;
         void rotate(const GLfloat xDeg, const GLfloat yDeg) const;
 
+        void addPointLight(const PointLight& light) const;
+        void addDirectionLight(const DirectionLight& light) const;
+        void setAmbiantLight(const AmbiantLight &light) const;
 
     public:
         bool run() const;

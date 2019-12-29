@@ -6,8 +6,13 @@
 #define WORLD_IMAKER_LIGHT_HPP
 
 #include <vector>
+#include <utility>
 
 #include "CommunDisplay.hpp"
+
+#include "Randomisable.hpp"
+#include "Listener.hpp"
+#include "Exception.hpp"
 
 #include "Types.hpp"
 #include "Vec3D.hpp"
@@ -18,54 +23,67 @@
 namespace wim {
 
     ///brief: constant in order to limit the number of lights.
-    static const unsigned int MAX_NB_EACH_LIGHTS = 10;
+    static const unsigned int MAX_NB_EACH_LIGHT = 10;
 
-    static const GLfloat DEFAULT_AMBIANT_INTENSITY = 1.f;
-    static const glm::vec3 DEFAULT_AMBIANT_COLOUR = {1.f, 1.f, 1.f};
 
     struct AmbiantLight
     {
-    private:
-        Colour _colour;
-        GLfloat  _intensity;
+    protected:
+        Colour _intensity;
     public:
-        AmbiantLight() : _colour(Colour(DEFAULT_AMBIANT_COLOUR)), _intensity(DEFAULT_AMBIANT_INTENSITY) {}
-        AmbiantLight(const Colour& colour, const GLfloat intensity) :
-                _colour(colour), _intensity(intensity)
+        AmbiantLight(const Colour& intensity) :
+                _intensity(intensity)
         {
         }
 
-        inline const Colour& colour() const {return _colour;}
-        inline Colour& colour() {return _colour;}
-        inline GLfloat intensity() const {return _intensity;}
-        inline GLfloat intensity() {return _intensity;}
+        inline const Colour& intensity() const {return _intensity;}
+        inline Colour& intensity() {return _intensity;}
+        AmbiantLight& operator=(const AmbiantLight& ambiant);
+        static AmbiantLight Random();
 
     };
     ///brief: Data structure for SSBO
     struct PointLight final : public AmbiantLight
     {
+    private:
         Vec3D _origin;
-        PointLight(const Colour& colour, const GLfloat intensity, const Vec3D& origin):
-           AmbiantLight(colour, intensity),_origin(origin)
-            {
+    public:
+        PointLight(const Colour& intensity, const Vec3D& origin):
+           AmbiantLight(intensity),_origin(origin) {}
+        PointLight(const AmbiantLight& ambiant, const Vec3D& origin):
+                AmbiantLight(ambiant),_origin(origin) {}
 
-            }
+        inline const Vec3D& origin() const {return _origin;}
+        inline Vec3D& origin() {return _origin;}
+
+       PointLight& operator=(const PointLight& pLight);
+
+        static PointLight Random();
     };
 
-    struct DirectionalLight final : public AmbiantLight
+    struct DirectionLight final : public AmbiantLight
     {
+    private:
         Vec3D _direction;
-        DirectionalLight(const Colour& colour, const GLfloat intensity, const Vec3D& direction):
-                AmbiantLight(colour, intensity), _direction(direction)
-        {
+    public:
+        DirectionLight(const Colour& intensity, const Vec3D& direction):
+                AmbiantLight(intensity), _direction(direction){}
+        DirectionLight(const AmbiantLight& ambiant, const Vec3D& direction):
+                AmbiantLight(ambiant), _direction(direction){}
 
-        }
+
+        inline const Vec3D& direction() const {return _direction;}
+        inline Vec3D& direction() {return _direction;}
+        DirectionLight& operator=(const DirectionLight& dLight);
+
+        static DirectionLight Random();
     };
 
 
+    typedef std::vector<PointLight> ListPLight;
+    typedef std::vector<DirectionLight> ListDLight;
 
-
-    class LightManager
+    class LightManager : public Listenable
     {
     public:
         /* We use vectors to store lights
@@ -73,26 +91,31 @@ namespace wim {
          * We also set a maximum number of each lights
          * So no problem of reallocation; we'll reserve enough space at init.
          */
-        typedef std::vector<PointLight> ListPLight;
-        typedef std::vector<DirectionalLight> ListDLight;
     private:
         ListPLight _listPoint;
-        ListDLight _listDir;
+        ListDLight _listDirection;
         AmbiantLight _ambiant;
-        GLuint _ssboP, _ssboD;
 
     public:
         LightManager();
-        LightManager(const AmbiantLight& ambiant) : _ambiant(ambiant) {}
-        ~LightManager();
-        inline void addPoint(const PointLight& pLight) {_listPoint.push_back(pLight);}
-        inline void addDir(const DirectionalLight& dLight) {_listDir.push_back(dLight);}
 
-        inline void removePoint(const size_t index) {_listPoint.erase(_listPoint.begin()+index);}
-        inline void removeDir(const size_t index) {_listDir.erase(_listDir.begin()+index);}
+        void addPoint(const PointLight& pLight);
+        void addDir(const DirectionLight& dLight);
+        void setAmbiant(const AmbiantLight& ambiant);
+        void removePoint(const size_t index);
+        void removeDir(const size_t index);
 
-        inline const AmbiantLight& getAmbiantLight() const {return _ambiant;}
 
+        inline const AmbiantLight& ambiant() const {return _ambiant;}
+        inline const ListPLight& listPoint() const {return _listPoint;}
+        inline const ListDLight& listDirection() const {return _listDirection;}
+
+    private:
+        void CBaddPoint(const PointLight& pLight);
+        void CBaddDir(const DirectionLight& dLight);
+        void CBsetAmbiant(const AmbiantLight& ambiant);
+        void CBremovePoint(const size_t index);
+        void CBremoveDir(const size_t index);
 
 
     };
