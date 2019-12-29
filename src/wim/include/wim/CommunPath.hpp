@@ -19,10 +19,11 @@ namespace wim
 {
 
     /* Path to shaders and config file relative to build directory */
-    static constexpr const char* DEFAULT_SHADER_DIR = "resources/shaders";
+    static constexpr const char* DEFAULT_RESOURCES_DIR = "resources";
+    static constexpr const char* DEFAULT_SHADER_DIR = "shaders";
     static constexpr const char* DEFAULT_SHADER_CONF_FILENAME = "shaders.conf";
 
-    static constexpr const char* DEFAULT_TEXTURE_DIR = "resources/textures";
+    static constexpr const char* DEFAULT_TEXTURE_DIR = "textures";
     static constexpr const char* DEFAULT_TEXTURE_CONF_FILENAME = "textures.conf";
 
     /* Constant used in shader files loading?*/

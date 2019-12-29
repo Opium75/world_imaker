@@ -29,13 +29,13 @@ namespace wim
         void LightManager::CBaddPoint(const PointLight& pLight)
     {
         if( _listPoint.size() >= MAX_NB_EACH_LIGHT )
-            throw Exception(ExceptCode::OVERFLOW, 1, "Maximum number of point lights reached." );
+            throw Exception(ExceptCode::OVER, 1, "Maximum number of point lights reached." );
         _listPoint.push_back(pLight);
     }
     void LightManager::CBaddDir(const DirectionLight& dLight)
     {
         if( _listDirection.size() >= MAX_NB_EACH_LIGHT )
-            throw Exception(ExceptCode::OVERFLOW, 1, "Maximum number of directional lights reached." );
+            throw Exception(ExceptCode::OVER, 1, "Maximum number of directional lights reached." );
         _listDirection.push_back(dLight);
     }
     void LightManager::CBremovePoint(const size_t index)
