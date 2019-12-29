@@ -58,7 +58,8 @@ namespace wim
         void rotate(const GLfloat xDeg, const GLfloat yDeg) const;
 
         void addPointLight(const PointLight& light) const;
-        void addDirectionalLight(const DirectionalLight& light) const;
+        void addDirectionLight(const DirectionLight& light) const;
+        void setAmbiantLight(const AmbiantLight &light) const;
 
     public:
         bool run() const;

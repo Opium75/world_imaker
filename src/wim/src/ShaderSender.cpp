@@ -28,8 +28,6 @@ namespace wim
         _programme = glimac::loadProgramme(shaderCoupleDirPath + SEP + couple._vs,
                                          shaderCoupleDirPath + SEP + couple._fs
         );
-
-
     }
 
 
@@ -40,14 +38,12 @@ namespace wim
         if (!stream.is_open()) {
             throw Exception(ExceptCode::NULL_POINTER, 1, "Trying to access empty stream. Is file properly loaded ?");
         }
-        //vs, then fs
-        char *buffer = new char[MAX_SIZE_SHADER_FILENAME];
-        stream.getline(buffer, MAX_SIZE_SHADER_FILENAME, ' ');
-        couple._vs = std::string(buffer);
-        stream.getline(buffer, MAX_SIZE_SHADER_FILENAME, '\n');
+        //vs, then fss
+        std::string buffer;
+        stream >> buffer;
+        couple._vs = buffer;
+        stream >> buffer;
         couple._fs = std::string(buffer);
-        delete[] buffer;
-
         return couple;
     }
 }

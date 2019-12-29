@@ -13,6 +13,7 @@
 #include "CubeWorld.hpp"
 #include "Light.hpp"
 #include "CameraManager.hpp"
+#include "BufferManager.hpp"
 
 namespace wim {
 
@@ -29,15 +30,15 @@ namespace wim {
         WorldPtr _world;
         LightManagerPtr _lights;
         CameraManagerPtr _cameras;
+
     public:
-        Model() = default;
-        Model(const XUint worldWidth = DEFAULT_CUBEWORLD_WIDTH,
-              const YUint worldLength = DEFAULT_CUBEWORLD_LENGTH,
-              const ZUint worldHeight = DEFAULT_CUBEWORLD_HEIGHT) :
-            _world(std::make_unique<CubeWorld>(CubeWorld::Random(worldWidth, worldLength, worldHeight))),
-            _lights(std::make_unique<LightManager>()),
-            _cameras(std::make_unique<CameraManager>())
-             {}
+        Model() :
+                _world(std::make_unique<CubeWorld>()),
+                _lights(std::make_unique<LightManager>()),
+                _cameras(std::make_unique<CameraManager>())
+        {
+
+        }
         ~Model() = default;
 
         inline const WorldPtr& world() const {return _world;}
@@ -46,10 +47,8 @@ namespace wim {
         inline LightManagerPtr& lightManager() {return _lights;}
         inline const CameraManagerPtr& cameraManager() const {return _cameras;}
         inline CameraManagerPtr& cameraManager() {return _cameras;}
-
-
         void addPointLight(const PointLight& pLight) {this->_lights->addPoint(pLight);}
-        void addDirectionalLight(const DirectionalLight& dLight) {this->_lights->addDir(dLight);}
+        void addDirectionLight(const DirectionLight& dLight) {this->_lights->addDir(dLight);}
     };
 
     //Model will be shared between Controllers, Scene Renderer and Interface

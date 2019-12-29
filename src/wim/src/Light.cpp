@@ -4,35 +4,110 @@
 
 #include "../include/wim/Light.hpp"
 
+
 namespace wim
 {
 
-    void LightManager::addPoint(const PointLight& pLight)
+    AmbiantLight& AmbiantLight::operator=(const AmbiantLight& ambiant)
+    {
+        _intensity = ambiant._intensity;
+        return *this;
+    }
+    PointLight& PointLight::operator=(const PointLight& pLight)
+    {
+        _intensity = pLight._intensity;
+        _origin = pLight._origin;
+        return *this;
+    }
+    DirectionLight& DirectionLight::operator=(const DirectionLight& dLight)
+    {
+        _intensity = dLight._intensity;
+        _direction = dLight._direction;
+        return *this;
+    }
+
+        void LightManager::CBaddPoint(const PointLight& pLight)
     {
         if( _listPoint.size() >= MAX_NB_EACH_LIGHT )
             throw Exception(ExceptCode::OVERFLOW, 1, "Maximum number of point lights reached." );
         _listPoint.push_back(pLight);
-        this->notify();
     }
-    void LightManager::addDir(const DirectionalLight& dLight)
+    void LightManager::CBaddDir(const DirectionLight& dLight)
     {
-        if( _listDirectional.size() >= MAX_NB_EACH_LIGHT )
+        if( _listDirection.size() >= MAX_NB_EACH_LIGHT )
             throw Exception(ExceptCode::OVERFLOW, 1, "Maximum number of directional lights reached." );
-        _listDirectional.push_back(dLight);
-        this->notify();
+        _listDirection.push_back(dLight);
     }
-    void LightManager::removePoint(const size_t index)
+    void LightManager::CBremovePoint(const size_t index)
     {
         if( index >= _listPoint.size() )
             throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Point light at index does not exist." );
         _listPoint.erase(_listPoint.begin()+index);
+    }
+    void LightManager::CBremoveDir(const size_t index)
+    {
+        if( index >= _listDirection.size() )
+            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Directional light at index does not exist." );
+        _listDirection.erase(_listDirection.begin()+index);
         this->notify();
     }
-    void LightManager::removeDir(const size_t index)
+
+    void LightManager::CBsetAmbiant(const AmbiantLight &ambiant)
     {
-        if( index >= _listDirectional.size() )
-            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Directional light at index does not exist." );
-        _listDirectional.erase(_listDirectional.begin()+index);
+        _ambiant = ambiant;
+    }
+
+    void LightManager::addDir(const DirectionLight& dLight)
+    {
+        try
+        {
+            this->CBaddDir(dLight);
+        }
+        catch(Exception& e)
+        {
+            throw;
+        }
+        this->notify();
+    }
+
+    void LightManager::addPoint(const PointLight& pLight)
+    {
+        try
+        {
+            this->CBaddPoint(pLight);
+        }
+        catch(Exception& e)
+        {
+            throw;
+        }
+        this->notify();
+    }
+    void LightManager::removePoint(const SizeInt index)
+    {
+        try
+        {
+            this->CBremovePoint(index);
+        }
+        catch(Exception& e)
+        {
+            throw;
+        }
+        this->notify();
+    }
+    void LightManager::removeDir(const SizeInt index)
+    {
+        try {
+            this->CBremoveDir(index);
+        }
+        catch (Exception &e) {
+            throw;
+        }
+        this->notify();
+    }
+
+    void LightManager::setAmbiant(const AmbiantLight &ambiant)
+    {
+        this->CBsetAmbiant(ambiant);
         this->notify();
     }
 
@@ -44,22 +119,22 @@ namespace wim
     PointLight PointLight::Random()
     {
         return PointLight(AmbiantLight::Random(),
-                                Vec3D::Random()
+                Vec3D::Random(-20,20)
         );
     }
 
-    DirectionalLight DirectionalLight::Random()
+    DirectionLight DirectionLight::Random()
     {
-        return DirectionalLight(AmbiantLight::Random(),
+        return DirectionLight(AmbiantLight::Random(),
                 Vec3D::Random()
                 );
     }
     LightManager::LightManager() :
-        _listPoint(), _listDirectional(), _ambiant()
+        _listPoint(), _listDirection(), _ambiant(AmbiantLight::Random())
     {
         //Enough space for lights
         _listPoint.reserve(MAX_NB_EACH_LIGHT);
-        _listDirectional.reserve(MAX_NB_EACH_LIGHT);
+        _listDirection.reserve(MAX_NB_EACH_LIGHT);
         /* */
     };
 

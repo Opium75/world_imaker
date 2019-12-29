@@ -76,16 +76,17 @@ namespace wim
 
     UniformMatrix CameraManager::getElementModelViewMatrix(const SizeInt index, const Renderable& item) const
     {
-        UniformMatrix MVMatrix = getCameraViewMatrix(index);
+        UniformMatrix ViewMatrix = getCameraViewMatrix(index);
+        UniformMatrix MVMatrix, ModelMatrix;
         /* matching rotation around origin of World .
         * -> nothing to do
          */;
         //Position
-        MVMatrix = glm::translate(
-                MVMatrix,
+        ModelMatrix = glm::translate(
+                glm::mat4(1.0f),
                 item.getAnchor().getCoord()
         );
-
+        MVMatrix = ViewMatrix * ModelMatrix;
         //Scale
         /* nothing to do ?
          *

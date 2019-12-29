@@ -10,12 +10,14 @@
 
 #include <iostream>
 #include <utility>
+#include <memory>
 #include <Eigen/Dense>
 
 #include "Types.hpp"
 #include "Randomisable.hpp"
+#include "TextureManager.hpp"
 #include "CubeStack.hpp"
-
+#include "Cube.hpp"
 
 namespace wim
 {
@@ -24,28 +26,33 @@ namespace wim
     {
     public:
     private:
-        typedef Eigen::Matrix<CubeStack, Eigen::Dynamic, Eigen::Dynamic> StackMatrix;
+        typedef Eigen::Matrix<CubeStack, Eigen::Dynamic, Eigen::Dynamic, Eigen::RowMajor> StackMatrix;
         StackMatrix _matrix;
     public:
-        CubeWorld(const XUint width, const YUint length) : _matrix(width, length){}
-        inline XUint getWidth() const {return _matrix.cols();}
-        inline YUint getLength() const {return _matrix.rows();}
+        CubeWorld() = default;
+        CubeWorld(const XUint width, const YUint length) :
+            _matrix(width,length) {}
+        inline XUint getWidth() const {return _matrix.rows();}
+        inline YUint getLength() const {return _matrix.cols();}
 
-        inline CubeStack& operator()(const XUint x, const YUint y){
-            //Eigen matrices are column-major.
-            return _matrix(y,x);
+        inline CubeStack& operator()(const XUint x, const YUint y)
+        {
+            return _matrix(x,y);
         }
-        inline const CubeStack& operator()(const XUint x, const YUint y) const {return _matrix(y,x);}
+        inline const CubeStack& operator()(const XUint x, const YUint y) const
+        {
+            return _matrix(x,y);
+        }
 
         CubeWorld& operator=(CubeWorld world)
         {
             std::swap(_matrix, world._matrix);
             return *this;
         }
-
         Cube& operator()(const XUint x, const YUint y, const ZUint z);
 
-        static CubeWorld Random(const XUint width, const YUint length, const ZUint height);
+
+        static CubeWorld Random(const XUint width, const YUint length);
     };
 }
 

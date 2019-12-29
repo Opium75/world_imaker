@@ -206,7 +206,7 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/CommunDisplay.hpp
         src/wim/include/wim/BufferManager.hpp
         src/wim/include/wim/Interface.hpp
-        src/wim/src/Interface.cpp src/wim/include/wim/Listener.hpp src/wim/src/Listener.cpp)
+        src/wim/src/Interface.cpp src/wim/include/wim/Listener.hpp src/wim/src/Listener.cpp src/wim/src/TextureManager.cpp src/wim/include/wim/CommunPath.hpp src/wim/src/Displayable.cpp)
 
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}

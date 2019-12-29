@@ -6,6 +6,7 @@
 #define WORLD_IMAKER_LIGHT_HPP
 
 #include <vector>
+#include <utility>
 
 #include "CommunDisplay.hpp"
 
@@ -24,14 +25,12 @@ namespace wim {
     ///brief: constant in order to limit the number of lights.
     static const unsigned int MAX_NB_EACH_LIGHT = 10;
 
-    static const glm::vec3 DEFAULT_AMBIANT_INTENSITY = {0.1, 0, 0};
 
     struct AmbiantLight
     {
     protected:
         Colour _intensity;
     public:
-        AmbiantLight() : _intensity(DEFAULT_AMBIANT_INTENSITY) {}
         AmbiantLight(const Colour& intensity) :
                 _intensity(intensity)
         {
@@ -39,6 +38,7 @@ namespace wim {
 
         inline const Colour& intensity() const {return _intensity;}
         inline Colour& intensity() {return _intensity;}
+        AmbiantLight& operator=(const AmbiantLight& ambiant);
         static AmbiantLight Random();
 
     };
@@ -53,34 +53,35 @@ namespace wim {
         PointLight(const AmbiantLight& ambiant, const Vec3D& origin):
                 AmbiantLight(ambiant),_origin(origin) {}
 
-           inline const Vec3D& origin() const {return _origin;}
-
+        inline const Vec3D& origin() const {return _origin;}
         inline Vec3D& origin() {return _origin;}
+
+       PointLight& operator=(const PointLight& pLight);
 
         static PointLight Random();
     };
 
-    struct DirectionalLight final : public AmbiantLight
+    struct DirectionLight final : public AmbiantLight
     {
     private:
         Vec3D _direction;
     public:
-        DirectionalLight(const Colour& intensity, const Vec3D& direction):
+        DirectionLight(const Colour& intensity, const Vec3D& direction):
                 AmbiantLight(intensity), _direction(direction){}
-        DirectionalLight(const AmbiantLight& ambiant, const Vec3D& direction):
+        DirectionLight(const AmbiantLight& ambiant, const Vec3D& direction):
                 AmbiantLight(ambiant), _direction(direction){}
 
 
         inline const Vec3D& direction() const {return _direction;}
         inline Vec3D& direction() {return _direction;}
+        DirectionLight& operator=(const DirectionLight& dLight);
 
-
-        static DirectionalLight Random();
+        static DirectionLight Random();
     };
 
 
     typedef std::vector<PointLight> ListPLight;
-    typedef std::vector<DirectionalLight> ListDLight;
+    typedef std::vector<DirectionLight> ListDLight;
 
     class LightManager : public Listenable
     {
@@ -92,26 +93,29 @@ namespace wim {
          */
     private:
         ListPLight _listPoint;
-        ListDLight _listDirectional;
+        ListDLight _listDirection;
         AmbiantLight _ambiant;
 
     public:
         LightManager();
 
         void addPoint(const PointLight& pLight);
-        void addDir(const DirectionalLight& dLight);
-
+        void addDir(const DirectionLight& dLight);
+        void setAmbiant(const AmbiantLight& ambiant);
         void removePoint(const size_t index);
         void removeDir(const size_t index);
 
+
         inline const AmbiantLight& ambiant() const {return _ambiant;}
-        inline AmbiantLight& ambiant() {return _ambiant;}
-
         inline const ListPLight& listPoint() const {return _listPoint;}
-        inline ListPLight& listPoint() {return _listPoint;}
+        inline const ListDLight& listDirection() const {return _listDirection;}
 
-        inline const ListDLight& listDirectional() const {return _listDirectional;}
-        inline ListDLight& listDirectional() {return _listDirectional;}
+    private:
+        void CBaddPoint(const PointLight& pLight);
+        void CBaddDir(const DirectionLight& dLight);
+        void CBsetAmbiant(const AmbiantLight& ambiant);
+        void CBremovePoint(const size_t index);
+        void CBremoveDir(const size_t index);
 
 
     };

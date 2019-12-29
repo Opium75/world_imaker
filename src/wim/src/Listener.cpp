@@ -4,6 +4,8 @@
 
 #include "../include/wim/Listener.hpp"
 
+#include <algorithm>
+
 namespace wim {
 
     void Listener::subscribe(Listenable *listenable)

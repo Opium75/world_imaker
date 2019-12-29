@@ -72,21 +72,22 @@ namespace glimac
         void draw() const;
     };
 
-    ///brief: a Cube which will be coloured by shaders. Does not store colour attributes.
-    class ColouredCube final : public AbstractCube
+    ///brief: a Cube structure for VBO, IBO and VAO
+    /// WIll be either textured or coloured..
+    class CubePattern final : public AbstractCube
     {
     private:
         //In case of Coloured Cubes, the vertices do not have a third attribute.
-        std::vector<ShapeVertexColoured> m_Vertices;
+        std::vector<ShapeVertexCube> m_Vertices;
     public:
-        ColouredCube(const GLfloat radius) :  m_Vertices(m_nVertexCount)
+        CubePattern(const GLfloat radius) :  m_Vertices(m_nVertexCount)
         {
             build(radius);
             bind(ATTR_POSITION_DEFAULT_LOC, ATTR_NORMAL_DEFAULT_LOC);
         }
-        ~ColouredCube() = default;
+        ~CubePattern() = default;
 
-        inline const ShapeVertexColoured* getDataPointer() const {return m_Vertices.data();}
+        inline const ShapeVertexCube* getDataPointer() const {return m_Vertices.data();}
     private:
         void buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal) override;
 
@@ -95,28 +96,6 @@ namespace glimac
         void bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL) const;
     };
 
-    class TexturedCube final : public AbstractCube
-    {
-    private:
-        //In case of Coloured Cubes, the vertices do not have a third attribute.
-        std::vector<ShapeVertexTextured> m_Vertices;
-    public:
-        TexturedCube() = default;
-        TexturedCube(const GLfloat radius) : m_Vertices(m_nVertexCount)
-        {
-            build(radius);
-            bind(ATTR_POSITION_DEFAULT_LOC, ATTR_NORMAL_DEFAULT_LOC, ATTR_TEXCOORDS_DEFAULT_LOC);
-        }
 
-        ~TexturedCube() = default;
-        inline const ShapeVertexTextured* getDataPointer() const {return m_Vertices.data();}
-
-    private:
-        void buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal) override;
-
-        void bind(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_TEXTURE) const;
-        void bindVBO() const override;
-        void bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_TEXTURE) const;
-    };
 }
 #endif //GLIMAC_CUBE_HPP

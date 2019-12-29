@@ -15,7 +15,8 @@ namespace wim {
 
     void DisplayController::runDisplay() const
     {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT);
+        glClear( GL_DEPTH_BUFFER_BIT);
         _displayer->displayAll(*_model);
         _displayer->windowManager()->swapBuffers();
     }
@@ -27,9 +28,6 @@ namespace wim {
 
     bool MainController::runLoop() const
     {
-
-
-
         /** Display Controller */
         _dispCtrl.runDisplay();
         /** Controller user interface (managing input) **/

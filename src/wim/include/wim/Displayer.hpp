@@ -41,7 +41,7 @@ namespace wim {
         SceneRendererPtr _renderer;
 
     public:
-        Displayer(const char* appPath, const ModelPtr& model) :
+        Displayer(const char* appPath, ModelPtr& model) :
             _windows(std::make_unique<glimac::SDLWindowManager>(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
             _widgets(std::make_unique<WidgetManager>()),
             _renderer(std::make_unique<SceneRenderer>(appPath, model))

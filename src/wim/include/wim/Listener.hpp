@@ -8,7 +8,6 @@
 #pragma once
 
 #include <deque>
-#include <algorithm>
 
 #include "Exception.hpp"
 

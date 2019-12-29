@@ -2,7 +2,6 @@
 
 layout(location = 0) in vec3 aVertexPosition;
 layout(location = 1) in vec3 aVertexNormal;
-//layout(location = 3) in vec3 aTexCoords;
 
 
 layout(std140) uniform bMatrices
@@ -15,14 +14,13 @@ layout(std140) uniform bMatrices
 
 out vec3 vVertexPosition;
 out vec3 vVertexNormal;
-//out vec3 vTexCoords;
+out vec3 vTexCoords;
 
 void main()
 {
-	//passage en Vue
 	vVertexPosition = vec3(MV*vec4(aVertexPosition, 1.f));
-	//idem pour les normales
 	vVertexNormal = vec3(Normal*vec4(aVertexNormal,0.f));
-	//vTexCoords = aTexCoords; //aucun changement
+	//Since we use Cube Maps, the texture coordinates are the Position in object space centred on the origin.
+	vTexCoords = aVertexPosition;
 	gl_Position = MVP*vec4(aVertexPosition, 1.f);
 }

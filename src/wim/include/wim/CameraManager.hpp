@@ -68,7 +68,7 @@ namespace wim
         inline void rotate(const SizeInt index, const GLfloat xDeg, GLfloat yDeg) {this->camera(index).rotate(xDeg,yDeg);}
 
         inline void zoomActive(const GLint input){this->zoom(_activeIndex, input);}
-        inline void rotateActive(const GLfloat xDeg, const GLfloat yDeg){this->active().rotate(xDeg,yDeg);}
+        inline void rotateActive(const GLfloat phi, const GLfloat theta){this->active().rotate(phi, theta);}
 
     public:
         inline UniformMatrix getCameraViewMatrix() const
@@ -86,9 +86,9 @@ namespace wim
             return this->getActiveElementModelViewMatrix(item);
         }
 
-        inline void rotate(const GLfloat xDeg, const GLfloat yDeg)
+        inline void rotate(const GLfloat phi, const GLfloat theta)
         {
-            this->rotateActive(xDeg, yDeg);
+            this->rotateActive(phi, theta);
         }
         inline void zoom(const GLint input)
         {

@@ -12,18 +12,11 @@ namespace glimac
         this->buildIBO();
     }
 
-    void ColouredCube::bind(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL) const
+    void CubePattern::bind(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL) const
     {
         this->bindVBO();
         this->bindIBO();
         this->bindVAO(ATTR_POSITION, ATTR_NORMAL);
-    }
-
-    void TexturedCube::bind(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_TEXCOORDS) const
-    {
-        this->bindVBO();
-        this->bindIBO();
-        this->bindVAO(ATTR_POSITION, ATTR_NORMAL, ATTR_TEXCOORDS);
     }
 
    void AbstractCube::buildVBO(const GLfloat radius)
@@ -46,43 +39,35 @@ namespace glimac
 
    void AbstractCube::buildVBOLoop(const GLfloat radius, const GLsizei x, const GLsizei y, const GLsizei z, const GLsizei offPos)
    {
-       ShapeVec3 position = radius*ShapeVec3( x , y , z );
+       ShapeVec3 position = radius*ShapeVec3( (x-offPos/4.f),( y- offPos/4.f) , (z -offPos/4.f));
        /* need to get vertices three times
         * to account for different normals and texCoords
         */
+       //todo: explain this
+       ShapeVec3 rightDir = ShapeVec3(
+               (x >= offPos/2)*2 - 1,
+               (y >= offPos/2)*2 - 1,
+           (z >= offPos/2)*2 - 1
+       );
        for( GLsizei i=0; i<3; ++i )
        {
-           //todo: explain this
-           ShapeVec3 rightDir = ShapeVec3(
-                   (x < offPos/2)*2 - 1,
-                   (y < offPos/2)*2 - 1,
-                   (z < offPos/2)*2 - 1
-           );
            ShapeVec3 normal = ShapeVec3(
-                   (i%3)*rightDir.x,
-                   ((i+1)%3)*rightDir.y,
-                   ((i+2)%3)*rightDir.z
+                   (i == 0)*rightDir.x,
+                   (i == 1)*rightDir.y,
+                   (i == 2)*rightDir.z
            );
+           //std::cout << "Alors : " << position << " | " << i << " -> " << normal << std::endl;
            //We use the normal vector as texture coordinates.
            size_t totalIndex = i+3*(z+offPos*(y+offPos*x));
            this->buildVBOAssign(totalIndex, position, normal);
        }
    }
 
-   void TexturedCube::buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal)
-   {
-        //We are coosing the normal as the texture coordinates
-       m_Vertices.at(vertexIndex) = ShapeVertexTextured(
-               position,
-               normal,
-               normal
-       );
-   }
 
-    void ColouredCube::buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal)
+    void CubePattern::buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal)
     {
         //We are choosing the normal as the texture coordinates
-        m_Vertices.at(vertexIndex) = ShapeVertexColoured(
+        m_Vertices.at(vertexIndex) = ShapeVertexCube(
                 position,
                 normal
         );
@@ -99,81 +84,90 @@ namespace glimac
        */
        //todo: FACTOR THIS
        std::vector<GLsizei> &ibo = m_indexBuffer;
-       /*FRONT FACE*/
+        /*
+         *
+         *     (1,1,1) ______________(0,1,1)    y
+        *             | \(1,1,0)______\(0,1,0)  ^
+        *             |  |            |         |
+        *             |  |            |         |
+        *        (1,0,1)_|_____(0,0,1)|         |
+        *               \|          \ |
+        * <--x   (1,0,0)  \ __________\ (0,0,0)
+        *
+        */
+       /*FRONT FACE*/  //normal : (0,0,-1) -> i=2
+       //lower-right half
+       ibo[0] = 2; //x=0, y=0, z=0
+       ibo[1] = 8;//x=0, y=1, z=0
+       ibo[2] = 14;//x=1, y=0, z=0
+       //upper-left half
+       ibo[3] = 20;//x=1, y=1, z=0
+       ibo[4] = 14;//x=1, y=0, z=0
+       ibo[5] = 8;//x=0, y=1, z=0
+       /*RIGHT FACE*/ //normal : (-1, 0, 0) -> i=0
        //lower-left half
-       ibo[0] = 0; //x=0, y=0, z=0, i=0
-       ibo[1] = 3;//x=0, y=0, z=1, i=0
-       ibo[2] = 6;//x=0, y=1, z=0, i=0
+       ibo[6] = 0;//x=0, y=0, z=0
+       ibo[7] = 6;//x=0, y=1, z=0
+       ibo[8] = 3;//x=0, y=0, z=1
        //upper-right half
-       ibo[3] = 9;//x=0, y=1, z=1, i=0
-       ibo[4] = 6;//x=0, y=1, z=0, i=0
-       ibo[5] = 3;//x=0, y=0, z=1, i=0
-       /*LEFT FACE*/
+       ibo[9] = 9; //x=0, y=1, z=1
+       ibo[10] = 3;
+       ibo[11] = 6;
+       /*BOTTOM FACE*/ //normal : (0, -1, 0) -> i = 1
        //lower-right half
-       ibo[6] = 1;//x=0, y=0, z=0, i=1
-       ibo[7] = 4;//x=0, y=0, z=1, i=1
-       ibo[8] = 13;//x=1, y=0, z=0, i=1
+       ibo[12] = 1;//x=0, y=0, z=0
+       ibo[13] = 13;//x=1, y=0, z=0
+       ibo[14] = 4;//x=0, y=, z=1
        //upper-left half
-       ibo[9] = 13; //w=
-       ibo[10] = 16;
-       ibo[11] = 4;//x=1, y=0, z=1, i=1
-       /*BOTTOM FACE*/
-       //upper-left half
-       ibo[12] = 2;//x=0, y=0, z=0, i=2
-       ibo[13] = 14;//x=1, y=0, z=0, i=2
-       ibo[14] = 8;//x=0, y=1, z=0, i=2
-       //lower-right half
-       ibo[15] = 8;//
-       ibo[16] = 14;//
-       ibo[17] = 20;//x=1, y=1, z=0, i=2
+       ibo[15] = 16;//(1,0,1)
+       ibo[16] = 4;//
+       ibo[17] = 13;//
        /** HERE MIRROR X, Y AND Z AXIS **/
-       /*FRONT FACE*/
+       /*
+         *
+         *     (0,0,0) ______________(1,0,0)    -y
+        *             | \(0,0,1)______\(1,0,1)  ^
+        *             |  |            |         |
+        *             |  |            |         |
+        *        (0,1,0)_|_____(1,1,0)|         |
+        *               \|          \ |
+        *<--(-x)(0,1,1)  \ __________\|(1,1,1)
+        *
+        */
+       /*FRONT FACE*/ //normal : (0,0,1) -> i=2
        //lower-right half
-       ibo[18] = 21;//x=1, y=1, z=1, i=0
-       ibo[19] = 18;//x=1, y=1, z=0, i=0
-       ibo[20] = 15;//x=1, y=0, z=1, i=0
+       ibo[18] = 23;//x=1, y=1, z=1
+       ibo[19] = 17;//x=1, y=0, z=1
+       ibo[20] = 11;//x=0, y=1, z=1
        //upper-left half
-       ibo[21] = 15;//
-       ibo[22] = 18;//
-       ibo[23] = 12;//x=1, y=0, z=0, i=0
-       /*LEFT FACE*/
+       ibo[21] = 5;//(0,0,1)
+       ibo[22] = 11;//
+       ibo[23] = 17;//
+       /*RIGHT FACE*/ //normal : (1,0,0) -> i=0
+       //lower-left half
+       ibo[24] = 21;//x=1, y=1, z=1
+       ibo[25] = 15;//x=1, y=0, z=1
+       ibo[26] = 18;//x=1, y=1, z=0
+       //upper-right half
+       ibo[27] = 12;//(1,0,0)
+       ibo[28] = 18;//
+       ibo[29] = 15;//
+       /*BOTTOM FACE*/ //normal : (0,1,0) -> i=1
        //lower-right half
-       ibo[24] = 22;//x=1, y=1, z=1, i=1
-       ibo[25] = 19;//x=1, y=1, z=0, i=1
-       ibo[26] = 10;//x=0, y=1, z=1, i=1
+       ibo[30] = 22;//x=1, y=1, z=1
+       ibo[31] = 19;//x=1, y=1, z=0
+       ibo[32] = 10;//x=0, y=1, z=1
        //upper-left half
-       ibo[27] = 10;//
-       ibo[28] = 19;//
-       ibo[29] = 7;//x=0,y=1, z=0, i=1
-       /*BOTTOM FACE*/
-       //upper-left half
-       ibo[30] = 23;//x=1, y=1, z=1, i=2
-       ibo[31] = 11;//x=0, y=1, z=1, i=2
-       ibo[32] = 17;//x=1, y=0, z=1, i=2
-       //lower-right half
-       ibo[33] = 17;//
-       ibo[34] = 11;//
-       ibo[35] = 5;//x=0, y=0, z=1, i=2
+       ibo[33] = 7;//(0,1,0)
+       ibo[34] = 10;//
+       ibo[35] = 19;//
    }
-   void TexturedCube::bindVBO() const
-   {
-        //vbo is generated in AbstractCube constructor
-       glBindBuffer(GL_ARRAY_BUFFER, _vbo); //VBO target
-       glBufferData(
-               GL_ARRAY_BUFFER,
-               m_nVertexCount*sizeof(ShapeVertexTextured),
-               this->getDataPointer(),
-               GL_STATIC_DRAW //vertices are not expected to change
-       );
-       glBindBuffer(GL_ARRAY_BUFFER, 0);
-   }
-
-    void ColouredCube::bindVBO() const
+    void CubePattern::bindVBO() const
     {
         glBindBuffer(GL_ARRAY_BUFFER, _vbo); //VBO target
         glBufferData(
                 GL_ARRAY_BUFFER,
-                m_nVertexCount*sizeof(ShapeVertexColoured),
+                m_nVertexCount*sizeof(ShapeVertexCube),
                 this->getDataPointer(),
                 GL_STATIC_DRAW //vertices are not expected to change
         );
@@ -192,44 +186,8 @@ namespace glimac
        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
    }
 
-   void TexturedCube::bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL, const GLuint ATTR_TEXTURE) const
-   {
-       glBindVertexArray(_vao);
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
-                glEnableVertexAttribArray(ATTR_POSITION);
-                glEnableVertexAttribArray(ATTR_NORMAL);
-                glEnableVertexAttribArray(ATTR_TEXTURE);
-                glBindBuffer(GL_ARRAY_BUFFER, _vbo);
-                    glVertexAttribPointer(
-                        ATTR_POSITION,
-                        3, //3 fields -> (x,y,z) we work in 3D
-                        GL_FLOAT,
-                        GL_FALSE, //not normalised
-                        sizeof(ShapeVertexTextured),
-                        (const GLfloat *) offsetof(ShapeVertexTextured, _position)
-                        );
-                    glVertexAttribPointer(
-                        ATTR_NORMAL,
-                        3,
-                        GL_FLOAT,
-                        GL_FALSE,
-                        sizeof(ShapeVertexTextured),
-                        (const GLfloat *) offsetof(ShapeVertexTextured, _normal)
-                        );
-                    glVertexAttribPointer(
-                        ATTR_TEXTURE,
-                        3,
-                        GL_FLOAT,
-                        GL_FALSE,
-                        sizeof(ShapeVertexTextured),
-                        (const GLfloat *) offsetof(ShapeVertexTextured, _texCoords) //or _colour, does not matter here
-                        );
-                glBindBuffer(GL_ARRAY_BUFFER, 0);
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
-       glBindVertexArray(0);
-   }
 
-    void ColouredCube::bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL) const
+    void CubePattern::bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL) const
     {
         glBindVertexArray(_vao);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
@@ -241,16 +199,16 @@ namespace glimac
                 3, //3 fields -> (x,y,z) we work in 3D
                 GL_FLOAT,
                 GL_FALSE, //not normalised
-                sizeof(ShapeVertexColoured),
-                (const GLfloat *) offsetof(ShapeVertexColoured, _position)
+                sizeof(ShapeVertexCube),
+                (const GLfloat *) offsetof(ShapeVertexCube, _position)
         );
         glVertexAttribPointer(
                 ATTR_NORMAL,
                 3,
                 GL_FLOAT,
                 GL_FALSE,
-                sizeof(ShapeVertexColoured),
-                (const GLfloat *) offsetof(ShapeVertexColoured, _normal)
+                sizeof(ShapeVertexCube),
+                (const GLfloat *) offsetof(ShapeVertexCube, _normal)
         );
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);

@@ -28,7 +28,7 @@ namespace wim
      * so that is can send lights to shaders
      * only when there is a change
      */
-    class SceneRenderer : protected Listener
+    class SceneRenderer //: protected Listener
     {
     public:
         typedef std::stack<Renderable> RenderingStack;
@@ -38,7 +38,7 @@ namespace wim
         PatternManager _patterns;
         RenderingStack _stack;
     public:
-        SceneRenderer(const char* appPath, const ModelPtr& model);
+        SceneRenderer(const char* appPath, ModelPtr& model);
         ~SceneRenderer();
 
         inline void addToStack(const Renderable& item) {_stack.push(item);}
@@ -51,18 +51,22 @@ namespace wim
         inline UniformMatrix getProjectionMatrix() const{return this->cameraManager()->getProjectionMatrix();}
 
 
-        inline void updateMaterial(const Material& material){return _shaders.updateMaterial(material);}
-        inline void updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix){return _shaders.updateMVPNMatrices(MVMatrix, ProjMatrix);}
-
-        void updateLights() const;
-
-        void update() override
+        inline void updateMaterial(const Renderable& item)
         {
-            this->updateLights();
+            return _shaders.updateMaterial(item.getMaterial(), item.isTextured());
+        }
+        inline void updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix )
+        {
+            return _shaders.updateMVPNMatrices(MVMatrix, ProjMatrix);
         }
 
-        inline void drawPattern(const DisplayPattern dispPat){_patterns.draw(dispPat);}
-        //todo: this.
+        void updateLights(const UniformMatrix& View) const;
+
+
+        inline void drawItem(const Renderable& item) const
+        {
+            _shaders.drawItem(item, _patterns);
+        }
         ///brief: render Displayable elements in stack, with respect to active Camera, lighting, and Shaders
         void render();
     };

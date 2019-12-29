@@ -23,6 +23,7 @@ namespace wim {
 
     void Interface::processKeyboardUp(const SDL_Event& e) const
     {
+        SizeInt width, length;
         switch(e.key.keysym.sym)
         {
             case SDLK_p:
@@ -31,7 +32,22 @@ namespace wim {
                 break;
             case SDLK_m:
                 //adding new directional light
-                this->addDirectionalLight(DirectionalLight::Random());
+                this->addDirectionLight(DirectionLight::Random());
+                break;
+
+            case SDLK_o:
+                //ambiant lighting off
+                this->setAmbiantLight(AmbiantLight(Colour(0,0,0)));
+                break;
+            case SDLK_i:
+                // ambiant lighting on
+                this->setAmbiantLight(AmbiantLight::Random());
+                break;
+            case SDLK_n:
+                //changing World
+                width =_model->world()->getWidth();
+                length = _model->world()->getLength();
+                *_model->world() = CubeWorld::Random(width, length);
             default:
                 break;
         }
@@ -42,10 +58,10 @@ namespace wim {
         //rotation
         if( this->isRotating() )
         {
-            GLfloat xMotion, yMotion;
-            xMotion = e.motion.xrel;
-            yMotion = e.motion.yrel;
-            this->rotate(xMotion, yMotion);
+            GLfloat leftMotion, upMotion;
+            upMotion = -e.motion.yrel;
+            leftMotion = e.motion.xrel;
+            this->rotate(upMotion, leftMotion);
         }
     }
 
@@ -113,9 +129,9 @@ namespace wim {
         _displayer->getCameraManagerPtr()->zoom(zoomDir);
     }
 
-    void Interface::rotate(const GLfloat xDeg, const GLfloat yDeg) const
+    void Interface::rotate(const GLfloat phi, const GLfloat theta) const
     {
-        _displayer->getCameraManagerPtr()->rotate(yDeg,xDeg);
+        _displayer->getCameraManagerPtr()->rotate(phi, theta);
     }
 
     void Interface::addPointLight(const PointLight &light) const
@@ -129,15 +145,20 @@ namespace wim {
             std::cout << e.what() << std::endl;
         }
     }
-    void Interface::addDirectionalLight(const DirectionalLight &light) const
+    void Interface::addDirectionLight(const DirectionLight &light) const
     {
         try
         {
-            _model->addDirectionalLight(light);
+            _model->addDirectionLight(light);
         }
         catch( Exception& e )
         {
             std::cout << e.what() << std::endl;
         }
+    }
+
+    void Interface::setAmbiantLight(const AmbiantLight &light) const
+    {
+        _model->lightManager()->setAmbiant(light);
     }
 }
