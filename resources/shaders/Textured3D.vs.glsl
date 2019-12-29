@@ -20,7 +20,8 @@ void main()
 {
 	vVertexPosition = vec3(MV*vec4(aVertexPosition, 1.f));
 	vVertexNormal = vec3(Normal*vec4(aVertexNormal,0.f));
-	//Since we use Cube Maps, the texture coordinates are the Position in object space centred on the origin.
-	vTexCoords = aVertexPosition;
+	//Since we use Cube Maps, the texture coordinates are related to Position in object space centred on the origin.
+	//BEWARE: since coordinates are different for cubemaps, it has to be flipped.
+	vTexCoords = -aVertexPosition;
 	gl_Position = MVP*vec4(aVertexPosition, 1.f);
 }

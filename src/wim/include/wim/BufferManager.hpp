@@ -14,6 +14,7 @@
 
 #include "ShaderSender.hpp"
 #include "TextureManager.hpp"
+#include "BufferObject.hpp"
 
 #include "Material.hpp"
 #include "Light.hpp"
@@ -21,6 +22,8 @@
 
 namespace wim
 {
+
+    typedef std::unique_ptr<glimac::SDLWindowManager> WindowManagerPtr;
 
     struct CameraMatricesData
     {
@@ -94,119 +97,13 @@ namespace wim
     typedef std::vector<PointLightData> ListPLightData;
     typedef std::vector<DirectionLightData> ListDLightData;
 
-    /*Names of uniform attributs as they are used in the shaders
-     * For now, we will only support one light source. IN POINT LIGHT
-     */
-    //MATRICES
-    static constexpr const char* UNI_BLOCK_MATRICES_NAME = "bMatrices";
-    //MATERIAL
-    static constexpr const char* UNI_BLOCK_MATERIAL_NAME = "bMaterial";
-    //BASE TEXTURE
-    static constexpr const char* UNI_LOC_BASETEXTURE_NAME = "uBaseTexture";
-    /* LIGHTs
-     * One ambiant, and multiple point and directional lights
-     * (using shader storage buffers; see Light.hpp for storage details.)
-     */
-    static constexpr const char* UNI_BLOCK_AMBIANTLIGHT_NAME = "bAmbiantLight";
+    static constexpr const GLsizeiptr DEFAULT_MATRICES_BUFFERSIZE = sizeof(CameraMatricesData);
+    static constexpr const GLsizeiptr DEFAULT_MATERIAL_BUFFERSIZE = sizeof(MaterialData);
+    static constexpr const GLsizeiptr DEFAULT_AMBIANTLIGHT_BUFFERSIZE = sizeof(AmbiantLightData);
 
-    static constexpr const char* STORAGE_BLOCK_POINTLIGHT_NAME = "sPointLight";
-    static constexpr const char* STORAGE_BLOCK_DIRECTIONLIGHT_NAME = "sDirectionLight";
-    static constexpr const char* STORAGE_BLOCK_LIGHTNUMBER_NAME = "sLightNumber";
-    /* SEE STD140 FOR DETAILS ON OFFSETS AND SIZES
-     * AS HANDLED BY GLSL
-     */
-
-    //UBOs
-    static const GLuint BINDING_MATRICES_INDEX = 0;
-    static const GLuint BINDING_MATERIAL_INDEX = 1;
-    static const GLuint BINDING_AMBIANTLIGHT_INDEX = 2;
-
-    //SSBOs
-    static const GLuint BINDING_LIGHTNUMBER_INDEX = 0;
-    static const GLuint BINDING_POINTLIGHT_INDEX = 1;
-    static const GLuint BINDING_DIRECTIONLIGHT_INDEX = 2;
-
-
-    static const GLsizeiptr DEFAULT_MATRICES_BUFFERSIZE = sizeof(CameraMatricesData);
-    static const GLsizeiptr DEFAULT_MATERIAL_BUFFERSIZE = sizeof(MaterialData);
-    static const GLsizeiptr DEFAULT_AMBIANTLIGHT_BUFFERSIZE = sizeof(AmbiantLightData);
-
-    static const GLsizeiptr DEFAULT_LIGHTNUMBER_BUFFERSIZE = sizeof(LightNumberData);
-    static const GLsizeiptr DEFAULT_ONE_POINTLIGHT_BUFFERSIZE = sizeof(PointLightData);
-    static const GLsizeiptr DEFAULT_ONE_DIRECTIONALLIGHT_BUFFERSIZE = sizeof(DirectionLightData);
-
-
-    struct Uniform
-    {
-    public:
-        GLint _uId;
-    public:
-        Uniform()
-        {
-        }
-        ~Uniform() = default;
-
-        void localise(const GLuint programme, const char* uniAttrName);
-        void update(const GLint texId ) const;
-
-    };
-    struct UBO
-    {
-    public:
-        GLuint _ubo;
-    public:
-        UBO(const GLsizeiptr size) : _ubo()
-        {
-            glGenBuffers(1, &_ubo);
-            this->alloc(size);
-
-        }
-        ~UBO() {glDeleteBuffers(1,&_ubo);}
-
-
-        void bind(const GLuint programme, const char* uniBufferName, const GLuint binding) const;
-        void alloc(const GLsizeiptr size) const;
-        void update(const GLvoid* data,  const GLsizeiptr size) const;
-    private:
-        void bindBlock(const GLuint programme, const char* uniBufferName, const GLuint binding) const;
-        void bindObject(const GLuint binding) const;
-    };
-
-    struct SSBO
-    {
-    public:
-        GLuint _ssbo;
-    public:
-        SSBO(const GLsizeiptr size, const SizeInt max) : _ssbo()
-        {
-            glGenBuffers(1, &_ssbo);
-            this->alloc(size, max);
-        }
-        ~SSBO() {glDeleteBuffers(1, &_ssbo);}
-
-        void alloc(const GLsizeiptr size, const SizeInt max) const;
-        void bind(const GLuint programme, const char* storageBufferName, const GLuint binding) const;
-        void update(const GLvoid* data, const GLsizeiptr size, const SizeInt nbUpdate) const;
-
-    private:
-        void bindObject(const GLuint binding) const;
-        void bindBlock(const GLuint programme, const char* storageBufferName, const GLuint binding) const;
-
-    };
-
-    ///BRIEF: A classof Texture objects using CUBEMAPS
-    class ITO
-    {
-    public:
-        GLuint _ito;
-    public:
-        ITO(){glGenTextures(1, &_ito);}
-        ~ITO(){glDeleteTextures(1, &_ito);}
-
-        void loadFace(const SizeInt indexFace, GLvoid *data, const GLsizei width, const GLsizei height) const;
-
-        void setParameters() const;
-    };
+    static constexpr  const GLsizeiptr DEFAULT_LIGHTNUMBER_BUFFERSIZE = sizeof(LightNumberData);
+    static constexpr const GLsizeiptr DEFAULT_ONE_POINTLIGHT_BUFFERSIZE = sizeof(PointLightData);
+    static constexpr const GLsizeiptr DEFAULT_ONE_DIRECTIONALLIGHT_BUFFERSIZE = sizeof(DirectionLightData);
 
     typedef std::vector<ITO> ListITO;
     typedef std::shared_ptr<ListITO> ListITOPtr;
@@ -220,9 +117,10 @@ namespace wim
         Uniform _baseTexture;
         SSBO _pointLights, _directionLights;
         SSBO _lightNumber;
+        IFO _frameBuffer;
     public:
 
-        BufferManager(const TextureManagerPtr& textures) :
+        BufferManager(const TextureManagerPtr& textures, const WindowManagerPtr& windows) :
             _itos(std::make_shared<ListITO>(textures->getCubeMaps().size())),
             _matrices(DEFAULT_MATRICES_BUFFERSIZE),
             _material(DEFAULT_MATERIAL_BUFFERSIZE),
@@ -230,7 +128,8 @@ namespace wim
             _baseTexture(),
             _pointLights(DEFAULT_ONE_POINTLIGHT_BUFFERSIZE, MAX_NB_EACH_LIGHT),
             _directionLights(DEFAULT_ONE_DIRECTIONALLIGHT_BUFFERSIZE, MAX_NB_EACH_LIGHT),
-            _lightNumber(DEFAULT_LIGHTNUMBER_BUFFERSIZE,1)
+            _lightNumber(DEFAULT_LIGHTNUMBER_BUFFERSIZE,1),
+            _frameBuffer(windows->window(), NB_DEFAULT_DRAWBUFFERS, DEFAULT_DRAWBUFFERS)
         {
             this->loadCubeMaps(textures->getCubeMaps());
         }

@@ -25,12 +25,10 @@
 
 namespace wim {
 
-    typedef std::unique_ptr<glimac::SDLWindowManager> WindowManagerPtr;
-    typedef glimac::SDLWindowManager::SDL_WindowPtr WindowPtr;
     //default values for the SDL display window.
-    static const float DISP_WINDOW_WIDTH = 600.f;
-    static const float DISP_WINDOW_HEIGHT = 400.f;
-    constexpr static const char* DISP_WINDOW_NAME = "wim"; //Look! We used constexpr!
+    static constexpr const float DEFAULT_DISP_WINDOW_WIDTH = 600.f;
+    static constexpr const float DEFAULT_DISP_WINDOW_HEIGHT = 400.f;
+    constexpr static const char* DISP_WINDOW_NAME = "wim";
     //Visitor class
     class Displayer {
     private:
@@ -42,27 +40,14 @@ namespace wim {
 
     public:
         Displayer(const char* appPath, ModelPtr& model) :
-            _windows(std::make_unique<glimac::SDLWindowManager>(DISP_WINDOW_WIDTH, DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
+            _windows(std::make_unique<glimac::SDLWindowManager>(DEFAULT_DISP_WINDOW_WIDTH, DEFAULT_DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
             _widgets(std::make_unique<WidgetManager>()),
-            _renderer(std::make_unique<SceneRenderer>(appPath, model))
+            _renderer(std::make_unique<SceneRenderer>(appPath, model, _windows))
         {
         }
         ~Displayer() = default;
 
-        //const methods until I know what to do with them
-        void display(const Cube &cube, const XUint x, const YUint y, const ZUint z) const;
-        void display(const CubeFloor &cubeFloor, const XUint x, const YUint y) const;
-        void display(const CubeStack &cubeStack, const XUint x, const YUint y) const;
-        void display(const CubeWorld &world) const;
-
         void displayAll(const Model& model) const;
-        void displayModel(const Model& model) const;
-        void displayWidgets() const;
-
-        inline void addToRenderingStack(const Displayable &object, const Point3Int &anchor) const
-        {
-            _renderer->addToStack(Renderable(object, anchor));
-        }
 
         inline const LightManagerPtr& getLightManagerPtr() const {return _renderer->lightManager();}
         inline const CameraManagerPtr& getCameraManagerPtr() const {return _renderer->cameraManager();}
@@ -71,6 +56,21 @@ namespace wim {
         inline const WindowManagerPtr& windowManager() const {return _windows;};
         inline WindowManagerPtr& windowManager() {return _windows;};
 
+    private:
+        //const methods until I know what to do with them
+        void display(const Cursor& cursor) const;
+        void display(const Cube &cube, const XUint x, const YUint y, const ZUint z) const;
+        void display(const CubeFloor &cubeFloor, const XUint x, const ZUint z) const;
+        void display(const CubeStack &cubeStack, const XUint x, const ZUint z) const;
+        void display(const CubeWorld &world) const;
+
+        void displayModel(const Model& model) const;
+        void displayWidgets() const;
+
+        inline void addToRenderingStacks(const Displayable &object, const Point3Int &anchor) const
+        {
+            _renderer->addToStacks(Renderable(object, anchor));
+        }
     };
 
     typedef std::shared_ptr<Displayer> DisplayerPtr;

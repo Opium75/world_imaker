@@ -59,9 +59,9 @@ namespace wim
         ShaderSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple);
 
 
-        inline void useProgramme() const {
+        inline void useProgramme() const
+        {
             _programme.use();
-            std::cout << "Using programme #" << _programme.getGLId() << std::endl;
         }
 
         inline const glimac::Programme& programme() const {return _programme;}

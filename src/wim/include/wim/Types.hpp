@@ -18,6 +18,7 @@ namespace wim
     typedef float FloatType;
 
     typedef std::size_t XUint, YUint, ZUint;
+    typedef long int Xint, Yint, Zint;
     typedef std::size_t SizeInt;
 
 

@@ -84,15 +84,12 @@ namespace wim
         //Position
         ModelMatrix = glm::translate(
                 glm::mat4(1.0f),
-                item.getAnchor().getCoord()
+                -item.getAnchor().getCoord()
         );
         MVMatrix = ViewMatrix * ModelMatrix;
         //Scale
-        /* nothing to do ?
+        /* nothing to do !
          *
-        MVMatrix = glm::scale(MVMatrix,
-                ???
-                );
         */
 
         /* Self rotation

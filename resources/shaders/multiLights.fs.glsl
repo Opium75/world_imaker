@@ -4,6 +4,7 @@ in vec3 vVertexPosition;
 in vec3 vVertexNormal;
 in vec3 vTexCoords;
 
+//sending colour to Framebuffer
 out vec3 fFragColour;
 
 struct AmbiantLightData
@@ -101,7 +102,7 @@ void main()
 	vec3 baseColour, fragColour, temp;
 	if( material.isTextured )
 		baseColour = texture(uBaseTexture, vTexCoords).rgb;
-    else
+   	else
 	{
 		baseColour = material.colour;
 	}

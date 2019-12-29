@@ -8,26 +8,22 @@
 
 namespace wim {
 
-
-
     void Displayer::display(const Cube &cube, const XUint x, const YUint y, const ZUint z) const
     {
-       //todo: Add cube to rendering stack
-
-        this->addToRenderingStack( cube, Renderable::Anchor(x,y,z) );
+        this->addToRenderingStacks( cube, Renderable::Anchor(x,y,z) );
     }
 
-    void Displayer::display(const CubeFloor &cubeFloor, const XUint x, const YUint y) const
+    void Displayer::display(const CubeFloor &cubeFloor, const XUint x, const ZUint z) const
     {
-        const ZUint z = cubeFloor.floor();
+        const YUint y = cubeFloor.floor();
         this->display(cubeFloor.cube(), x,y,z);
     }
 
-    void Displayer::display(const CubeStack &cubeStack, const XUint x, const YUint y) const
+    void Displayer::display(const CubeStack &cubeStack, const XUint x, const ZUint z) const
     {
         for( auto& cubeFloor : cubeStack.stack() )
         {
-            this->display(cubeFloor, x, y);
+            this->display(cubeFloor, x, z);
         }
     }
 
@@ -35,14 +31,19 @@ namespace wim {
     {
         //setting-up anchors for (x,y)
         const XUint width = world.getWidth();
-        const YUint length = world.getLength();
+        const ZUint length = world.getLength();
         for(XUint x=0; x<width; ++x)
         {
-            for(YUint y=0; y<length; ++y)
+            for(ZUint z=0; z<length; ++z)
             {
-                this->display(world(x,y), x, y);
+                this->display(world(x,z), x, z);
             }
         }
+    }
+
+    void Displayer::display(const Cursor& cursor) const
+    {
+        this->addToRenderingStacks(cursor, cursor.getPosition());
     }
 
     void Displayer::displayWidgets() const
@@ -56,7 +57,7 @@ namespace wim {
     void Displayer::displayModel(const Model& model) const
     {
        this->display(*model.world());
-       //
+       this->display(*model.cursor());
     }
 
     void Displayer::displayAll(const Model& model) const
@@ -70,6 +71,8 @@ namespace wim {
 
         /*Adding elements to rendering stack. */
        // this->displayWidgets();
+        glClear(GL_COLOR_BUFFER_BIT);
+        glClear( GL_DEPTH_BUFFER_BIT);
         this->displayModel(model);
 
         /* Rendering World */

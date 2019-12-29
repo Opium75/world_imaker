@@ -62,6 +62,8 @@ public:
     {
         SDL_GetWindowSize(_window.get(), &width, &height);
     }
+
+
 };
 
 }

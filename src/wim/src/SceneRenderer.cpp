@@ -7,12 +7,12 @@
 namespace wim
 {
 
-    SceneRenderer::SceneRenderer(const char* appPath, ModelPtr& model):
+    SceneRenderer::SceneRenderer(const char* appPath, ModelPtr& model, const WindowManagerPtr& windows):
             _model(model),
-            _shaders(appPath), _patterns(),_stack()
+            _shaders(appPath, windows), _patterns(),
+            _stacks(_shaders.getNumberProgrammes())
     {
        // this->subscribe(this->lightManager().get());
-
     }
 
     SceneRenderer::~SceneRenderer()
@@ -23,21 +23,33 @@ namespace wim
     void SceneRenderer::render()
     {
         //First, we can get the active camera.
-        UniformMatrix ViewMatrix = this->getProjectionMatrix();
+        UniformMatrix ViewMatrix = this->getCameraViewMatrix();
         UniformMatrix ProjMatrix = this->getProjectionMatrix();
 
-        /** IMPORTANT : light sources are not updated here
-         ** only when there is a change in Light Manager
-         ** through a Listerner
-         **/
-        // _shaders.bindShaders();
-         this->updateLights(ViewMatrix);
+        this->updateLights(ViewMatrix);
+        SizeInt programmeIndex=0;
+        for( auto& stack : _stacks)
+        {
+            if( programmeIndex == _stacks.size()-1 )
+            {
+                /* last programme, -> foreground
+                 * Ignoring depth -> clearing depth buffer
+                 */
+                glClear(GL_DEPTH_BUFFER_BIT);
+            }
+            _shaders.setCurrentProgramme(programmeIndex++);
+            this->renderStack(stack, ProjMatrix);
+        }
+    }
+
+    void SceneRenderer::renderStack(RenderingStack& stack, const UniformMatrix& ProjMatrix)
+    {
         //Finally, we compute the MVPN matrices for each element before sending it.
-        while( !_stack.empty() )
+        while( !stack.empty() )
         {
             //getting newt element
-            Renderable item = _stack.top();
-            _stack.pop();
+            Renderable item = stack.top();
+            stack.pop();
             /* */
 
            //Computing Model
@@ -56,4 +68,33 @@ namespace wim
     {
         _shaders.updateLights(*_model->lightManager(), View);
     }
+
+    SizeInt SceneRenderer::getStackIndex(const Renderable& item) const
+    {
+        if( item.isTextured() )
+        {
+            return 1;
+        }
+        //Last stack used for forground rendering;
+        else if( item.isInForeground() )
+        {
+            return _stacks.size()-1;
+        }
+        else //coloured
+        {
+            return 0;
+        }
+    }
+
+    void SceneRenderer::addToStacks(const Renderable& item)
+    {
+        SizeInt index = this->getStackIndex(item);
+        _stacks.at(index).push(item);
+    }
+
+    void SceneRenderer::addToStack(const SizeInt index, const Renderable& item)
+    {
+        _stacks.at(index).push(item);
+    }
+
 }

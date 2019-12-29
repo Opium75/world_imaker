@@ -23,6 +23,7 @@
 
 namespace wim
 {
+
     class ShaderManager
     {
     private:
@@ -32,24 +33,21 @@ namespace wim
         TextureManagerPtr _textures;
         BufferManagerPtr _buffers;
     public:
-        ShaderManager(const glimac::FilePath& appPath) :
+        ShaderManager(const glimac::FilePath& appPath, const WindowManagerPtr& windows) :
             _appPathDir(glimac::FilePath(appPath).dirPath().dirPath()),
             _currentIndex(0),
-            _textures(std::make_unique<TextureManager>(_appPathDir)),
-            _buffers(std::make_unique<BufferManager>(_textures))
+            _textures(std::make_unique<TextureManager>(appPath)),
+            _buffers(std::make_unique<BufferManager>(_textures, windows))
         {
            this->readConfig();
            this->setCurrentProgramme(_currentIndex);
-           _buffers->bindShaders(_listSender);
+           this->bindShaders();
            _buffers->loadCubeMaps(_textures->getCubeMaps());
            Displayable::linkTextures(_buffers->getListITO());
         }
         ~ShaderManager() = default;
 
         void readConfig();
-
-
-
 
         inline void setCurrentProgramme(const SizeInt index)
         {
@@ -58,6 +56,10 @@ namespace wim
             _currentIndex = index;
         }
 
+        inline SizeInt getNumberProgrammes() const
+        {
+            return _listSender.size();
+        }
         inline const glimac::Programme& programme(const SizeInt index) const {return _listSender.at(index).programme();}
 
         inline const ShaderCouple& couple(const SizeInt index) const {return _listSender.at(index).couple();}

@@ -34,6 +34,9 @@ namespace wim
         inline const WindowManagerPtr& windowManager() const {return _displayer->windowManager();}
         inline WindowManagerPtr& windowManager() {return _displayer->windowManager();}
 
+        inline const CursorPtr& cursor() const {return _model->cursor();}
+        inline CursorPtr& cursor() {return _model->cursor();}
+
 
         inline bool pollEvent(SDL_Event &e) const {return this->windowManager()->pollEvent(e);}
         inline bool isKeyPressed(const SDL_Keycode key) const {return this->windowManager()->isKeyPressed(key);}
@@ -42,6 +45,9 @@ namespace wim
         bool processEvents() const;
 
         void processKeyboardUp(const SDL_Event& e) const;
+        void processScene(const SDL_Event& e) const;
+        void processCursor(const SDL_Event& e) const;
+
         void processMouseMotion(const SDL_Event& e) const;
         void processMouseWheel(const SDL_Event& e) const;
 

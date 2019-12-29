@@ -16,11 +16,13 @@
 
 namespace wim
 {
-    static const SizeInt NB_FACES_CUBE = 6;
+
+    typedef glimac::Image* ImagePtr;
+
+    static constexpr const SizeInt NB_FACES_CUBE = 6;
     class CubeMap
     {
     public:
-        typedef glimac::Image* ImagePtr;
         typedef std::vector<ImagePtr> FacesPtr;
         typedef std::vector<std::string> FacesFileNames;
     private:
@@ -61,6 +63,7 @@ namespace wim
         void loadImage(const glimac::FilePath &appPathDir);
     };
 
+
     typedef std::vector<CubeMap> ListCubeMap;
 
     class TextureManager
@@ -69,7 +72,6 @@ namespace wim
     private:
         glimac::FilePath _appPathDir;
         ListCubeMap _cubeMaps;
-
     public:
         TextureManager(const glimac::FilePath& appPath):
             _appPathDir(appPath.dirPath().dirPath())
@@ -81,7 +83,6 @@ namespace wim
 
     private:
         void readConfig();
-       // void loadSquareImage(const )
     };
 
     typedef std::unique_ptr<TextureManager> TextureManagerPtr;

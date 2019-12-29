@@ -18,10 +18,10 @@
 
 namespace wim
 {
-    static const SizeInt NB_PATTERNS_CUBE = 2;
+    static const SizeInt NB_PATTERNS_CUBE = 3;
     static const double DEFAULT_CUBE_SIZE = 1.;
 
-    typedef std::unique_ptr<glimac::AbstractCube> PatternPtr;
+    typedef std::shared_ptr<glimac::AbstractCube> PatternPtr;
 
     class PatternManager
     {
@@ -37,32 +37,18 @@ namespace wim
         ~PatternManager() = default;
 
 
-        void loadPatterns()
-        {
-            _listPatternPtr.at((SizeInt)DisplayPattern::COLOURED_CUBE) = std::make_unique<glimac::CubePattern>(DEFAULT_CUBE_SIZE);
-            _listPatternPtr.at((SizeInt)DisplayPattern::TEXTURED_CUBE) = std::make_unique<glimac::CubePattern>(DEFAULT_CUBE_SIZE);
-        }
+        void draw(const Renderable& item) const;
+    private:
+        void loadPatterns();
 
-        const PatternPtr& at(const DisplayPattern dispPat)
-        {
-            SizeInt index = (SizeInt)dispPat;
-            if( index > _listPatternPtr.size() )
-                throw Exception(ExceptCode::OUT_OF_RANGE, 1,
-                        std::string("Pattern does not exist: ") + std::to_string(index) + '.' );
-            return _listPatternPtr.at(index);
-        }
+        void drawRenderable(const Renderable& item) const;
+        void drawColoured(const Renderable& item) const;
+        void drawTextured(const Renderable& item) const;
+        void drawWireframe(const Renderable& item) const;
 
-        inline void draw(const Renderable& item) const
-        {
-            bool isTextured = item.isTextured();
-            if( isTextured )
-            {
-                glBindTexture(GL_TEXTURE_CUBE_MAP, item.getTextureId());
-            }
-            _listPatternPtr.at((SizeInt)item.getDisplayPattern())->draw();
-            if( isTextured )
-                glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
-        }
+        const PatternPtr& at(const DisplayPattern& dispPat) const;
+        PatternPtr& at(const DisplayPattern& dispPat);
+
 
     };
 

@@ -7,25 +7,21 @@
 
 namespace wim {
 
-    bool Interface::run() const
-    {
+    bool Interface::run() const {
         bool loop = true;
         this->processState();
         loop = this->processEvents();
         return loop;
     }
 
-    void Interface::processState() const
-    {
+    void Interface::processState() const {
 
 
     }
 
-    void Interface::processKeyboardUp(const SDL_Event& e) const
-    {
+    void Interface::processScene(const SDL_Event &e) const {
         SizeInt width, length;
-        switch(e.key.keysym.sym)
-        {
+        switch (e.key.keysym.sym) {
             case SDLK_p:
                 //Adding new pointlight
                 this->addPointLight(PointLight::Random());
@@ -37,7 +33,7 @@ namespace wim {
 
             case SDLK_o:
                 //ambiant lighting off
-                this->setAmbiantLight(AmbiantLight(Colour(0,0,0)));
+                this->setAmbiantLight(AmbiantLight(Colour(0, 0, 0)));
                 break;
             case SDLK_i:
                 // ambiant lighting on
@@ -45,12 +41,51 @@ namespace wim {
                 break;
             case SDLK_n:
                 //changing World
-                width =_model->world()->getWidth();
+                width = _model->world()->getWidth();
                 length = _model->world()->getLength();
                 *_model->world() = CubeWorld::Random(width, length);
             default:
                 break;
         }
+    }
+
+    void Interface::processCursor(const SDL_Event &e) const
+    {
+        switch (e.key.keysym.sym)
+        {
+            case SDLK_z:
+                //move FOWARDS
+                this->cursor()->moveZ(1);
+                break;
+            case SDLK_s:
+                //move BACKWARDS
+                this->cursor()->moveZ(-1);
+                break;
+            case SDLK_q:
+                //move LEFT
+                this->cursor()->moveX(-1);
+                break;
+            case SDLK_d:
+                //move RIGHT
+                this->cursor()->moveX(1);
+                break;
+            case SDLK_a:
+                //move DOWN
+                this->cursor()->moveY(-1);
+                break;
+            case SDLK_e:
+                //move UP
+                this->cursor()->moveY(1);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void Interface::processKeyboardUp(const SDL_Event& e) const
+    {
+        this->processScene(e);
+        this->processCursor(e);
     }
 
     void Interface::processMouseMotion(const SDL_Event& e) const

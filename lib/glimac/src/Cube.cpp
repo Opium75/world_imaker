@@ -56,7 +56,6 @@ namespace glimac
                    (i == 1)*rightDir.y,
                    (i == 2)*rightDir.z
            );
-           //std::cout << "Alors : " << position << " | " << i << " -> " << normal << std::endl;
            //We use the normal vector as texture coordinates.
            size_t totalIndex = i+3*(z+offPos*(y+offPos*x));
            this->buildVBOAssign(totalIndex, position, normal);
@@ -64,7 +63,7 @@ namespace glimac
    }
 
 
-    void CubePattern::buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal)
+    void CubePattern::buildVBOAssign(const size_t vertexIndex, const ShapeVec3& position, const ShapeVec3& normal)
     {
         //We are choosing the normal as the texture coordinates
         m_Vertices.at(vertexIndex) = ShapeVertexCube(

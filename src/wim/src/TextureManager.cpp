@@ -15,12 +15,6 @@ namespace wim {
         if (!conf.is_open()) {
             throw Exception(ExceptCode::NULL_POINTER, 1, "Trying to access empty stream. Is file properly loaded ?");
         }
-        /*
-        char *buffer = new char[MAX_SIZE_FILENAME];
-        conf.getline(buffer, MAX_SIZE_FILENAME, ' ');
-        _fileNames.push_back(std::string(buffer));
-        delete[] buffer;
-         */
         std::string buffer;
         conf >> buffer;
         _fileNames.push_back(buffer);

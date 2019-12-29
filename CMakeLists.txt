@@ -18,7 +18,8 @@ set(PROJECT_EXTLIB_DIR  third-party)
 
 set(PROJECT_EXEC_NAME world_imaker)
 set(PROJECT_RESOURCE_DIR resources)
-SET(PROJECT_SHADER_DIR shaders)
+set(PROJECT_SHADER_DIR shaders)
+set(PROJECT_TEXTURE_DIR textures)
 
 # specify the directories
 message("CMAKE_BINARY_DIR       : " ${CMAKE_BINARY_DIR})
@@ -206,7 +207,7 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/CommunDisplay.hpp
         src/wim/include/wim/BufferManager.hpp
         src/wim/include/wim/Interface.hpp
-        src/wim/src/Interface.cpp src/wim/include/wim/Listener.hpp src/wim/src/Listener.cpp src/wim/src/TextureManager.cpp src/wim/include/wim/CommunPath.hpp src/wim/src/Displayable.cpp)
+        src/wim/src/Interface.cpp src/wim/include/wim/Listener.hpp src/wim/src/Listener.cpp src/wim/src/TextureManager.cpp src/wim/include/wim/CommunPath.hpp src/wim/src/Displayable.cpp src/wim/src/Cursor.cpp src/wim/include/wim/Cursor.hpp src/wim/include/wim/Selectable.hpp src/wim/src/PatternManager.cpp src/wim/src/BufferObject.cpp src/wim/include/wim/BufferObject.hpp)
 
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}
@@ -229,11 +230,20 @@ endif(WIN32)
 
 ##SHADERS##
 #adding Shaders to build directory after compiling
-
 message("Adding Shaders and config to executable dir:")
 file(GLOB SHADERS ${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR}/*.glsl ${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR}/*.conf)
 foreach(SHADER ${SHADERS})
     file( RELATIVE_PATH SHADER_REL ${CMAKE_HOME_DIRECTORY}/${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR} ${SHADER})
     message(STATUS "Copying shader: ${SHADER_REL} to ${CMAKE_BINARY_DIR}/${PROJECT_BINARY_DIR}/${PROJECT_RESOURCE_DIR}/${PROJECT_SHADER_DIR}/${SHADER_REL}")
     configure_file(${SHADER} ${CMAKE_BINARY_DIR}/${PROJECT_BINARY_DIR}/${PROJECT_RESOURCE_DIR}//${PROJECT_SHADER_DIR}/${SHADER_REL} COPYONLY)
+endforeach()
+
+##Textures##
+#adding Shaders to build directory after compiling
+message("Adding textures and config to executable dir:")
+file(GLOB TEXTURES ${PROJECT_RESOURCE_DIR}/${PROJECT_TEXTURE_DIR}/*.png ${PROJECT_RESOURCE_DIR}/${PROJECT_TEXTURE_DIR}/*.conf)
+foreach(TEXTURE ${TEXTURES})
+    file( RELATIVE_PATH TEXTURE_REL ${CMAKE_HOME_DIRECTORY}/${PROJECT_RESOURCE_DIR}/${PROJECT_TEXTURE_DIR} ${TEXTURE})
+    message(STATUS "Copying texture: ${TEXTURE_REL} to ${CMAKE_BINARY_DIR}/${PROJECT_BINARY_DIR}/${PROJECT_RESOURCE_DIR}/${PROJECT_TEXTURE_DIR}/${TEXTURE_REL}")
+    configure_file(${TEXTURE} ${CMAKE_BINARY_DIR}/${PROJECT_BINARY_DIR}/${PROJECT_RESOURCE_DIR}//${PROJECT_TEXTURE_DIR}/${TEXTURE_REL} COPYONLY)
 endforeach()

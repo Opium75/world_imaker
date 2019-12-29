@@ -1,5 +1,7 @@
 #include "glimac/TrackballCamera.hpp"
 
+#include <algorithm>
+
 namespace glimac {
     TrackballCamera::TrackballCamera(const GLfloat fDistance, const GLfloat fAngleX, const GLfloat fAngleY, const GLfloat zoomSpeed, const GLfloat xSpeed, const GLfloat ySpeed) :
             m_fDistance(fDistance), m_fAngleX(fAngleX), m_fAngleY(fAngleY),
@@ -7,7 +9,7 @@ namespace glimac {
     {}
 
     void TrackballCamera::moveFront(const GLfloat delta) {
-        m_fDistance += delta;
+        m_fDistance  = std::max<GLfloat>(0, m_fDistance + delta);
     }
 
     void TrackballCamera::rotateLeft(const GLfloat degrees) {
@@ -26,13 +28,13 @@ namespace glimac {
 
         viewMatrix *= glm::rotate(
                 glm::mat4(1.f),
-                glm::radians(m_fAngleX),
+                glm::radians(-m_fAngleX),
                 glm::vec3(1.f, 0.f, 0.f)
         );
 
         viewMatrix *= glm::rotate(
                 glm::mat4(1.f),
-                glm::radians(m_fAngleY),
+                glm::radians(-m_fAngleY),
                 glm::vec3(0.f, 1.f, 0.f)
         );
 

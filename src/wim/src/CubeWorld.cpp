@@ -11,7 +11,7 @@ namespace wim
     {
         try
         {
-            return this->operator()(x,y).cube(z);
+            return this->operator()(x,z).cube(y);
         }
         catch(Exception& e)
         {
@@ -20,12 +20,12 @@ namespace wim
         }
     }
 
-    CubeWorld CubeWorld::Random(const XUint width, const YUint length) {
-        ZUint height = (width + length) /2;
+    CubeWorld CubeWorld::Random(const XUint width, const ZUint length) {
+        YUint height = (width + length) /2;
         CubeWorld world(width, length);
         for (XUint x = 0; x < width; ++x) {
-            for (YUint y = 0; y < length; ++y) {
-                world(x, y) =CubeStack::Random(height, 0, height);
+            for (ZUint z = 0; z < length; ++z) {
+                world(x, z) = CubeStack::Random(height, 0, height);
             }
         }
         return world;

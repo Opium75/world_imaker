@@ -32,21 +32,30 @@ namespace wim
     {
     public:
         typedef std::stack<Renderable> RenderingStack;
+        typedef std::vector<RenderingStack> ListRenderingStack;
     private:
         ModelPtr _model;
         ShaderManager _shaders;
         PatternManager _patterns;
-        RenderingStack _stack;
+        ListRenderingStack _stacks; //one stack for each programme
     public:
-        SceneRenderer(const char* appPath, ModelPtr& model);
+        SceneRenderer(const char* appPath, ModelPtr& model, const WindowManagerPtr& windows);
         ~SceneRenderer();
 
-        inline void addToStack(const Renderable& item) {_stack.push(item);}
+        void addToStacks(const Renderable& item);
 
         inline const LightManagerPtr& lightManager() const {return _model->lightManager();}
         inline const CameraManagerPtr& cameraManager() const {return _model->cameraManager();}
 
         inline UniformMatrix getCameraViewMatrix() const {return this->cameraManager()->getCameraViewMatrix();}
+
+        ///brief: render Displayable elements in stack, with respect to active Camera, lighting, and Shaders
+        void render();
+    private:
+        SizeInt getStackIndex(const Renderable& item) const;
+        void addToStack(const SizeInt index, const Renderable& item);
+        void renderStack(RenderingStack& stack, const UniformMatrix& ProjMatrix);
+
         inline UniformMatrix getElementModelViewMatrix(const Renderable& item){return this->cameraManager()->getElementModelViewMatrix(item);}
         inline UniformMatrix getProjectionMatrix() const{return this->cameraManager()->getProjectionMatrix();}
 
@@ -67,8 +76,6 @@ namespace wim
         {
             _shaders.drawItem(item, _patterns);
         }
-        ///brief: render Displayable elements in stack, with respect to active Camera, lighting, and Shaders
-        void render();
     };
 
 }

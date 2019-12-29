@@ -9,7 +9,6 @@
 
 #include "Types.hpp"
 #include "Vec3D.hpp"
-#include "Material.hpp"
 
 #include "BufferManager.hpp"
 
@@ -30,28 +29,21 @@ namespace wim
         SizeInt _textureIndex;
         static ListITOPtr _textures;
     protected:
+        Displayable() = default;
         Displayable(const Material &material, const SizeInt textureIndex=0) : _material(material), _textureIndex(textureIndex) {}
     public:
         //Should be overridden by every class, with one of the above Patterns
         virtual DisplayPattern getDisplayPattern() const = 0;
         const Material& getMaterial() const {return _material;}
-        GLint getTextureId() const
-        {
-            if( _textureIndex >= _textures->size())
-                throw Exception(ExceptCode::OUT_OF_RANGE,1,"Invalid index for ITO.");
-            return _textures->at(_textureIndex)._ito;
-        }
+        GLint getTextureId() const;
 
-        inline static SizeInt getNumberTextures()
-        {
-            return _textures->size();
-        }
+        static SizeInt getNumberTextures();
 
-        inline bool isTextured() const
-        {return this->getDisplayPattern() == DisplayPattern::TEXTURED_CUBE;}
+        bool isTextured() const;
+        bool isWireframe() const;
+        bool isInForeground() const;
 
-        static void linkTextures(ListITOPtr& textures)
-        {_textures = textures;}
+        static void linkTextures(ListITOPtr& textures);
     };
 
     class Renderable
@@ -76,10 +68,9 @@ namespace wim
         const Anchor& getAnchor() const {return _anchor;}
         GLint getTextureId() const {return _objectPtr->getTextureId(); }
 
-        inline bool isTextured()  const
-        {
-           return  _objectPtr->isTextured();
-        }
+        inline bool isTextured()  const {return  _objectPtr->isTextured();}
+        inline bool isWireframe()  const {return  _objectPtr->isWireframe();}
+        inline bool isInForeground()  const {return  _objectPtr->isInForeground();}
     };
 
 

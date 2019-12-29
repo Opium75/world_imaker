@@ -30,19 +30,13 @@ namespace wim
         StackMatrix _matrix;
     public:
         CubeWorld() = default;
-        CubeWorld(const XUint width, const YUint length) :
+        CubeWorld(const XUint width, const ZUint length) :
             _matrix(width,length) {}
         inline XUint getWidth() const {return _matrix.rows();}
-        inline YUint getLength() const {return _matrix.cols();}
+        inline ZUint getLength() const {return _matrix.cols();}
 
-        inline CubeStack& operator()(const XUint x, const YUint y)
-        {
-            return _matrix(x,y);
-        }
-        inline const CubeStack& operator()(const XUint x, const YUint y) const
-        {
-            return _matrix(x,y);
-        }
+        inline CubeStack& operator()(const XUint x, const ZUint z) {return _matrix(x,z);}
+        inline const CubeStack& operator()(const XUint x, const ZUint z) const {return _matrix(x,z);}
 
         CubeWorld& operator=(CubeWorld world)
         {
@@ -54,6 +48,8 @@ namespace wim
 
         static CubeWorld Random(const XUint width, const YUint length);
     };
+
+    typedef std::shared_ptr<CubeWorld> WorldPtr;
 }
 
 #endif //WORLD_IMAKER_CUBEWORLD_HPP

@@ -58,11 +58,7 @@ namespace glimac
         void build(const GLfloat radius);
         void buildVBO(const GLfloat radius);
         void buildVBOLoop(const GLfloat radius, const GLsizei x, const GLsizei y, const GLsizei z, const GLsizei offPos);
-        virtual void buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal)
-        {
-            //USE THESE PARAMETERS OR ELSE
-            std::cout << vertexIndex << position << normal << std::endl;
-        }
+        virtual void buildVBOAssign(const size_t vertexIndex, const ShapeVec3& position, const ShapeVec3& normal) = 0;
         void buildIBO();
 
         virtual void bindVBO() const  {};
@@ -89,7 +85,7 @@ namespace glimac
 
         inline const ShapeVertexCube* getDataPointer() const {return m_Vertices.data();}
     private:
-        void buildVBOAssign(const GLsizei vertexIndex, const ShapeVec3& position, const ShapeVec3& normal) override;
+        void buildVBOAssign(const size_t vertexIndex, const ShapeVec3& position, const ShapeVec3& normal) override;
 
         void bind(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL) const;
         void bindVBO() const override;

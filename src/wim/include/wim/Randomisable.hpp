@@ -65,7 +65,6 @@ namespace wim
         {
             if( !_rand )
             {
-                std::cout << "Salut " << seed << std::endl;
                 _rand = std::make_unique<RealRandomiser>(RealRandomiser(lowest, highest, seed));
             }
             else if ( !_rand->checkRange(lowest, highest) )
