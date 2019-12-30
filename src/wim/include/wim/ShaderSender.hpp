@@ -18,9 +18,6 @@
 namespace wim
 {;
 
-    static constexpr const char* STORAGE_POSLIGHT_NAME = "sPosLight_vs";
-    static constexpr const char* STORAGE_DIRLIGHT_NAME = "sDirLight_vs";
-
     struct ShaderCouple
     {
     public:

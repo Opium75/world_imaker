@@ -9,10 +9,10 @@ namespace wim
 
     ShaderSender::ShaderSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple) : _couple(couple), _programme()
     {
-        this->initSender(appPathDir, couple);
+
+        this->initSender(appPathDir, _couple);
         //use first programme to begin with ?
         //Nope, will be decided by ShaderManager.
-        //this->useProgramme();
     }
 
     void ShaderSender::initSender(const glimac::FilePath& appPathDir, const ShaderCouple& couple)
@@ -33,17 +33,18 @@ namespace wim
 
 
 
-    ShaderCouple ShaderCouple::loadCouple(std::ifstream &stream) {
+    ShaderCouple ShaderCouple::loadCouple(std::ifstream &conf) {
         ShaderCouple couple;
-        if (!stream.is_open()) {
+        if (!conf.is_open()) {
             throw Exception(ExceptCode::NULL_POINTER, 1, "Trying to access empty stream. Is file properly loaded ?");
         }
-        //vs, then fss
+        //vs, then fs
         std::string buffer;
-        stream >> buffer;
+        conf >> buffer;
         couple._vs = buffer;
-        stream >> buffer;
-        couple._fs = std::string(buffer);
+        buffer.clear();
+        conf >> buffer;
+        couple._fs = buffer;
         return couple;
     }
 }

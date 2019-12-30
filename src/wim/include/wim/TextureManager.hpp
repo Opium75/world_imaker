@@ -55,12 +55,10 @@ namespace wim
 
         inline SizeInt getNumberFaces() const {return _faces.size();}
 
-
     private:
         void loadFaces(const glimac::FilePath& appPathDir, std::ifstream& conf);
-        void loadFace(const glimac::FilePath& appPathDir, std::ifstream& conf);
-        void loadFileName(std::ifstream &conf);
-        void loadImage(const glimac::FilePath &appPathDir);
+        void loadFileNames(std::ifstream &conf);
+        void loadImages(const glimac::FilePath &appPathDir);
     };
 
 
