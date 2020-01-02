@@ -31,11 +31,12 @@ SDLWindowManager::SDLWindowManager(uint32_t width, uint32_t height, const char* 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     //For transparency
-    //glEnable(GL_BLEND);
-    //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version:   " << glewGetString(GLEW_VERSION) << std::endl;
+
+
+
 }
 
     SDLWindowManager::~SDLWindowManager() {

@@ -52,7 +52,7 @@ namespace wim
         inline T x() const {return _coord.x;}
 
         inline T& y() {return _coord.y;}
-        inline T y() const {return _coord.x;}
+        inline T y() const {return _coord.y;}
 
         inline T& z() {return _coord.z;}
         inline T z() const {return _coord.z;}
@@ -116,8 +116,8 @@ namespace wim
     using Vec3D = TVec3D<FloatType>;
     using Point3D = Vec3D;
 
-    using Vec3Int = TVec3D<XUint>;
-    using Point3Int = Vec3Int;
+    using Vec3Uint = TVec3D<XUint>;
+    using Point3Uint = Vec3Uint;
 
 }
 

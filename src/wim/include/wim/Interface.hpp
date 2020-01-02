@@ -12,8 +12,11 @@
 #include <SDL2/SDL.h>
 #include <glimac/SDLWindowManager.hpp>
 
-#include "CommunDisplay.hpp"
+#include "CommonDisplay.hpp"
+
+#include "Types.hpp"
 #include "Exception.hpp"
+
 #include "Model.hpp"
 #include "Displayer.hpp"
 
@@ -29,8 +32,9 @@ namespace wim
     public:
         Interface(const ModelPtr& model, const DisplayerPtr displayer) :
             _model(model), _displayer(displayer) {}
-    private:
 
+            bool run() const;
+    private:
         inline const WindowManagerPtr& windowManager() const {return _displayer->windowManager();}
         inline WindowManagerPtr& windowManager() {return _displayer->windowManager();}
 
@@ -47,9 +51,11 @@ namespace wim
         void processKeyboardUp(const SDL_Event& e) const;
         void processScene(const SDL_Event& e) const;
         void processCursor(const SDL_Event& e) const;
+        void processSelect(const SDL_Event& e) const;
 
         void processMouseMotion(const SDL_Event& e) const;
         void processMouseWheel(const SDL_Event& e) const;
+        void processMouseClick(const SDL_Event& e) const;
 
         inline bool isMouseButtonPressed(uint32_t button) const
         {
@@ -57,6 +63,8 @@ namespace wim
         }
 
         void getRelativePosMouse(GLfloat& xRel, GLfloat& yRel) const;
+
+        bool readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const;
 
         inline bool isRotating() const {return this->isMouseButtonPressed(SDL_BUTTON_MIDDLE);}
 
@@ -67,8 +75,6 @@ namespace wim
         void addDirectionLight(const DirectionLight& light) const;
         void setAmbiantLight(const AmbiantLight &light) const;
 
-    public:
-        bool run() const;
     };
 
     typedef std::unique_ptr<Interface> InterfacePtr;

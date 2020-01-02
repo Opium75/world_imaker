@@ -30,7 +30,7 @@ namespace wim
 
         static Cube Random();
 
-        DisplayPattern getDisplayPattern() const override {return DisplayPattern::TEXTURED_CUBE;}
+        DisplayPattern getDisplayPattern() const override;
 
         friend std::ostream& operator<<(std::ostream& out, const Cube& cube);
 

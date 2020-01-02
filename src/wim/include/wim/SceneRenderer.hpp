@@ -12,11 +12,14 @@
 #include <deque>
 
 #include "Displayable.hpp"
+#include "Model.hpp"
 #include "Listener.hpp"
 
 #include "PatternManager.hpp"
 #include "ShaderManager.hpp"
-#include "Model.hpp"
+#include "TextureManager.hpp"
+#include "BufferManager.hpp"
+
 
 namespace wim
 {
@@ -35,19 +38,28 @@ namespace wim
         typedef std::vector<RenderingStack> ListRenderingStack;
     private:
         ModelPtr _model;
-        ShaderManager _shaders;
-        PatternManager _patterns;
+        PatternManagerPtr _patterns;
+        ShaderManagerPtr _shaders;
+        TextureManagerPtr _textures;
+        BufferManagerPtr _buffers;
         ListRenderingStack _stacks; //one stack for each programme
     public:
         SceneRenderer(const char* appPath, ModelPtr& model, const WindowManagerPtr& windows);
         ~SceneRenderer();
 
+        void useProgramme(const SizeInt index) const;
+
+        void bindShaders() const;
+
+
         void addToStacks(const Renderable& item);
 
-        inline const LightManagerPtr& lightManager() const {return _model->lightManager();}
-        inline const CameraManagerPtr& cameraManager() const {return _model->cameraManager();}
+        const LightManagerPtr& lightManager() const;
+        const CameraManagerPtr& cameraManager() const;
 
-        inline UniformMatrix getCameraViewMatrix() const {return this->cameraManager()->getCameraViewMatrix();}
+        UniformMatrix getCameraViewMatrix() const;
+
+        bool readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const;
 
         ///brief: render Displayable elements in stack, with respect to active Camera, lighting, and Shaders
         void render();
@@ -56,26 +68,27 @@ namespace wim
         void addToStack(const SizeInt index, const Renderable& item);
         void renderStack(RenderingStack& stack, const UniformMatrix& ProjMatrix);
 
-        inline UniformMatrix getElementModelViewMatrix(const Renderable& item){return this->cameraManager()->getElementModelViewMatrix(item);}
-        inline UniformMatrix getProjectionMatrix() const{return this->cameraManager()->getProjectionMatrix();}
+        void renderFirstPass();
+        void renderSecondPass();
+
+        UniformMatrix getElementModelViewMatrix(const Renderable& item);
+        UniformMatrix getProjectionMatrix() const;
 
 
-        inline void updateMaterial(const Renderable& item)
-        {
-            return _shaders.updateMaterial(item.getMaterial(), item.isTextured());
-        }
-        inline void updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix )
-        {
-            return _shaders.updateMVPNMatrices(MVMatrix, ProjMatrix);
-        }
-
+        void updateMaterial(const Renderable& item);
+        void updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix );
         void updateLights(const UniformMatrix& View) const;
+        void updateFramebuffer() const;
+        void updateCubeIndex(const Renderable& item) const;
 
 
-        inline void drawItem(const Renderable& item) const
-        {
-            _shaders.drawItem(item, _patterns);
-        }
+
+        void drawItem(const Renderable& item) const;
+        void drawFramebuffer() const;
+
+
+        void toggleSceneToFramebuffer() const;
+        void toggleFramebufferToScreen() const;
     };
 
 }

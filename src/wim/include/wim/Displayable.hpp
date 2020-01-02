@@ -9,16 +9,21 @@
 
 #include "Types.hpp"
 #include "Vec3D.hpp"
+#include "CommonDisplay.hpp"
 
-#include "BufferManager.hpp"
+#include "ITO.hpp"
+#include "Material.hpp"
 
 namespace wim
 {
+
+
     enum class DisplayPattern : SizeInt
     {
         COLOURED_CUBE,
         TEXTURED_CUBE,
-        WIREFRAME_CUBE
+        WIREFRAME_CUBE,
+        QUAD
     };
 
     ///An interface for elements which will be shown in the world window
@@ -35,7 +40,7 @@ namespace wim
         //Should be overridden by every class, with one of the above Patterns
         virtual DisplayPattern getDisplayPattern() const = 0;
         const Material& getMaterial() const {return _material;}
-        GLint getTextureId() const;
+        const ITO& ito() const;
 
         static SizeInt getNumberTextures();
 
@@ -43,13 +48,11 @@ namespace wim
         bool isWireframe() const;
         bool isInForeground() const;
 
-        static void linkTextures(ListITOPtr& textures);
+        static void linkTextures(const ListITOPtr& textures);
     };
 
     class Renderable
     {
-    public:
-        typedef Point3D Anchor;
     protected:
         const Displayable* const _objectPtr;
         Anchor _anchor;
@@ -63,14 +66,14 @@ namespace wim
         {
             //We do NOT delete the displayable object
         }
-        const Material& getMaterial() const {return _objectPtr->getMaterial();}
-        DisplayPattern getDisplayPattern() const {return _objectPtr->getDisplayPattern();}
-        const Anchor& getAnchor() const {return _anchor;}
-        GLint getTextureId() const {return _objectPtr->getTextureId(); }
+        const Material& getMaterial() const;
+        DisplayPattern getDisplayPattern() const;
+        const Anchor& getAnchor() const;
+        const ITO& ito() const;
 
-        inline bool isTextured()  const {return  _objectPtr->isTextured();}
-        inline bool isWireframe()  const {return  _objectPtr->isWireframe();}
-        inline bool isInForeground()  const {return  _objectPtr->isInForeground();}
+        bool isTextured()  const;
+        bool isWireframe()  const;
+        bool isInForeground()  const;
     };
 
 

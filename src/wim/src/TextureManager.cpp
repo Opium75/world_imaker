@@ -4,8 +4,8 @@
 
 #include "../include/wim/TextureManager.hpp"
 
+
 #include <string>
-#include <limits>
 
 
 namespace wim
@@ -32,7 +32,6 @@ namespace wim
         {
             texturePath = std::string(appPathDir) + SEP + DEFAULT_RESOURCES_DIR + SEP + DEFAULT_TEXTURE_DIR + SEP +
                 _fileNames.at(i);
-            std::cout << texturePath << std::endl;
             _faces.push_back(glimac::ImageManager::loadImage(texturePath));
             if (_faces.back() == nullptr)
             {
@@ -46,6 +45,12 @@ namespace wim
             this->loadFileNames(conf);
             this->loadImages(appDirPath);
         }
+
+    TextureManager::TextureManager(const glimac::FilePath& appPath):
+            _appPathDir(appPath.dirPath().dirPath())
+    {
+        this->readConfig();
+    }
 
         void TextureManager::readConfig() {
             std::ifstream conf;
@@ -71,4 +76,29 @@ namespace wim
             }
             conf.close();
         }
+
+    CubeMap::CubeMap(const glimac::FilePath& appDirPath, std::ifstream& conf) :
+            _fileNames(),
+            _faces()
+    {
+        _fileNames.reserve(NB_FACES_CUBE);
+        _faces.reserve(NB_FACES_CUBE);
+        this->loadFaces(appDirPath, conf);
+    }
+
+    const ImagePtr& CubeMap::face(const SizeInt index) const {return _faces.at(index);}
+    GLsizei CubeMap::getWidth(const SizeInt index) const
+    {
+        return this->face(index)->getWidth();
+    }
+    GLsizei CubeMap::getHeight(const SizeInt index) const
+    {
+        return this->face(index)->getHeight();
+    }
+    glm::vec4* CubeMap::getPixels(const SizeInt index) const
+    {
+        return this->face(index)->getPixels();
+    }
+
+    SizeInt CubeMap::getNumberFaces() const {return _faces.size();}
 }

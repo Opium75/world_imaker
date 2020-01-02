@@ -5,7 +5,12 @@ in vec3 vVertexNormal;
 in vec3 vTexCoords;
 
 //sending colour to Framebuffer
-out vec3 fFragColour;
+layout(location = 0) out vec3 fFragColour;
+//also cube index as (x,y,z) coordinates
+layout(location = 1) out uvec4 fCubeIndex;
+
+uniform	samplerCube uBaseTexture;
+uniform uvec3 uCubeIndex;
 
 struct AmbiantLightData
 {
@@ -39,7 +44,6 @@ layout(std140) uniform bMaterial
 };
 
 
-uniform	samplerCube uBaseTexture;
 
 layout(std140) uniform bAmbiantLight
 {
@@ -99,7 +103,7 @@ vec3 bpPoint(const vec3 baseColour, const MaterialData material, const PointLigh
 
 void main()
 {
-	vec3 baseColour, fragColour, temp;
+	vec3 baseColour, fragColour;
 	if( material.isTextured )
 		baseColour = texture(uBaseTexture, vTexCoords).rgb;
    	else
@@ -109,13 +113,17 @@ void main()
 	fragColour = ambiantLighting(baseColour, ambiant);
 	for( int i=0; i < nbPoints; ++i)
 	{
-		temp = bpPoint(baseColour, material, point[i], vVertexPosition, vVertexNormal);
-		fragColour = fragColour + temp;
+		fragColour += bpPoint(baseColour, material, point[i], vVertexPosition, vVertexNormal);
 	}
 	for( int i=0; i < nbDirs; ++i)
 	{
-		temp = bpDir(baseColour, material, direction[i], vVertexPosition, vVertexNormal);
-		fragColour = fragColour + temp;
+		fragColour += bpDir(baseColour, material, direction[i], vVertexPosition, vVertexNormal);
 	}
 	fFragColour = fragColour;
+	//using the distance of the fragment to the camera as test
+	float fragDepth = gl_FragCoord.z;
+	//adding whether the fragment belongs to a cube as alpha parameter. -> 1 == true
+	bool isInCube = fragDepth > 0.0f;
+	fCubeIndex = uvec4(uCubeIndex, uint(isInCube));
+
 }

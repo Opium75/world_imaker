@@ -5,10 +5,17 @@
 #include "wim/ShaderManager.hpp"
 
 #include <string>
-#include <limits>
 
 namespace wim
 {
+
+    ShaderManager::ShaderManager(const glimac::FilePath& appPath) :
+            _appPathDir(glimac::FilePath(appPath).dirPath().dirPath()),
+            _currentIndex(0)
+    {
+        this->readConfig();
+    }
+
     void ShaderManager::readConfig()
     {
         std::ifstream conf;
@@ -36,7 +43,11 @@ namespace wim
         conf.close();
     }
 
-
+    void ShaderManager::useProgramme(const SizeInt index)
+    {
+        _listSender.at(index).useProgramme();
+        _currentIndex = index;
+    }
 
 
 }

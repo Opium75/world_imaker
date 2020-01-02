@@ -84,7 +84,7 @@ namespace wim
         //Position
         ModelMatrix = glm::translate(
                 glm::mat4(1.0f),
-                -item.getAnchor().getCoord()
+                -glm::vec3(item.getAnchor().getCoord())
         );
         MVMatrix = ViewMatrix * ModelMatrix;
         //Scale

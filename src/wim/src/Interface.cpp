@@ -14,7 +14,8 @@ namespace wim {
         return loop;
     }
 
-    void Interface::processState() const {
+    void Interface::processState() const
+    {
 
 
     }
@@ -110,6 +111,37 @@ namespace wim {
         }
     }
 
+
+    void Interface::processMouseClick(const SDL_Event& e) const
+    {
+        switch(e.button.button)
+        {
+            case SDL_BUTTON_LEFT:
+                this->processSelect(e);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    void Interface::processSelect(const SDL_Event& e) const
+    {
+        Anchor position;
+        GLint x,y;
+        x = e.button.x;
+        y = e.button.y;
+        if( this->readCubeIndex(position, x, y) )
+        {
+            //Successfully found a cube.
+            this->cursor()->setPosition(position);
+        }
+        else
+        {
+            //'twas not to be.
+        }
+    }
+
     bool Interface::processEvents() const {
 
         bool loop = true;
@@ -130,7 +162,6 @@ namespace wim {
                     break;
 
                 case SDL_MOUSEMOTION :
-                    //Get the position
                     this->processMouseMotion(e);
                     break;
 
@@ -140,6 +171,7 @@ namespace wim {
 
                 case SDL_MOUSEBUTTONDOWN :
                     //
+                    this->processMouseClick(e);
                     break;
 
                 default :
@@ -195,5 +227,10 @@ namespace wim {
     void Interface::setAmbiantLight(const AmbiantLight &light) const
     {
         _model->lightManager()->setAmbiant(light);
+    }
+
+    bool Interface::readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const
+    {
+        return _displayer->readCubeIndex(position, vX, vY);
     }
 }

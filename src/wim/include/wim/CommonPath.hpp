@@ -2,8 +2,8 @@
 // Created by piptouque on 28/12/2019.
 //
 
-#ifndef WORLD_IMAKER_COMMUNPATH_HPP
-#define WORLD_IMAKER_COMMUNPATH_HPP
+#ifndef WORLD_IMAKER_COMMONPATH_HPP
+#define WORLD_IMAKER_COMMONPATH_HPP
 
 #pragma  once
 
@@ -30,4 +30,4 @@ namespace wim
     static const unsigned int MAX_SIZE_FILENAME = 30;
     static const char SEP = glimac::FilePath::PATH_SEPARATOR; //defined in FilePat
 }
-#endif //WORLD_IMAKER_COMMUNPATH_HPP
+#endif //WORLD_IMAKER_COMMONPATH_HPP

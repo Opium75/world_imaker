@@ -13,7 +13,24 @@ namespace wim {
 
     Application::ControllerPtr Application::_ctrl(nullptr);
 
-    void DisplayController::runDisplay() const
+    MainController::MainController(const char* appPath, const XUint worldWidth, const YUint worldLength):
+            _dispCtrl(),
+            _compCtrl(),
+            _interCtrl()
+    {
+        //Initilisation Model And Display
+        _model = std::make_shared<Model>();
+
+        _displayer = std::make_shared<Displayer>(appPath, _model);
+
+
+        _interface = std::make_unique<Interface>(_model, _displayer);
+        //random world for starters
+        *_model->world() = CubeWorld::Random(worldWidth, worldLength);
+
+    }
+
+        void DisplayController::runDisplay() const
     {
         _displayer->displayAll(*_model);
         _displayer->windowManager()->swapBuffers();

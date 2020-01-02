@@ -7,6 +7,11 @@
 namespace wim
 {
 
+    inline DisplayPattern Cube::getDisplayPattern() const
+    {
+        return DisplayPattern::TEXTURED_CUBE;
+    }
+
     Cube::Cube(const Material &material, const SizeInt textureIndex) : Displayable(material, textureIndex)
     {
 

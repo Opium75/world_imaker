@@ -23,8 +23,6 @@ namespace wim
     void ShaderSender::loadProgramme(const glimac::FilePath &appPathDir, const ShaderCouple &couple)
     {
         std::string shaderCoupleDirPath = std::string(appPathDir) + SEP + DEFAULT_RESOURCES_DIR + SEP + DEFAULT_SHADER_DIR;
-        std::cout << shaderCoupleDirPath + SEP + couple._vs << std::endl;
-        std::cout << shaderCoupleDirPath + SEP + couple._fs << std::endl;
         _programme = glimac::loadProgramme(shaderCoupleDirPath + SEP + couple._vs,
                                          shaderCoupleDirPath + SEP + couple._fs
         );

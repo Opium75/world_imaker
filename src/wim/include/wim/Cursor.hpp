@@ -19,24 +19,21 @@ namespace wim
     class Cursor : public Displayable
     {
     private:
-        Point3Int _position;
+        Anchor _position;
         WorldPtr _world;
         SelectablePtr _selected;
     public:
         Cursor(const WorldPtr& world) : Displayable(), _world(world) {}
         ~Cursor() = default;
 
-        void setX(const XUint x);
-        void setY(const YUint y);
-        void setZ(const ZUint z);
 
-        void moveX(const Xint delta);
-        void moveY(const Yint delta);
-        void moveZ(const Zint delta);
+        void moveX(const XInt delta);
+        void moveY(const YInt delta);
+        void moveZ(const ZInt delta);
 
         void setPosition(const XUint x, const YUint y, const ZUint z);
-        inline void setPosition(const Point3Int& position) {this->setPosition(position.x(), position.y(), position.z());}
-        const Point3Int& getPosition() const;
+        void setPosition(const Point3Uint& position);
+        const Anchor& getPosition() const;
 
         inline XUint getWorldWidth() const {return _world->getWidth();}
         inline YUint getWorldLength() const {return _world->getLength();}
@@ -45,6 +42,13 @@ namespace wim
         {
             return DisplayPattern::WIREFRAME_CUBE;
         }
+    private:
+        void setX(const XUint x);
+        void setY(const YUint y);
+        void setZ(const ZUint z);
+
+        bool isPositionValid(const XUint x, const ZUint z) const;
+        bool isPositionValid(const Point3Uint& position) const;
     };
 
     typedef std::unique_ptr<Cursor> CursorPtr;

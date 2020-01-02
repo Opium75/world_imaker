@@ -8,7 +8,7 @@
 #include <vector>
 #include <utility>
 
-#include "CommunDisplay.hpp"
+#include "CommonDisplay.hpp"
 
 #include "Randomisable.hpp"
 #include "Listener.hpp"

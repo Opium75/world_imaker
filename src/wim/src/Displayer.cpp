@@ -8,9 +8,17 @@
 
 namespace wim {
 
+    Displayer::Displayer(const char* appPath, ModelPtr& model) :
+            _windows(std::make_unique<glimac::SDLWindowManager>(DEFAULT_DISP_WINDOW_WIDTH, DEFAULT_DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
+            _widgets(std::make_unique<WidgetManager>()),
+            _renderer(std::make_unique<SceneRenderer>(appPath, model, _windows))
+    {
+
+    }
+
     void Displayer::display(const Cube &cube, const XUint x, const YUint y, const ZUint z) const
     {
-        this->addToRenderingStacks( cube, Renderable::Anchor(x,y,z) );
+        this->addToRenderingStacks( cube, Anchor(x,y,z) );
     }
 
     void Displayer::display(const CubeFloor &cubeFloor, const XUint x, const ZUint z) const
@@ -71,8 +79,6 @@ namespace wim {
 
         /*Adding elements to rendering stack. */
        // this->displayWidgets();
-        glClear(GL_COLOR_BUFFER_BIT);
-        glClear( GL_DEPTH_BUFFER_BIT);
         this->displayModel(model);
 
         /* Rendering World */
@@ -83,4 +89,8 @@ namespace wim {
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
 
+    bool Displayer::readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const
+    {
+        return _renderer->readCubeIndex(position, vX, vY);
+    }
 }
