@@ -6,7 +6,7 @@
 
 namespace glimac
 {
-    void AbstractCube::build(const GLfloat radius)
+    void CubePattern::build(const GLfloat radius)
     {
         this->buildVBO(radius);
         this->buildIBO();
@@ -19,10 +19,10 @@ namespace glimac
         this->bindVAO(ATTR_POSITION, ATTR_NORMAL);
     }
 
-   void AbstractCube::buildVBO(const GLfloat radius)
+   void CubePattern::buildVBO(const GLfloat radius)
    {
        /* offset for (x,y,z) positions */
-       GLsizei offPos = CUBE_GEOMETRY_NB_VERTEX/3;
+       GLsizei offPos = QUAD_DEFAULT_OFFSET_VERTICES;
        /*Vertex assignment */
        for( GLsizei x=0; x<offPos;++x )
        {
@@ -37,9 +37,10 @@ namespace glimac
    }
 
 
-   void AbstractCube::buildVBOLoop(const GLfloat radius, const GLsizei x, const GLsizei y, const GLsizei z, const GLsizei offPos)
+   void CubePattern::buildVBOLoop(const GLfloat radius, const GLsizei x, const GLsizei y, const GLsizei z, const GLsizei offPos)
    {
-       ShapeVec3 position = radius*ShapeVec3( (x-offPos/4.f),( y- offPos/4.f) , (z -offPos/4.f));
+        //Centring the Cube on origin.
+       ShapeVec3 position = radius*ShapeVec3( (x-(offPos-1.f)/2.f),( y-(offPos-1.f)/2.f) , (z - (offPos-1.f)/2.f));
        /* need to get vertices three times
         * to account for different normals and texCoords
         */
@@ -73,16 +74,10 @@ namespace glimac
     }
 
 
-   void AbstractCube::buildIBO() {
-       /*
-       GLsizei i=0;
-       for(auto& indexBuffer : m_indexBuffer)
-       {
+   void CubePattern::buildIBO() {
 
-       }
-       */
        //todo: FACTOR THIS
-       std::vector<GLsizei> &ibo = m_indexBuffer;
+       auto &ibo = m_indexBuffer;
         /*
          *
          *     (1,1,1) ______________(0,1,1)    y
@@ -173,58 +168,37 @@ namespace glimac
         glBindBuffer(GL_ARRAY_BUFFER, 0);
     }
 
-    void AbstractCube::bindIBO() const
-    {
-       glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo); //IBO Target
-            glBufferData(
-                    GL_ELEMENT_ARRAY_BUFFER,
-                    m_nIndexCount*sizeof(GLsizei),
-                    this->getIndexPointer(),
-                    GL_STATIC_DRAW
-            );
-       glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-   }
 
 
     void CubePattern::bindVAO(const GLuint ATTR_POSITION, const GLuint ATTR_NORMAL) const
     {
         glBindVertexArray(_vao);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
-        glEnableVertexAttribArray(ATTR_POSITION);
-        glEnableVertexAttribArray(ATTR_NORMAL);
-        glBindBuffer(GL_ARRAY_BUFFER, _vbo);
-        glVertexAttribPointer(
-                ATTR_POSITION,
-                3, //3 fields -> (x,y,z) we work in 3D
-                GL_FLOAT,
-                GL_FALSE, //not normalised
-                sizeof(ShapeVertexCube),
-                (const GLfloat *) offsetof(ShapeVertexCube, _position)
-        );
-        glVertexAttribPointer(
-                ATTR_NORMAL,
-                3,
-                GL_FLOAT,
-                GL_FALSE,
-                sizeof(ShapeVertexCube),
-                (const GLfloat *) offsetof(ShapeVertexCube, _normal)
-        );
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
+                glEnableVertexAttribArray(ATTR_POSITION);
+                glEnableVertexAttribArray(ATTR_NORMAL);
+                glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+                        glVertexAttribPointer(
+                                ATTR_POSITION,
+                                3, //3 fields -> (x,y,z) we work in 3D
+                                GL_FLOAT,
+                                GL_FALSE, //not normalised
+                                sizeof(ShapeVertexCube),
+                                (const GLfloat *) offsetof(ShapeVertexCube, _position)
+                        );
+                        glVertexAttribPointer(
+                                ATTR_NORMAL,
+                                3,
+                                GL_FLOAT,
+                                GL_FALSE,
+                                sizeof(ShapeVertexCube),
+                                (const GLfloat *) offsetof(ShapeVertexCube, _normal)
+                        );
+                glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }
 
-    void AbstractCube::draw() const
-    {
-        glBindVertexArray(_vao);
-        glDrawElements(
-                GL_TRIANGLES,
-                m_nIndexCount,
-                GL_UNSIGNED_INT,
-                this->getIndexPointer()
-        );
-        glBindVertexArray(0);
-    }
+
 
 
 

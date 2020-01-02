@@ -5,27 +5,33 @@
 #include "wim/ShaderManager.hpp"
 
 #include <string>
-#include <limits>
 
 namespace wim
 {
+
+    ShaderManager::ShaderManager(const glimac::FilePath& appPath) :
+            _appPathDir(glimac::FilePath(appPath).dirPath().dirPath()),
+            _currentIndex(0)
+    {
+        this->readConfig();
+    }
+
     void ShaderManager::readConfig()
     {
         std::ifstream conf;
         std::string confPath = std::string(_appPathDir) + SEP + DEFAULT_RESOURCES_DIR + SEP + DEFAULT_SHADER_DIR + SEP + DEFAULT_SHADER_CONF_FILENAME;
-        conf.open(confPath);
+        conf.open(confPath, std::ios::binary);
         if (!conf.is_open())
             throw Exception(ExceptCode::NULL_POINTER, 1, std::string("Could not open file at path: ") + confPath);
         //get expected number of couples
         SizeInt n;
         conf >> n;
         //ending line
-        conf.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         //fill vector of Shader Couples
         _listSender.reserve(n);
         //do n times
         for (SizeInt i = 0; i < n; ++i) {
-            if (conf.eof())
+            if (conf.fail())
                 throw Exception(ExceptCode::END_OF_FILE, 1,
                         std::string("Fewer shader couples than expected: expected ")
                         + std::to_string(n) + std::string(", found ") + std::to_string(i)
@@ -37,7 +43,11 @@ namespace wim
         conf.close();
     }
 
-
+    void ShaderManager::useProgramme(const SizeInt index)
+    {
+        _listSender.at(index).useProgramme();
+        _currentIndex = index;
+    }
 
 
 }

@@ -13,11 +13,11 @@
 #include "Exception.hpp"
 #include "Vec3D.hpp"
 
-#define _MAX_COLOUR_VALUE_FLOAT 1
-#define _MIN_COLOUR_VALUE_FLOAT 0
-
 namespace wim
 {
+
+    static const constexpr FloatType MAX_COLOUR_VALUE_FLOAT  = 1.f;
+    static const constexpr FloatType MIN_COLOUR_VALUE_FLOAT = 0.f;
     //Colour inherits from Vec3D conceptually
     class Colour : public Vec3D {
     private:
@@ -58,10 +58,10 @@ namespace wim
     ///Format float value to colour value
     inline FloatType colourValueFloat(const FloatType value)
     {
-        if(value>_MAX_COLOUR_VALUE_FLOAT)
-            return _MAX_COLOUR_VALUE_FLOAT;
-        else if(value<_MIN_COLOUR_VALUE_FLOAT)
-            return _MIN_COLOUR_VALUE_FLOAT;
+        if(value>MAX_COLOUR_VALUE_FLOAT)
+            return MAX_COLOUR_VALUE_FLOAT;
+        else if(value<MIN_COLOUR_VALUE_FLOAT)
+            return MIN_COLOUR_VALUE_FLOAT;
         return value;
     }
 }

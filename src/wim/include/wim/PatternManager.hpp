@@ -8,20 +8,28 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
+#include <glimac/Pattern.hpp>
 #include <glimac/Cube.hpp>
+#include <glimac/Quad.hpp>
 
 #include "Types.hpp"
 #include "Exception.hpp"
 #include "Displayable.hpp"
-#include "BufferManager.hpp"
+
+#include "FBO.hpp"
 
 namespace wim
 {
-    static const SizeInt NB_PATTERNS_CUBE = 3;
-    static const double DEFAULT_CUBE_SIZE = 1.;
+    static constexpr const SizeInt NB_PATTERNS = 4;
+    static constexpr const GLfloat DEFAULT_CUBE_SIZE = 1.f;
 
-    typedef std::shared_ptr<glimac::AbstractCube> PatternPtr;
+    static constexpr const GLfloat DEFAULT_FRAMEBUFFER_SQUAD_SIZE = 2.f;
+    static constexpr const GLfloat DEFAULT_FRAMEBUFFER_SQUAD_CENTRE_X = -1.f;
+    static constexpr const GLfloat DEFAULT_FRAMEBUFFER_SQUAD_CENTRE_Y = -1.f;
+
+    typedef std::shared_ptr<glimac::Pattern> PatternPtr;
 
     class PatternManager
     {
@@ -30,14 +38,12 @@ namespace wim
     private:
         ListPatternPtr _listPatternPtr;
     public:
-        PatternManager() : _listPatternPtr(NB_PATTERNS_CUBE)
-        {
-            loadPatterns();
-        }
+        PatternManager();
         ~PatternManager() = default;
 
 
         void draw(const Renderable& item) const;
+        void drawFramebuffer(const FBO& framebuffer) const;
     private:
         void loadPatterns();
 
@@ -48,10 +54,8 @@ namespace wim
 
         const PatternPtr& at(const DisplayPattern& dispPat) const;
         PatternPtr& at(const DisplayPattern& dispPat);
-
-
     };
 
-
+    typedef std::unique_ptr<PatternManager> PatternManagerPtr;
 }
 #endif //WORLD_IMAKER_PATTERNMANAGER_HPP

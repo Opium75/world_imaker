@@ -6,14 +6,21 @@
 
 namespace wim
 {
+    PatternManager::PatternManager() : _listPatternPtr(NB_PATTERNS)
+    {
+        loadPatterns();
+    }
 
     void PatternManager::loadPatterns()
     {
-        PatternPtr pattern =std::make_shared<glimac::CubePattern>(DEFAULT_CUBE_SIZE);
+        glm::vec2 squadCentre(DEFAULT_FRAMEBUFFER_SQUAD_CENTRE_X, DEFAULT_FRAMEBUFFER_SQUAD_CENTRE_Y);
+        PatternPtr cubePattern = std::make_shared<glimac::CubePattern>(DEFAULT_CUBE_SIZE);
+        PatternPtr quadPattern = std::make_shared<glimac::QuadPattern>(squadCentre, DEFAULT_FRAMEBUFFER_SQUAD_SIZE);
         //same pattern for everyone
-        this->at(DisplayPattern::COLOURED_CUBE) = pattern;
-       this->at(DisplayPattern::TEXTURED_CUBE) = pattern;
-        this->at(DisplayPattern::WIREFRAME_CUBE) = pattern;
+        this->at(DisplayPattern::COLOURED_CUBE) = cubePattern;
+        this->at(DisplayPattern::TEXTURED_CUBE) = cubePattern;
+        this->at(DisplayPattern::WIREFRAME_CUBE) = cubePattern;
+        this->at(DisplayPattern::QUAD) = quadPattern;
     }
 
     const PatternPtr& PatternManager::at(const DisplayPattern& dispPat) const
@@ -36,7 +43,7 @@ namespace wim
 
     void PatternManager::drawRenderable(const Renderable& item) const
     {
-        _listPatternPtr.at((SizeInt)item.getDisplayPattern())->draw();
+        this->at(item.getDisplayPattern())->draw();
     }
 
     void PatternManager::draw(const Renderable& item) const
@@ -49,6 +56,13 @@ namespace wim
             this->drawColoured(item);
     }
 
+    void PatternManager::drawFramebuffer(const FBO& framebuffer) const
+    {
+        glBindTexture(GL_TEXTURE_2D, framebuffer.viewportTexture().id());
+            this->at(DisplayPattern::QUAD)->draw();
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
     void PatternManager::drawColoured(const Renderable& item) const
     {
         this->drawRenderable(item);
@@ -56,7 +70,7 @@ namespace wim
 
     void PatternManager::drawTextured(const Renderable& item) const
     {
-        glBindTexture(GL_TEXTURE_CUBE_MAP, item.getTextureId());
+        glBindTexture(GL_TEXTURE_CUBE_MAP, item.ito().id());
             this->drawRenderable(item);
         glBindTexture(GL_TEXTURE_CUBE_MAP, 0);
     }

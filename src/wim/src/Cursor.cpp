@@ -22,28 +22,49 @@ namespace wim
         _position.z() = std::min(z, this->getWorldLength()-1);
     }
 
-    void Cursor::moveX(const Xint delta)
+    void Cursor::moveX(const XInt delta)
     {
-        Xint x =  std::max<Xint>(0, (Xint)_position.x()+delta);
+        XInt x =  std::max<XInt>(0, (XInt)_position.x()+delta);
         this->setX(x);
     }
-    void Cursor::moveY(const Yint delta)
+    void Cursor::moveY(const YInt delta)
     {
-        Xint y =  std::max<Yint>(0, (Yint)_position.y()+delta);
+        YInt y =  std::max<YInt>(0, (YInt)_position.y()+delta);
         this->setY(y);
     }
-    void Cursor::moveZ(const Zint delta)
+    void Cursor::moveZ(const ZInt delta)
     {
-        Xint z =  std::max<Zint>(0, (Zint)_position.z()+delta);
+        ZInt z =  std::max<ZInt>(0, (ZInt)_position.z()+delta);
         this->setZ(z);
     }
 
     void Cursor::setPosition(const XUint x, const YUint y, const ZUint z)
     {
-        setX(x); setY(y); setZ(z);
+        if( isPositionValid(x,z) )
+        {
+            setX(x); setY(y); setZ(z);
+        }
+        else
+        {
+
+        }
     }
 
-    const Point3Int& Cursor::getPosition() const
+    void Cursor::setPosition(const Point3Uint& position)
+    {
+        this->setPosition(position.x(), position.y(), position.z());
+    }
+
+    bool Cursor::isPositionValid(const XUint x, const ZUint z) const
+    {
+        return x < this->getWorldWidth() && z < this->getWorldLength();
+    }
+    bool Cursor::isPositionValid(const Point3Uint& position) const
+    {
+        return isPositionValid(position.x(), position.z());
+    }
+
+    const Anchor& Cursor::getPosition() const
     {
         return _position;
     }

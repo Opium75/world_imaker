@@ -8,7 +8,7 @@
 
 #include <memory>
 
-#include "CommunDisplay.hpp"
+#include "CommonDisplay.hpp"
 
 #include <glimac/SDLWindowManager.hpp>
 
@@ -39,15 +39,12 @@ namespace wim {
         SceneRendererPtr _renderer;
 
     public:
-        Displayer(const char* appPath, ModelPtr& model) :
-            _windows(std::make_unique<glimac::SDLWindowManager>(DEFAULT_DISP_WINDOW_WIDTH, DEFAULT_DISP_WINDOW_HEIGHT, DISP_WINDOW_NAME)),
-            _widgets(std::make_unique<WidgetManager>()),
-            _renderer(std::make_unique<SceneRenderer>(appPath, model, _windows))
-        {
-        }
+        Displayer(const char* appPath, ModelPtr& model);
         ~Displayer() = default;
 
         void displayAll(const Model& model) const;
+
+        bool readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const;
 
         inline const LightManagerPtr& getLightManagerPtr() const {return _renderer->lightManager();}
         inline const CameraManagerPtr& getCameraManagerPtr() const {return _renderer->cameraManager();}
@@ -67,7 +64,7 @@ namespace wim {
         void displayModel(const Model& model) const;
         void displayWidgets() const;
 
-        inline void addToRenderingStacks(const Displayable &object, const Point3Int &anchor) const
+        inline void addToRenderingStacks(const Displayable &object, const Anchor &anchor) const
         {
             _renderer->addToStacks(Renderable(object, anchor));
         }

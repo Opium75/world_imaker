@@ -30,8 +30,22 @@ namespace glimac {
         ShapeVertexCube() = default;
         ShapeVertexCube(const ShapeVec3&  pos, const ShapeVec3& normal) :
                 _position(pos), _normal(normal) {}
-        ShapeVertexCube(const ShapeVertexCube& shapeVertexColoured) = default;
+        ShapeVertexCube(const ShapeVertexCube& shapeVertexCube) = default;
         ~ShapeVertexCube() = default;
+    };
+
+
+    struct ShapeVertexQuad
+    {
+    public:
+        ShapeVec2 _position; //in 2D
+        ShapeVec2  _texCoords;
+    public:
+        ShapeVertexQuad() = default;
+        ShapeVertexQuad(const ShapeVec2&  pos, const ShapeVec2& texCoords) :
+                _position(pos), _texCoords(texCoords) {}
+        ShapeVertexQuad(const ShapeVertexQuad& shapeVertexQuad) = default;
+        ~ShapeVertexQuad() = default;
     };
 
     struct ShapeVertex {

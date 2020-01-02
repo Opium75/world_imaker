@@ -7,8 +7,8 @@
 
 #pragma once
 
-#include "CommunPath.hpp"
-#include "CommunDisplay.hpp"
+#include "CommonPath.hpp"
+#include "CommonDisplay.hpp"
 
 #include <glimac/Image.hpp>
 #include <vector>
@@ -29,38 +29,20 @@ namespace wim
         FacesFileNames _fileNames;
         FacesPtr _faces;
     public:
-        CubeMap(const glimac::FilePath& appDirPath, std::ifstream& conf) :
-            _fileNames(),
-            _faces()
-        {
-            _fileNames.reserve(NB_FACES_CUBE);
-            _faces.reserve(NB_FACES_CUBE);
-            this->loadFaces(appDirPath, conf);
-        }
+        CubeMap(const glimac::FilePath& appDirPath, std::ifstream& conf);
         ~CubeMap() = default;
 
-        inline const ImagePtr& face(const SizeInt index) const {return _faces.at(index);}
-        inline GLsizei getWidth(const SizeInt index) const
-        {
-            return this->face(index)->getWidth();
-        }
-        inline GLsizei getHeight(const SizeInt index) const
-        {
-            return this->face(index)->getHeight();
-        }
-        inline glm::vec4* getPixels(const SizeInt index) const
-        {
-            return this->face(index)->getPixels();
-        }
+        const ImagePtr& face(const SizeInt index) const;
+        GLsizei getWidth(const SizeInt index) const;
+        GLsizei getHeight(const SizeInt index) const;
+        glm::vec4* getPixels(const SizeInt index) const;
 
-        inline SizeInt getNumberFaces() const {return _faces.size();}
-
+        SizeInt getNumberFaces() const;
 
     private:
         void loadFaces(const glimac::FilePath& appPathDir, std::ifstream& conf);
-        void loadFace(const glimac::FilePath& appPathDir, std::ifstream& conf);
-        void loadFileName(std::ifstream &conf);
-        void loadImage(const glimac::FilePath &appPathDir);
+        void loadFileNames(std::ifstream &conf);
+        void loadImages(const glimac::FilePath &appPathDir);
     };
 
 
@@ -73,11 +55,7 @@ namespace wim
         glimac::FilePath _appPathDir;
         ListCubeMap _cubeMaps;
     public:
-        TextureManager(const glimac::FilePath& appPath):
-            _appPathDir(appPath.dirPath().dirPath())
-        {
-            this->readConfig();
-        }
+        TextureManager(const glimac::FilePath& appPath);
 
         inline const ListCubeMap& getCubeMaps() const {return _cubeMaps;}
 

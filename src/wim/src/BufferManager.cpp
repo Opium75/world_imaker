@@ -4,12 +4,25 @@
 
 #include "../include/wim/BufferManager.hpp"
 
-#include <string>
 #include <algorithm>
 
 namespace wim
 {
+    BufferManager::BufferManager(const TextureManagerPtr& textures, const WindowManagerPtr& windows) :
+            _itos(std::make_shared<ListITO>(textures->getCubeMaps().size())),
+            _matrices(DEFAULT_MATRICES_BUFFERSIZE),
+            _material(DEFAULT_MATERIAL_BUFFERSIZE),
+            _ambiantLight(DEFAULT_AMBIANTLIGHT_BUFFERSIZE),
+            _baseTexture(),
+            _cubeIndex(),
+            _pointLights(DEFAULT_ONE_POINTLIGHT_BUFFERSIZE, MAX_NB_EACH_LIGHT),
+            _directionLights(DEFAULT_ONE_DIRECTIONALLIGHT_BUFFERSIZE, MAX_NB_EACH_LIGHT),
+            _lightNumber(DEFAULT_LIGHTNUMBER_BUFFERSIZE,1),
+            _framebuffer(windows->window(), NB_DEFAULT_DRAWBUFFERS, DEFAULT_DRAWBUFFERS)
+    {
 
+        this->loadCubeMaps(textures->getCubeMaps());
+    }
 
     void BufferManager::bindShader(const ShaderSender& shader) const
     {
@@ -51,6 +64,16 @@ namespace wim
         //BASE TEXTURE
         _baseTexture.localise(shader.programme().getGLId(),
                               UNI_LOC_BASETEXTURE_NAME
+        );
+
+        //Index of the current drawn cube
+        _cubeIndex.localise(shader.programme().getGLId(),
+                                UNI_LOC_CUBEINDEX_NAME
+        );
+
+        //Texture in framebuffer to be rendered
+        _framebuffer.renderUniform().localise(shader.programme().getGLId(),
+                            UNI_LOC_FRAMEBUFFERTEXTURE_NAME
         );
     }
 
@@ -107,9 +130,19 @@ namespace wim
         _lightNumber.update(&data, sizeof(LightNumberData), 1);
     }
 
-    void BufferManager::bindShaders(const ListSender& shaders) const
+    void BufferManager::updateFramebuffer()
     {
-        for( const auto& shader : shaders )
+        _framebuffer.update();
+    }
+
+    void BufferManager::updateCubeIndex(const Anchor& anchor) const
+    {
+            _cubeIndex.updateCubeIndex(anchor);
+    }
+
+    void BufferManager::bindShaders(const ShaderManagerPtr& shaders) const
+    {
+        for( const auto& shader : shaders->listSender() )
         {
             this->bindShader(shader);
         }
@@ -140,5 +173,18 @@ namespace wim
         );
     }
 
+    void BufferManager::renderSceneToFramebuffer() const
+    {
+        _framebuffer.renderSceneToFramebuffer();
+    }
 
+    void BufferManager::renderFramebufferToScreen() const
+    {
+        _framebuffer.renderFramebufferToScreen();
+    }
+
+    bool BufferManager::readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const
+    {
+        return _framebuffer.readCubeIndex(position, vX, vY);
+    }
 }

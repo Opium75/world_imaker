@@ -13,16 +13,18 @@
 #include <glimac/glm.hpp>
 
 
+
 namespace wim
 {
     typedef float FloatType;
 
-    typedef std::size_t XUint, YUint, ZUint;
-    typedef long int Xint, Yint, Zint;
+    typedef std::uint32_t XUint, YUint, ZUint;
+    typedef std::int32_t XInt, YInt, ZInt;
     typedef std::size_t SizeInt;
 
 
     typedef glm::mat4 UniformMatrix;
+
 }
 
 #endif //WORLD_IMAKER_TYPES_HPP

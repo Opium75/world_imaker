@@ -10,16 +10,13 @@
 
 #include <glimac/Programme.hpp>
 
-#include "CommunPath.hpp"
+#include "CommonPath.hpp"
 #include "Types.hpp"
 #include "Exception.hpp"
 #include "Material.hpp"
 
 namespace wim
 {;
-
-    static constexpr const char* STORAGE_POSLIGHT_NAME = "sPosLight_vs";
-    static constexpr const char* STORAGE_DIRLIGHT_NAME = "sDirLight_vs";
 
     struct ShaderCouple
     {

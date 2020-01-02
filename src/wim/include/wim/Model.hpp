@@ -3,7 +3,7 @@
 //
 
 #ifndef WORLD_IMAKER_MODEL_HPP
-#define WORLD_IMAKER_MODEL_HP
+#define WORLD_IMAKER_MODEL_HPP
 
 #pragma once
 

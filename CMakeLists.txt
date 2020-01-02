@@ -181,6 +181,16 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/src/SceneRenderer.cpp
         src/wim/src/BufferManager.cpp
         src/wim/src/Light.cpp
+        src/wim/src/PatternManager.cpp
+        src/wim/src/Interface.cpp
+        src/wim/src/Listener.cpp
+        src/wim/src/TextureManager.cpp
+        src/wim/src/Displayable.cpp
+        src/wim/src/Cursor.cpp
+        src/wim/src/FBO.cpp
+        src/wim/src/ITO.cpp
+        src/wim/src/SSBO.cpp
+        src/wim/src/Uniform.cpp
         #headers
         src/wim/include/wim/Displayer.hpp
         src/wim/include/wim/Vec3D.hpp
@@ -204,11 +214,20 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/Types.hpp
         src/wim/include/wim/Model.hpp
         src/wim/include/wim/Material.hpp
-        src/wim/include/wim/CommunDisplay.hpp
+        src/wim/include/wim/CommonDisplay.hpp
         src/wim/include/wim/BufferManager.hpp
         src/wim/include/wim/Interface.hpp
-        src/wim/src/Interface.cpp src/wim/include/wim/Listener.hpp src/wim/src/Listener.cpp src/wim/src/TextureManager.cpp src/wim/include/wim/CommunPath.hpp src/wim/src/Displayable.cpp src/wim/src/Cursor.cpp src/wim/include/wim/Cursor.hpp src/wim/include/wim/Selectable.hpp src/wim/src/PatternManager.cpp src/wim/src/BufferObject.cpp src/wim/include/wim/BufferObject.hpp)
-
+        src/wim/include/wim/Listener.hpp
+        src/wim/include/wim/CommonPath.hpp
+        src/wim/include/wim/Cursor.hpp
+        src/wim/include/wim/Selectable.hpp
+        src/wim/include/wim/BufferObject.hpp
+        src/wim/include/wim/FBO.hpp
+        src/wim/include/wim/ITO.hpp
+        src/wim/include/wim/SSBO.hpp
+        src/wim/include/wim/Uniform.hpp
+        src/wim/include/wim/BufferData.hpp
+        )
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}
         )

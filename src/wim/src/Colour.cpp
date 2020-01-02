@@ -56,7 +56,7 @@ namespace  wim
     }
 
     Colour Colour::Random() {
-        return Colour(Vec3D::Random(_MIN_COLOUR_VALUE_FLOAT, _MAX_COLOUR_VALUE_FLOAT));
+        return Colour(Vec3D::Random(MIN_COLOUR_VALUE_FLOAT, MAX_COLOUR_VALUE_FLOAT));
     }
 
 }

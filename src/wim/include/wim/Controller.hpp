@@ -91,19 +91,7 @@ namespace wim
         InterfaceController _interCtrl;
 
     private:
-        MainController(const char* appPath, const XUint worldWidth, const YUint worldLength):
-                _dispCtrl(),
-                _compCtrl(),
-                _interCtrl()
-                {
-                    //Initilisation Model And Display
-                    _model = std::make_shared<Model>();
-                    _displayer = std::make_shared<Displayer>(appPath, _model);
-                    _interface = std::make_unique<Interface>(_model, _displayer);
-                    //random world for starters
-                    *_model->world() = CubeWorld::Random(worldWidth, worldLength);
-                }
-
+        MainController(const char* appPath, const XUint worldWidth, const YUint worldLength);
         bool runLoop() const;
         void runApp() const;
     };
