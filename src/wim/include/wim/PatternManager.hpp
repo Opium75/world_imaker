@@ -18,16 +18,12 @@
 #include "Exception.hpp"
 #include "Displayable.hpp"
 
+#include "Quad.hpp"
 #include "FBO.hpp"
 
 namespace wim
 {
-    static constexpr const SizeInt NB_PATTERNS = 4;
-    static constexpr const GLfloat DEFAULT_CUBE_SIZE = 1.f;
 
-    static constexpr const GLfloat DEFAULT_FRAMEBUFFER_SQUAD_SIZE = 2.f;
-    static constexpr const GLfloat DEFAULT_FRAMEBUFFER_SQUAD_CENTRE_X = -1.f;
-    static constexpr const GLfloat DEFAULT_FRAMEBUFFER_SQUAD_CENTRE_Y = -1.f;
 
     typedef std::shared_ptr<glimac::Pattern> PatternPtr;
 
@@ -51,6 +47,7 @@ namespace wim
         void drawColoured(const Renderable& item) const;
         void drawTextured(const Renderable& item) const;
         void drawWireframe(const Renderable& item) const;
+        void drawHidden(const Renderable& item) const;
 
         const PatternPtr& at(const DisplayPattern& dispPat) const;
         PatternPtr& at(const DisplayPattern& dispPat);

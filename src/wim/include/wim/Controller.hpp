@@ -104,20 +104,9 @@ namespace wim
         static ControllerPtr _ctrl;
     public:
 
-       static void init(const char* appPath, const XUint worldWidth, const YUint worldLength)
-       {
-          if( _ctrl )
-              throw Exception(ExceptCode::ILLIGAL, 1, "Application already initialised.");
-          _ctrl = ControllerPtr(new MainController(appPath, worldWidth, worldLength));
-       }
+       static void init(const char* appPath, const XUint worldWidth, const YUint worldLength);
 
-       static void run()
-       {
-           if( !_ctrl )
-               throw Exception(ExceptCode::ILLIGAL, 1, "Trying to run the application before initialisation.");
-           else
-               _ctrl->runApp();
-       }
+       static void run();
     };
 }
 #endif //WORLD_IMAKER_CONTROLLER_HPP

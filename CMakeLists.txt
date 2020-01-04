@@ -183,7 +183,6 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/src/Light.cpp
         src/wim/src/PatternManager.cpp
         src/wim/src/Interface.cpp
-        src/wim/src/Listener.cpp
         src/wim/src/TextureManager.cpp
         src/wim/src/Displayable.cpp
         src/wim/src/Cursor.cpp
@@ -191,6 +190,8 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/src/ITO.cpp
         src/wim/src/SSBO.cpp
         src/wim/src/Uniform.cpp
+        src/wim/src/Quad.cpp
+        src/wim/src/Selection.cpp
         #headers
         src/wim/include/wim/Displayer.hpp
         src/wim/include/wim/Vec3D.hpp
@@ -217,7 +218,6 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/CommonDisplay.hpp
         src/wim/include/wim/BufferManager.hpp
         src/wim/include/wim/Interface.hpp
-        src/wim/include/wim/Listener.hpp
         src/wim/include/wim/CommonPath.hpp
         src/wim/include/wim/Cursor.hpp
         src/wim/include/wim/Selectable.hpp
@@ -227,6 +227,8 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/SSBO.hpp
         src/wim/include/wim/Uniform.hpp
         src/wim/include/wim/BufferData.hpp
+        src/wim/include/wim/Quad.hpp
+        src/wim/include/wim/Selection.hpp
         )
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}
@@ -258,7 +260,7 @@ foreach(SHADER ${SHADERS})
 endforeach()
 
 ##Textures##
-#adding Shaders to build directory after compiling
+#adding textures to build directory after compiling
 message("Adding textures and config to executable dir:")
 file(GLOB TEXTURES ${PROJECT_RESOURCE_DIR}/${PROJECT_TEXTURE_DIR}/*.png ${PROJECT_RESOURCE_DIR}/${PROJECT_TEXTURE_DIR}/*.conf)
 foreach(TEXTURE ${TEXTURES})

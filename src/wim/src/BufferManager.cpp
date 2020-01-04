@@ -14,6 +14,7 @@ namespace wim
             _material(DEFAULT_MATERIAL_BUFFERSIZE),
             _ambiantLight(DEFAULT_AMBIANTLIGHT_BUFFERSIZE),
             _baseTexture(),
+            _baseColour(),
             _cubeIndex(),
             _pointLights(DEFAULT_ONE_POINTLIGHT_BUFFERSIZE, MAX_NB_EACH_LIGHT),
             _directionLights(DEFAULT_ONE_DIRECTIONALLIGHT_BUFFERSIZE, MAX_NB_EACH_LIGHT),
@@ -135,10 +136,11 @@ namespace wim
         _framebuffer.update();
     }
 
-    void BufferManager::updateCubeIndex(const Anchor& anchor) const
+    void BufferManager::updateCubeIndex(const Point3Uint& anchor) const
     {
-            _cubeIndex.updateCubeIndex(anchor);
+        _cubeIndex.updateCubeIndex(anchor);
     }
+
 
     void BufferManager::bindShaders(const ShaderManagerPtr& shaders) const
     {
@@ -183,7 +185,7 @@ namespace wim
         _framebuffer.renderFramebufferToScreen();
     }
 
-    bool BufferManager::readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const
+    bool BufferManager::readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const
     {
         return _framebuffer.readCubeIndex(position, vX, vY);
     }

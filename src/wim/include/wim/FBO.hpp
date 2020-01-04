@@ -53,7 +53,7 @@ namespace wim {
         void renderFramebufferToScreen() const;
 
         ///brief: Attemps to get the cube displayed at (x,y) in viewport. Returns true if successful, false otherwise.
-        bool readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const;
+        bool readCubeIndex(Point3Uint & position, const GLint vX, const GLint vY) const;
 
     private:
         void init(const SizeInt nbDrawBuffers, const GLenum *listDrawBuffer);

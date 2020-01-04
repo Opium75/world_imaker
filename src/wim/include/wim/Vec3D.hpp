@@ -14,6 +14,8 @@
 #include "Exception.hpp"
 #include "Randomisable.hpp"
 
+#include <glm/ext.hpp>
+
 namespace wim
 
 {
@@ -32,6 +34,7 @@ namespace wim
         typedef glm::detail::tvec3<T, glm::highp> Coord;
         Coord _coord;
     public:
+        /* CONSTRUCTORS */
         TVec3D() = default;
         TVec3D(const Coord& coord) : _coord(coord) {};
         TVec3D(const T x, const T y, const T z) : _coord(x,y,z)
@@ -39,13 +42,12 @@ namespace wim
             //Constraining use of class to arithmetic types.
             static_assert(std::is_arithmetic<T>::value, "Vec3D used for arithmetics with float or int types.");
         };
+        constexpr TVec3D(const T list[3]) : _coord(list[0], list[1], list[2]) {}
         TVec3D(const TVec3D& vec) = default;
         //Casting one type to the other
         template<typename U>
-        TVec3D(const TVec3D<U>& vec) : _coord(static_cast<Coord>(vec._coord))
-        {
-
-        }
+        TVec3D(const TVec3D<U>& vec) : _coord(static_cast<Coord>(vec._coord)) {}
+        /* */
         ~TVec3D() = default;
 
         inline T& x() {return _coord.x;}
@@ -104,8 +106,8 @@ namespace wim
             return TVec3D(x, y, z);
         }
 
+        std::string toString() const {return glm::to_string(_coord);}
         friend inline std::ostream& operator<<(std::ostream& out, const TVec3D<T>& vec) {return out << vec._coord;}
-
     };
 
 

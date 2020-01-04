@@ -49,7 +49,6 @@ namespace wim
         if( index >= _listDirection.size() )
             throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Directional light at index does not exist." );
         _listDirection.erase(_listDirection.begin()+index);
-        this->notify();
     }
 
     void LightManager::CBsetAmbiant(const AmbiantLight &ambiant)
@@ -67,7 +66,6 @@ namespace wim
         {
             throw;
         }
-        this->notify();
     }
 
     void LightManager::addPoint(const PointLight& pLight)
@@ -80,7 +78,6 @@ namespace wim
         {
             throw;
         }
-        this->notify();
     }
     void LightManager::removePoint(const SizeInt index)
     {
@@ -92,7 +89,6 @@ namespace wim
         {
             throw;
         }
-        this->notify();
     }
     void LightManager::removeDir(const SizeInt index)
     {
@@ -102,13 +98,11 @@ namespace wim
         catch (Exception &e) {
             throw;
         }
-        this->notify();
     }
 
     void LightManager::setAmbiant(const AmbiantLight &ambiant)
     {
         this->CBsetAmbiant(ambiant);
-        this->notify();
     }
 
     AmbiantLight AmbiantLight::Random()

@@ -25,6 +25,7 @@ namespace wim
     static constexpr const char* UNI_BLOCK_MATERIAL_NAME = "bMaterial";
     //BASE TEXTURE
     static constexpr const char* UNI_LOC_BASETEXTURE_NAME = "uBaseTexture";
+    //cube index for selection
     static constexpr const char* UNI_LOC_CUBEINDEX_NAME = "uCubeIndex";
     //FRAMEBUFFER TEXTURE
     static constexpr const char* UNI_LOC_FRAMEBUFFERTEXTURE_NAME = "uFramebuffer";

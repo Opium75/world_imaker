@@ -57,20 +57,19 @@ namespace wim
     void Uniform::localise(const GLuint programme, const char *uniAttrName)
     {
         _id = glGetUniformLocation(programme, uniAttrName);
-        /* if( _id == -1)
+
+        if( _id == -1)
          {
+            /*
             throw Exception(ExceptCode::ILLIGAL, 1,
                              std::string("In programme #") + std::to_string(programme) +
                              std::string(" Required uniform not found: ") + uniAttrName);
-         }*/
+             */
+         }
     }
 
-    void Uniform::updateTexture(const GLuint ito) const
-    {
-        glUniform1i(_id, ito);
-    }
 
-    void Uniform::updateCubeIndex(const Anchor& anchor) const
+    void Uniform::updateCubeIndex(const Point3Uint& anchor) const
     {
         glUniform3uiv(_id,
                 1,

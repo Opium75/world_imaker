@@ -51,7 +51,10 @@ namespace wim
         void processKeyboardUp(const SDL_Event& e) const;
         void processScene(const SDL_Event& e) const;
         void processCursor(const SDL_Event& e) const;
+        void processCursorMoveKeyboard(const SDL_Event& e) const;
+        void processCursorMoveMouse(const SDL_Event& e) const;
         void processSelect(const SDL_Event& e) const;
+        void processCursorAction(const SDL_Event &e) const;
 
         void processMouseMotion(const SDL_Event& e) const;
         void processMouseWheel(const SDL_Event& e) const;
@@ -64,7 +67,7 @@ namespace wim
 
         void getRelativePosMouse(GLfloat& xRel, GLfloat& yRel) const;
 
-        bool readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const;
+        bool readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const;
 
         inline bool isRotating() const {return this->isMouseButtonPressed(SDL_BUTTON_MIDDLE);}
 

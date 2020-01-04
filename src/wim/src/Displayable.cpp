@@ -8,6 +8,29 @@ namespace wim
 {
     ListITOPtr Displayable::_textures(nullptr);
 
+    Renderable::Renderable(const Displayable& object, const Anchor& anchor, const FloatType rotX, const FloatType rotY) :
+        _objectPtr(&object), _anchor(anchor), _rotX(rotX), _rotY(rotY)
+    {
+
+    }
+
+    Renderable::~Renderable()
+    {
+        //We do NOT delete the displayable object
+    }
+
+
+    FloatType Renderable::getRotX() const
+    {
+        return _rotX;
+    }
+
+
+    FloatType Renderable::getRotY() const
+    {
+        return _rotY;
+    }
+
     const ITO& Displayable::ito() const
     {
         if( _textureIndex >= _textures->size())
@@ -26,16 +49,18 @@ namespace wim
         return this->getDisplayPattern() == DisplayPattern::TEXTURED_CUBE;
     }
 
-    bool Displayable::isWireframe() const
-    {
-        return this->getDisplayPattern() == DisplayPattern::WIREFRAME_CUBE;
-    }
 
     bool Displayable::isInForeground() const
     {
             //Only the cursor will be in the foreground
             //so same as wireframe
-            return this->isWireframe();
+            return this->getDisplayPattern() == DisplayPattern::WIREFRAME_CUBE;
+    }
+
+    bool Displayable::isHidden() const
+    {
+        //The squads at the base of the CubeStacks will not be visible.
+        return this->getDisplayPattern() == DisplayPattern::HIDDEN_QUAD;
     }
 
     void Displayable::linkTextures(const ListITOPtr& textures)
@@ -43,13 +68,13 @@ namespace wim
         _textures = textures;
     }
 
-    const Material& Renderable::getMaterial() const {return _objectPtr->getMaterial();}
+    const Material& Renderable::material() const {return _objectPtr->material();}
     DisplayPattern Renderable::getDisplayPattern() const {return _objectPtr->getDisplayPattern();}
-    const Anchor& Renderable::getAnchor() const {return _anchor;}
+    const Anchor& Renderable::anchor() const {return _anchor;}
     const ITO& Renderable::ito() const {return _objectPtr->ito();}
 
     bool Renderable::isTextured()  const {return  _objectPtr->isTextured();}
-    bool Renderable::isWireframe()  const {return  _objectPtr->isWireframe();}
     bool Renderable::isInForeground()  const {return  _objectPtr->isInForeground();}
+    bool Renderable::isHidden()  const {return  _objectPtr->isHidden();}
 
 }

@@ -8,6 +8,107 @@
 
 namespace wim
 {
+
+    static constexpr const FloatType DEFAULT_CURSOR_COLOUR[] = {1.f, 0.f, 1.f};
+
+
+
+    Cursor::Cursor(const WorldPtr& world):
+        Displayable(Colour(DEFAULT_CURSOR_COLOUR)), _world(world),
+        _selection(std::make_unique<Selection>())
+    {
+
+    }
+
+    bool Cursor::getHoveredCubePtr(CubePtr& cubePtr) const
+    {
+        return _world->findCube(cubePtr, _position);
+
+    }
+
+    void Cursor::selectHoveredCube() const
+    {
+        CubePtr cubePtr;
+        SelectablePtr selectablePtr;
+        if( this->getHoveredCubePtr(cubePtr) )
+        {
+            selectablePtr = cubePtr;
+            _selection->select( selectablePtr);
+        }
+    }
+
+    void Cursor::deselectHoveredCube() const
+    {
+        CubePtr cubePtr;
+        SelectablePtr selectablePtr;
+        if( this->getHoveredCubePtr(cubePtr) )
+        {
+            selectablePtr = cubePtr;
+            _selection->deselect( selectablePtr);
+        }
+    }
+
+    void Cursor::moveSelectedCube() const
+    {
+        CubePtr cubePtr;
+        //Only if there is a single cube selected
+        if( _selection->getNumber() == 1 )
+        {
+            _world->swapSpaces(_position, _selection->selected(0)->position());
+            //deselecting.
+            _selection->deselect(0);
+        }
+    }
+
+    void Cursor::addHoveredCube(const Cube& cube) const
+    {
+        if( !this->isOccupied(_position) )
+        {
+            _world->add(cube, _position);
+        }
+    }
+
+    void Cursor::eraseHoveredCube() const
+    {
+        if( this->isOccupied(_position) )
+        {
+            _world->erase(_position);
+        }
+    }
+
+    void Cursor::extrudeHoveredCube() const
+    {
+        if( !this->isHoveredHigherStackEmpty() )
+            _world->extrude(_position);
+    }
+
+    void Cursor::digHoveredCube() const
+    {
+        if( !this->isHoveredHigherStackEmpty() )
+            _world->dig(_position);
+    }
+
+    bool Cursor::isOccupied(const Point3Uint& position) const
+    {
+        return _world->isOccupied(position);
+    }
+
+    DisplayPattern Cursor::getDisplayPattern() const
+    {
+        return DisplayPattern::WIREFRAME_CUBE;
+    }
+
+    bool Cursor::isHoveredHigherStackEmpty() const
+    {
+       return _world->isHigherStackEmpty(_position.x(), _position.y(), _position.z());
+    }
+
+
+    bool Cursor::isHoveredLowerStackEmpty() const
+    {
+        return _world->isLowerStackEmpty(_position.x(), _position.y(), _position.z());
+    }
+
     void Cursor::setX(const XUint x)
     {
         _position.x() = std::min(x, this->getWorldWidth()-1);
@@ -64,8 +165,20 @@ namespace wim
         return isPositionValid(position.x(), position.z());
     }
 
-    const Anchor& Cursor::getPosition() const
+    void Cursor::clearSelected() const
+    {
+        _selection->clearSelected();
+    }
+    void Cursor::clearDeleted() const
+    {
+        _selection->clearDeleted();
+    }
+
+    const Point3Uint& Cursor::getPosition() const
     {
         return _position;
     }
+
+
+
 }

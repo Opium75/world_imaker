@@ -13,7 +13,6 @@
 
 #include "Displayable.hpp"
 #include "Model.hpp"
-#include "Listener.hpp"
 
 #include "PatternManager.hpp"
 #include "ShaderManager.hpp"
@@ -51,7 +50,6 @@ namespace wim
 
         void bindShaders() const;
 
-
         void addToStacks(const Renderable& item);
 
         const LightManagerPtr& lightManager() const;
@@ -59,7 +57,7 @@ namespace wim
 
         UniformMatrix getCameraViewMatrix() const;
 
-        bool readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const;
+        bool readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const;
 
         ///brief: render Displayable elements in stack, with respect to active Camera, lighting, and Shaders
         void render();
@@ -67,21 +65,21 @@ namespace wim
         SizeInt getStackIndex(const Renderable& item) const;
         void addToStack(const SizeInt index, const Renderable& item);
         void renderStack(RenderingStack& stack, const UniformMatrix& ProjMatrix);
+        void renderStackSelected(RenderingStack& stack, const UniformMatrix& ProjMatrix);
 
         void renderFirstPass();
         void renderSecondPass();
 
-        UniformMatrix getElementModelViewMatrix(const Renderable& item);
+        UniformMatrix getElementModelViewMatrix(const Renderable& item) const;
         UniformMatrix getProjectionMatrix() const;
 
 
-        void updateMaterial(const Renderable& item);
-        void updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix );
+        void updateItem(const Renderable& item, const UniformMatrix& ProjMatrix) const;
+        void updateMaterial(const Renderable& item) const;
+        void updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix) const;
         void updateLights(const UniformMatrix& View) const;
         void updateFramebuffer() const;
         void updateCubeIndex(const Renderable& item) const;
-
-
 
         void drawItem(const Renderable& item) const;
         void drawFramebuffer() const;

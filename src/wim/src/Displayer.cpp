@@ -16,23 +16,28 @@ namespace wim {
 
     }
 
-    void Displayer::display(const Cube &cube, const XUint x, const YUint y, const ZUint z) const
+    void Displayer::display(const Cube &cube) const
     {
-        this->addToRenderingStacks( cube, Anchor(x,y,z) );
+        Anchor anchor = Anchor(cube.position());
+        this->addToRenderingStacks( cube, anchor);
+
     }
 
-    void Displayer::display(const CubeFloor &cubeFloor, const XUint x, const ZUint z) const
+    void Displayer::display(const CubeFloor &cubeFloor) const
     {
-        const YUint y = cubeFloor.floor();
-        this->display(cubeFloor.cube(), x,y,z);
+        this->display(cubeFloor.cube());
     }
 
-    void Displayer::display(const CubeStack &cubeStack, const XUint x, const ZUint z) const
+    void Displayer::display(const CubeStack &cubeStack) const
     {
         for( auto& cubeFloor : cubeStack.stack() )
         {
-            this->display(cubeFloor, x, z);
+            this->display(cubeFloor);
         }
+        /* The base of each stack should be selectable by mouse,
+         * So adding an invisible quad at the bottom.
+         */
+        this->addToRenderingStacks(cubeStack.base(), cubeStack.x(),cubeStack.z());
     }
 
     void Displayer::display(const CubeWorld &world) const
@@ -44,7 +49,7 @@ namespace wim {
         {
             for(ZUint z=0; z<length; ++z)
             {
-                this->display(world(x,z), x, z);
+                this->display(world(x,z));
             }
         }
     }
@@ -52,6 +57,15 @@ namespace wim {
     void Displayer::display(const Cursor& cursor) const
     {
         this->addToRenderingStacks(cursor, cursor.getPosition());
+        //Rendering as a selected element, which is a cursor
+        for( const auto& selected : cursor.selection()->selected() )
+        {
+            if( !selected->isDeleted() )
+            {
+              //  std::cout << "Coucou " << selected->position() << std::endl;
+                this->addToRenderingStacks(*selected, Anchor(selected->position()));
+            }
+        }
     }
 
     void Displayer::displayWidgets() const
@@ -89,8 +103,22 @@ namespace wim {
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
 
-    bool Displayer::readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const
+    bool Displayer::readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const
     {
         return _renderer->readCubeIndex(position, vX, vY);
     }
+
+
+    void Displayer::addToRenderingStacks(const Displayable &object, const Anchor &anchor, const FloatType rotX, const FloatType rotY) const
+    {
+        _renderer->addToStacks(Renderable(object, anchor, rotX, rotY));
+    }
+
+
+    void Displayer::addToRenderingStacks(const BaseQuad &baseQuad, const XUint x, const ZUint z) const
+    {
+        _renderer->addToStacks(baseQuad.getRenderable(x,z));
+    }
+
+
 }

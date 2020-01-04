@@ -13,6 +13,21 @@ namespace wim {
 
     Application::ControllerPtr Application::_ctrl(nullptr);
 
+    void Application::init(const char* appPath, const XUint worldWidth, const YUint worldLength)
+    {
+        if( _ctrl )
+            throw Exception(ExceptCode::ILLIGAL, 1, "Application already initialised.");
+        _ctrl = ControllerPtr(new MainController(appPath, worldWidth, worldLength));
+    }
+
+    void Application::run()
+    {
+        if( !_ctrl )
+            throw Exception(ExceptCode::ILLIGAL, 1, "Trying to run the application before initialisation.");
+        else
+            _ctrl->runApp();
+    }
+
     MainController::MainController(const char* appPath, const XUint worldWidth, const YUint worldLength):
             _dispCtrl(),
             _compCtrl(),
@@ -26,7 +41,8 @@ namespace wim {
 
         _interface = std::make_unique<Interface>(_model, _displayer);
         //random world for starters
-        *_model->world() = CubeWorld::Random(worldWidth, worldLength);
+        //*_model->world() = CubeWorld::Random(worldWidth, worldLength);
+        *_model->world() = CubeWorld(worldWidth, worldLength);
 
     }
 

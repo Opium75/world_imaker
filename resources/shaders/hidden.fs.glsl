@@ -2,7 +2,10 @@
 
 in vec3 vVertexPosition;
 
-out vec3 fFragColour;
+//This time, we only care about selection
+layout(location = 1) out uvec4 fCubeIndex;
+
+uniform uvec3 uCubeIndex;
 
 struct AmbiantLightData
 {
@@ -35,6 +38,9 @@ layout(std140) uniform bMaterial
 	MaterialData material;
 };
 
+
+uniform	samplerCube uBaseTexture;
+
 layout(std140) uniform bAmbiantLight
 {
 	AmbiantLightData ambiant;
@@ -59,6 +65,9 @@ layout(std430) buffer sLightNumber
 
 void main()
 {
-
-	fFragColour = material.colour;
+	//using the distance of the fragment to the camera as test
+	float fragDepth = gl_FragCoord.z;
+	//adding whether the fragment belongs to a cube as alpha parameter. -> 1 == true
+	bool isInCube = fragDepth > 0.0f;
+	fCubeIndex = uvec4(uCubeIndex, uint(isInCube));
 }

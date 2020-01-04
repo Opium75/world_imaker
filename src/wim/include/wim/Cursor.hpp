@@ -7,25 +7,29 @@
 
 #pragma once
 
-#include <memory>
 
 #include "Types.hpp"
 #include "Vec3D.hpp"
+
 #include "CubeWorld.hpp"
+
 #include "Selectable.hpp"
+#include "Selection.hpp"
 
 namespace wim
 {
+
+
+
     class Cursor : public Displayable
     {
     private:
-        Anchor _position;
+        Point3Uint _position;
         WorldPtr _world;
-        SelectablePtr _selected;
+        SelectionPtr _selection;
     public:
-        Cursor(const WorldPtr& world) : Displayable(), _world(world) {}
+        Cursor(const WorldPtr& world);
         ~Cursor() = default;
-
 
         void moveX(const XInt delta);
         void moveY(const YInt delta);
@@ -33,15 +37,36 @@ namespace wim
 
         void setPosition(const XUint x, const YUint y, const ZUint z);
         void setPosition(const Point3Uint& position);
-        const Anchor& getPosition() const;
+        const Point3Uint& getPosition() const;
 
         inline XUint getWorldWidth() const {return _world->getWidth();}
         inline YUint getWorldLength() const {return _world->getLength();}
 
-        DisplayPattern getDisplayPattern() const override
-        {
-            return DisplayPattern::WIREFRAME_CUBE;
-        }
+        inline const SelectionPtr& selection() const {return _selection;}
+
+        bool getHoveredCubePtr(CubePtr& cubePtr) const;
+        void selectHoveredCube() const;
+        void deselectHoveredCube() const;
+
+        void moveSelectedCube() const;
+
+        void clearSelected() const;
+        void clearDeleted() const;
+
+
+        void addHoveredCube(const Cube& cube) const;
+        void eraseHoveredCube() const;
+
+        void extrudeHoveredCube() const;
+        void digHoveredCube() const;
+
+
+        bool isOccupied(const Point3Uint& position) const;
+        bool isHoveredHigherStackEmpty() const;
+        bool isHoveredLowerStackEmpty() const;
+
+        DisplayPattern getDisplayPattern() const override;
+
     private:
         void setX(const XUint x);
         void setY(const YUint y);
@@ -49,6 +74,9 @@ namespace wim
 
         bool isPositionValid(const XUint x, const ZUint z) const;
         bool isPositionValid(const Point3Uint& position) const;
+
+
+
     };
 
     typedef std::unique_ptr<Cursor> CursorPtr;

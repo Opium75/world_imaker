@@ -83,7 +83,7 @@ namespace wim
     };
 
     //Shortcut for random scalar:
-    ///Brief; returns a single rnadom scalar in closed interval [lowest, heighest] following uniform distribution
+    ///Brief; returns a single random scalar in closed interval [lowest, heighest] following uniform distribution
     template <typename T>
     constexpr T RandomScalar(const T& lowest = static_cast<T>(0), const T& highest= static_cast<T>(1))
     {

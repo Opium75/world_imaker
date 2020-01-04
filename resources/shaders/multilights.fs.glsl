@@ -43,8 +43,6 @@ layout(std140) uniform bMaterial
 	MaterialData material;
 };
 
-
-
 layout(std140) uniform bAmbiantLight
 {
 	AmbiantLightData ambiant;
@@ -108,6 +106,7 @@ void main()
 		baseColour = texture(uBaseTexture, vTexCoords).rgb;
    	else
 	{
+		//using colour of the material
 		baseColour = material.colour;
 	}
 	fragColour = ambiantLighting(baseColour, ambiant);

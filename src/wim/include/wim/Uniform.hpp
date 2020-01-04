@@ -30,8 +30,7 @@ namespace wim
         inline GLuint id() const {return _id;}
 
         void localise(const GLuint programme, const char* uniAttrName);
-        void updateTexture(const GLuint ito ) const;
-        void updateCubeIndex(const Anchor& anchor) const;
+        void updateCubeIndex(const Point3Uint& anchor) const;
 
     };
     struct UBO

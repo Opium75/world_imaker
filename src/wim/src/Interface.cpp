@@ -50,7 +50,61 @@ namespace wim {
         }
     }
 
+
     void Interface::processCursor(const SDL_Event &e) const
+    {
+        //First, we clear the selection of any deleted item
+        this->cursor()->clearDeleted();
+        //
+        this->processCursorMoveKeyboard(e);
+        this->processSelect(e);
+        this->processCursorAction(e);
+    }
+
+    void Interface::processCursorAction(const SDL_Event &e) const
+    {
+        switch(e.key.keysym.sym)
+        {
+            case SDLK_RETURN:
+                //moving selected cube IF THERE IS ONLY ONE
+                this->cursor()->moveSelectedCube();
+                break;
+            case SDLK_INSERT:
+                this->cursor()->addHoveredCube(Cube::Random());
+                break;
+            case SDLK_DELETE:
+                this->cursor()->eraseHoveredCube();
+                break;
+            case SDLK_COLON:
+                this->cursor()->extrudeHoveredCube();
+                break;
+            case SDLK_EXCLAIM:
+                this->cursor()->digHoveredCube();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void Interface::processSelect(const SDL_Event &e) const
+    {
+        switch (e.key.keysym.sym)
+        {
+            case SDLK_SPACE:
+                this->cursor()->selectHoveredCube();
+                break;
+            case SDLK_BACKSPACE:
+                this->cursor()->deselectHoveredCube();
+                break;
+            case SDLK_ESCAPE:
+                this->cursor()->clearSelected();
+                break;
+            default:
+                break;
+        }
+    }
+
+    void Interface::processCursorMoveKeyboard(const SDL_Event &e) const
     {
         switch (e.key.keysym.sym)
         {
@@ -117,7 +171,7 @@ namespace wim {
         switch(e.button.button)
         {
             case SDL_BUTTON_LEFT:
-                this->processSelect(e);
+                this->processCursorMoveMouse(e);
                 break;
 
             default:
@@ -125,9 +179,9 @@ namespace wim {
         }
     }
 
-    void Interface::processSelect(const SDL_Event& e) const
+    void Interface::processCursorMoveMouse(const SDL_Event& e) const
     {
-        Anchor position;
+        Point3Uint position;
         GLint x,y;
         x = e.button.x;
         y = e.button.y;
@@ -149,7 +203,7 @@ namespace wim {
         SDL_Event e;
         while (this->pollEvent(e)) {
             //ImGui does its thing
-           // ImGui_ImplSDL2_ProcessEvent(&e);
+           ImGui_ImplSDL2_ProcessEvent(&e);
 
             switch (e.type) {
                 case SDL_QUIT :
@@ -229,7 +283,7 @@ namespace wim {
         _model->lightManager()->setAmbiant(light);
     }
 
-    bool Interface::readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const
+    bool Interface::readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const
     {
         return _displayer->readCubeIndex(position, vX, vY);
     }

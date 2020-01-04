@@ -27,7 +27,7 @@ namespace wim
 {
 
 
-    typedef Point3Uint Anchor;
+    typedef Point3D Anchor;
 
     typedef std::unique_ptr<glimac::SDLWindowManager> WindowManagerPtr;
     typedef glimac::SDLWindowManager::SDL_WindowPtr WindowPtr;

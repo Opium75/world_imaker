@@ -35,7 +35,7 @@ namespace wim
     private:
         ListITOPtr _itos;
         UBO _matrices, _material, _ambiantLight;
-        Uniform _baseTexture, _cubeIndex;
+        Uniform _baseTexture, _baseColour, _cubeIndex;
         SSBO _pointLights, _directionLights;
         SSBO _lightNumber;
         FBO _framebuffer;
@@ -50,7 +50,7 @@ namespace wim
         void updateMaterial(const Material& material, const bool isTextured) const;
         void updateLights(const LightManager& lights, const UniformMatrix& View ) const;
         void updateFramebuffer();
-        void updateCubeIndex(const Anchor& anchor) const;
+        void updateCubeIndex(const Point3Uint& anchor) const;
 
         void bindShaders(const ShaderManagerPtr& shaders) const;
         void localiseUniform(const ShaderSender& shader);
@@ -63,7 +63,7 @@ namespace wim
         void renderSceneToFramebuffer() const;
         void renderFramebufferToScreen() const;
 
-        bool readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const;
+        bool readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const;
 
     private:
         void updateAmbiantLight(const AmbiantLight& ambiant) const;

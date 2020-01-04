@@ -26,6 +26,7 @@ namespace wim
       FloatType _shininess;
     public:
         Material() = default;
+        Material(const Colour& colour) : _colour(colour) {}
         Material(const Colour& colour, const Vec3D& kD, const Vec3D& kS, const FloatType shininess) :
             _colour(colour), _kD(kD), _kS(kS), _shininess(shininess)
         {
@@ -34,11 +35,7 @@ namespace wim
         Material(const Material& material) = default;
         ~Material() = default;
 
-        Material& operator=(Material material)
-        {
-           std::swap(*this, material);
-           return *this;
-        }
+        Material& operator=(const Material& material) = default;
 
         inline const Colour& colour() const {return _colour;}
         inline Colour& colour() {return _colour;}

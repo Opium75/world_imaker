@@ -18,9 +18,9 @@
 
 namespace wim {
 
-    static const XUint DEFAULT_CUBEWORLD_WIDTH = 3;
-    static const YUint DEFAULT_CUBEWORLD_LENGTH = 3;
-    static const ZUint DEFAULT_CUBEWORLD_HEIGHT = 3;
+    static constexpr const XUint DEFAULT_CUBEWORLD_WIDTH = 3;
+    static constexpr const YUint DEFAULT_CUBEWORLD_LENGTH = 3;
+    static constexpr const ZUint DEFAULT_CUBEWORLD_HEIGHT = 3;
 
 
     //A structure for everything which needs computation

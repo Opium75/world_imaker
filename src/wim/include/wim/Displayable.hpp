@@ -11,6 +11,7 @@
 #include "Vec3D.hpp"
 #include "CommonDisplay.hpp"
 
+
 #include "ITO.hpp"
 #include "Material.hpp"
 
@@ -23,7 +24,8 @@ namespace wim
         COLOURED_CUBE,
         TEXTURED_CUBE,
         WIREFRAME_CUBE,
-        QUAD
+        TEXTURED_QUAD,
+        HIDDEN_QUAD
     };
 
     ///An interface for elements which will be shown in the world window
@@ -39,16 +41,18 @@ namespace wim
     public:
         //Should be overridden by every class, with one of the above Patterns
         virtual DisplayPattern getDisplayPattern() const = 0;
-        const Material& getMaterial() const {return _material;}
+        const Material& material() const {return _material;}
+        Material& material() {return _material;}
         const ITO& ito() const;
 
         static SizeInt getNumberTextures();
 
         bool isTextured() const;
-        bool isWireframe() const;
         bool isInForeground() const;
+        bool isHidden() const;
 
         static void linkTextures(const ListITOPtr& textures);
+
     };
 
     class Renderable
@@ -56,24 +60,21 @@ namespace wim
     protected:
         const Displayable* const _objectPtr;
         Anchor _anchor;
+        FloatType _rotX, _rotY;
     public:
-        Renderable(const Displayable& object, const Anchor& anchor) : _objectPtr(&object), _anchor(anchor)
-        {
+        Renderable(const Displayable& object, const Anchor& anchor, const FloatType rotX=0, const FloatType rotY=0);
+        ~Renderable();
 
-        }
-
-        ~Renderable()
-        {
-            //We do NOT delete the displayable object
-        }
-        const Material& getMaterial() const;
+        const Material& material() const;
         DisplayPattern getDisplayPattern() const;
-        const Anchor& getAnchor() const;
+        const Anchor& anchor() const;
+        FloatType getRotX() const;
+        FloatType getRotY() const;
         const ITO& ito() const;
 
         bool isTextured()  const;
-        bool isWireframe()  const;
         bool isInForeground()  const;
+        bool isHidden() const;
     };
 
 

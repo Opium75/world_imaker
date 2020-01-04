@@ -78,23 +78,34 @@ namespace wim
     {
         UniformMatrix ViewMatrix = getCameraViewMatrix(index);
         UniformMatrix MVMatrix, ModelMatrix;
+        ModelMatrix = glm::mat4(1.f);
         /* matching rotation around origin of World .
         * -> nothing to do
          */;
         //Position
         ModelMatrix = glm::translate(
-                glm::mat4(1.0f),
-                -glm::vec3(item.getAnchor().getCoord())
+                ModelMatrix,
+                -glm::vec3(item.anchor().getCoord())
         );
-        MVMatrix = ViewMatrix * ModelMatrix;
         //Scale
         /* nothing to do !
          *
         */
+        //
+        /* Self-rotation */
+        //Around X axis
+        ModelMatrix = glm::rotate(
+                ModelMatrix,
+               glm::radians(-item.getRotX()),
+                glm::vec3(1.f, 0.f, 0.f)
+        );
 
-        /* Self rotation
-         * nothing to do.
-         */
+        ModelMatrix = glm::rotate(
+                ModelMatrix,
+                glm::radians(-item.getRotY()),
+                glm::vec3(0.f, 1.f, 0.f)
+        );
+        MVMatrix = ViewMatrix * ModelMatrix;
         return MVMatrix;
     }
 

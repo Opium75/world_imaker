@@ -13,7 +13,7 @@ namespace wim
             _shaders(std::make_unique<ShaderManager>(appPath)),
             _textures(std::make_unique<TextureManager>(appPath)),
             _buffers(std::make_unique<BufferManager>(_textures, windows)),
-            _stacks(_shaders->getNumberProgrammes()-1)
+            _stacks(_shaders->getNumberProgrammes() - 1)
     {
        // this->subscribe(this->lightManager().get())
         this->bindShaders();
@@ -49,20 +49,53 @@ namespace wim
 
         this->updateLights(ViewMatrix);
         SizeInt programmeIndex=0;
-
         for( auto& stack : _stacks)
         {
-            if( programmeIndex == _stacks.size()-1 )
-            {
-                /* last programme, -> foreground
-                 * Ignoring depth -> clearing depth buffer
-                 */
-                glClear(GL_DEPTH_BUFFER_BIT);
-            }
             this->useProgramme(programmeIndex++);
-            this->renderStack(stack, ProjMatrix);
+            if( programmeIndex == _stacks.size() )
+            {
+              this->renderStackSelected(stack, ProjMatrix);
+            } else
+            {
+                this->renderStack(stack, ProjMatrix);
+            }
         }
     }
+
+    void SceneRenderer::renderStackSelected(RenderingStack& stack, const UniformMatrix& ProjMatrix)
+    {
+        /* last programme, -> foreground
+        * Ignoring depth -> clearing depth buffer
+        */
+        glClear(GL_DEPTH_BUFFER_BIT);
+        while(!stack.empty())
+        {
+            //getting newt element
+            Renderable item = stack.top();
+            stack.pop();
+            /* */
+
+            this->updateItem(item, ProjMatrix);
+            //Actual drawing of the element.
+            this->drawItem(item);
+        }
+    }
+    void SceneRenderer::updateItem(const Renderable& item, const UniformMatrix& ProjMatrix) const
+
+    {
+        //Computing Model
+        UniformMatrix MVMatrix = this->getElementModelViewMatrix(item);
+
+        //Sending Material and Matrices.
+        this->updateMaterial(item);
+        this->updateMVPNMatrices(MVMatrix, ProjMatrix);
+
+        //Sending the position of the item for selection through framebuffer
+        this->updateCubeIndex(item);
+
+    }
+
+
     void SceneRenderer::renderStack(RenderingStack& stack, const UniformMatrix& ProjMatrix)
     {
         //Finally, we compute the MVPN matrices for each element before sending it.
@@ -72,17 +105,7 @@ namespace wim
             Renderable item = stack.top();
             stack.pop();
             /* */
-
-           //Computing Model
-           UniformMatrix MVMatrix = this->getElementModelViewMatrix(item);
-
-           //Sending Material and Matrices.
-            this->updateMaterial(item);
-            this->updateMVPNMatrices(MVMatrix, ProjMatrix);
-
-            //Sending the position of the item for selection through framebuffer
-            this->updateCubeIndex(item);
-
+            this->updateItem(item, ProjMatrix);
             //Actual drawing of the element.
             this->drawItem(item);
         }
@@ -93,10 +116,7 @@ namespace wim
         _buffers->updateLights(*_model->lightManager(), View);
     }
 
-    void SceneRenderer::updateCubeIndex(const Renderable& item) const
-    {
-        _buffers->updateCubeIndex(item.getAnchor());
-    }
+
 
     void SceneRenderer::useProgramme(const SizeInt index) const
     {
@@ -106,19 +126,24 @@ namespace wim
 
     SizeInt SceneRenderer::getStackIndex(const Renderable& item) const
     {
-        if( item.isTextured() )
+        switch(item.getDisplayPattern())
         {
-            return 1;
+            case DisplayPattern::COLOURED_CUBE :
+                return 0;
+            case DisplayPattern::TEXTURED_CUBE :
+                return 1;
+            case DisplayPattern::WIREFRAME_CUBE :
+                //Last stack used for foreground rendering of selected elements as Wireframes
+                return _stacks.size() - 1;
+            case DisplayPattern::HIDDEN_QUAD :
+                return 2;
+            case DisplayPattern::TEXTURED_QUAD :
+                break;
+            default:
+                break;
         }
-        //Last stack used for foreground rendering;
-        else if( item.isInForeground() )
-        {
-            return _stacks.size()-1;
-        }
-        else //coloured
-        {
-            return 0;
-        }
+        throw Exception(ExceptCode::ILLIGAL, 1, "Invalid rendering stack index.");
+
     }
 
     void SceneRenderer::bindShaders() const
@@ -132,10 +157,12 @@ namespace wim
         this->addToStack(index, item);
     }
 
+
     void SceneRenderer::addToStack(const SizeInt index, const Renderable& item)
     {
         _stacks.at(index).push(item);
     }
+
 
     void SceneRenderer::toggleSceneToFramebuffer() const
     {
@@ -153,7 +180,7 @@ namespace wim
     }
 
 
-    bool SceneRenderer::readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const
+    bool SceneRenderer::readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const
     {
         return _buffers->readCubeIndex(position, vX, vY);
     }
@@ -167,19 +194,20 @@ namespace wim
         _patterns->drawFramebuffer(_buffers->getFramebuffer());
     }
 
-    inline UniformMatrix SceneRenderer::getElementModelViewMatrix(const Renderable& item){return this->cameraManager()->getElementModelViewMatrix(item);}
-    inline UniformMatrix SceneRenderer::getProjectionMatrix() const{return this->cameraManager()->getProjectionMatrix();}
+    UniformMatrix SceneRenderer::getElementModelViewMatrix(const Renderable& item) const{return this->cameraManager()->getElementModelViewMatrix(item);}
+    UniformMatrix SceneRenderer::getProjectionMatrix() const{return this->cameraManager()->getProjectionMatrix();}
 
 
-    inline void SceneRenderer::updateMaterial(const Renderable& item){return _buffers->updateMaterial(item.getMaterial(), item.isTextured());}
-    inline void SceneRenderer::updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix ){return _buffers->updateMatrices(MVMatrix, ProjMatrix);}
+    void SceneRenderer::updateMaterial(const Renderable& item) const {return _buffers->updateMaterial(item.material(), item.isTextured());}
+    void SceneRenderer::updateMVPNMatrices(const UniformMatrix& MVMatrix, const UniformMatrix& ProjMatrix) const{return _buffers->updateMatrices(MVMatrix, ProjMatrix);}
 
-    inline void SceneRenderer::updateFramebuffer() const {_buffers->updateFramebuffer();}
+    void SceneRenderer::updateFramebuffer() const {_buffers->updateFramebuffer();}
+    void SceneRenderer::updateCubeIndex(const Renderable& item) const {_buffers->updateCubeIndex(item.anchor());}
 
-    inline const LightManagerPtr& SceneRenderer::lightManager() const {return _model->lightManager();}
-    inline const CameraManagerPtr& SceneRenderer::cameraManager() const {return _model->cameraManager();}
+    const LightManagerPtr& SceneRenderer::lightManager() const {return _model->lightManager();}
+    const CameraManagerPtr& SceneRenderer::cameraManager() const {return _model->cameraManager();}
 
-    inline UniformMatrix SceneRenderer::getCameraViewMatrix() const {return this->cameraManager()->getCameraViewMatrix();}
+    UniformMatrix SceneRenderer::getCameraViewMatrix() const {return this->cameraManager()->getCameraViewMatrix();}
 
 
 }

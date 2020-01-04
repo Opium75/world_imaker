@@ -11,7 +11,6 @@
 #include "CommonDisplay.hpp"
 
 #include "Randomisable.hpp"
-#include "Listener.hpp"
 #include "Exception.hpp"
 
 #include "Types.hpp"
@@ -83,7 +82,7 @@ namespace wim {
     typedef std::vector<PointLight> ListPLight;
     typedef std::vector<DirectionLight> ListDLight;
 
-    class LightManager : public Listenable
+    class LightManager
     {
     public:
         /* We use vectors to store lights

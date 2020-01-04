@@ -22,6 +22,7 @@ namespace wim
         NULL_POINTER,
         END_OF_FILE,
         ILLIGAL,
+        BAD_POINTER,
         CATASTROPHIC_FAILURE
     };
 

@@ -108,7 +108,7 @@ namespace wim {
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
 
-    bool FBO::readCubeIndex(Anchor& position, const GLint vX, const GLint vY) const
+    bool FBO::readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const
     {
         GLuint data[4];
         glBindFramebuffer(GL_READ_FRAMEBUFFER,_id);
@@ -126,7 +126,7 @@ namespace wim {
             //If the specified pixel was not part of a cube.
             return false;
         }
-        position = Anchor(data[0], data[1], data[2]);
+        position = Point3Uint(data[0], data[1], data[2]);
         return true;
     }
 
