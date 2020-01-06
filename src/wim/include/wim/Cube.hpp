@@ -12,6 +12,7 @@
 #include "Selectable.hpp"
 #include "Material.hpp"
 
+
 namespace wim
 {
     ///Class for the structural Cube
@@ -32,6 +33,11 @@ namespace wim
         ~Cube() = default;
 
         Cube& operator=(const Cube& cube) = default;
+        //Two overloaded operators used in procedural generation.
+        Cube operator+(const Cube& cube) const;
+        Cube& operator+=(const Cube& cube);
+        Cube& operator*(const FloatType alpha);
+        Cube& operator*=(const FloatType alpha);
 
         void swap(Cube& cube);
 
@@ -42,7 +48,9 @@ namespace wim
         DisplayPattern getDisplayPattern() const override;
 
         friend std::ostream& operator<<(std::ostream& out, const Cube& cube);
+        //friend void interpolate(Cube& cube, const Point3Uint& position);
     };
+
     inline std::ostream& operator<<(std::ostream& out, const Cube& cube)
     {
         return out << cube._material;

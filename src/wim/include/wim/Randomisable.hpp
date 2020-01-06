@@ -89,12 +89,14 @@ namespace wim
     {
         //Function on scalar types only
         static_assert(std::is_scalar<T>::value);
-        T value;
+        T scalar;
         if constexpr ( std::is_floating_point<T>::value )
-            value = RealRandomisable<T>::Random(lowest, highest);
+            scalar = RealRandomisable<T>::Random(lowest, highest);
         else
-            value = IntRandomisable<T>::Random(lowest,highest);
-        return value;
+        {
+            scalar = IntRandomisable<T>::Random(lowest,highest);
+        }
+        return scalar;
     }
 
     //Setting static attributes of template classes.

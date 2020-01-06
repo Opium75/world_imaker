@@ -229,7 +229,7 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/BufferData.hpp
         src/wim/include/wim/Quad.hpp
         src/wim/include/wim/Selection.hpp
-        )
+        src/wim/include/wim/RadialFunctor.hpp src/wim/include/wim/OmegaFunctor.hpp src/wim/include/wim/ProceduralGenerator.hpp src/wim/src/Material.cpp src/wim/src/ProceduralGenerator.cpp)
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}
         )

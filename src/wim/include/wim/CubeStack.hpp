@@ -64,7 +64,6 @@ namespace wim
 
 
         static CubeFloor Random(const XUint x, const ZUint z, const FloorIndex min, const FloorIndex max);
-        static CubeFloor Random(const XUint x, const ZUint z, const FloorIndex max);
 
     };
 
@@ -124,7 +123,6 @@ namespace wim
         void swapSpaces(CubeStack& cubeStack, const FloorIndex f1, const FloorIndex f2);
 
         static CubeStack Random(const XUint x, const ZUint z, const size_t maxNbFloors, const FloorIndex min, const FloorIndex max);
-        static CubeStack Random(const XUint x, const ZUint z, const size_t maxNbFloors, const FloorIndex max);
 
         friend std::ostream& operator<<(std::ostream& out, const CubeStack& cubeStack);
 

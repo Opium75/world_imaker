@@ -14,13 +14,13 @@
 #include "Light.hpp"
 #include "CameraManager.hpp"
 #include "Cursor.hpp"
-
+#include "ProceduralGenerator.hpp"
 
 namespace wim {
 
-    static constexpr const XUint DEFAULT_CUBEWORLD_WIDTH = 3;
-    static constexpr const YUint DEFAULT_CUBEWORLD_LENGTH = 3;
-    static constexpr const ZUint DEFAULT_CUBEWORLD_HEIGHT = 3;
+    static constexpr XUint DEFAULT_CUBEWORLD_WIDTH = 3;
+    static constexpr YUint DEFAULT_CUBEWORLD_LENGTH = 3;
+    static constexpr ZUint DEFAULT_CUBEWORLD_HEIGHT = 3;
 
 
     //A structure for everything which needs computation
@@ -31,13 +31,15 @@ namespace wim {
         LightManagerPtr _lights;
         CameraManagerPtr _cameras;
         CursorPtr _cursor;
+        ProceduralGeneratorPtr _generator;
 
     public:
         Model() :
                 _world(std::make_shared<CubeWorld>()),
                 _lights(std::make_unique<LightManager>()),
                 _cameras(std::make_unique<CameraManager>()),
-                _cursor(std::make_unique<Cursor>(_world))
+                _cursor(std::make_unique<Cursor>(_world)),
+                _generator(std::make_unique<ProceduralGenerator>())
         {
 
         }

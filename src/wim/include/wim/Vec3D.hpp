@@ -83,18 +83,46 @@ namespace wim
         ///Returns the symmetric relative to the origin
         inline TVec3D operator-() const { return TVec3D( -_coord );}
 
+        TVec3D operator-(const TVec3D& vec) const
+        {
+            return *this + (-vec);
+        }
+
         TVec3D& operator*(const T alpha)
         {
             for (int i = 0; i < _coord.length(); ++i)
                 _coord[i] *= alpha;
             return *this;
         }
+        TVec3D& operator*=(const T alpha)
+        {
+            this->operator*(alpha);
+            return *this;
+        }
+
         TVec3D& operator/(const T alpha)
         {
             if (alpha == static_cast<T>(0))
                 throw Exception(ExceptCode::DOMAIN_ERROR, 1, "Trying to divide by O.");
             else
                 return (*this) * (1 / alpha);
+        }
+
+        template<typename D=T, SizeInt n=2>
+        D norm() const
+        {
+            D l = static_cast<D>(n);
+            return std::pow(
+                    std::pow(x(),l) + std::pow(y(),l) + std::pow(z(), l),
+                    1/l
+                    );
+        }
+
+        template<typename D=T, SizeInt n=2>
+        D distance(const TVec3D vec) const
+        {
+            TVec3D diff = this->operator-(vec);
+            return diff.norm<D, n>();
         }
 
         static TVec3D Random(const T lowest= static_cast<T>(-1), const T highest= static_cast<T>(1))

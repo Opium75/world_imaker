@@ -41,14 +41,14 @@ namespace  wim
         return (*this + c) / 2;
     }
 
-    Colour &Colour::operator*(const float alpha) {
+    Colour& Colour::operator*(const FloatType alpha) {
         for (int i = 0; i < _coord.length(); ++i)
 
             _coord[i] = colourValueFloat(_coord[i] * alpha);
         return *this;
     }
 
-    Colour &Colour::operator/(const float alpha) {
+    Colour& Colour::operator/(const FloatType alpha) {
         if (alpha == 0)
             throw Exception(ExceptCode::DOMAIN_ERROR, 1, "Trying to divide by O.");
         else

@@ -35,7 +35,6 @@ namespace wim
 
         }
         ~Randomiser() = default;
-        //todo ?
     };
 
 template <typename IntType>
@@ -46,11 +45,7 @@ template <typename IntType>
     private:
         RandomDistribution _distrib;
     public:
-        DefaultIntRandomiser() = default;
-        DefaultIntRandomiser(const IntType highest, const SeedUInt seed = RandomEngine::default_seed) : Randomiser(seed), _distrib(highest)
-        {
-            //int value > 0 checked by lib
-        }
+      //  DefaultIntRandomiser() = default;
         DefaultIntRandomiser(const IntType lowest, const IntType highest, const SeedUInt seed = RandomEngine::default_seed) : Randomiser(seed), _distrib(lowest, highest)
         {
 
@@ -63,7 +58,8 @@ template <typename IntType>
         {
             _distrib = RandomDistribution(lowest, highest);
         }
-        ///Returns random inr in [lowest, highest] according to distrib
+
+        ///Returns random int in [lowest, highest] according to distrib
         IntType operator()()
         {
             return _distrib(_engine);
@@ -79,11 +75,7 @@ template <typename RealType>
     private:
         RandomDistribution _distrib;
     public:
-        DefaultRealRandomiser() = default;
-        DefaultRealRandomiser(const RealType highest, const SeedUInt seed = RandomEngine::default_seed) : Randomiser(seed),  _distrib( highest)
-        {
-
-        }
+       // DefaultRealRandomiser() = default;
         DefaultRealRandomiser(const RealType lowest, const RealType highest, const SeedUInt seed = RandomEngine::default_seed) : Randomiser(seed), _distrib(lowest, highest)
         {
 

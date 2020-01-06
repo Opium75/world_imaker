@@ -71,7 +71,8 @@ namespace wim
         return insertFloor;
     }
 
-    FloorIndex CubeStack::insertFloor(const CubeFloor &cubeFloor, bool insertHigher) {
+    FloorIndex CubeStack::insertFloor(const CubeFloor &cubeFloor, bool insertHigher)
+    {
         return this->insertFloor(cubeFloor.cube(), cubeFloor.floor(), insertHigher);
     }
 
@@ -206,7 +207,6 @@ namespace wim
         }
        Cube cube;
        auto it = _stack.begin();
-
        while( it->floor() < floor)
        {
            if( it == _stack.end()-1)
@@ -217,17 +217,16 @@ namespace wim
            }
            ++it;
        }
-       while( it != _stack.end()-1 )
+       while( it != _stack.end() )
        {
            if( std::next(it)->floor() - it->floor() > 1)
            {
                 cube = it->cube();
-               _stack.insert(_stack.end()-1, CubeFloor(cube, this->x(), it->floor()+1, this->z()));
+               _stack.insert(std::next(it), CubeFloor(cube, this->x(), it->floor()+1, this->z()));
                 return;
            }
            ++it;
        }
-       _stack.insert(_stack.end(), CubeFloor(it->cube(), this->x(), it->floor()+1, this->z()));
     }
 
     void CubeStack::swapSpaces(CubeStack& cubeStack, const FloorIndex f1, const FloorIndex f2)
@@ -262,20 +261,17 @@ namespace wim
     CubeFloor CubeFloor::Random(const XUint x, const ZUint z, const FloorIndex min, const FloorIndex max)
     {
         FloorIndex floor;
-        floor = RandomScalar(min, max);
+        floor = RandomScalar<FloorIndex>(min, max);
         return CubeFloor(Cube::Random(), x, floor, z);
     }
 
-    CubeFloor CubeFloor::Random(const XUint x, const ZUint z, const FloorIndex max)
-    {
-        return CubeFloor::Random(x,z,0, max);
-    }
 
     CubeStack CubeStack::Random(const XUint x, const ZUint z, const SizeInt maxNbFloors, const FloorIndex min, const FloorIndex max)
     {
         CubeStack cubeStack(x,z);
         FloorIndex insertedFloor;
-        for (SizeInt i = 0; i < maxNbFloors; ++i) {
+        for (SizeInt i = 0; i < maxNbFloors; ++i)
+        {
             /* Since the floors are random
              * we might have multiple cubes at the same floor,
              * so we insert higher in this case.
@@ -288,10 +284,6 @@ namespace wim
         return cubeStack;
     }
 
-    CubeStack CubeStack::Random(const XUint x, const ZUint z, const SizeInt maxNbFloors, const FloorIndex max)
-    {
-        return CubeStack::Random(x,z,maxNbFloors, 0, max);
-    }
 
     //Under 300 lines: check.
 }
