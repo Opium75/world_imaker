@@ -190,7 +190,7 @@ namespace wim
             comparison = it->compareFloors(floor);
             if (comparison >= 0) //higher or on same floor
             {
-                _stack.erase(it);
+                _stack.erase(std::next(it));
                 return;
             }
             --it;
@@ -217,7 +217,7 @@ namespace wim
            }
            ++it;
        }
-       while( it != _stack.end() )
+       while( it != _stack.end()-1 )
        {
            if( std::next(it)->floor() - it->floor() > 1)
            {
@@ -227,6 +227,7 @@ namespace wim
            }
            ++it;
        }
+        _stack.insert(_stack.end(),CubeFloor(it->cube(), this->x(), it->floor()+1, this->z()));
     }
 
     void CubeStack::swapSpaces(CubeStack& cubeStack, const FloorIndex f1, const FloorIndex f2)

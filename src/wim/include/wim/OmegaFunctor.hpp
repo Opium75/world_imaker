@@ -24,10 +24,16 @@ namespace wim
     /** TEMPLATE ALIASES **/
     template<typename T>
     using VecPoint = Eigen::Matrix<Point<T>, 1, Eigen::Dynamic, Eigen::RowMajor>;
+    template<typename T>
+    using VecPointPtr = std::unique_ptr<VecPoint<T>>;
     template<typename D>
     using VecScalar=  Eigen::Matrix<D, 1, Eigen::Dynamic>;
+    template<typename D>
+    using VecScalarPtr = std::unique_ptr<VecScalar<D>>;
     template<class C>
-    using VecValues = Eigen::Matrix<C, 1, Eigen::Dynamic> ;
+    using VecValues = Eigen::Matrix<C, 1, Eigen::Dynamic>;
+    template<class C>
+    using VecValuesPtr = std::unique_ptr<VecValues<C>>;
 
     template<typename T, typename D>
     class OmegaSolver
@@ -71,24 +77,23 @@ namespace wim
     };
 
     template<class C, typename T, typename D>
-    class OmegaFunctor
+    class RBF
     {
     public:
         typedef Eigen::Array<D, 1, Eigen::Dynamic> ArrayScalar;
         typedef Eigen::Array<C, 1, Eigen::Dynamic> ArrayValues;
     private:
-        VecPoint<T> _points;
-        //VecScalar<D> _weights;
-        VecValues<C> _values;
+        VecPointPtr<T> _points;
+        VecValuesPtr<C> _values;
         RadialFactory<D> _factory;
         RadialFunctor<D> _phi;
         DistanceFunctor<T, D> _distance;
         OmegaSolver<T,D> _solver;
-        VecScalar<D> _omegas;
+        VecScalarPtr<D> _omegas;
     public:
-        OmegaFunctor() = default;
+        RBF() = default;
 
-        OmegaFunctor(const VecPoint<T>& points, const VecScalar<D> weights, const VecValues<C>& values, const RadialMethod method, const D epsilon= static_cast<T>(1)) :
+        RBF(const VecPointPtr<T>& points, const VecScalarPtr<D> weights, const VecValuesPtr<C>& values, const RadialMethod method, const D epsilon= static_cast<T>(1)) :
                 _points(points), _values(values), _factory(), _phi(_factory.makeRadial(method, epsilon)),
                 _distance(), _solver()
         {
@@ -119,15 +124,15 @@ namespace wim
     private:
         C interpolate(const Point<T>& position) const
         {
-            SizeInt n = _points.size();
-            ArrayScalar vecPhi = _solver.buildRadialVec(position, _points, _phi, _distance).array();
-            ArrayValues iValues = _values.array();
-            C result(iValues(0)*vecPhi(0)*_omegas(0));
+            SizeInt n = _points->size();
+            ArrayScalar vecPhi = _solver.buildRadialVec(position, *_points, _phi, _distance).array();
+            ArrayValues iValues = _values->array();
+            C result(iValues(0)*vecPhi(0)*(*_omegas)(0));
             for(SizeInt i=1; i<n; ++i)
             {
                 //C class needs to overload intern operator+ and scalar operator*
 
-                result += iValues(i)*vecPhi(i)*_omegas(i);
+                result += iValues(i)*vecPhi(i)*(*_omegas)(i);
             }
             return result;
         }
@@ -142,7 +147,7 @@ namespace wim
 
     };
     template<class C, typename T, typename D>
-    using OmegaFunctorPtr = std::unique_ptr<OmegaFunctor<C,T,D>>;
+    using RBFPtr = std::unique_ptr<RBF<C,T,D>>;
 }
 
 #endif //WORLD_IMAKER_OMEGAFUNCTOR_HPP

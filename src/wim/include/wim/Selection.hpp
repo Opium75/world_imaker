@@ -24,14 +24,18 @@ namespace wim
     {
     private:
         SelectableWeakPtr _objectWeak;
+        FloatType _weight;
     public:
-        Selected(SelectablePtr& object, const Colour& colour);
+        Selected(SelectablePtr& object, const FloatType weight, const Colour& colour);
         SelectablePtr object() const;
 
         const Point3Uint& position() const;
+        FloatType weight() const;
 
         bool isDeleted() const {return _objectWeak.expired();}
         DisplayPattern getDisplayPattern() const override;
+    private:
+        static Colour buildSelectedColour(const FloatType weight, const Colour& base);
     };
 
     typedef std::unique_ptr<Selected> SelectedPtr;
@@ -46,7 +50,7 @@ namespace wim
         Selection();
 
         SelectedPtr& selected(const SizeInt index);
-        const ListSelectedPtr& selected() const;
+        ///brief: returns pointer to selection cleared of all deleted selected items.
         ListSelectedPtr& selected();
 
         SizeInt getNumber() const {return _selected.size();}

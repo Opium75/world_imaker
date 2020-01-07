@@ -5,18 +5,17 @@
 #include "../include/wim/Selection.hpp"
 
 #include <algorithm>
-#include <functional>
+#include <cmath>
 
 namespace wim
 {
 
 
-    static constexpr const FloatType DEFAULT_SELECTION_COLOUR[] = {0.1f, 7.f, 8.f};
+    static constexpr FloatType DEFAULT_SELECTION_COLOUR[] = {0.9f, 0.9f, 0.1f};
 
-    Selected::Selected(SelectablePtr& object, const Colour& colour) :
-            Displayable(colour), _objectWeak(object)
+    Selected::Selected(SelectablePtr& object, const FloatType weight, const Colour& colour) :
+            Displayable(Selected::buildSelectedColour(weight,colour)), _objectWeak(object), _weight(weight)
     {
-
     }
 
     Selection::Selection() : _colour(DEFAULT_SELECTION_COLOUR) {}
@@ -41,6 +40,11 @@ namespace wim
     const Point3Uint& Selected::position() const
     {
         return this->object()->position();
+    }
+
+    FloatType Selected::weight() const
+    {
+        return this->_weight;
     }
 
 
@@ -92,7 +96,12 @@ namespace wim
 
     void Selection::addToList(SelectablePtr& selectablePtr)
     {
-        _selected.push_back(std::make_unique<Selected>(selectablePtr, _colour));
+        _selected.push_back(
+                std::make_unique<Selected>(
+                        selectablePtr,
+                        RandomScalar<FloatType>(-1000,1000),
+                         _colour)
+        );
     }
 
     void Selection::removeFromList(SelectablePtr& selectablePtr)
@@ -122,15 +131,22 @@ namespace wim
         return _selected.at(index);
     }
 
-    const ListSelectedPtr& Selection::selected() const
-    {
-        return _selected;
-    }
 
     ListSelectedPtr& Selection::selected()
     {
+        this->clearDeleted();
         return _selected;
     }
 
+
+    Colour Selected::buildSelectedColour(const FloatType weight, const Colour& base)
+    {
+        Colour c;
+        FloatType rate = std::atan(weight)/(std::sqrt(2)*2)+0.5;
+        c.r() = (1 - rate)*base.r();
+        c.g() = rate*base.g();
+        c.b() = base.b();
+        return c;
+    }
 
 }

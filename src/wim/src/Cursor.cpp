@@ -9,7 +9,7 @@
 namespace wim
 {
 
-    static constexpr const FloatType DEFAULT_CURSOR_COLOUR[] = {1.f, 0.f, 1.f};
+    static constexpr FloatType DEFAULT_CURSOR_COLOUR[] = {0.1f, 0.7f, 0.8f};
 
 
 
@@ -144,10 +144,6 @@ namespace wim
         if( isPositionValid(x,z) )
         {
             setX(x); setY(y); setZ(z);
-        }
-        else
-        {
-
         }
     }
 
