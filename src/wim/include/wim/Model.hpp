@@ -31,15 +31,13 @@ namespace wim {
         LightManagerPtr _lights;
         CameraManagerPtr _cameras;
         CursorPtr _cursor;
-        ProceduralGeneratorPtr _generator;
 
     public:
         Model() :
                 _world(std::make_shared<CubeWorld>()),
                 _lights(std::make_unique<LightManager>()),
                 _cameras(std::make_unique<CameraManager>()),
-                _cursor(std::make_unique<Cursor>(_world)),
-                _generator(std::make_unique<ProceduralGenerator>())
+                _cursor(std::make_unique<Cursor>(_world))
         {
 
         }

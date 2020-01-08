@@ -1,5 +1,5 @@
 //
-// Created by piptouque on 06/01/2020.
+// Created by piptouque on 06/06/2066.
 //
 
 #ifndef WORLD_IMAKER_PROCEDURALGENERATOR_HPP
@@ -10,15 +10,13 @@
 #include <memory>
 
 #include "Types.hpp"
-#include "OmegaFunctor.hpp"
+#include "RBF.hpp"
 
 #include "Cube.hpp"
 #include "Selection.hpp"
 
 namespace wim
 {
-    typedef RBF<Cube, XUint, FloatType> CubeRBF;
-    typedef RBFPtr<Cube, XUint, FloatType> CubeRBFPtr;
 
     class ProceduralGenerator
     {
@@ -26,12 +24,15 @@ namespace wim
         CubeRBFPtr _cubeRbf;
     public:
         ProceduralGenerator();
+        void build(const SelectionPtr& selection, const RadialMethod method);
 
+        CubeRBF& getCubeRBF() const;
 
-        void buildCubeRbf(CubeRBFPtr& cubeRbf, const SelectionPtr& selection) const;
+        void buildCubeRbf(CubeRBFPtr& cubeRbf, const SelectionPtr& selection, const RadialMethod method) const;
+        void setCubeRadialMethod(const RadialMethod method);
 
         template<class C, typename T, typename D>
-        void buildRbf(RBFPtr<C,T,D>& rbf, const SelectionPtr& selection) const
+        void buildRbf(RBFPtr<C,T,D>& rbf, const SelectionPtr& selection, const RadialMethod method) const
         {
             ListSelectedPtr& listSelected = selection->selected();
             VecPoint<T> points;
@@ -41,7 +42,7 @@ namespace wim
             this->loadPoints(points, listSelected);
             this->loadWeights(weights, listSelected);
             this->loadValues(values, listSelected);
-            rbf.reset(new RBF<C,T,D>());
+            rbf.reset(new RBF<C,T,D>(points, weights, values, method));
         }
 
         template<typename T>
@@ -67,7 +68,7 @@ namespace wim
             for( SizeInt i=0; i<(SizeInt)values.size(); ++i)
             {
                 //todo: find a way to handle Cubes as Selectables
-               // values(i) = *selected.at(i)->object();
+               values(i) = (C)*(selected.at(i)->object());
             }
         }
 

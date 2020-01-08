@@ -13,16 +13,19 @@
 
 #include "Types.hpp"
 #include "Exception.hpp"
-#include "Randomisable.hpp"
 #include "Cube.hpp"
 #include "Quad.hpp"
+
+
+#include "Randomisable.hpp"
+#include "RBF.hpp"
 
 namespace wim
 {
 
     /** I need to have yet another class
      * so as not to insert the index attribute in Cube.
-     * This class should offer a way to COMPARE the floors(étages)
+     * This class should provide a way to COMPARE the floors(étages)
      * of Cubes in a CubeStack
      */
     typedef YUint FloorIndex;
@@ -64,7 +67,6 @@ namespace wim
 
 
         static CubeFloor Random(const XUint x, const ZUint z, const FloorIndex min, const FloorIndex max);
-
     };
 
 
@@ -84,8 +86,7 @@ namespace wim
         CubeStack(const CubeStack& cubeStack) = default;
         ~CubeStack() = default;
 
-        Cube& topCube();
-        const Cube& topCube() const;
+        YUint getHeight() const;
 
         inline Stack& stack() {return _stack;}
         inline const Stack& stack() const {return _stack;}
@@ -122,7 +123,8 @@ namespace wim
 
         void swapSpaces(CubeStack& cubeStack, const FloorIndex f1, const FloorIndex f2);
 
-        static CubeStack Random(const XUint x, const ZUint z, const size_t maxNbFloors, const FloorIndex min, const FloorIndex max);
+        static CubeStack Random(const XUint x, const ZUint z, const FloorIndex maxNbFloors, const FloorIndex min, const FloorIndex max);
+        static CubeStack Procedural(const XUint x, const ZUint z, const FloorIndex nbFloors, const CubeRBF& rbf);
 
         friend std::ostream& operator<<(std::ostream& out, const CubeStack& cubeStack);
 

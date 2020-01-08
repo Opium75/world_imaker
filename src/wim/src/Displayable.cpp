@@ -4,6 +4,9 @@
 
 #include "../include/wim/Displayable.hpp"
 
+
+#include <utility>
+
 namespace wim
 {
     ListITOPtr Displayable::_textures(nullptr);
@@ -31,11 +34,22 @@ namespace wim
         return _rotY;
     }
 
+
+    SizeInt Displayable::textureIndex() const
+    {
+        //tpdp: bad, change this
+        return ((SizeInt)std::round(_textureIndexAcc))%getNumberTextures();
+    }
+
+
     const ITO& Displayable::ito() const
     {
-        if( _textureIndex >= _textures->size())
+        if( textureIndex() >= getNumberTextures())
+        {
+            std::cout << textureIndexAcc() << textureIndex() << getNumberTextures() << std::endl;
             throw Exception(ExceptCode::OUT_OF_RANGE,1,"Invalid index for ITO.");
-        return _textures->at(_textureIndex);
+        }
+        return _textures->at(textureIndex());
     }
 
 
@@ -59,7 +73,7 @@ namespace wim
 
     bool Displayable::isHidden() const
     {
-        //The squads at the base of the CubeStacks will not be visible.
+        //The squads at the base of the DisplayableStacks will not be visible.
         return this->getDisplayPattern() == DisplayPattern::HIDDEN_QUAD;
     }
 

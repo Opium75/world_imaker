@@ -28,18 +28,10 @@ namespace wim
         return 0;
     }
 
-    Cube &CubeStack::topCube() {
-        if (_stack.empty())
-            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Trying to access content of empty stack.");
-        else
-            return _stack.back().cube();
-    }
-
-    const Cube &CubeStack::topCube() const {
-        if (_stack.empty())
-            throw Exception(ExceptCode::OUT_OF_RANGE, 1, "Trying to access content of empty stack.");
-        else
-            return _stack.back().cube();
+    YUint CubeStack::getHeight() const
+    {
+        //Stack is sorted, so last element is highest
+        return _stack.empty() ? 0 : _stack.back().floor();
     }
 
 
@@ -190,7 +182,7 @@ namespace wim
             comparison = it->compareFloors(floor);
             if (comparison >= 0) //higher or on same floor
             {
-                _stack.erase(std::next(it));
+                _stack.erase(it);
                 return;
             }
             --it;
@@ -267,11 +259,11 @@ namespace wim
     }
 
 
-    CubeStack CubeStack::Random(const XUint x, const ZUint z, const SizeInt maxNbFloors, const FloorIndex min, const FloorIndex max)
+    CubeStack CubeStack::Random(const XUint x, const ZUint z, const FloorIndex maxNbFloors, const FloorIndex min, const FloorIndex max)
     {
         CubeStack cubeStack(x,z);
         FloorIndex insertedFloor;
-        for (SizeInt i = 0; i < maxNbFloors; ++i)
+        for (FloorIndex y=0; y<maxNbFloors; ++y)
         {
             /* Since the floors are random
              * we might have multiple cubes at the same floor,
@@ -286,5 +278,24 @@ namespace wim
     }
 
 
-    //Under 300 lines: check.
+    CubeStack CubeStack::Procedural(const XUint x, const ZUint z, const FloorIndex nbFloors, const CubeRBF &rbf)
+    {
+        CubeStack cubeStack(x,z);
+        Cube cube;
+        bool isOccupied;
+        for(FloorIndex y=0; y<nbFloors; ++y)
+        {
+            isOccupied = rbf(cube, Point3Uint(x,y,z));
+            if( isOccupied )
+            {
+                //If interpolation resulted in this cube being filled, insert it.
+                cubeStack.insertFloor(CubeFloor(cube, x, y, z), false);
+            }
+        }
+        return cubeStack;
+    }
+
+
+
+    //Under 300 lines: uncheck.
 }

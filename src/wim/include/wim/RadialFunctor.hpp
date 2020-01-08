@@ -44,6 +44,7 @@ namespace wim
     protected:
         D _epsilon;
     public:
+        RadialFunctor(const D epsilon= static_cast<D>(1)) : _epsilon(epsilon) {}
         virtual D operator()(const D distance) const {return distance;};
     };
 

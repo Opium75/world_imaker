@@ -16,6 +16,8 @@
 #include "Selectable.hpp"
 #include "Selection.hpp"
 
+#include "ProceduralGenerator.hpp"
+
 namespace wim
 {
 
@@ -27,6 +29,7 @@ namespace wim
         Point3Uint _position;
         WorldPtr _world;
         SelectionPtr _selection;
+        ProceduralGeneratorPtr _generator;
     public:
         Cursor(const WorldPtr& world);
         ~Cursor() = default;
@@ -40,7 +43,8 @@ namespace wim
         const Point3Uint& getPosition() const;
 
         inline XUint getWorldWidth() const {return _world->getWidth();}
-        inline YUint getWorldLength() const {return _world->getLength();}
+        inline YUint getWorldHeight() const {return _world->getHeight();}
+        inline ZUint getWorldLength() const {return _world->getLength();}
 
         inline const SelectionPtr& selection() const {return _selection;}
 
@@ -59,6 +63,8 @@ namespace wim
 
         void extrudeHoveredCube() const;
         void digHoveredCube() const;
+
+        void generateFromSelection(const RadialMethod method=RadialMethod::LINEAR);
 
 
         bool isOccupied(const Point3Uint& position) const;

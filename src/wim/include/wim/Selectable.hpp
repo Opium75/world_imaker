@@ -33,9 +33,6 @@ namespace wim
     };
 
 
-    typedef std::shared_ptr<Selectable> SelectablePtr;
-    typedef std::weak_ptr<Selectable> SelectableWeakPtr;
-
 }
 
 #endif //WORLD_IMAKER_SELECTABLE_HPP

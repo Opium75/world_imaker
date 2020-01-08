@@ -15,8 +15,8 @@ int main(int argc, char **argv) {
 
     } else
     {
-        worldWidth = 4;
-        worldLength = 4;
+        worldWidth = 10;
+        worldLength = 10;
     }
 
 

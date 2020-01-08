@@ -5,7 +5,6 @@
 #include "../include/wim/Cube.hpp"
 
 #include <utility>
-#include <cmath>
 
 namespace wim
 {
@@ -36,39 +35,32 @@ namespace wim
     Cube Cube::operator+(const Cube& cube) const
     {
         return Cube(this->material()+cube.material(),
-                    std::round((_textureIndex + cube._textureIndex)/2. )
+                    (this->textureIndexAcc() + cube.textureIndexAcc())/2.
                     );
     }
     Cube& Cube::operator+=(const Cube& cube)
     {
-        _material += cube.material();
-        _textureIndex = std::round((_textureIndex + cube._textureIndex)/2.);
+        this->material() += cube.material();
+        this->textureIndexAcc() = (this->textureIndexAcc() + cube.textureIndexAcc()/2.);
         return *this;
     }
 
     Cube& Cube::operator*(const FloatType alpha)
     {
-        _material *= alpha;
+        this->material() *= alpha;
         return *this;
     }
 
     Cube& Cube::operator*=(const FloatType alpha)
     {
-        _material *= alpha;
+        this->material() *= alpha;
         return *this;
     }
-/*
-    void interpolate(Cube& cube, const Point3Uint& position, const OmegaFunctor<Cube, XUint, FloatType>& rbf)
-    {
-       rbf(cube, position);
-
-    }
-    */
 
     Cube Cube::Random()
     {
-        SizeInt textureIndex;
-        textureIndex = RandomScalar<SizeInt>(0, Displayable::getNumberTextures()-1);
+        FloatType textureIndex;
+        textureIndex = RandomScalar<FloatType>(0, Displayable::getNumberTextures()-1);
         return Cube(Material::Random(),textureIndex);
 
     }
