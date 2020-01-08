@@ -8,13 +8,19 @@
 
 #include "Types.hpp"
 
+#include "Material.hpp"
+
 #include "Displayable.hpp"
 #include "Selectable.hpp"
-#include "Material.hpp"
+#include "RBF.hpp"
 
 
 namespace wim
 {
+
+    class Cube;
+    typedef RBF<Cube, XUint, FloatType> CubeRBF;
+    typedef RBFPtr<Cube, XUint, FloatType> CubeRBFPtr;
     ///Class for the structural Cube
     /*Will not be Displayed directly
     * But rather through the CubeStack class

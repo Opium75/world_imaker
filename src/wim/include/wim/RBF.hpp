@@ -23,15 +23,15 @@ namespace wim
 {
     /** TEMPLATE ALIASES **/
     template<typename T>
-    using VecPoint = Eigen::Matrix<Point<T>, 1, Eigen::Dynamic, Eigen::RowMajor>;
+    using VecPoint = Eigen::Matrix<Point<T>, Eigen::Dynamic, 1>;
     template<typename T>
     using VecPointPtr = std::unique_ptr<VecPoint<T>>;
     template<typename D>
-    using VecScalar=  Eigen::Matrix<D, 1, Eigen::Dynamic>;
+    using VecScalar=  Eigen::Matrix<D, Eigen::Dynamic,1>;
     template<typename D>
     using VecScalarPtr = std::unique_ptr<VecScalar<D>>;
     template<class C>
-    using VecValues = Eigen::Matrix<C, 1, Eigen::Dynamic>;
+    using VecValues = Eigen::Matrix<C, Eigen::Dynamic,1>;
     template<class C>
     using VecValuesPtr = std::unique_ptr<VecValues<C>>;
 
@@ -59,7 +59,6 @@ namespace wim
             /** Building matrix of distances  **/
             MatrixScalar M = this->buildRadialMatrix(points, phi, distance);
             /** Solving M*omegas = weights **/
-           // VecScalar<D> omegas(n);
             return M.householderQr().solve(weights);
 
         }
@@ -150,8 +149,8 @@ namespace wim
         bool isInterpolatedOccupied(const Point<T>& position) const
         {
            //occupation condition: sum > 0.
-           VecScalar<D> vecPhi = _solver.buildRadialVec(position, _points, _phi, _distance);
-           D result = _omegas.dot(vecPhi);
+           VecScalar<D> vecPhi = _solver.buildRadialVec(position, *_points, _phi, _distance);
+           D result = _omegas->dot(vecPhi);
            return result > 0;
         }
 

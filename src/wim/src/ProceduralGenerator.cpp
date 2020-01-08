@@ -17,10 +17,10 @@ namespace wim
         this->buildCubeRbf(_cubeRbf, selection, method);
     }
 
-     void ProceduralGenerator::apply(WorldPtr& world, const SizeInt maxHeight) const
-     {
-        
-     }
+    CubeRBF& ProceduralGenerator::getCubeRBF() const
+    {
+        return *_cubeRbf;
+    }
 
     void ProceduralGenerator::buildCubeRbf(CubeRBFPtr& cubeRbf, const SelectionPtr& selection, const RadialMethod method) const
     {

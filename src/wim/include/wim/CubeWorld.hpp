@@ -13,10 +13,13 @@
 #include <Eigen/Dense>
 
 #include "Types.hpp"
-#include "Randomisable.hpp"
 #include "TextureManager.hpp"
 #include "CubeStack.hpp"
 #include "Cube.hpp"
+
+
+#include "Randomisable.hpp"
+#include "ProceduralGenerator.hpp"
 
 namespace wim
 {
@@ -32,6 +35,7 @@ namespace wim
         CubeWorld(const XUint width, const ZUint length);
         inline XUint getWidth() const {return _matrix.rows();}
         inline ZUint getLength() const {return _matrix.cols();}
+        YUint getHeight() const;
 
         inline CubeStack& operator()(const XUint x, const ZUint z) {return _matrix(x,z);}
         inline const CubeStack& operator()(const XUint x, const ZUint z) const {return _matrix(x,z);}
@@ -55,8 +59,8 @@ namespace wim
 
         void swapSpaces(const Point3Uint &position1, const Point3Uint &position2);
 
-
-        static CubeWorld Random(const XUint width, const YUint length);
+        static CubeWorld Random(const XUint width, const ZUint length);
+        static CubeWorld Procedural(const XUint width, const YUint height, const ZUint length, const SelectionPtr& selection, ProceduralGeneratorPtr& generator, const RadialMethod method);
     };
 
     typedef std::shared_ptr<CubeWorld> WorldPtr;

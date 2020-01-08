@@ -4,6 +4,7 @@
 
 #include "../include/wim/CubeWorld.hpp"
 
+#include <algorithm>
 #include <utility>
 
 namespace wim
@@ -21,7 +22,18 @@ namespace wim
         }
     }
 
-
+    YUint CubeWorld::getHeight() const
+    {
+        YUint max = 0;
+        for(XUint x=0; x<this->getWidth(); ++x)
+        {
+            for(ZUint z=0; z<this->getLength(); ++z)
+            {
+                max = std::max(max, this->operator()(x,z).getHeight());
+            }
+        }
+        return max;
+    }
 
 
     Cube& CubeWorld::operator()(const XUint x, const YUint y, const ZUint z)
@@ -43,6 +55,13 @@ namespace wim
         return this->operator()(position.x(), position.y(), position.z());
     }
 
+
+
+    CubeWorld& CubeWorld::operator=(CubeWorld world)
+    {
+        std::swap(_matrix, world._matrix);
+        return *this;
+    }
 
     bool CubeWorld::findCube(CubePtr& cubePtr, const Point3Uint& position)
     {
@@ -114,9 +133,9 @@ namespace wim
     CubeWorld CubeWorld::Random(const XUint width, const ZUint length) {
         YUint height = (width + length) /2;
         CubeWorld world(width, length);
-        for (XUint x = 0; x < width; ++x)
+        for(XUint x = 0; x < width; ++x)
         {
-            for (ZUint z = 0; z < length; ++z)
+            for(ZUint z = 0; z < length; ++z)
             {
                 world(x, z) = CubeStack::Random(x,z, height, 0, height);
             }
@@ -124,10 +143,21 @@ namespace wim
         return world;
     }
 
-    CubeWorld& CubeWorld::operator=(CubeWorld world)
-    {
-        std::swap(_matrix, world._matrix);
-        return *this;
-    }
 
+    CubeWorld CubeWorld::Procedural(const XUint width, const YUint height, const ZUint length, const SelectionPtr& selection, ProceduralGeneratorPtr& generator, const RadialMethod method)
+    {
+        CubeWorld world(width, length);
+        //updating genrator with selection
+        generator->build(selection, method);
+        //getting generated RBF
+        CubeRBF &rbf = generator->getCubeRBF();
+        for(XUint x=0; x<width; ++x)
+        {
+            for(ZUint z=0; z<length; ++z)
+            {
+               world(x,z) = CubeStack::Procedural(x,z,height, rbf);
+            }
+        }
+        return world;
+    }
 }

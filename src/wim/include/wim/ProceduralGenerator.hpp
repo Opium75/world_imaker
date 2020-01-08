@@ -13,13 +13,10 @@
 #include "RBF.hpp"
 
 #include "Cube.hpp"
-#include "CubeWorld.hpp"
 #include "Selection.hpp"
 
 namespace wim
 {
-    typedef RBF<Cube, XUint, FloatType> CubeRBF;
-    typedef RBFPtr<Cube, XUint, FloatType> CubeRBFPtr;
 
     class ProceduralGenerator
     {
@@ -27,8 +24,9 @@ namespace wim
         CubeRBFPtr _cubeRbf;
     public:
         ProceduralGenerator();
-        void build(const SelectionPtr& selection, const RadialMethod method=RadialMethod::LINEAR);
+        void build(const SelectionPtr& selection, const RadialMethod method);
 
+        CubeRBF& getCubeRBF() const;
 
         void buildCubeRbf(CubeRBFPtr& cubeRbf, const SelectionPtr& selection, const RadialMethod method) const;
         void setCubeRadialMethod(const RadialMethod method);

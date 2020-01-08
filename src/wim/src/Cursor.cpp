@@ -14,8 +14,10 @@ namespace wim
 
 
     Cursor::Cursor(const WorldPtr& world):
-        Displayable(Colour(DEFAULT_CURSOR_COLOUR)), _world(world),
-        _selection(std::make_unique<Selection>())
+        Displayable(Colour(DEFAULT_CURSOR_COLOUR)),
+        _world(world),
+        _selection(std::make_unique<Selection>()),
+        _generator(std::make_unique<ProceduralGenerator>())
     {
 
     }
@@ -175,6 +177,10 @@ namespace wim
         return _position;
     }
 
+    void Cursor::generateFromSelection(RadialMethod method)
+    {
+       * _world = CubeWorld::Procedural(this->getWorldWidth(), this->getWorldHeight(), this->getWorldLength(),this->selection(), _generator, method);
+    }
 
 
 }

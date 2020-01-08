@@ -81,6 +81,9 @@ namespace wim {
             case SDLK_EXCLAIM:
                 this->cursor()->digHoveredCube();
                 break;
+            case SDLK_ASTERISK:
+                this->cursor()->generateFromSelection();
+                break;
             default:
                 break;
         }
