@@ -48,7 +48,7 @@ template <typename IntType>
       //  DefaultIntRandomiser() = default;
         DefaultIntRandomiser(const IntType lowest, const IntType highest, const SeedUInt seed = RandomEngine::default_seed) : Randomiser(seed), _distrib(lowest, highest)
         {
-
+            static_assert(std::is_integral<IntType>::value);
         }
         inline IntType getLowest() const {return _distrib.a();}
         inline IntType getHighest() const {return _distrib.b();}
@@ -78,7 +78,7 @@ template <typename RealType>
        // DefaultRealRandomiser() = default;
         DefaultRealRandomiser(const RealType lowest, const RealType highest, const SeedUInt seed = RandomEngine::default_seed) : Randomiser(seed), _distrib(lowest, highest)
         {
-
+            static_assert(std::is_floating_point<RealType>::value);
         }
         inline RealType getLowest() const {return _distrib.a();}
         inline RealType getHighest() const {return _distrib.b();}
