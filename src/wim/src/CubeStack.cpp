@@ -190,7 +190,7 @@ namespace wim
             comparison = it->compareFloors(floor);
             if (comparison >= 0) //higher or on same floor
             {
-                _stack.erase(std::next(it));
+                _stack.erase(it);
                 return;
             }
             --it;

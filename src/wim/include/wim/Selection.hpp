@@ -16,13 +16,20 @@
 #include "Displayable.hpp"
 #include "Selectable.hpp"
 
+#include "Cube.hpp"
 
 namespace wim
 {
 
+    //Shadowing Selectable class for now
+    //We will simply use Cubes
+    typedef std::shared_ptr<Cube> SelectablePtr;
+    typedef std::weak_ptr<Cube> SelectableWeakPtr;
+
     class Selected : public Displayable
     {
     private:
+
         SelectableWeakPtr _objectWeak;
         FloatType _weight;
     public:

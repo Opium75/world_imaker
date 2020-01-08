@@ -12,20 +12,24 @@ namespace wim
 
     }
 
-    void ProceduralGenerator::buildCubeRbf(CubeRBFPtr& cubeRbf, const SelectionPtr& selection) const
+    void ProceduralGenerator::build(const SelectionPtr& selection, const RadialMethod method)
     {
-  /*      ListSelectedPtr& listSelected = selection->selected();
-        VecPoint<XUint> vecPoint;
-        VecScalar<FloatType> vecWeight;
-        VecValues<Cube> vecValues;
+        this->buildCubeRbf(_cubeRbf, selection, method);
+    }
 
-        this->loadPoints(cubeRbf->vecPoint(), listSelected);
+     void ProceduralGenerator::apply(WorldPtr& world, const SizeInt maxHeight) const
+     {
+        
+     }
 
-        this->loadPoints(vecPoint, listSelected);
-        this->loadWeights(vecWeight, listSelected);
-        this->loadValues(vecValues, listSelected);
-*/
-        this->buildRbf<Cube, XUint, FloatType>(cubeRbf, selection);
+    void ProceduralGenerator::buildCubeRbf(CubeRBFPtr& cubeRbf, const SelectionPtr& selection, const RadialMethod method) const
+    {
+        this->buildRbf<Cube, XUint, FloatType>(cubeRbf, selection, method);
+    }
+
+    void ProceduralGenerator::setCubeRadialMethod(const wim::RadialMethod method)
+    {
+        _cubeRbf->setRadialMethod(method);
     }
 
 }
