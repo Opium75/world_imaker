@@ -2,7 +2,9 @@ World Imaker
 ============
 #####Pierre THIEL et Yoann KOEPPEL
 
-###Lancement :
+###Dépendances :
+* OpenGL 4.3
+###Usage :
 ####Création de l'exécutable :
     - mkdir build
     - cd build/
