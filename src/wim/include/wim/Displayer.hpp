@@ -26,9 +26,9 @@
 namespace wim {
 
     //default values for the SDL display window.
-    static constexpr const float DEFAULT_DISP_WINDOW_WIDTH = 600.f;
-    static constexpr const float DEFAULT_DISP_WINDOW_HEIGHT = 400.f;
-    constexpr static const char* DISP_WINDOW_NAME = "wim";
+    static constexpr float DEFAULT_DISP_WINDOW_WIDTH = 600.f;
+    static constexpr float DEFAULT_DISP_WINDOW_HEIGHT = 400.f;
+    static constexpr const char* DISP_WINDOW_NAME = "wim";
     //Visitor class
     class Displayer {
     private:

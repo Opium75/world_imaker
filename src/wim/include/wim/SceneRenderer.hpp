@@ -26,10 +26,6 @@ namespace wim
      * At every display iteration.
      * It can then optimise calls to shaders.
      */
-    /* It is subscibed to Light Manager
-     * so that is can send lights to shaders
-     * only when there is a change
-     */
     class SceneRenderer //: protected Listener
     {
     public:

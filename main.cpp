@@ -13,8 +13,8 @@ int main(int argc, char **argv) {
         worldLength = std::atoi(argv[2]);
     } else
     {
-        worldWidth = 10;
-        worldLength = 10;
+        worldWidth = 6;
+        worldLength = 6;
     }
 
     wim::Application::init(appPath, worldWidth, worldLength);

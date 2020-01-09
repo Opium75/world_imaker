@@ -30,6 +30,7 @@ namespace wim
         WorldPtr _world;
         SelectionPtr _selection;
         ProceduralGeneratorPtr _generator;
+        RadialMethod _method;
     public:
         Cursor(const WorldPtr& world);
         ~Cursor() = default;
@@ -64,7 +65,12 @@ namespace wim
         void extrudeHoveredCube() const;
         void digHoveredCube() const;
 
-        void generateFromSelection(const RadialMethod method=RadialMethod::LINEAR);
+        void changeTextureHoveredCube() const;
+
+        void generateFromSelection();
+
+        void setRadialMethod(const RadialMethod method);
+        void setNextRadialMethod();
 
 
         bool isOccupied(const Point3Uint& position) const;

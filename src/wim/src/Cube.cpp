@@ -35,13 +35,13 @@ namespace wim
     Cube Cube::operator+(const Cube& cube) const
     {
         return Cube(this->material()+cube.material(),
-                    (this->textureIndexAcc() + cube.textureIndexAcc())/2.
+                    (this->textureIndex() + cube.textureIndex())/2
                     );
     }
     Cube& Cube::operator+=(const Cube& cube)
     {
         this->material() += cube.material();
-        this->textureIndexAcc() = (this->textureIndexAcc() + cube.textureIndexAcc()/2.);
+        this->setTextureIndex((this->textureIndex() + cube.textureIndex())/2);
         return *this;
     }
 
@@ -59,8 +59,8 @@ namespace wim
 
     Cube Cube::Random()
     {
-        FloatType textureIndex;
-        textureIndex = RandomScalar<FloatType>(0, Displayable::getNumberTextures()-1);
+        SizeInt textureIndex;
+        textureIndex = RandomScalar<SizeInt>(0, Displayable::getNumberTextures()-1);
         return Cube(Material::Random(),textureIndex);
 
     }

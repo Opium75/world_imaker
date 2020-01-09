@@ -4,9 +4,6 @@
 
 #include "../include/wim/Displayable.hpp"
 
-
-#include <utility>
-
 namespace wim
 {
     ListITOPtr Displayable::_textures(nullptr);
@@ -23,6 +20,21 @@ namespace wim
     }
 
 
+    void Displayable::setTextureIndex(const SizeInt textureIndex)
+    {
+        if( textureIndex >= getNumberTextures())
+        {
+            throw Exception(ExceptCode::OUT_OF_RANGE,1,"Invalid index for texture.");
+        }
+        _textureIndex = textureIndex;
+    }
+
+
+    void Displayable::setNextTexture()
+    {
+        _textureIndex = (_textureIndex+1)%getNumberTextures();
+    };
+
     FloatType Renderable::getRotX() const
     {
         return _rotX;
@@ -34,19 +46,10 @@ namespace wim
         return _rotY;
     }
 
-
-    SizeInt Displayable::textureIndex() const
-    {
-        //tpdp: bad, change this
-        return ((SizeInt)std::round(_textureIndexAcc))%getNumberTextures();
-    }
-
-
     const ITO& Displayable::ito() const
     {
         if( textureIndex() >= getNumberTextures())
         {
-            std::cout << textureIndexAcc() << textureIndex() << getNumberTextures() << std::endl;
             throw Exception(ExceptCode::OUT_OF_RANGE,1,"Invalid index for ITO.");
         }
         return _textures->at(textureIndex());
@@ -90,5 +93,6 @@ namespace wim
     bool Renderable::isTextured()  const {return  _objectPtr->isTextured();}
     bool Renderable::isInForeground()  const {return  _objectPtr->isInForeground();}
     bool Renderable::isHidden()  const {return  _objectPtr->isHidden();}
+
 
 }

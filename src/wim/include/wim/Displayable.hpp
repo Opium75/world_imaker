@@ -12,6 +12,8 @@
 #include "Vec3D.hpp"
 #include "CommonDisplay.hpp"
 
+#include "Randomisable.hpp"
+
 
 #include "ITO.hpp"
 #include "Material.hpp"
@@ -36,22 +38,23 @@ namespace wim
         Material _material;
     private:
         //Will cast the accumulator when needed instead of using an integer
-        FloatType _textureIndexAcc;
+        SizeInt _textureIndex;
     protected:
         static ListITOPtr _textures;
     protected:
         Displayable() = default;
-        Displayable(const Material &material, const FloatType textureIndex=0.) : _material(material), _textureIndexAcc(textureIndex) {}
+        Displayable(const Material &material, const SizeInt textureIndex=0) : _material(material), _textureIndex(textureIndex) {}
     public:
         //Should be overridden by every class, with one of the above Patterns
         virtual DisplayPattern getDisplayPattern() const = 0;
         const Material& material() const {return _material;}
         Material& material() {return _material;}
 
-        FloatType& textureIndexAcc() {return _textureIndexAcc;}
-        FloatType textureIndexAcc() const {return _textureIndexAcc;}
-        SizeInt textureIndex() const;
+        SizeInt textureIndex() const {return _textureIndex;};
         const ITO& ito() const;
+
+        void setTextureIndex(const SizeInt index);
+        void setNextTexture();
 
         static SizeInt getNumberTextures();
 

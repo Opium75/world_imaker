@@ -9,16 +9,10 @@ namespace wim {
 
     bool Interface::run() const {
         bool loop = true;
-        this->processState();
         loop = this->processEvents();
         return loop;
     }
 
-    void Interface::processState() const
-    {
-
-
-    }
 
     void Interface::processScene(const SDL_Event &e) const {
         SizeInt width, length;
@@ -30,6 +24,15 @@ namespace wim {
             case SDLK_m:
                 //adding new directional light
                 this->addDirectionLight(DirectionLight::Random());
+                break;
+            case SDLK_9:
+                //removing point light
+                this->removePointLight(0);
+
+                break;
+            case SDLK_0:
+                //removing directional light
+                this->removeDirectionLight(0);
                 break;
 
             case SDLK_o:
@@ -70,18 +73,31 @@ namespace wim {
                 this->cursor()->moveSelectedCube();
                 break;
             case SDLK_INSERT:
+                //CUBE ADD
                 this->cursor()->addHoveredCube(Cube::Random());
                 break;
             case SDLK_DELETE:
+                //CUBE ERASE
                 this->cursor()->eraseHoveredCube();
                 break;
             case SDLK_COLON:
+                //CUBE EXTRUDE
                 this->cursor()->extrudeHoveredCube();
                 break;
             case SDLK_EXCLAIM:
+                //CUBE DIG
                 this->cursor()->digHoveredCube();
                 break;
+            case SDLK_TAB:
+                //CUBE CHANGE TEXTURE
+                this->cursor()->changeTextureHoveredCube();
+                break;
+            case SDLK_DOLLAR:
+                //GENERATION CHANGE RADIAL METHOD
+                this->cursor()->setNextRadialMethod();
+                break;
             case SDLK_ASTERISK:
+                //PROCEDURAL GENERATION
                 this->cursor()->generateFromSelection();
                 break;
             default:
@@ -161,7 +177,7 @@ namespace wim {
 
     void Interface::processMouseWheel(const SDL_Event& e) const
     {
-        int zoomDir = e.wheel.y;
+        int zoomDir = -e.wheel.y;
         if( zoomDir )
         {
             this->zoom(zoomDir);
@@ -176,7 +192,6 @@ namespace wim {
             case SDL_BUTTON_LEFT:
                 this->processCursorMoveMouse(e);
                 break;
-
             default:
                 break;
         }
@@ -248,6 +263,12 @@ namespace wim {
         yRel = (mousePos.y - windowHeight/2)/(GLfloat)windowHeight;
     }
 
+
+    bool Interface::isRotating() const
+    {
+        return this->isMouseButtonPressed(SDL_BUTTON_MIDDLE);
+    }
+
     void Interface::zoom(const GLint zoomDir) const
     {
         _displayer->getCameraManagerPtr()->zoom(zoomDir);
@@ -274,6 +295,30 @@ namespace wim {
         try
         {
             _model->addDirectionLight(light);
+        }
+        catch( Exception& e )
+        {
+            std::cout << e.what() << std::endl;
+        }
+    }
+
+    void Interface::removePointLight(const wim::SizeInt index) const
+    {
+        try
+        {
+            _model->removePointLight(index);
+        }
+        catch( Exception& e )
+        {
+            std::cout << e.what() << std::endl;
+        }
+    }
+
+    void Interface::removeDirectionLight(const wim::SizeInt index) const
+    {
+        try
+        {
+            _model->removeDirectionLight(index);
         }
         catch( Exception& e )
         {

@@ -17,7 +17,8 @@ namespace wim
         Displayable(Colour(DEFAULT_CURSOR_COLOUR)),
         _world(world),
         _selection(std::make_unique<Selection>()),
-        _generator(std::make_unique<ProceduralGenerator>())
+        _generator(std::make_unique<ProceduralGenerator>()),
+        _method(RadialMethod::LINEAR)
     {
 
     }
@@ -81,13 +82,27 @@ namespace wim
     void Cursor::extrudeHoveredCube() const
     {
         if( !this->isHoveredHigherStackEmpty() )
+        {
             _world->extrude(_position);
+        }
     }
 
     void Cursor::digHoveredCube() const
     {
         if( !this->isHoveredHigherStackEmpty() )
+        {
             _world->dig(_position);
+        }
+    }
+
+
+    void Cursor::changeTextureHoveredCube() const
+    {
+        CubePtr cubePtr;
+        if( this->getHoveredCubePtr(cubePtr))
+        {
+            cubePtr->setNextTexture();
+        }
     }
 
     bool Cursor::isOccupied(const Point3Uint& position) const
@@ -177,9 +192,15 @@ namespace wim
         return _position;
     }
 
-    void Cursor::generateFromSelection(RadialMethod method)
+    void Cursor::generateFromSelection()
     {
-       * _world = CubeWorld::Procedural(this->getWorldWidth(), this->getWorldHeight(), this->getWorldLength(),this->selection(), _generator, method);
+       * _world = CubeWorld::Procedural(this->getWorldWidth(), this->getWorldHeight(), this->getWorldLength(),this->selection(), _generator, _method);
+    }
+
+    void Cursor::setRadialMethod(const RadialMethod method) {_method = method;}
+    void Cursor::setNextRadialMethod()
+    {
+        std::cout << _method << std::endl;
     }
 
 

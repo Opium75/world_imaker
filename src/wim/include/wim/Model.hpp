@@ -55,8 +55,14 @@ namespace wim {
         inline const CursorPtr& cursor() const {return _cursor;}
         inline CursorPtr& cursor() {return _cursor;}
 
+        inline const Point3Uint& getCursorPosition() const {return _cursor->getPosition();}
+
         void addPointLight(const PointLight& pLight) {this->_lights->addPoint(pLight);}
         void addDirectionLight(const DirectionLight& dLight) {this->_lights->addDir(dLight);}
+
+
+        void removePointLight(const SizeInt index) {this->_lights->removePoint(index);}
+        void removeDirectionLight(const SizeInt index) {this->_lights->removeDir(index);}
     };
 
     //Model will be shared between Controllers, Scene Renderer and Interface

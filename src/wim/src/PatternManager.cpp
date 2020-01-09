@@ -9,18 +9,18 @@
 namespace wim
 {
 
-    static constexpr const SizeInt NB_PATTERNS = 5;
-    static constexpr const GLfloat DEFAULT_CUBE_SIZE = 1.f;
+    static constexpr SizeInt NB_PATTERNS = 5;
+    static constexpr GLfloat DEFAULT_CUBE_SIZE = 1.f;
 
 
-    static constexpr const GLfloat DEFAULT_FRAMEBUFFER_QUAD_SIZE = 2.f;
-    static constexpr const GLfloat DEFAULT_FRAMEBUFFER_QUAD_CENTRE_X = -1.f;
-    static constexpr const GLfloat DEFAULT_FRAMEBUFFER_QUAD_CENTRE_Y = -1.f;
+    static constexpr GLfloat DEFAULT_FRAMEBUFFER_QUAD_SIZE = 2.f;
+    static constexpr GLfloat DEFAULT_FRAMEBUFFER_QUAD_CENTRE_X = -1.f;
+    static constexpr GLfloat DEFAULT_FRAMEBUFFER_QUAD_CENTRE_Y = -1.f;
 
 
-    static constexpr const GLfloat DEFAULT_BASE_QUAD_SIZE = 1.f;
-    static constexpr const GLfloat DEFAULT_BASE_QUAD_CENTRE_X = -0.5f;
-    static constexpr const GLfloat DEFAULT_BASE_QUAD_CENTRE_Y = -0.5f;
+    static constexpr GLfloat DEFAULT_BASE_QUAD_SIZE = 1.f;
+    static constexpr GLfloat DEFAULT_BASE_QUAD_CENTRE_X = -0.5f;
+    static constexpr GLfloat DEFAULT_BASE_QUAD_CENTRE_Y = -0.5f;
 
     PatternManager::PatternManager() : _listPatternPtr(NB_PATTERNS)
     {

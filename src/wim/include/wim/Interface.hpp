@@ -42,10 +42,9 @@ namespace wim
         inline CursorPtr& cursor() {return _model->cursor();}
 
 
-        inline bool pollEvent(SDL_Event &e) const {return this->windowManager()->pollEvent(e);}
+        inline bool pollEvent(SDL_Event& e) const {return this->windowManager()->pollEvent(e);}
         inline bool isKeyPressed(const SDL_Keycode key) const {return this->windowManager()->isKeyPressed(key);}
 
-        void processState() const;
         bool processEvents() const;
 
         void processKeyboardUp(const SDL_Event& e) const;
@@ -69,13 +68,15 @@ namespace wim
 
         bool readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const;
 
-        inline bool isRotating() const {return this->isMouseButtonPressed(SDL_BUTTON_MIDDLE);}
+        bool isRotating() const;
 
         void zoom(const GLint zoomDir) const;
         void rotate(const GLfloat xDeg, const GLfloat yDeg) const;
 
         void addPointLight(const PointLight& light) const;
         void addDirectionLight(const DirectionLight& light) const;
+        void removePointLight(const SizeInt index) const;
+        void removeDirectionLight(const SizeInt index) const;
         void setAmbiantLight(const AmbiantLight &light) const;
 
     };

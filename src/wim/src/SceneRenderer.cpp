@@ -194,7 +194,8 @@ namespace wim
         _patterns->drawFramebuffer(_buffers->getFramebuffer());
     }
 
-    UniformMatrix SceneRenderer::getElementModelViewMatrix(const Renderable& item) const{return this->cameraManager()->getElementModelViewMatrix(item);}
+    UniformMatrix SceneRenderer::getElementModelViewMatrix(const Renderable& item) const
+    {return this->cameraManager()->getElementModelViewMatrix(item);}
     UniformMatrix SceneRenderer::getProjectionMatrix() const{return this->cameraManager()->getProjectionMatrix();}
 
 

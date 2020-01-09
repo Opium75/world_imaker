@@ -41,14 +41,14 @@ namespace wim
 
 
     //UBOs
-    static constexpr const GLuint BINDING_MATRICES_INDEX = 0;
-    static constexpr const GLuint BINDING_MATERIAL_INDEX = 1;
-    static constexpr const GLuint BINDING_AMBIANTLIGHT_INDEX = 2;
+    static constexpr GLuint BINDING_MATRICES_INDEX = 0;
+    static constexpr GLuint BINDING_MATERIAL_INDEX = 1;
+    static constexpr GLuint BINDING_AMBIANTLIGHT_INDEX = 2;
 
     //SSBOs
-    static constexpr const GLuint BINDING_LIGHTNUMBER_INDEX = 0;
-    static constexpr const GLuint BINDING_POINTLIGHT_INDEX = 1;
-    static constexpr const GLuint BINDING_DIRECTIONLIGHT_INDEX = 2;
+    static constexpr GLuint BINDING_LIGHTNUMBER_INDEX = 0;
+    static constexpr GLuint BINDING_POINTLIGHT_INDEX = 1;
+    static constexpr GLuint BINDING_DIRECTIONLIGHT_INDEX = 2;
 
 }
 

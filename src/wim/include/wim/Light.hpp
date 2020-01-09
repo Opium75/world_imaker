@@ -101,8 +101,12 @@ namespace wim {
         void addPoint(const PointLight& pLight);
         void addDir(const DirectionLight& dLight);
         void setAmbiant(const AmbiantLight& ambiant);
-        void removePoint(const size_t index);
-        void removeDir(const size_t index);
+        void removePoint(const SizeInt index);
+        void removeDir(const SizeInt index);
+
+
+        void removeLastPoint() {this->removePoint(_listPoint.size()-1);}
+        void removeLastDir() {this->removeDir(_listDirection.size()-1);}
 
 
         inline const AmbiantLight& ambiant() const {return _ambiant;}
@@ -113,8 +117,8 @@ namespace wim {
         void CBaddPoint(const PointLight& pLight);
         void CBaddDir(const DirectionLight& dLight);
         void CBsetAmbiant(const AmbiantLight& ambiant);
-        void CBremovePoint(const size_t index);
-        void CBremoveDir(const size_t index);
+        void CBremovePoint(const SizeInt index);
+        void CBremoveDir(const SizeInt index);
 
 
     };

@@ -29,7 +29,10 @@ namespace wim
     private:
         static RandPointer _rand;
     private:
-        IntRandomisable() = default;
+        IntRandomisable()
+        {
+            static_assert(std::is_integral<IntType>::value);
+        }
         static RandPointer& getRandomiser(const IntType lowest, const IntType highest, const Randomiser::SeedUInt seed = std::time(nullptr))
         {
             if( !_rand )
@@ -60,7 +63,10 @@ namespace wim
     private:
         static RandPointer _rand;
     private:
-        RealRandomisable() = default;
+        RealRandomisable()
+        {
+            static_assert(std::is_floating_point<RealType>::value);
+        }
         static RandPointer& getRandomiser(const RealType lowest, const RealType highest, const Randomiser::SeedUInt seed = std::time(nullptr))
         {
             if( !_rand )
@@ -92,7 +98,7 @@ namespace wim
         T scalar;
         if constexpr ( std::is_floating_point<T>::value )
             scalar = RealRandomisable<T>::Random(lowest, highest);
-        else
+        else if constexpr ( std::is_integral<T>::value )
         {
             scalar = IntRandomisable<T>::Random(lowest,highest);
         }

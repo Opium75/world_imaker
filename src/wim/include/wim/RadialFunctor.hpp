@@ -18,7 +18,8 @@ namespace wim
     template<typename T>
     using Point = TVec3D<T>;
 
-    enum class RadialMethod
+    static constexpr SizeInt NB_RADIALMETHODS = 4;
+    enum RadialMethod
     {
         LINEAR,
         MULTIQUADRIC,
