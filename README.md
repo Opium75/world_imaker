@@ -11,7 +11,7 @@ World Imaker
     - cmake ../
     - make 
 ####Lancement :
-    - bin/wim/world_imaker
+    - bin/wim/world_imaker [largeur_du_monde] [longueur_du_monde]
 ###Interface utilisateur :
 
 Cube :

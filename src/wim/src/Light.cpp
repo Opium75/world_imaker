@@ -113,7 +113,7 @@ namespace wim
     PointLight PointLight::Random()
     {
         return PointLight(AmbiantLight::Random(),
-                Vec3D::Random(0,1)
+                Vec3D::Random(0,40)
         );
     }
 
