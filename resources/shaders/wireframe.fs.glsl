@@ -59,6 +59,5 @@ layout(std430) buffer sLightNumber
 
 void main()
 {
-
 	fFragColour = material.colour;
 }

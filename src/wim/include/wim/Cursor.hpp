@@ -21,6 +21,8 @@
 namespace wim
 {
 
+    //rate at which the weight of a selected cube will be raised/lowered
+    static constexpr FloatType DEFAULT_WEIGHTMOD_RATE = 1.f;
 
 
     class Cursor : public Displayable
@@ -66,6 +68,7 @@ namespace wim
         void digHoveredCube() const;
 
         void changeTextureHoveredCube() const;
+        void changeWeightHoveredSelected(const bool raise) const;
 
         void generateFromSelection();
 

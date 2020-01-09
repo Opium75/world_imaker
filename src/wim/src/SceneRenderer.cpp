@@ -135,8 +135,11 @@ namespace wim
             case DisplayPattern::WIREFRAME_CUBE :
                 //Last stack used for foreground rendering of selected elements as Wireframes
                 return _stacks.size() - 1;
-            case DisplayPattern::HIDDEN_QUAD :
+            case DisplayPattern::WIREFRAME_QUAD:
                 return 2;
+            case DisplayPattern::HIDDEN_QUAD:
+                //The HIDDEN quads are the ones which will be selected
+                return 3;
             case DisplayPattern::TEXTURED_QUAD :
                 break;
             default:
@@ -167,18 +170,25 @@ namespace wim
     void SceneRenderer::toggleSceneToFramebuffer() const
     {
         _buffers->renderSceneToFramebuffer();
+        this->clearBackgroundColourScene();
         glEnable(GL_DEPTH_TEST);
-        glClear(GL_COLOR_BUFFER_BIT);
         glClear(GL_DEPTH_BUFFER_BIT);
     }
 
     void SceneRenderer::toggleFramebufferToScreen() const
     {
         _buffers->renderFramebufferToScreen();
+        this->clearBackgroundColourScene();
         glDisable(GL_DEPTH_TEST);
-        glClear(GL_COLOR_BUFFER_BIT);
     }
 
+    void SceneRenderer::clearBackgroundColourScene() const
+    {
+        //background colour depending on ambiant lighting
+        const Colour& ambiantColour = this->getAmbiantLightColour();
+        glClearColor(ambiantColour.r(), ambiantColour.g(), ambiantColour.b(), 1.f);
+        glClear(GL_COLOR_BUFFER_BIT);
+    }
 
     bool SceneRenderer::readCubeIndex(Point3Uint& position, const GLint vX, const GLint vY) const
     {
@@ -210,5 +220,6 @@ namespace wim
 
     UniformMatrix SceneRenderer::getCameraViewMatrix() const {return this->cameraManager()->getCameraViewMatrix();}
 
+    const Colour& SceneRenderer::getAmbiantLightColour() const {return this->lightManager()->ambiant().intensity();}
 
 }

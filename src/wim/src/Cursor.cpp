@@ -105,6 +105,23 @@ namespace wim
         }
     }
 
+
+    void Cursor::changeWeightHoveredSelected(const bool raise) const
+    {
+        CubePtr cubePtr;
+        FloatType amount = raise ? DEFAULT_WEIGHTMOD_RATE : -DEFAULT_WEIGHTMOD_RATE;
+        if( this->getHoveredCubePtr(cubePtr) )
+        {
+            if( _selection->isSelected(cubePtr) )
+            {
+                SizeInt index = _selection->getIndexSelected(cubePtr);
+                _selection->addToWeight(index,amount);
+            }
+        }
+    }
+
+
+
     bool Cursor::isOccupied(const Point3Uint& position) const
     {
         return _world->isOccupied(position);
@@ -197,10 +214,14 @@ namespace wim
        * _world = CubeWorld::Procedural(this->getWorldWidth(), this->getWorldHeight(), this->getWorldLength(),this->selection(), _generator, _method);
     }
 
-    void Cursor::setRadialMethod(const RadialMethod method) {_method = method;}
+    void Cursor::setRadialMethod(const RadialMethod method)
+    {
+        _method = method;
+        std::cout << "Interpolation mode: " << _method << std::endl;
+    }
     void Cursor::setNextRadialMethod()
     {
-        std::cout << _method << std::endl;
+        this->setRadialMethod(getNextMethod(_method));
     }
 
 

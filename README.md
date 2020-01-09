@@ -1,9 +1,34 @@
+World Imaker
+============
+#####Pierre THIEL et Yoann KOEPPEL
+
+###Interface utilisateur :
+
+Cube :
+* Ajout : 		      		[Inser]
+* Suppression :	      		[Suppr]
+* Creusement :	      		[ ! ]
+* Extrusion :		      		[ : ]
+* Changement texture :   		[TAB]
+* Déplacement : 			[ESPACE] + [ENTRÉE]
 
 
+Lumière (aléatoire) :
+* Ajout ponctuelle : 	         	          [ p ]
+* Ajout directionnelle :      	          [ m ]
+* Suppression ponctuelle :	          [ 9 ]
+* Suppression directionnelle :         [ 0 ]
+* Allumage ambiante :		[ i ]
+* Extinction ambiante :		[ o ]
 
+Caméra :
+* Rotation :			 	[SOURIS-BOUTON-MOLETTE] + [MOUVEMENT]
+* Agrandissement :		 	[SOURIS-MOLETTE]
 
-
-
-%Comments%
-[Pierre]
-We have to use class or function templates somewhere. Mr Nozick suggested we put some on Radial Basis Functions (as return template types), in order to use them with floats and double (not much but enough).
+Génération :
+* Aléatoire :                    [ n ]
+* Ajout point de contrôle :				[ESPACE]
+* Abandon point de contrôle : [RETOUR]
+* Abandon tous points de contrôle : [ÉCHAP]
+* Augmenter/abaisser poids point de contrôle : [FLÈCHE-HAUT]/[FLÈCHE-BAS]
+* Procédurale : [[Sélection]] + [ * ]

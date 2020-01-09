@@ -21,8 +21,11 @@
 namespace wim
 {
 
-    //Shadowing Selectable class for now
-    //We will simply use Cubes
+    /*Shadowing Selectable class
+     * We will simply use Cubes
+     * Because we need every attributes of Cubes
+     * for procedural generation
+     */
     typedef std::shared_ptr<Cube> SelectablePtr;
     typedef std::weak_ptr<Cube> SelectableWeakPtr;
 
@@ -37,8 +40,11 @@ namespace wim
         SelectablePtr object() const;
 
         const Point3Uint& position() const;
-        FloatType weight() const;
+        FloatType getWeight() const;
+        void setWeight(const FloatType weight);
 
+        ///brief: returns true if object is deleted
+        ///Does not guarantee that the object is usable if it returns false, do NOT use like so : !isDeleted()
         bool isDeleted() const {return _objectWeak.expired();}
         DisplayPattern getDisplayPattern() const override;
     private:
@@ -62,11 +68,13 @@ namespace wim
 
         SizeInt getNumber() const {return _selected.size();}
 
+        void addToWeight(const SizeInt index, const FloatType add);
+
         void clearSelected();
         void clearDeleted();
 
-
         bool isSelected(const SelectablePtr& selectablePtr) const;
+        SizeInt getIndexSelected(const SelectablePtr& selectablePtr) const;
 
         void select(SelectablePtr& selectablePtr);
         void deselect(const SizeInt index);

@@ -234,7 +234,7 @@ add_executable(${PROJECT_EXEC_NAME}
         src/wim/include/wim/RBF.hpp
         src/wim/include/wim/ProceduralGenerator.hpp
         src/wim/src/ProceduralGenerator.cpp
-        )
+        src/wim/src/RadialFunctor.cpp)
 target_link_libraries(${PROJECT_EXEC_NAME}
         ${ALL_LIBRARIES}
         )

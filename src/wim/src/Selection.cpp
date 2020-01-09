@@ -42,11 +42,18 @@ namespace wim
         return this->object()->position();
     }
 
-    FloatType Selected::weight() const
+    FloatType Selected::getWeight() const
     {
-        return this->_weight;
+        return _weight;
     }
 
+
+    void Selected::setWeight(const FloatType weight)
+    {
+        _weight = weight;
+        //changing colour of the selection
+        _material.colour() = buildSelectedColour(weight, Colour(DEFAULT_SELECTION_COLOUR));
+    }
 
     void Selection::clearSelected()
     {
@@ -75,6 +82,26 @@ namespace wim
         );
     }
 
+    SizeInt Selection::getIndexSelected(const SelectablePtr& selectablePtr) const
+    {
+        SizeInt index = 0;
+        bool found=false;
+        for( const auto& selected : _selected )
+        {
+            if( selected->object() == selectablePtr )
+            {
+                found = true;
+                break;
+            }
+            ++index;
+        }
+        if( !found )
+        {
+            throw Exception(ExceptCode::ILLIGAL, 1, "Object is not selected, cannot get index in selection.");
+        }
+        return index;
+    }
+
     void Selection::select(SelectablePtr& selectablePtr)
     {
         //First checking if selectable is not already in the list
@@ -94,12 +121,20 @@ namespace wim
         this->removeFromList(index);
     }
 
+
+    void Selection::addToWeight(const SizeInt index, const FloatType add)
+    {
+        SelectedPtr& selected = this->selected(index);
+        selected->setWeight(selected->getWeight()+add);
+    }
+
     void Selection::addToList(SelectablePtr& selectablePtr)
     {
+        FloatType weight = RandomScalar<FloatType>(-1,1);
         _selected.push_back(
                 std::make_unique<Selected>(
                         selectablePtr,
-                        RandomScalar<FloatType>(-1000,1000),
+                        weight,
                          _colour)
         );
     }
@@ -148,5 +183,4 @@ namespace wim
         c.b() = base.b();
         return c;
     }
-
 }

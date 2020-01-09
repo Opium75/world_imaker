@@ -92,6 +92,14 @@ namespace wim {
                 //CUBE CHANGE TEXTURE
                 this->cursor()->changeTextureHoveredCube();
                 break;
+            case SDLK_UP:
+                //Raising weight of the hovered cube (if selected)
+                this->cursor()->changeWeightHoveredSelected(true);
+                break;
+            case SDLK_DOWN:
+                //Lowering weight
+                this->cursor()->changeWeightHoveredSelected(false);
+                break;
             case SDLK_DOLLAR:
                 //GENERATION CHANGE RADIAL METHOD
                 this->cursor()->setNextRadialMethod();

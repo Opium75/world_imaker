@@ -24,7 +24,6 @@ namespace wim
 {
 
     class Interface {
-        //todo
     private:
         ModelPtr _model;
         DisplayerPtr _displayer;
