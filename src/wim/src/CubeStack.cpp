@@ -15,7 +15,7 @@ namespace wim
 
 
     CubeStack::CubeStack(const XUint x, const ZUint z) :
-            _stack(), _x(x), _z(z), _base()
+            _stack(), _x(x), _z(z), _base(), _hiddenBase()
     {
     }
 
@@ -31,7 +31,7 @@ namespace wim
     YUint CubeStack::getHeight() const
     {
         //Stack is sorted, so last element is highest
-        return _stack.empty() ? 0 : _stack.back().floor();
+        return _stack.empty() ? 0 : _stack.back().floor()+1;
     }
 
 

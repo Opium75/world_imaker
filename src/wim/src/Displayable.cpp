@@ -66,19 +66,26 @@ namespace wim
         return this->getDisplayPattern() == DisplayPattern::TEXTURED_CUBE;
     }
 
+    bool Displayable::isWireframe() const
+    {
+
+        return this->getDisplayPattern() == DisplayPattern::WIREFRAME_CUBE
+                || this->getDisplayPattern() == DisplayPattern::WIREFRAME_QUAD;
+    }
 
     bool Displayable::isInForeground() const
     {
             //Only the cursor will be in the foreground
-            //so same as wireframe
+            //so same as wireframe cube
             return this->getDisplayPattern() == DisplayPattern::WIREFRAME_CUBE;
     }
 
-    bool Displayable::isHidden() const
+    /*bool Displayable::isHidden() const
     {
         //The squads at the base of the DisplayableStacks will not be visible.
         return this->getDisplayPattern() == DisplayPattern::HIDDEN_QUAD;
     }
+     */
 
     void Displayable::linkTextures(const ListITOPtr& textures)
     {
@@ -91,8 +98,8 @@ namespace wim
     const ITO& Renderable::ito() const {return _objectPtr->ito();}
 
     bool Renderable::isTextured()  const {return  _objectPtr->isTextured();}
+    bool Renderable::isWireframe()  const {return  _objectPtr->isWireframe();}
     bool Renderable::isInForeground()  const {return  _objectPtr->isInForeground();}
-    bool Renderable::isHidden()  const {return  _objectPtr->isHidden();}
 
 
 }

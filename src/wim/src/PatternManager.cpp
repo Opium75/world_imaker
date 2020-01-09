@@ -9,9 +9,7 @@
 namespace wim
 {
 
-    static constexpr SizeInt NB_PATTERNS = 5;
     static constexpr GLfloat DEFAULT_CUBE_SIZE = 1.f;
-
 
     static constexpr GLfloat DEFAULT_FRAMEBUFFER_QUAD_SIZE = 2.f;
     static constexpr GLfloat DEFAULT_FRAMEBUFFER_QUAD_CENTRE_X = -1.f;
@@ -39,6 +37,7 @@ namespace wim
         this->at(DisplayPattern::TEXTURED_CUBE) = cubePattern;
         this->at(DisplayPattern::WIREFRAME_CUBE) = cubePattern;
         this->at(DisplayPattern::TEXTURED_QUAD) = framebufferQuadPattern;
+        this->at(DisplayPattern::WIREFRAME_QUAD) = baseQuadPattern;
         this->at(DisplayPattern::HIDDEN_QUAD) = baseQuadPattern;
     }
 
@@ -77,6 +76,9 @@ namespace wim
                 this->drawTextured(item);
                 break;
             case DisplayPattern::WIREFRAME_CUBE :
+                this->drawWireframe(item);
+                break;
+            case DisplayPattern::WIREFRAME_QUAD :
                 this->drawWireframe(item);
                 break;
             case DisplayPattern::TEXTURED_QUAD :

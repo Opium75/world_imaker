@@ -65,7 +65,7 @@ namespace wim {
         void displayWidgets() const;
 
         void addToRenderingStacks(const Displayable &object, const Anchor &anchor, const FloatType rotX=0, const FloatType rotY=0) const;
-        void addToRenderingStacks(const BaseQuad &baseQuad, const XUint x, const ZUint z) const;
+        void addToRenderingStacks(const Quad &quad, const XUint x, const ZUint z) const;
         void addToRenderingStacks(const Cursor &cursor, const Anchor& anchor, const bool isCursor) const;
     };
 

@@ -8,14 +8,18 @@ namespace wim
 {
 
 
-    DisplayPattern BaseQuad::getDisplayPattern() const
+    DisplayPattern HiddenBaseQuad::getDisplayPattern() const
     {
         return DisplayPattern::HIDDEN_QUAD;
     }
 
+    DisplayPattern BaseQuad::getDisplayPattern() const
+    {
+        return DisplayPattern::WIREFRAME_QUAD;
+    }
 
 
-    Renderable BaseQuad::getRenderable(const XUint x, const ZUint z) const
+    Renderable Quad::getRenderable(const XUint x, const ZUint z) const
     {
         return Renderable(*this,
                           Anchor(x,
@@ -25,4 +29,5 @@ namespace wim
                           0
         );
     }
+
 }

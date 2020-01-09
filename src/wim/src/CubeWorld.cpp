@@ -147,7 +147,7 @@ namespace wim
     CubeWorld CubeWorld::Procedural(const XUint width, const YUint height, const ZUint length, const SelectionPtr& selection, ProceduralGeneratorPtr& generator, const RadialMethod method)
     {
         CubeWorld world(width, length);
-        //updating genrator with selection
+        //updating generator with selection
         generator->build(selection, method);
         //getting generated RBF
         CubeRBF &rbf = generator->getCubeRBF();

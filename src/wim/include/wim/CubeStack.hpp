@@ -80,6 +80,7 @@ namespace wim
         Stack _stack;
         XUint _x; ZUint _z;
         BaseQuad _base;
+        HiddenBaseQuad _hiddenBase;
     public:
         CubeStack() = default;
         CubeStack(const XUint x, const ZUint z);
@@ -94,6 +95,7 @@ namespace wim
         inline XUint x() const {return _x;}
         inline ZUint z() const {return _z;}
         inline const BaseQuad& base() const {return _base;}
+        inline const HiddenBaseQuad& hiddenBase() const {return _hiddenBase;}
 
         CubeStack& operator=(const CubeStack& cubeStack) = default;
 

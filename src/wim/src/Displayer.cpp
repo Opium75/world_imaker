@@ -38,6 +38,7 @@ namespace wim {
          * So adding an invisible quad at the bottom.
          */
         this->addToRenderingStacks(cubeStack.base(), cubeStack.x(),cubeStack.z());
+        this->addToRenderingStacks(cubeStack.hiddenBase(), cubeStack.x(),cubeStack.z());
     }
 
     void Displayer::display(const CubeWorld &world) const
@@ -115,9 +116,9 @@ namespace wim {
     }
 
 
-    void Displayer::addToRenderingStacks(const BaseQuad &baseQuad, const XUint x, const ZUint z) const
+    void Displayer::addToRenderingStacks(const Quad &quad, const XUint x, const ZUint z) const
     {
-        _renderer->addToStacks(baseQuad.getRenderable(x,z));
+        _renderer->addToStacks(quad.getRenderable(x,z));
     }
 
 

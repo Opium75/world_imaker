@@ -69,6 +69,8 @@ namespace wim
         UniformMatrix getElementModelViewMatrix(const Renderable& item) const;
         UniformMatrix getProjectionMatrix() const;
 
+        const Colour& getAmbiantLightColour() const;
+        void clearBackgroundColourScene() const;
 
         void updateItem(const Renderable& item, const UniformMatrix& ProjMatrix) const;
         void updateMaterial(const Renderable& item) const;
