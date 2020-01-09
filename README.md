@@ -2,6 +2,14 @@ World Imaker
 ============
 #####Pierre THIEL et Yoann KOEPPEL
 
+###Lancement :
+####Création de l'exécutable :
+    - mkdir build
+    - cd build/
+    - cmake ../
+    - make 
+####Lancement :
+    - bin/wim/world_imaker
 ###Interface utilisateur :
 
 Cube :
