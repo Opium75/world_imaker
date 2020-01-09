@@ -54,11 +54,11 @@ namespace wim
             return vec;
         }
         VecScalar<D> solve(const VecPoint<T>& points, const VecScalar<D>& weights, const RadialFunctor<D>& phi, const DistanceFunctor<T, D>& distance) const
-
         {
             /** Building matrix of distances  **/
             MatrixScalar M = this->buildRadialMatrix(points, phi, distance);
             /** Solving M*omegas = weights **/
+            //Using QR decomposition 'cause it's pretty fast and we don't care about low precision
             return M.householderQr().solve(weights);
 
         }
@@ -140,7 +140,6 @@ namespace wim
             for(SizeInt i=1; i<n; ++i)
             {
                 //C class needs to overload intern operator+ and scalar operator*
-
                 result += iValues(i)*vecPhi(i)*(*_omegas)(i);
             }
             return result;
@@ -151,7 +150,7 @@ namespace wim
            //occupation condition: sum > 0.
            VecScalar<D> vecPhi = _solver.buildRadialVec(position, *_points, _phi, _distance);
            D result = _omegas->dot(vecPhi);
-           return result > 0;
+           return result > static_cast<D>(0);
         }
 
     };

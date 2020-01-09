@@ -22,13 +22,15 @@ namespace wim
 {
 
 
+    static constexpr SizeInt NB_PATTERNS = 6;
     enum class DisplayPattern : SizeInt
     {
         COLOURED_CUBE,
         TEXTURED_CUBE,
         WIREFRAME_CUBE,
         TEXTURED_QUAD,
-        HIDDEN_QUAD
+        HIDDEN_QUAD,
+        WIREFRAME_QUAD
     };
 
     ///An interface for elements which will be shown in the world window
@@ -59,8 +61,8 @@ namespace wim
         static SizeInt getNumberTextures();
 
         bool isTextured() const;
+        bool isWireframe() const;
         bool isInForeground() const;
-        bool isHidden() const;
 
         static void linkTextures(const ListITOPtr& textures);
 
@@ -84,8 +86,8 @@ namespace wim
         const ITO& ito() const;
 
         bool isTextured()  const;
+        bool isWireframe()  const;
         bool isInForeground()  const;
-        bool isHidden() const;
     };
 
 

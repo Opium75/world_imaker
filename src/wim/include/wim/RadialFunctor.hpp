@@ -8,6 +8,8 @@
 #pragma once
 
 #include <cmath>
+#include <string>
+#include <iostream>
 
 #include "Types.hpp"
 #include "Vec3D.hpp"
@@ -19,7 +21,7 @@ namespace wim
     using Point = TVec3D<T>;
 
     static constexpr SizeInt NB_RADIALMETHODS = 4;
-    enum RadialMethod
+    enum class RadialMethod : SizeInt
     {
         LINEAR,
         MULTIQUADRIC,
@@ -132,5 +134,9 @@ namespace wim
             }
         }
     };
+
+    RadialMethod getNextMethod(const RadialMethod method);
+    std::string toString(const RadialMethod method);
+    std::ostream& operator<<(std::ostream& out, const RadialMethod method);
 }
 #endif //WORLD_IMAKER_RADIALFUNCTOR_HPP

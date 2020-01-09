@@ -36,10 +36,15 @@ namespace wim
         ~Material() = default;
 
         Material& operator=(const Material& material) = default;
+        ///brief: Averages the two materials
         Material operator+(const Material& material) const;
         Material& operator+=(const Material& material);
+
         Material& operator*(const FloatType alpha);
         Material& operator*=(const FloatType alpha);
+
+
+        Material average(const Material& material) const;
 
         inline const Colour& colour() const {return _colour;}
         inline Colour& colour() {return _colour;}

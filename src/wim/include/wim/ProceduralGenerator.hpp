@@ -58,7 +58,7 @@ namespace wim
         {
             weights.resize(selected.size());
             for( SizeInt i=0; i<(SizeInt)weights.size(); ++i )
-                weights(i) = selected.at(i)->weight();
+                weights(i) = selected.at(i)->getWeight();
         }
 
         template<typename C>

@@ -22,20 +22,24 @@ namespace wim
 
     Material Material::operator+(const Material& material) const
     {
-        return Material(colour()+material.colour(),
-                        kD()+material.kD(),
-                        kS()+material.kS(),
-                        shininess()+material.shininess()
-                        );
+        return this->average(material);
     }
     Material& Material::operator+=(const Material& material)
     {
-        colour() += material.colour();
-        kD() += material.kD();
-        kS() += material.kS();
-        shininess() += material.shininess();
+        *this = this->average(material);
         return *this;
     }
+
+    Material  Material::average(const Material& material) const
+    {
+        Material avg;
+        avg.colour() = colour().average(material.colour());
+        avg.kD()  = (kD() + material.kD())/2.;
+        avg.kS() = (kS() + material.kS())/2.;
+        avg.shininess() = (shininess() + material.shininess())/2.;
+        return avg;
+    }
+
     Material& Material::operator*(const FloatType alpha)
     {
         colour() *= alpha;

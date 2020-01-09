@@ -80,13 +80,23 @@ namespace wim
             this->_coord += vec._coord;
             return *this;
         };
+
+        /** NOTE : the following two functions will not cast unsigned types to signed
+         * So they do not work with Point3Uint
+         */
         ///Returns the symmetric relative to the origin
-        inline TVec3D operator-() const { return TVec3D( -_coord );}
+        TVec3D operator-() const
+        {
+            static_assert(!std::is_signed<T>::value);
+            return TVec3D( -_coord );
+        }
 
         TVec3D operator-(const TVec3D& vec) const
         {
-            return *this + (-vec);
+            static_assert(!std::is_signed<T>::value);
+            return TVec3D(this->_coord - vec._coord);
         }
+        /** **/
 
         TVec3D& operator*(const T alpha)
         {
@@ -113,16 +123,22 @@ namespace wim
         {
             D l = static_cast<D>(n);
             return std::pow(
-                    std::pow(x(),l) + std::pow(y(),l) + std::pow(z(), l),
+                    std::pow(static_cast<D>(std::abs(x())),l) +
+                    std::pow(static_cast<D>(std::abs(y())),l) +
+                    std::pow(static_cast<D>(std::abs(z())), l),
                     1/l
                     );
         }
 
+        /** NOTE : distnace can be used by using type **/
         template<typename D=T, SizeInt n=2>
         D distance(const TVec3D vec) const
         {
-            TVec3D diff = this->operator-(vec);
-            return diff.norm<D, n>();
+            TVec3D<D> diff;
+            diff.x() = static_cast<D>(x()) - static_cast<D>(vec.x());
+            diff.y() = static_cast<D>(y()) - static_cast<D>(vec.y());
+            diff.z() = static_cast<D>(z()) - static_cast<D>(vec.z());
+            return diff.template norm<D, n>();
         }
 
         static TVec3D Random(const T lowest= static_cast<T>(-1), const T highest= static_cast<T>(1))
