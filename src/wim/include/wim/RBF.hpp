@@ -13,6 +13,8 @@
 #include <vector>
 #include <algorithm>
 
+#include <cmath>
+
 #include "Types.hpp"
 #include "Vec3D.hpp"
 #include "Exception.hpp"
@@ -140,7 +142,7 @@ namespace wim
             for(SizeInt i=1; i<n; ++i)
             {
                 //C class needs to overload intern operator+ and scalar operator*
-                result += iValues(i)*vecPhi(i)*(*_omegas)(i);
+                result += iValues(i)*vecPhi(i)*std::abs((*_omegas)(i));
             }
             return result;
         }

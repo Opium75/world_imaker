@@ -27,7 +27,7 @@ SDLWindowManager::SDLWindowManager(uint32_t width, uint32_t height, const char* 
     if(GLEW_OK != glewInitError)
     {
        //throw Exception(ExceptCode::INIT_ERROR, 1, "Could not initialise glew.");
-       throw std::exception(std::system_error());
+      // throw std::exception(std::system_error());
     }
     //FOR 3d
     glEnable(GL_DEPTH_TEST);
