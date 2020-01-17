@@ -1,18 +1,18 @@
 World Imaker
 ============
-#####Pierre THIEL et Yoann KOEPPEL
+##### Pierre THIEL et Yoann KOEPPEL
 
-###Dépendances :
+### Dépendances :
 * OpenGL 4.3
-###Usage :
-####Création de l'exécutable :
+### Usage :
+#### Création de l'exécutable :
     - mkdir build
     - cd build/
     - cmake ../
     - make 
-####Lancement :
+#### Lancement :
     - bin/wim/world_imaker [largeur_du_monde] [longueur_du_monde]
-###Interface utilisateur :
+### Interface utilisateur :
 
 Cube :
 * Ajout : 		      		[Inser]
