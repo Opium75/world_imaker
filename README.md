@@ -1,7 +1,8 @@
-World Imaker
-============
+#World Imaker
 ##### Pierre THIEL et Yoann KOEPPEL
 
+![world_imaker](./doc/screenshots/world_imaker.png)
+=====
 ### Dépendances :
 * OpenGL 4.3
 ### Usage :
@@ -42,3 +43,9 @@ Génération :
 * Abandon tous points de contrôle : [ÉCHAP]
 * Augmenter/abaisser poids point de contrôle : [FLÈCHE-HAUT]/[FLÈCHE-BAS]
 * Procédurale : [[Sélection]] + [ * ]
+
+### Captures d'écran :
+
+![cap1](./doc/screenshots/mine_diamond.png)
+==
+![cap2](./doc/screenshots/invert_after_lights.png)
