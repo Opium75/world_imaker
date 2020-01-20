@@ -1,10 +1,11 @@
-#World Imaker
+# World Imaker
 ##### Pierre THIEL et Yoann KOEPPEL
 
 ![world_imaker](./doc/screenshots/world_imaker.png)
 =====
 ### Dépendances :
 * OpenGL 4.3
+* Eigen 3
 ### Usage :
 #### Création de l'exécutable :
     - mkdir build
