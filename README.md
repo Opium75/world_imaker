@@ -1,51 +1,52 @@
-# World Imaker
-##### Pierre THIEL et Yoann KOEPPEL
+# WORLD IMAKER
+##### Pierre THIEL and Yoann KOEPPEL
 
 ![world_imaker](./doc/screenshots/world_imaker.png)
 =====
-### Dépendances :
+### Dependencies :
 * OpenGL 4.3
 * Eigen 3
 ### Usage :
-#### Création de l'exécutable :
+#### Building the executuble file :
     - mkdir build
     - cd build/
     - cmake ../
     - make 
-#### Lancement :
-    - bin/wim/world_imaker [largeur_du_monde] [longueur_du_monde]
-### Interface utilisateur :
+#### Launch :
+    - bin/wim/world_imaker [world_width] [world_length]
+### User interface :
 
-Cube :
-* Ajout : 		      		[Inser]
-* Suppression :	      		[Suppr]
-* Creusement :	      		[ ! ]
-* Extrusion :		      		[ : ]
-* Changement texture :   		[TAB]
-* Déplacement : 			[ESPACE] + [ENTRÉE]
+Cubes:
+* Add: 		      		                [Insert]
+* Delete:	      		                [Suppr]
+* Dig:	          		                [ ! ]
+* Extrude:		      	                [ : ]
+* Change texture:                   	[TAB]
+* Move:      		                	[SPACE] + [RETURN]
 
 
-Lumière (aléatoire) :
-* Ajout ponctuelle : 	         	          [ p ]
-* Ajout directionnelle :      	          [ m ]
-* Suppression ponctuelle :	          [ 9 ]
-* Suppression directionnelle :         [ 0 ]
-* Allumage ambiante :		[ i ]
-* Extinction ambiante :		[ o ]
+Lights (random):
+* Add ponctual:         	            [ p ]
+* Add directional:      	            [ m ]
+* Delete punctual:      	            [ 9 ]
+* Delete directional:                   [ 0 ]
+* Switch on ambiant:		            [ i ]
+* Switch of ambiant:		            [ o ]
 
-Caméra :
-* Rotation :			 	[SOURIS-BOUTON-MOLETTE] + [MOUVEMENT]
-* Agrandissement :		 	[SOURIS-MOLETTE]
+Camera:
+* Rotation:			 	                [MOUSE-BUTTON-MIDDLE] + [MOUVEMENT]
+* Zoom-in/out:	                	 	[MOUSE-WHEEL]
 
-Génération :
-* Aléatoire :                    [ n ]
-* Ajout point de contrôle :				[ESPACE]
-* Abandon point de contrôle : [RETOUR]
-* Abandon tous points de contrôle : [ÉCHAP]
-* Augmenter/abaisser poids point de contrôle : [FLÈCHE-HAUT]/[FLÈCHE-BAS]
-* Procédurale : [[Sélection]] + [ * ]
+Procedural generation:
+* Random:                               [ n ]
+* RBF:                                  [[Select n times]] + [ * ]
+* Add control point:				    [SPACE]
+* Discard control point:                [BACKSPACE]
+* Discard all :                         [ESCAPE]
+* Raise/decrease weight:                [UP-ARROW]/[DOWN-ARROW]
 
-### Captures d'écran :
+
+### Screenshots :
 
 ![cap1](./doc/screenshots/mine_diamond.png)
 ==
